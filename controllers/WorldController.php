@@ -37,7 +37,8 @@ class WorldController extends Controller
     public function actionPeople()
     {
         //    $items = Singer::find()->where(['id'=>1]);
-        $items = Singer::find()->all();
+//        $items = Singer::find()->all();
+        $items = Singer::find()->asArray()->all();
         return $this->render('people', [
             'countTotal' => 6000000000,
             'title' => 'My page of world people',
