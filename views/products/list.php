@@ -53,35 +53,47 @@
             for ($i = 0; $i < (count($arrayProducts));) {
                 ?>
                 <div class="row">
-                    <div class="col-12 col-sm-6 col-md-4 text-center shadow-lg">
+                    <div class="col-12 col-sm-6 col-md-3 text-center shadow-lg">
                         <h3>Device-<?php echo $i + 1 ?></h3>
-                        <img src="/<?php echo $arrayProducts[$i]; ?>" width="100%" class="col-10"><br>
+                        <img src="/<?php echo $arrayProducts[$i];  ?>" width="100%" class="col-10"><br>
                         <p> Width: 1m <br> High: 2m <br> Weight 5kg<br></p>
-                        <!-- <a href="./feedback_form.html"><button>Buy</button></a> -->
-                        <a href="./product_form.html">
+                        <a href="/buy/presentation" >
                             <button type="button" class="btn btn-outline-success">Buy</button>
                         </a>
                     </div>
-                    <div class="col-12 col-sm-6 col-md-4 text-center shadow-lg">
-                        <h3>Device-<?php echo $i + 2 ?></h3>
-                        <img src="/<?php echo $arrayProducts[$i + 1]; ?>" width="100%" class="col-10"><br>
-                        <p> Width: 1m <br> High: 2m <br> Weight 5kg <br></p>
-                        <!-- <a href="#"><button>Buy</button></a> -->
-                        <a href="#">
-                            <button type="button" class="btn btn-outline-success">Buy</button>
-                        </a>
-                    </div>
-                    <div class="col-12 col-sm-6 col-md-4 text-center shadow-lg">
-                        <h3>Device-<?php echo $i + 3 ?></h3>
-                        <img src="/<?php echo $arrayProducts[$i + 2]; ?>" width="100%" class="col-10"><br>
-                        <p> Width: 1m <br> High: 2m <br> Weight 5kg <br></p>
-                        <a href="#">
-                            <button type="button" class="btn btn-outline-success">Buy</button>
-                        </a>
-                    </div>
+                    <?php if (($i + 1) < (count($arrayProducts))) { ?>
+                        <div class="col-12 col-sm-6 col-md-3 text-center shadow-lg">
+                            <h3>Device-<?php echo $i + 2 ?></h3>
+                            <img src="/<?php echo $arrayProducts[$i + 1]; ?>" width="100%" class="col-10"><br>
+                            <p> Width: 1m <br> High: 2m <br> Weight 5kg <br></p>
+                            <a href="#">
+                                <button type="button" class="btn btn-outline-success">Buy</button>
+                            </a>
+                        </div>
+                    <?php }
+                    if (($i + 2) < (count($arrayProducts))) { ?>
+                        <div class="col-12 col-sm-6 col-md-3 text-center shadow-lg">
+                            <h3>Device-<?php echo $i + 3 ?></h3>
+                            <img src="/<?php echo $arrayProducts[$i + 2]; ?>" width="100%" class="col-10"><br>
+                            <p> Width: 1m <br> High: 2m <br> Weight 5kg <br></p>
+                            <a href="#">
+                                <button type="button" class="btn btn-outline-success">Buy</button>
+                            </a>
+                        </div>
+                    <?php }
+                    if (($i + 3) < (count($arrayProducts))) { ?>
+                        <div class="col-12 col-sm-6 col-md-3 text-center shadow-lg">
+                            <h3>Device-<?php echo $i + 4 ?></h3>
+                            <img src="/<?php echo $arrayProducts[$i + 3]; ?>" width="100%" class="col-10"><br>
+                            <p> Width: 1m <br> High: 2m <br> Weight 5kg <br></p>
+                            <a href="#">
+                                <button type="button" class="btn btn-outline-success">Buy</button>
+                            </a>
+                        </div>
+                    <?php } ?>
                 </div>
                 <?php
-                $i += 3;
+                $i += 4;
             }
             ?>
         </div>

@@ -6,7 +6,7 @@ use app\models\Singer;
 use yii\helpers\VarDumper;
 use yii\web\Controller;
 
-class WorldController extends Controller
+class ProductsController extends Controller
 {
 //    public function actionIndex()
 //    {
@@ -23,7 +23,7 @@ class WorldController extends Controller
 
 //        return $this->render('people', [
 //            'countTotal' => 6000000000,
-//            'title' => 'My page of world people'
+//            'title' => 'My page of products people'
 //        ]);
 //    }
 //
@@ -34,12 +34,12 @@ class WorldController extends Controller
 //}
 
 
-    public function actionPeople()
+    public function actionList()
     {
         //    $items = Singer::find()->where(['id'=>1]);
 //        $items = Singer::find()->all();
         $items = Singer::find()->asArray()->all();
-        return $this->render('people', [
+        return $this->render('list', [
             'countTotal' => 6000000000,
             'title' => 'My page of world people',
             'items' => $items
