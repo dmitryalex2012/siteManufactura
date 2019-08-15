@@ -1,16 +1,21 @@
 <?php
-/* @var $title string */
-/* @var $countTotal string */
 /* @var $notes string */
+/* @var $countTotal string */
+/* @var $productAddress string */
 ?>
 <div id="content" class="wrap">
+
+<!--    <pre>-->
+<!--        --><?php //var_dump($productAddress); ?>
+<!--    </pre>-->
+
     <div class="row">
         <div class="col-12 col-sm-8 col-md-8 text-center shadow-lg">
             <div class="product">
-                <h2>Device 1</h2>
+                <h2>Device <?php echo $productAddress->id; ?></h2>
                 <a href="#" class="previous round"><<</a>
                 <a href="#" class="next round">>></a>
-                <img src="../foto/fotoTV.jpg">
+                <img src="/<?php echo $productAddress->notes; ?>">
             </div>
         </div>
 
