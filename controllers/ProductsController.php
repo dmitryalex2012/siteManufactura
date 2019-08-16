@@ -37,8 +37,8 @@ class ProductsController extends Controller
     public function actionList()
     {
         //    $items = Singer::find()->where(['id'=>1]);
+//        $items = Singer::find()->all();
         $items = Singer::find()->all();
-//        $items = Singer::find()->asArray()->all();
         return $this->render('list', [
             'countTotal' => 6000000000,
             'title' => 'My page of world people',

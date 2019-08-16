@@ -5,9 +5,9 @@
 ?>
 <div id="content" class="wrap">
 
-<!--    <pre>-->
-<!--        --><?php //var_dump($productAddress); ?>
-<!--    </pre>-->
+    <pre>
+        <?php var_dump($productAddress); ?>
+    </pre>
 
     <div class="row">
         <div class="col-12 col-sm-8 col-md-8 text-center shadow-lg">
@@ -41,8 +41,8 @@
                 <button>Buy</button>
             </a>
         </div>
-<!--        <div class="col-12 col-sm-4 text-center shadow-lg">-->
-<!--        </div>-->
+        <div class="col-12 col-sm-4 text-center shadow-lg">
+        </div>
     </div>
 </div>
 

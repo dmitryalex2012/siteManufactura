@@ -21,10 +21,10 @@
         <div class="col-12 col-sm-9">
             <?php $i = 0;
             foreach ($items as $key => $item):
-                if ((((++$i) % 4) == 1)): ?>
+                if ((((++$i) % 3) == 1)): ?>
                     <div class="row">
                 <?php endif; ?>
-                <div class="col-12 col-sm-6 col-md-3 text-center shadow-lg">
+                <div class="col-12 col-sm-6 col-md-4 text-center shadow-lg">
                     <h3>Device-<?php echo $item->id; ?></h3>
                     <img src="/<?php echo $item->notes; ?>" width="100%" class="col-10"><br>
                     <p> Width: 1m <br> High: 2m <br> Weight 5kg<br></p>
@@ -32,7 +32,7 @@
                         <button type="button" class="btn btn-outline-success">Buy</button>
                     </a>
                 </div>
-                <?php if ((($i % 4) == 0)): ?>
+                <?php if ((($i % 3) == 0)): ?>
                 </div>
             <?php endif; ?>
             <?php endforeach; ?>
