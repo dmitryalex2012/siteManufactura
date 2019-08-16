@@ -41,8 +41,8 @@
                 <button>Buy</button>
             </a>
         </div>
-        <div class="col-12 col-sm-4 text-center shadow-lg">
-        </div>
+<!--        <div class="col-12 col-sm-4 text-center shadow-lg">-->
+<!--        </div>-->
     </div>
 </div>
 
