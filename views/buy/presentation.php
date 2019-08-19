@@ -5,16 +5,16 @@
 ?>
 <div id="content" class="wrap">
 
-    <pre>
-        <?php var_dump($productAddress); ?>
-    </pre>
+<!--    <pre>-->
+<!--        --><?php //var_dump($productAddress); ?>
+<!--    </pre>-->
 
     <div class="row">
         <div class="col-12 col-sm-8 col-md-8 text-center shadow-lg">
             <div class="product">
                 <h2>Device <?php echo $productAddress->id; ?></h2>
                 <a href="#" class="previous round"><<</a>
-                <a href="#" class="next round">>></a>
+                <a href="#" class="next round">Next</a>
                 <img src="/<?php echo $productAddress->notes; ?>">
             </div>
         </div>
@@ -41,8 +41,8 @@
                 <button>Buy</button>
             </a>
         </div>
-        <div class="col-12 col-sm-4 text-center shadow-lg">
-        </div>
+<!--        <div class="col-12 col-sm-4 text-center shadow-lg">-->
+<!--        </div>-->
     </div>
 </div>
 
