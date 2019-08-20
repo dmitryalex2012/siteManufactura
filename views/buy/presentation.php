@@ -3,19 +3,24 @@
 /* @var $countTotal string */
 /* @var $productAddress string */
 ?>
-<div id="content" class="wrap">
+<!--<div id="content" class="wrap">-->
+<div id="content" class="row">
 
 <!--    <pre>-->
 <!--        --><?php //var_dump($productAddress); ?>
 <!--    </pre>-->
 
-    <div class="row">
+<!--    <div class="row">-->
         <div class="col-12 col-sm-8 col-md-8 text-center shadow-lg">
-            <div class="product">
-                <h2>Device <?php echo $productAddress->id; ?></h2>
-                <a href="#" class="previous round"><<</a>
-                <a href="#" class="next round">Next</a>
-                <img src="/<?php echo $productAddress->notes; ?>">
+            <div class="product row">
+                <div class="col-12 col-sm-2 col-md-1"></div>
+                <div class="col-12 col-sm-8 col-md-10">
+                    <h2>Device <?php echo $productAddress->id; ?></h2>
+                    <a href="#" class="previous round"><<</a>
+                    <a href="#" class="next round">>></a>
+                    <img src="/<?php echo $productAddress->notes; ?>">
+                </div>
+                <div class="col-12 col-sm-2 col-md-1"></div>
             </div>
         </div>
 
@@ -29,7 +34,7 @@
                 </ul>
             </div>
         </div>
-    </div>
+<!--    </div>-->
 </div>
 
 
