@@ -9,7 +9,7 @@ $config = [
     'bootstrap' => ['log'],
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
-        '@npm'   => '@vendor/npm-asset',
+        '@npm' => '@vendor/npm-asset',
     ],
     'components' => [
         'request' => [
@@ -31,7 +31,47 @@ $config = [
             // send all mails to a file by default. You have to set
             // 'useFileTransport' to false and configure a transport
             // for the mailer to send real emails.
-            'useFileTransport' => true,
+//            'useFileTransport' => true,
+
+
+            'useFileTransport' => false,
+//                    'viewPath' => '@app/mail',
+            'transport' => [
+                'class' => 'Swift_SmtpTransport',
+                'host' => 'smtp.gmail.com',
+                'username' => 'tpmfd27@gmail.com',
+                'password' => 'oapvrqlwrfksbcay',
+                'port' => '587',
+                'encryption' => 'tls',
+                'streamOptions' => ['ssl' => ['allow_self_signed' => true, 'verify_peer' => false, 'verify_peer_name' => false,],]
+            ],
+
+
+//            'transport' => [
+//                'class' => 'Swift_SmtpTransport',
+//                'host' => 'smtp.gmail.com',
+//                'username' => 'tpmfd27@gmail.com',
+//                'password' => 'Yfnfkjxrf',
+//                'port' => '587',
+//                'encryption' => 'tls',
+//            ],
+
+
+
+//                'viewPath' => '@app/mail',
+//                'transport' => [
+//                    'class' => 'Swift_SmtpTransport',
+//                    'host' => 'smtp.gmail.com',
+//                    'username' => 'tpmfd27@gmail.com',
+//                    'password' => 'Yfnfkjxrf',
+//                    'port' => 465,
+//                    'encryption' => 'ssl',
+//                ],
+//                'useFileTransport' => false,
+
+
+
+
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
@@ -48,6 +88,9 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+//                'login' => 'site/login',
+//                'about' => 'site/about',
+//                'contact' => 'site/contact',
             ],
         ],
 
@@ -62,8 +105,8 @@ if (YII_ENV_DEV) {
 //    $config['modules']['debug'] = [
 //        'class' => 'yii\debug\Module',
 
-        // uncomment the following to add your IP if you are not connecting from localhost.
-        //'allowedIPs' => ['127.0.0.1', '::1'],
+    // uncomment the following to add your IP if you are not connecting from localhost.
+    //'allowedIPs' => ['127.0.0.1', '::1'],
 
 //    ];
 

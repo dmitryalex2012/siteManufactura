@@ -2,9 +2,19 @@
 
 namespace app\controllers;
 
-use app\models\Singer;
-use yii\helpers\VarDumper;
+use Yii;
+use yii\filters\AccessControl;
 use yii\web\Controller;
+use yii\web\Response;
+use yii\filters\VerbFilter;
+use app\models\LoginForm;
+use app\models\ContactForm;
+
+use app\models\Singer;
+
+
+
+//use yii\views\site\contact;
 
 class SiteController extends Controller
 {
@@ -12,4 +22,20 @@ class SiteController extends Controller
     {
         return $this->render('index');
     }
+
+    public function actionContact()
+    {
+        $model = new ContactForm();
+        if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
+            Yii::$app->session->setFlash('contactFormSubmitted');
+
+            return $this->refresh();
+        }
+        return $this->render('contact', [
+            'model' => $model,
+        ]);
+    }
+
+
+
 }
