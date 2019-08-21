@@ -4,6 +4,14 @@
 /* @var $productAddress string */
 ?>
 <!--<div id="content" class="wrap">-->
+
+<!--<style>-->
+<!--        width:100%;-->
+<!--        height:100%;-->
+<!--        background:url(../foto/backgroundPresentstion.jpg) center no-repeat;-->
+<!--        background-size: cover;-->
+<!--</style>-->
+
 <div id="content" class="row">
 
 <!--    <pre>-->

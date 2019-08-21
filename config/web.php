@@ -47,31 +47,6 @@ $config = [
             ],
 
 
-//            'transport' => [
-//                'class' => 'Swift_SmtpTransport',
-//                'host' => 'smtp.gmail.com',
-//                'username' => 'tpmfd27@gmail.com',
-//                'password' => 'Yfnfkjxrf',
-//                'port' => '587',
-//                'encryption' => 'tls',
-//            ],
-
-
-
-//                'viewPath' => '@app/mail',
-//                'transport' => [
-//                    'class' => 'Swift_SmtpTransport',
-//                    'host' => 'smtp.gmail.com',
-//                    'username' => 'tpmfd27@gmail.com',
-//                    'password' => 'Yfnfkjxrf',
-//                    'port' => 465,
-//                    'encryption' => 'ssl',
-//                ],
-//                'useFileTransport' => false,
-
-
-
-
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
