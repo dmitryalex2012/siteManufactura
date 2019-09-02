@@ -5,14 +5,14 @@ use yii\db\Migration;
 /**
  * Class m190807_110258_addresses
  */
-class m190807_110258_singer extends Migration
+class m190807_110258_works extends Migration
 {
     /**
      * {@inheritdoc}
      */
     public function safeUp()
     {
-        $this->createTable('singer', [
+        $this->createTable('works', [
             'id' => $this->primaryKey(),
             'title' => $this->string(),
             'content' => $this->string(),
@@ -23,6 +23,6 @@ class m190807_110258_singer extends Migration
 
     public function safeDown()
     {
-        $this->dropTable('singer');
+        $this->dropTable('works');
     }
 }

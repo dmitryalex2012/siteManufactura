@@ -2,7 +2,7 @@
 
 namespace app\controllers;
 
-use app\models\Singer;
+use app\models\Works;
 use yii\helpers\VarDumper;
 use yii\web\Controller;
 
@@ -36,9 +36,9 @@ class ProductsController extends Controller
 
     public function actionList()
     {
-        //    $items = Singer::find()->where(['id'=>1]);
-        $items = Singer::find()->all();
-//        $items = Singer::find()->asArray()->all();
+        //    $items = Works::find()->where(['id'=>1]);
+        $items = Works::find()->all();
+//        $items = Works::find()->asArray()->all();
         return $this->render('list', [
             'countTotal' => 6000000000,
             'title' => 'My page of world people',

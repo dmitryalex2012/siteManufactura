@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Works;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -10,8 +11,7 @@ use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
 
-use app\models\Singer;
-
+use yii\db\Query;
 
 
 //use yii\views\site\contact;
@@ -33,6 +33,14 @@ class SiteController extends Controller
         }
         return $this->render('contact', [
             'model' => $model,
+        ]);
+    }
+
+    public function actionWorks()
+    {
+        $items = Works::find()->all();
+        return $this->render('works', [
+            'items' => $items,
         ]);
     }
 

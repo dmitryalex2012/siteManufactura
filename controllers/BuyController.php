@@ -2,7 +2,7 @@
 
 namespace app\controllers;
 
-use app\models\Singer;
+use app\models\Works;
 use yii\web\Controller;
 use yii\db\Query;
 
@@ -11,7 +11,7 @@ class BuyController extends Controller
 {
     public function actionPresentation($singerId)
     {
-        $productAddress = Singer::find()->where("id=$singerId")->one();
+        $productAddress = Works::find()->where("id=$singerId")->one();
 
 //        $query->select(['notes'])->from('singer')->where(['id' => $singerId])->one();
 //        $productAddress = $query;
