@@ -43,20 +43,20 @@ AppAsset::register($this);
             ['label' => 'Услуги', 'url' => ['#']],
             ['label' => 'Наши работы', 'url' => ['/site/works']],
 //            ['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'About', 'url' => ['#']],
+            ['label' => 'Apero', 'url' => ['#']],
             ['label' => 'Контакты', 'url' => ['/site/contact']],
-            Yii::$app->user->isGuest ? (
-            ['label' => 'Login', 'url' => ['/site/login']]
-            ) : (
-                '<li>'
-                . Html::beginForm(['/site/logout'], 'post')
-                . Html::submitButton(
-                    'Logout (' . Yii::$app->user->identity->username . ')',
-                    ['class' => 'btn btn-link logout']
-                )
-                . Html::endForm()
-                . '</li>'
-            )
+//            Yii::$app->user->isGuest ? (
+//            ['label' => 'Login', 'url' => ['/site/login']]
+//            ) : (
+//                '<li>'
+//                . Html::beginForm(['/site/logout'], 'post')
+//                . Html::submitButton(
+//                    'Logout (' . Yii::$app->user->identity->username . ')',
+//                    ['class' => 'btn btn-link logout']
+//                )
+//                . Html::endForm()
+//                . '</li>'
+//            )
         ],
     ]);
     NavBar::end();

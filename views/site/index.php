@@ -1,3 +1,4 @@
+<body class="home">
 
 <h1>This page is not ready yet.</h1>
 

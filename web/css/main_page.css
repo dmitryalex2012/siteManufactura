@@ -1,4 +1,4 @@
-body{
+body.home{
     /*background-color: #FFB url(images/./Background.jpg)*/
     /*background: #c7b39b url(images/Background.jpg);*/
     /*background-image: url(img/Background.jpg)*/
@@ -6,7 +6,6 @@ body{
     height:100%;
     background:url(../foto/backgroundMain.jpg) center fixed no-repeat;
     background-size: cover;
-
 }
 
 .sidebar2 img{
