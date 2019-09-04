@@ -5,11 +5,6 @@
 ///* @var $countTotal string */
 ///* @var $notes string */
 /* @var $temp string */
-/* @var $pos string */
-/* @var $arg string */
-
-/* @var $aaa string */
-/* @var $findme string */
 
 ?>
 
