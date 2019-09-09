@@ -96,7 +96,7 @@
                         <?php $temp = $item->notes; ?>
                         <?php for ($i = 0; $i < $item->quantity; $i++): ?>
                             <div class="carousel-item <?php if ($i === 0) { ?> active <?php } ?>"
-                                 data-interval="200000">
+                                 data-interval="1000000">
                                 <img src="/<?php echo stristr($temp, ',', true); ?>" class="d-block w-100">
                                 <?php $temp = stristr($temp, ',');
                                 $temp = substr($temp, 1);
