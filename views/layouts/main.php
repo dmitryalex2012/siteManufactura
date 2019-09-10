@@ -76,9 +76,13 @@ AppAsset::register($this);
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; My train site <?= date('Y') ?></p>
-
-        <p class="pull-right"><?= Yii::powered() ?></p>
+        <p class="pull-left">&copy; Дизайн-бюро "Мануфактура" <?= date('Y') ?></p>
+        <p class="pull-right">
+            <a href="https://www.facebook.com/kievshtoranazakaz/" target="_blank"><img src="/foto/facebook.png" alt=""/></a>
+            <a href="https://www.instagram.com/kievshtoranazakaz/" target="_blank"><img src="/foto/inst.png" alt=""/></a>
+            <a href="https://www.pinterest.com/shtoranazakazkiev/" target="_blank"><img src="/foto/pinterest.png" alt=""/></a>
+        </p>
+<!--        <p class="pull-right">--><?//= Yii::powered() ?><!--</p>-->
     </div>
 </footer>
 
