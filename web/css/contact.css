@@ -1,6 +1,16 @@
-/*body{*/
+/*body.contact{*/
 /*    width:100%;*/
 /*    height:100%;*/
 /*    background:url(../foto/backgroundContact.jpg) center no-repeat;*/
 /*    background-size: cover;*/
 /*}*/
+
+body.contact {
+    width: 100%;
+    height: 100%;
+    /*background:url(../foto/livingRoom1.jpg) center fixed no-repeat;*/
+    /*background:url(../foto/livingRoom1.jpg) center fixed no-repeat;*/
+    /*background:url(../foto/backgroundContact.jpg) center fixed no-repeat;*/
+    background-color: green;
+    background-size: cover;
+}

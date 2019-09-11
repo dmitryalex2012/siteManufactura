@@ -16,9 +16,20 @@ body {
 
 .footer {
     height: 60px;
-    background-color: #f5f5f5;
+    /*background-color: #f5f5f5;*/
     /*border-top: 1px solid #ddd;*/
-    padding-top: 20px;
+    padding-top: 14px;
+    background-color: #dadada6b;
+}
+
+.containerLogo {
+    text-align: right;
+    padding-top: 7px;
+}
+
+.containerRef {
+    text-align: right;
+    /*text-align-last: justify;*/
 }
 
 .jumbotron {
@@ -112,4 +123,17 @@ a.desc:after {
 
 .nav > li > form > button.logout:focus {
     outline: none;
+}
+
+@media (max-width:575px) {
+    .container {
+        text-align: center!important;
+    }
+    .containerLogo, .containerRef {
+        text-align: center;
+        margin-bottom: 5px;
+    }
+    .footer {
+        height: 90px;
+    }
 }

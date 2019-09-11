@@ -76,12 +76,15 @@ AppAsset::register($this);
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; Дизайн-бюро "Мануфактура" <?= date('Y') ?></p>
-        <p class="pull-right">
-            <a href="https://www.facebook.com/kievshtoranazakaz/" target="_blank"><img src="/foto/facebook.png" alt=""/></a>
-            <a href="https://www.instagram.com/kievshtoranazakaz/" target="_blank"><img src="/foto/inst.png" alt=""/></a>
-            <a href="https://www.pinterest.com/shtoranazakazkiev/" target="_blank"><img src="/foto/pinterest.png" alt=""/></a>
-        </p>
+        <div class="row">
+            <div class="containerLogo col-sm-7 col-12">
+                <p>&copy; Дизайн-бюро "Мануфактура" 2012-2019</p>
+            </div>
+            <div class="containerRef col-sm-5 col-12">
+                <a href="https://www.facebook.com/kievshtoranazakaz/" target="_blank"><img src="/foto/facebook1.png" alt=""/></a>
+                <a href="https://www.instagram.com/kievshtoranazakaz/" target="_blank"><img src="/foto/inst1.png" alt=""/></a>
+            </div>
+        </div>
 <!--        <p class="pull-right">--><?//= Yii::powered() ?><!--</p>-->
     </div>
 </footer>

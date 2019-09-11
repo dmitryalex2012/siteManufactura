@@ -44,6 +44,4 @@ class SiteController extends Controller
         ]);
     }
 
-
-
 }
