@@ -2,7 +2,7 @@
 
 /* @var $this yii\web\View */
 
-$this->title = 'Products list';
+//$this->title = 'Products list';
 ?>
 
 <p>Content</p>

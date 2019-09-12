@@ -11,7 +11,7 @@ class ContactCest
     
     public function contactPageWorks(AcceptanceTester $I)
     {
-        $I->wantTo('ensure that contact page works');
+        $I->wantTo('ensure that contact products works');
         $I->see('Contact', 'h1');
     }
 

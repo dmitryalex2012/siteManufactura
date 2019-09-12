@@ -15,11 +15,11 @@ use app\models\ContactForm;
 class PageController extends Controller
 {
     /*
-     For products list page
+     For oldProducts list page
      */
-    public function actionListproducts()
+    public function actionListProducts()
     {
-        return $this->render('listproducts');
+        return $this->render('products');
     }
 
 }

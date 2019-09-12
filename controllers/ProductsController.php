@@ -23,7 +23,7 @@ class ProductsController extends Controller
 
 //        return $this->render('people', [
 //            'countTotal' => 6000000000,
-//            'title' => 'My page of products people'
+//            'title' => 'My page of oldProducts people'
 //        ]);
 //    }
 //
@@ -34,15 +34,24 @@ class ProductsController extends Controller
 //}
 
 
+//    public function actionList()
+//    {
+        //    $items = Works::find()->where(['id'=>1]);
+
+//        $items = Works::find()->all();
+
+//        $items = Works::find()->asArray()->all();
+
+//        return $this->render('list', [
+//            'countTotal' => 6000000000,
+//            'title' => 'My page of world people',
+//            'items' => $items
+//        ]);
+//    }
+//}
+
     public function actionList()
     {
-        //    $items = Works::find()->where(['id'=>1]);
-        $items = Works::find()->all();
-//        $items = Works::find()->asArray()->all();
-        return $this->render('list', [
-            'countTotal' => 6000000000,
-            'title' => 'My page of world people',
-            'items' => $items
-        ]);
+        return $this->render('ourProducts');
     }
 }
