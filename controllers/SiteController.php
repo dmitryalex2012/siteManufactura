@@ -44,13 +44,4 @@ class SiteController extends Controller
         ]);
     }
 
-    public function actionServices()
-    {
-//        $items = Works::find()->all();
-//        return $this->render('works', [
-//            'items' => $items,
-//        ]);
-        return $this->render('services');
-    }
-
 }
