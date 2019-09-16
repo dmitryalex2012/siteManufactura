@@ -1,27 +1,24 @@
 <body class="services">
-<!--<div class="">-->
-<!--    <p>Мы предлагаем полный комплекс услуг по благоустройству Ваших окон. </p>-->
-<!--</div>-->
-<h3>Мы предлагаем полный комплекс услуг по благоустройству Ваших окон. </h3>
 
-
-<div class="row">
-    <div class="col-12 col-sm-6 col-md-3">
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Специальный заголовок</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn btn-primary">Переход куда-нибудь</a>
-            </div>
-        </div>
-    </div>
-    <div class="col-12 col-sm-6 col-md-3">
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Специальный заголовок</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn btn-primary">Переход куда-нибудь</a>
-            </div>
-        </div>
-    </div>
+<div class="mainDescription">
+    <h3>Мы предлагаем полный комплекс услуг по благоустройству Ваших окон. </h3>
 </div>
+
+<?php $i = 0;
+foreach ($items as $key => $item):
+    if ((((++$i) % 4) == 1)): ?>
+        <div class="row">
+    <?php endif; ?>
+            <div class="card-deck col-12 col-lg-6 col-xl-3">
+                <div class="card">
+                    <img src="/<?php echo $item->notes; ?>" class="card-img-top" alt="100%">
+                    <div class="card-body">
+                        <!--                <h5 class="card-title">Название карточки</h5>-->
+                        <p class="card-text"><?php echo $item->content; ?></p>
+                    </div>
+                </div>
+            </div>
+    <?php if ((($i % 4) == 0)): ?>
+        </div>
+    <?php endif; ?>
+<?php endforeach; ?>

@@ -2,7 +2,7 @@
 
 namespace app\controllers;
 
-use app\models\Works;
+use app\models\Services;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -19,21 +19,9 @@ class ServicesController extends Controller
 {
      public function actionList()
     {
-//        $items = Services::find()->all();
-//        return $this->render('list', [
-//            'items' => $items,
-//        ]);
-        return $this->render('list');
+        $items = Services::find()->all();
+        return $this->render('list', [
+            'items' => $items,
+        ]);
     }
-
-//    public function actionServices()
-//    {
-//        $items = Works::find()->all();
-//        return $this->render('works', [
-//            'items' => $items,
-//        ]);
-//        return $this->render('services');
-//    }
-
-
 }

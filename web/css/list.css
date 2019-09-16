@@ -12,3 +12,15 @@ h3, .h3 {
     font-style: italic;
     font-variant: common-ligatures;
 }
+
+.card-deck .card {
+    margin-bottom: 30px!important;
+}
+
+.mainDescription {
+    margin-bottom: 30px;
+}
+
+.card-text {
+    text-align: center;
+}
