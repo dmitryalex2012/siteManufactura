@@ -28,6 +28,7 @@ class AppAsset extends AssetBundle
         'css/contact.css',
         'css/works.css',
         'css/list.css',
+        'shop.css',
     ];
     public $js = [
         'js/scripts.js',

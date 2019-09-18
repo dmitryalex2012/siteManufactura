@@ -17,3 +17,7 @@ body.works{
 h3, .h3 {
     font-family: cursive;
 }
+
+.wrap {
+    padding: 0 0 60px;
+}
