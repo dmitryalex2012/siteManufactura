@@ -2,7 +2,7 @@
 
 namespace app\controllers;
 
-use app\models\Works;
+use app\models\Products;
 use yii\helpers\VarDumper;
 use yii\web\Controller;
 
@@ -52,6 +52,9 @@ class ProductsController extends Controller
 
     public function actionList()
     {
-        return $this->render('ourProducts');
+            $items = Products::find()->all();
+            return $this->render('ourProducts', [
+                'items' => $items,
+            ]);
     }
 }
