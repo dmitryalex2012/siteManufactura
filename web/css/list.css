@@ -24,3 +24,24 @@ h3, .h3 {
 .card-text {
     text-align: center;
 }
+
+.dropdown-toggle::after {
+    display: contents;
+}
+
+.dropdown-menu {
+    display: none;
+}
+
+/*.dropdown ul:hover .dropdown-menu {*/
+/*    visibility: visible;*/
+/*}*/
+
+.dropdown {
+    overflow: hidden;
+}
+
+.dropdown:hover .dropdown-menu {
+    /*visibility: visible;*/
+    display: block;
+}
