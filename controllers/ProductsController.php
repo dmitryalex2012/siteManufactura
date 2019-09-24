@@ -36,7 +36,7 @@ class ProductsController extends Controller
 
 //    public function actionList()
 //    {
-        //    $items = Works::find()->where(['id'=>1]);
+    //    $items = Works::find()->where(['id'=>1]);
 
 //        $items = Works::find()->all();
 
@@ -52,9 +52,16 @@ class ProductsController extends Controller
 
     public function actionList()
     {
-            $items = Products::find()->all();
-            return $this->render('ourProducts', [
-                'items' => $items,
-            ]);
+        $pillow = Products::find()->where(['categories'=>'pillow'])->all();
+
+        return $this->render('ourProducts', [
+            'temp' => $pillow,
+        ]);
+
+//        return $this->render('ourProducts', [
+//                'items' => $items,
+//        'pillows' => '$pillow',
+//        'items' => $pillow,
+//        ]);
     }
 }

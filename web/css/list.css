@@ -30,18 +30,16 @@ h3, .h3 {
 }
 
 .dropdown-menu {
-    display: none;
-}
 
-/*.dropdown ul:hover .dropdown-menu {*/
-/*    visibility: visible;*/
-/*}*/
-
-.dropdown {
-    overflow: hidden;
+    text-align: center;
 }
 
 .dropdown:hover .dropdown-menu {
-    /*visibility: visible;*/
     display: block;
+}
+
+.navbar-nav .dropdown-menu {
+    position: absolute;
+    right: -24px;
+    background: azure;
 }
