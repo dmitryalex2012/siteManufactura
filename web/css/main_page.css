@@ -55,6 +55,14 @@ button.btn.btn-outline-success {
     bottom: 0;
 }
 
+@media (max-width: 575px) {
+    .navbar-nav {
+        flex-direction: column;
+    }
+}
+
+
+
 
 
 

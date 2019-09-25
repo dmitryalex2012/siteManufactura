@@ -52,10 +52,11 @@ class ProductsController extends Controller
 
     public function actionList()
     {
-        $pillow = Products::find()->where(['categories'=>'pillow'])->all();
-
+        $pillows = Products::find()->where(['categories'=>'pillow'])->all();
+        $linens = Products::find()->where(['categories'=>'linens'])->all();
         return $this->render('ourProducts', [
-            'temp' => $pillow,
+            'pillows' => $pillows,
+            'linens' => $linens,
         ]);
 
 //        return $this->render('ourProducts', [

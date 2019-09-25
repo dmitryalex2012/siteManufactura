@@ -138,3 +138,9 @@ a.desc:after {
         height: 90px;
     }
 }
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1300px;
+    }
+}
