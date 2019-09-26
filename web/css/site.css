@@ -108,12 +108,22 @@ a.desc:after {
     border: none;
 }
 
+.navbar-nav .dropdown-menu {
+    position: absolute;
+    right: -24px;
+    /*background: #dadada6b;*/
+    background-color: rgba(218, 218, 218, 1);
+}
+
 @media(max-width:767px) {
     .nav li > form > button.logout {
         display:block;
         text-align: left;
         width: 100%;
         padding: 10px 15px;
+    }
+    .navbar>.container, .navbar>.container-fluid {
+        display: block;
     }
 }
 
@@ -136,6 +146,10 @@ a.desc:after {
     }
     .footer {
         height: 90px;
+    }
+
+    .navbar>.container, .navbar>.container-fluid {
+        display: block;
     }
 }
 

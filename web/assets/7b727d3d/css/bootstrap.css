@@ -4373,7 +4373,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar-toggle {
   position: relative;
-  float: right;
+  /*float: right;*/
+  left: 47%;
   padding: 9px 10px;
   margin-right: 15px;
   margin-top: 8px;
@@ -4738,14 +4739,14 @@ fieldset[disabled] .navbar-default .btn-link:focus {
   }
 }
 .navbar-inverse .navbar-toggle {
-  border-color: #333;
+  border-color: blanchedalmond;
 }
 .navbar-inverse .navbar-toggle:hover,
 .navbar-inverse .navbar-toggle:focus {
-  background-color: #333;
+  background-color: blanchedalmond;
 }
 .navbar-inverse .navbar-toggle .icon-bar {
-  background-color: #fff;
+  background-color: beige;
 }
 .navbar-inverse .navbar-collapse,
 .navbar-inverse .navbar-form {

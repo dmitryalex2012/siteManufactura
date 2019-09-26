@@ -12,6 +12,7 @@ body.home{
     flex-direction: row;
     justify-content: center;
     float: none !important;
+    text-align: center;
 }
 
 .sidebar2 img{
@@ -55,10 +56,14 @@ button.btn.btn-outline-success {
     bottom: 0;
 }
 
-@media (max-width: 575px) {
+@media (max-width: 765px) {
     .navbar-nav {
         flex-direction: column;
     }
+/*@media (max-width: 575px) {*/
+/*    .navbar-nav {*/
+/*        flex-direction: column;*/
+/*    }*/
 }
 
 

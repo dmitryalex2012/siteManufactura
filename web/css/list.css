@@ -38,8 +38,3 @@ h3, .h3 {
     display: block;
 }
 
-.navbar-nav .dropdown-menu {
-    position: absolute;
-    right: -24px;
-    background: azure;
-}
