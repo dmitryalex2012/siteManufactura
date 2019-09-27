@@ -50,19 +50,27 @@ class ProductsController extends Controller
 //    }
 //}
 
-    public function actionList()
+    public function actionPillows()
     {
-        $pillows = Products::find()->where(['categories'=>'pillow'])->all();
-        $linens = Products::find()->where(['categories'=>'linens'])->all();
+        $pillows = Products::find()->where(['categories' => 'pillow'])->all();
         return $this->render('ourProducts', [
-            'pillows' => $pillows,
-            'linens' => $linens,
+            'items' => $pillows,
         ]);
+    }
 
-//        return $this->render('ourProducts', [
-//                'items' => $items,
-//        'pillows' => '$pillow',
-//        'items' => $pillow,
-//        ]);
+    public function actionLinens()
+    {
+        $linens = Products::find()->where(['categories' => 'linens'])->all();
+        return $this->render('ourProducts', [
+            'items' => $linens,
+        ]);
+    }
+
+    public function actionApero()
+    {
+        $apero = Products::find()->where(['categories' => 'apero'])->all();
+        return $this->render('ourProducts', [
+            'items' => $apero,
+        ]);
     }
 }

@@ -12,6 +12,7 @@ body.ourProducts{
 
 .buyProduct {
     float: right;
+    font-size: medium;
 }
 
 .card-text {
@@ -22,7 +23,7 @@ body.ourProducts{
     display:inline-block;
 }
 
-#boxProduct .priceProduct, .buyProduct {
+#boxProduct .priceProduct {
     font-size: x-large;
     padding: 0px 10px;
 }

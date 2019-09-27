@@ -49,9 +49,9 @@ AppAsset::register($this);
             ['label' => 'Наши работы', 'url' => ['/site/works']],
 //            ['label' => 'Магазин', 'url' => ['/products/list']],
             ['label' => 'Магазин', 'items' => [
-                ['label' => 'Подушки', 'url' => ['/products/list']],
-                ['label' => 'Постельное белье', 'url' => ['#']],
-                ['label' => 'Apero', 'url' => ['#']],
+                ['label' => 'Подушки', 'url' => ['/products/pillows']],
+                ['label' => 'Постельное белье', 'url' => ['/products/linens']],
+                ['label' => 'Apero', 'url' => ['/products/apero']],
             ]],
             ['label' => 'Блог', 'url' => ['#']],
             ['label' => 'Контакты', 'url' => ['/site/contact']],
