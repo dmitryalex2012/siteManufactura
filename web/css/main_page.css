@@ -15,6 +15,24 @@ body.home{
     text-align: center;
 }
 
+.navbar-collapse {
+    flex-basis: 0%;
+}
+
+.navbar-inverse .navbar-brand {
+    color: #8d8d8d;
+    font-size: 14px;
+    padding: 15px 0px 15px 0px;
+}
+
+.navbar-brand {
+    padding: 0px!important;
+}
+
+.navbar-toggle {
+    left: 10%;
+}
+
 .sidebar2 img{
     width: 100%;
 }

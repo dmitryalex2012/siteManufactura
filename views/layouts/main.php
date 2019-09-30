@@ -37,6 +37,7 @@ AppAsset::register($this);
     NavBar::begin([
 //        'brandLabel' => Yii::$app->name,
 //        'brandUrl' => Yii::$app->homeUrl,
+        'brandLabel' => '<img src="/foto/logo.jpg"; class="img-responsive">',
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
@@ -44,7 +45,7 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
-            ['label' => 'Главная', 'url' => ['/site/index']],
+//            ['label' => 'Главная', 'url' => ['/site/index']],
             ['label' => 'Услуги', 'url' => ['/services/list']],
             ['label' => 'Наши работы', 'url' => ['/site/works']],
 //            ['label' => 'Магазин', 'url' => ['/products/list']],
@@ -69,8 +70,47 @@ AppAsset::register($this);
 //            )
         ],
     ]);
+    ?>
+
+
+
+
+
+
+<!--    --><?php
+//        echo Nav::widget([
+//        'options' => ['class' => 'navbar-basket navbar-right'],
+//        'items' => [
+//        ['label' => 'Корзина', 'url' => ['/services/list']],
+//        ],
+//        ]);
+//    ?>
+
+
+<!--    <div class="cart">-->
+<!--            --><?php //echo "ABC"; ?>
+<!--    </div>-->
+
+
+    <?php
     NavBar::end();
     ?>
+
+
+
+
+
+
+
+<!--    <div class="cart">-->
+<!--        --><?php //echo "ABC"; ?>
+<!--    </div>-->
+
+
+
+
+
+
 
     <div class="container">
         <?= Breadcrumbs::widget([
