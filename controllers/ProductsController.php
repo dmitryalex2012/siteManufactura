@@ -50,27 +50,53 @@ class ProductsController extends Controller
 //    }
 //}
 
+//    public function actionPillows()
+//    {
+//        $pillows = Products::find()->where(['categories' => 'pillow'])->all();
+//        return $this->render('ourProducts', [
+//            'items' => $pillows,
+//        ]);
+//    }
+//
+//    public function actionLinens()
+//    {
+//        $linens = Products::find()->where(['categories' => 'linens'])->all();
+//        return $this->render('ourProducts', [
+//            'items' => $linens,
+//        ]);
+//    }
+//
+//    public function actionApero()
+//    {
+//        $apero = Products::find()->where(['categories' => 'apero'])->all();
+//        return $this->render('ourProducts', [
+//            'items' => $apero,
+//        ]);
+//    }
+
+
     public function actionPillows()
     {
-        $pillows = Products::find()->where(['categories' => 'pillow'])->all();
-        return $this->render('ourProducts', [
-            'items' => $pillows,
-        ]);
+        $product = Products::find()->where(['categories' => 'pillow'])->all();
+        return $this->redirect(['products/load'], $product);
     }
 
     public function actionLinens()
     {
-        $linens = Products::find()->where(['categories' => 'linens'])->all();
-        return $this->render('ourProducts', [
-            'items' => $linens,
-        ]);
+        $product = Products::find()->where(['categories' => 'linens'])->all();
+        return $this->redirect( ['products/load'], $product);
     }
 
     public function actionApero()
     {
-        $apero = Products::find()->where(['categories' => 'apero'])->all();
+        $product = Products::find()->where(['categories' => 'apero'])->all();
+        return $this->redirect(['products/load'], $product);
+    }
+
+    public function actionLoad($product)
+    {
         return $this->render('ourProducts', [
-            'items' => $apero,
+            'items' => $product,
         ]);
     }
 }
