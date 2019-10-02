@@ -56,6 +56,7 @@ AppAsset::register($this);
             ]],
             ['label' => 'Блог', 'url' => ['#']],
             ['label' => 'Контакты', 'url' => ['/site/contact']],
+            ['label' => 'Корзина', 'url' => ['/cart/index']],
 //            Yii::$app->user->isGuest ? (
 //            ['label' => 'Login', 'url' => ['/site/login']]
 //            ) : (

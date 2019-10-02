@@ -2,12 +2,13 @@
 
 namespace app\controllers;
 
+use app\models\Cart;
 use app\models\Products;
 use yii\helpers\VarDumper;
 use yii\web\Controller;
 use yii\helpers\Url;
 
-class ProductsController extends Controller
+class CartController extends Controller
 {
 //    public function actionIndex()
 //    {
@@ -51,27 +52,11 @@ class ProductsController extends Controller
 //    }
 //}
 
-    public function actionPillows()
+    public function actionIndex()
     {
-        $pillows = Products::find()->where(['categories' => 'pillow'])->all();
-        return $this->render('ourProducts', [
+        $pillows = Cart::find()->all();
+        return $this->render('cartList', [
             'items' => $pillows,
-        ]);
-    }
-
-    public function actionLinens()
-    {
-        $linens = Products::find()->where(['categories' => 'linens'])->all();
-        return $this->render('ourProducts', [
-            'items' => $linens,
-        ]);
-    }
-
-    public function actionApero()
-    {
-        $apero = Products::find()->where(['categories' => 'apero'])->all();
-        return $this->render('ourProducts', [
-            'items' => $apero,
         ]);
     }
 
