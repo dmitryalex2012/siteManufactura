@@ -13,6 +13,7 @@ use yii\helpers\Html;
 <?php foreach ($items as $item ):
 ?>
     <div>
+        <? echo $item->id; ?>
         <? echo $item->title; ?>
         <br>
     </div>
