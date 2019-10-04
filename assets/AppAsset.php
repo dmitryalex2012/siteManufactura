@@ -30,6 +30,7 @@ class AppAsset extends AssetBundle
         'css/list.css',
         'css/shop.css',
         'css/ourProducts.css',
+        'css/cartList.css',
     ];
     public $js = [
         'js/scripts.js',

@@ -1,0 +1,7 @@
+h2 {
+    text-align: center;
+}
+
+.navbar-nav > li > a:hover {
+    color: #5a5a5a!important;
+}
