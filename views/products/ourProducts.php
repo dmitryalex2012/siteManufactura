@@ -6,6 +6,10 @@
 
 use yii\helpers\Html;
 
+
+$this->title = 'Магазин(' . $name . ")";
+$this->params['breadcrumbs'][] = $this->title;
+
 ?>
 
 <?php $i = 0;

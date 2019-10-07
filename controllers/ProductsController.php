@@ -56,6 +56,7 @@ class ProductsController extends Controller
         $pillows = Products::find()->where(['categories' => 'pillow'])->all();
         return $this->render('ourProducts', [
             'items' => $pillows,
+            'name' => "подушки",
         ]);
     }
 
@@ -64,6 +65,7 @@ class ProductsController extends Controller
         $linens = Products::find()->where(['categories' => 'linens'])->all();
         return $this->render('ourProducts', [
             'items' => $linens,
+            'name' => "постельное белье",
         ]);
     }
 
@@ -72,6 +74,7 @@ class ProductsController extends Controller
         $apero = Products::find()->where(['categories' => 'apero'])->all();
         return $this->render('ourProducts', [
             'items' => $apero,
+            'name' => "apero",
         ]);
     }
 
