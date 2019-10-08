@@ -19,6 +19,7 @@ $productsEnding = new MyHelpers();
 
 <?php $cart = $items ?>
 <h2>В КОРЗИНЕ - <? echo count($cart) . " " . $productsEnding->productsEnding(count($cart)); ?></h2>
+<br>
 
     <div class="cartTable row">
         <div class="col-sm-1"></div>
