@@ -7,7 +7,15 @@
 use yii\helpers\Html;
 
 
-$this->title = 'Магазин(' . $name . ")";
+//foreach ($items as $key=>$value) {
+//
+//    if ($key === 'categories') { $name = $key; break; }
+//}
+//
+//var_dump($name);
+
+//$this->title = 'Магазин(' . $name . ")";
+$this->title = 'Магазин';
 $this->params['breadcrumbs'][] = $this->title;
 
 ?>

@@ -6,6 +6,7 @@ use app\models\Products;
 use yii\helpers\VarDumper;
 use yii\web\Controller;
 use yii\helpers\Url;
+use Yii;
 
 class ProductsController extends Controller
 {
@@ -51,31 +52,76 @@ class ProductsController extends Controller
 //    }
 //}
 
+
+
+
+
+//    public function actionPillows()
+//    {
+//        $pillows = Products::find()->where(['categories' => 'pillow'])->all();
+//        return $this->render('ourProducts', [
+//            'items' => $pillows,
+//            'name' => "подушки",
+//        ]);
+//    }
+//
+//    public function actionLinens()
+//    {
+//        $linens = Products::find()->where(['categories' => 'linens'])->all();
+//        return $this->render('ourProducts', [
+//            'items' => $linens,
+//            'name' => "постельное белье",
+//        ]);
+//    }
+//
+//    public function actionApero()
+//    {
+//        $apero = Products::find()->where(['categories' => 'apero'])->all();
+//        return $this->render('ourProducts', [
+//            'items' => $apero,
+//            'name' => "apero",
+//        ]);
+//    }
+
+
+
     public function actionPillows()
     {
-        $pillows = Products::find()->where(['categories' => 'pillow'])->all();
-        return $this->render('ourProducts', [
-            'items' => $pillows,
-            'name' => "подушки",
-        ]);
+        $product = Products::find()->where(['categories' => 'pillow'])->all();
+        if (!Yii::$app->session->getIsActive()) { Yii::$app->session->open(); }
+        Yii::$app->session['product'] = $product;
+        Yii::$app->session->close();
+        return $this->redirect('summary');
     }
 
     public function actionLinens()
     {
         $linens = Products::find()->where(['categories' => 'linens'])->all();
-        return $this->render('ourProducts', [
-            'items' => $linens,
-            'name' => "постельное белье",
-        ]);
+        if (!Yii::$app->session->getIsActive()) {Yii::$app->session->open();}
+        Yii::$app->session['product'] = $linens;
+        Yii::$app->session->close();
+        return $this->redirect('summary');
     }
 
     public function actionApero()
     {
         $apero = Products::find()->where(['categories' => 'apero'])->all();
+        if (!Yii::$app->session->getIsActive()) {Yii::$app->session->open();}
+        Yii::$app->session['product'] = $apero;
+        Yii::$app->session->close();
+        return $this->redirect('summary');
+    }
+
+
+    public function actionSummary()
+    {
+        if (!Yii::$app->session->getIsActive()) {Yii::$app->session->open();}
+        $temp = Yii::$app->session['product'];
+        Yii::$app->session->close();
         return $this->render('ourProducts', [
-            'items' => $apero,
-            'name' => "apero",
+            'items' => $temp
         ]);
     }
+
 
 }
