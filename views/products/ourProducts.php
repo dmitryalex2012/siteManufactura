@@ -6,19 +6,12 @@
 
 use yii\helpers\Html;
 
-
-//foreach ($items as $key=>$value) {
-//
-//    if ($key === 'categories') { $name = $key; break; }
-//}
-//
-//var_dump($name);
-
-//$this->title = 'Магазин(' . $name . ")";
-$this->title = 'Магазин';
-$this->params['breadcrumbs'][] = $this->title;
-
-var_dump($items);
+foreach ($items as $key=>$item)
+{
+    $name = $item->categoriesBredCrumbs;
+    break;
+}
+$this->params['breadcrumbs'][] = $this->title = 'Магазин ' . $name;
 
 ?>
 
