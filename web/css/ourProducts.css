@@ -28,6 +28,12 @@ body.ourProducts{
     padding: 0px 10px;
 }
 
+.btn-primary {
+    background-color: #e3e3e3;
+    color: #212529;
+    border-color: #fff;
+}
+
 @media (max-width: 575px) {
     .container {
          text-align: left!important;

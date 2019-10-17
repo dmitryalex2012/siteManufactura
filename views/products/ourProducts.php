@@ -32,7 +32,8 @@ foreach ($items as $item):
                     </div>
                     <div class="buyProduct">
 <!--                        <a href="#" class="btn btn-primary">Купить</a>-->
-                        <?= Html::button('Купить', ['class' => 'teaser']) ?>
+<!--                        --><?//= Html::button('Купить', ['class' => 'teaser']) ?>
+                        <?= Html::a('Купить', ['/products/addcart'], ['class'=>'btn btn-primary']) ?>
                     </div>
                 </div>
             </div>

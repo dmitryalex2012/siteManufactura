@@ -74,10 +74,6 @@ AppAsset::register($this);
     ?>
 
 
-
-
-
-
 <!--    --><?php
 //        echo Nav::widget([
 //        'options' => ['class' => 'navbar-basket navbar-right'],
@@ -87,30 +83,9 @@ AppAsset::register($this);
 //        ]);
 //    ?>
 
-
-<!--    <div class="cart">-->
-<!--            --><?php //echo "ABC"; ?>
-<!--    </div>-->
-
-
     <?php
     NavBar::end();
     ?>
-
-
-
-
-
-
-
-<!--    <div class="cart">-->
-<!--        --><?php //echo "ABC"; ?>
-<!--    </div>-->
-
-
-
-
-
 
 
     <div class="container">

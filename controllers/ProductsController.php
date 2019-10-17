@@ -116,11 +116,20 @@ class ProductsController extends Controller
     public function actionSummary()
     {
         if (!Yii::$app->session->getIsActive()) {Yii::$app->session->open();}
-        $temp = Yii::$app->session['product'];
+        $result = Yii::$app->session['product'];
         Yii::$app->session->close();
         return $this->render('ourProducts', [
-            'items' => $temp
+            'items' => $result
         ]);
+    }
+
+    public function actionAddcart()
+    {
+//        $linens = Products::find()->where(['categories' => 'linens'])->all();
+//        if (!Yii::$app->session->getIsActive()) {Yii::$app->session->open();}
+//        Yii::$app->session['product'] = $linens;
+//        Yii::$app->session->close();
+        return $this->render('temp');
     }
 
 
