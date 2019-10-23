@@ -15,6 +15,7 @@ $this->params['breadcrumbs'][] = $this->title = 'Магазин ' . $name;
 echo "ok";
 echo "ok";
 echo "ok";
+echo "ok";
 
 ?>
 
