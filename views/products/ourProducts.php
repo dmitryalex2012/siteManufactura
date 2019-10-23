@@ -12,6 +12,7 @@ foreach ($items as $key=>$item)
     break;
 }
 $this->params['breadcrumbs'][] = $this->title = 'Магазин ' . $name;
+echo "ok";
 
 ?>
 
