@@ -132,5 +132,14 @@ class ProductsController extends Controller
         return $this->render('temp');
     }
 
+    public function actionSample()
+    {
+//        $linens = Products::find()->where(['categories' => 'linens'])->all();
+//        if (!Yii::$app->session->getIsActive()) {Yii::$app->session->open();}
+//        Yii::$app->session['product'] = $linens;
+//        Yii::$app->session->close();
+        return $this->render('temp');
+    }
+
 
 }

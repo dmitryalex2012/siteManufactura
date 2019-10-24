@@ -2,22 +2,41 @@
 
 /* @var $this yii\web\View */
 /* @var $pillows array */
+
 /* @var $linens array */
 
 use yii\helpers\Html;
 
-foreach ($items as $key=>$item)
-{
+foreach ($items as $key => $item) {
     $name = $item->categoriesBredCrumbs;
     break;
 }
 $this->params['breadcrumbs'][] = $this->title = 'Магазин ' . $name;
-echo "ok";
-echo "ok";
-echo "ok";
-echo "ok";
 
 ?>
+
+
+<script>
+    function MyFunc () {
+        alert("Hello");
+
+        $.ajax({
+            url: '<?php echo Yii::$app->request->baseUrl . '/products/sample' ?>',
+            type: 'post',
+            data: {},
+            success: function () {
+                alert("Hello");
+                console.log ("OK!!!!!!!!!!!!!!!!");
+            }
+            error: function () {
+                alert("Fail");
+                console.log ("Fail");
+            }
+        });
+    }
+</script>
+<!--<input id="clickMe" type="button" value="clickme" onclick="MyFunc();" />-->
+
 
 <?php $i = 0;
 foreach ($items as $item):
@@ -27,7 +46,7 @@ foreach ($items as $item):
     <div class="col-12 col-md-6 col-xl-3">
         <div class="card">
             <div class="card-body">
-<!--                <h5 class="card-title">Специальный заголовок</h5>-->
+                <!--                <h5 class="card-title">Специальный заголовок</h5>-->
                 <img src="/<?php echo $item->address; ?>" class="card-img-top" alt="100%">
                 <p class="card-text"><?php echo $item->content; ?></p>
                 <div id="boxProduct">
@@ -35,9 +54,13 @@ foreach ($items as $item):
                         <?php echo $item->price; ?> грн.
                     </div>
                     <div class="buyProduct">
-<!--                        <a href="#" class="btn btn-primary">Купить</a>-->
-<!--                        --><?//= Html::button('Купить', ['class' => 'teaser']) ?>
-                        <?= Html::a('Купить', ['/products/addcart'], ['class'=>'btn btn-primary']) ?>
+                        <!--                        <a href="#" class="btn btn-primary">Купить</a>-->
+                        <!--                        --><? //= Html::button('Купить', ['class' => 'teaser'])
+                        ?>
+
+                        <input id="clickMe" type="button" value="Купить" onclick="MyFunc();" />
+<!--                        --><?//= Html::a('Купить', ['/products/addcart'], ['class' => 'btn btn-primary']) ?>
+
                     </div>
                 </div>
             </div>
