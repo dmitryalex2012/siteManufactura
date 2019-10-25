@@ -138,7 +138,15 @@ class ProductsController extends Controller
 //        if (!Yii::$app->session->getIsActive()) {Yii::$app->session->open();}
 //        Yii::$app->session['product'] = $linens;
 //        Yii::$app->session->close();
-        return $this->render('temp');
+        if ((Yii::$app->request->isAjax)) {
+            $mytemp = "World";
+            return $mytemp;
+        }
+
+        $mytemp = "World";
+        return $this->render('temp', [
+            'temp' => $mytemp
+        ]);
     }
 
 

@@ -16,26 +16,34 @@ $this->params['breadcrumbs'][] = $this->title = 'Магазин ' . $name;
 ?>
 
 
-<script>
-    function MyFunc () {
-        alert("Hello");
-
+<button class="btn btn-success" id="study">Купить</button>
+<!--<script>-->
+<?php
+//https://www.youtube.com/watch?reload=9&v=vDLhSVChvJ0&list=PL9XdPIVgBVVmYWGF3BFZwHu4Fz9fa6GJd&index=7
+$js = <<<JS
+    $('#study').on('click', function() {
         $.ajax({
-            url: '<?php echo Yii::$app->request->baseUrl . '/products/sample' ?>',
-            type: 'post',
-            data: {},
-            success: function () {
-                alert("Hello");
+            url: '/products/sample',
+            data: {test: '123'},
+            type: 'GET',
+            success: function (mytemp) {
                 console.log ("OK!!!!!!!!!!!!!!!!");
-            }
+                console.log(mytemp);
+            },
             error: function () {
-                alert("Fail");
                 console.log ("Fail");
             }
         });
-    }
-</script>
+    });
+JS;
+$this->registerJs($js);
+?>
+
+<!--<input id="clickMe" type="button" value="Купить" onclick="MyFunc();" />-->
 <!--<input id="clickMe" type="button" value="clickme" onclick="MyFunc();" />-->
+<!-- </script>-->
+
+
 
 
 <?php $i = 0;
@@ -58,8 +66,7 @@ foreach ($items as $item):
                         <!--                        --><? //= Html::button('Купить', ['class' => 'teaser'])
                         ?>
 
-                        <input id="clickMe" type="button" value="Купить" onclick="MyFunc();" />
-<!--                        --><?//= Html::a('Купить', ['/products/addcart'], ['class' => 'btn btn-primary']) ?>
+                        <?= Html::a('Купить', ['/products/addcart'], ['class' => 'btn btn-primary']) ?>
 
                     </div>
                 </div>
