@@ -139,7 +139,7 @@ class ProductsController extends Controller
 //        Yii::$app->session['product'] = $linens;
 //        Yii::$app->session->close();
         if ((Yii::$app->request->isAjax)) {
-            $mytemp = "World";
+            $mytemp = Yii::$app->request->get('test');
             return $mytemp;
         }
 

@@ -15,37 +15,6 @@ $this->params['breadcrumbs'][] = $this->title = 'Магазин ' . $name;
 
 ?>
 
-
-<button class="btn btn-success" id="study">Купить</button>
-<!--<script>-->
-<?php
-//https://www.youtube.com/watch?reload=9&v=vDLhSVChvJ0&list=PL9XdPIVgBVVmYWGF3BFZwHu4Fz9fa6GJd&index=7
-$js = <<<JS
-    $('#study').on('click', function() {
-        $.ajax({
-            url: '/products/sample',
-            data: {test: '123'},
-            type: 'GET',
-            success: function (mytemp) {
-                console.log ("OK!!!!!!!!!!!!!!!!");
-                console.log(mytemp);
-            },
-            error: function () {
-                console.log ("Fail");
-            }
-        });
-    });
-JS;
-$this->registerJs($js);
-?>
-
-<!--<input id="clickMe" type="button" value="Купить" onclick="MyFunc();" />-->
-<!--<input id="clickMe" type="button" value="clickme" onclick="MyFunc();" />-->
-<!-- </script>-->
-
-
-
-
 <?php $i = 0;
 foreach ($items as $item):
     if ((((++$i) % 4) == 1)): ?>
@@ -66,7 +35,8 @@ foreach ($items as $item):
                         <!--                        --><? //= Html::button('Купить', ['class' => 'teaser'])
                         ?>
 
-                        <?= Html::a('Купить', ['/products/addcart'], ['class' => 'btn btn-primary']) ?>
+<!--                        --><?//= Html::a('Купить', ['/products/addcart'], ['class' => 'btn btn-primary']) ?>
+                        <button class="buybtn" value="<?php $item->number; ?>">Купить</button>
 
                     </div>
                 </div>
@@ -81,5 +51,27 @@ if ((($i % 4) != 0)):
     ?>
     </div>
 <?php endif; ?>
+
+<?php
+$js = <<<JS
+    $('.buybtn').on('click', function() {
+        myval = 123;
+        alert($(this).attr('value'));
+        $.ajax({
+            url: '/products/sample',
+            data: {test: myval},
+            type: 'GET',
+            success: function (mytemp) {
+                console.log(mytemp);
+                console.log($(this).attr("value"));
+            },
+            error: function () {
+                console.log ("Fail");
+            }
+        });
+    });
+JS;
+$this->registerJs($js);
+?>
 
 
