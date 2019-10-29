@@ -36,7 +36,7 @@ foreach ($items as $item):
                         ?>
 
 <!--                        --><?//= Html::a('Купить', ['/products/addcart'], ['class' => 'btn btn-primary']) ?>
-                        <button class="buybtn" value="<?php $item->number; ?>">Купить</button>
+                        <button class="buybtn" value="<?php echo $item->number; ?>">Купить</button>
 
                     </div>
                 </div>
@@ -55,15 +55,13 @@ if ((($i % 4) != 0)):
 <?php
 $js = <<<JS
     $('.buybtn').on('click', function() {
-        myval = 123;
-        alert($(this).attr('value'));
+        myval = $(this).attr('value');
         $.ajax({
             url: '/products/sample',
             data: {test: myval},
             type: 'GET',
             success: function (mytemp) {
                 console.log(mytemp);
-                console.log($(this).attr("value"));
             },
             error: function () {
                 console.log ("Fail");
