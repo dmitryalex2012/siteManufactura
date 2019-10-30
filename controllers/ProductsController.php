@@ -123,31 +123,4 @@ class ProductsController extends Controller
         ]);
     }
 
-    public function actionAddcart()
-    {
-//        $linens = Products::find()->where(['categories' => 'linens'])->all();
-//        if (!Yii::$app->session->getIsActive()) {Yii::$app->session->open();}
-//        Yii::$app->session['product'] = $linens;
-//        Yii::$app->session->close();
-        return $this->render('temp');
-    }
-
-    public function actionSample()
-    {
-//        $linens = Products::find()->where(['categories' => 'linens'])->all();
-//        if (!Yii::$app->session->getIsActive()) {Yii::$app->session->open();}
-//        Yii::$app->session['product'] = $linens;
-//        Yii::$app->session->close();
-        if ((Yii::$app->request->isAjax)) {
-            $mytemp = Yii::$app->request->get('test');
-            return $mytemp;
-        }
-
-        $mytemp = "World";
-        return $this->render('temp', [
-            'temp' => $mytemp
-        ]);
-    }
-
-
 }

@@ -7,6 +7,7 @@ use app\models\Products;
 use yii\helpers\VarDumper;
 use yii\web\Controller;
 use yii\helpers\Url;
+use Yii;
 
 class CartController extends Controller
 {
@@ -57,6 +58,30 @@ class CartController extends Controller
         $pillows = Cart::find()->all();
         return $this->render('cartList', [
             'items' => $pillows,
+        ]);
+    }
+
+    public function actionAdd()
+    {
+//        $linens = Products::find()->where(['categories' => 'linens'])->all();
+//        if (!Yii::$app->session->getIsActive()) {Yii::$app->session->open();}
+//        Yii::$app->session['product'] = $linens;
+//        Yii::$app->session->close();
+        if ((Yii::$app->request->isAjax)) {
+            $cart = new Cart();
+            $productID = Yii::$app->request->post('productID');
+//            $productID = $cart->addToCart($productID);
+            $cart->addToCart($productID);
+
+
+
+
+            return $productID;
+        }
+
+        $mytemp = "World";
+        return $this->render('temp', [
+            'temp' => $mytemp
         ]);
     }
 
