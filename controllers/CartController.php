@@ -71,8 +71,19 @@ class CartController extends Controller
             $cart = new Cart();
             $productID = Yii::$app->request->post('productID');
 //            $productID = $cart->addToCart($productID);
-            $cart->addToCart($productID);
+            $temp = $cart->addToCart($productID);
 
+
+//            $newtemp = '';
+//            foreach ($temp as $key=>$item) {
+//                if ($key == "number") {
+//                    $newtemp = $item;
+//                }
+//            }
+//            if ($newtemp == '') {
+//                $newtemp = 'empty';
+//            }
+//            return $newtemp;
 
 
 

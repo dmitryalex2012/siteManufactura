@@ -10,9 +10,8 @@ class Cart extends ActiveRecord
     public function addToCart ($number) {
 
 
-        $product = Products::findOne($number);
+        $product = Products::find()->where(['number' => $number])->one();
 
-        
         $session = Yii::$app->session;
         $session->open();
         if (!$session->has('cart')) {
@@ -21,9 +20,11 @@ class Cart extends ActiveRecord
         } else {
             $cart = $session->get('cart');
         }
+        // write $product in SESSION
 
 
+        $session->close();
 
-//        return $id;
+        return;
     }
 }
