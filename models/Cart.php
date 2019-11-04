@@ -17,12 +17,25 @@ class Cart extends ActiveRecord
         if (!$session->has('cart')) {
             $session->set('cart',[]);
             $cart = [];
+
+            $cart = $product;
+
         } else {
             $cart = $session->get('cart');
         }
+        if(in_array($cart[]))
+//        foreach ($cart as $key=>$item) {
+//            if (($key==='number') && ($item===$number)) {
+//                foreach ($cart as $key1=>$item1) {
+//                    if (($key==='number') && ($item===$number)) {
+//
+//                    }
+//                }
+//            }
+//        }
         // write $product in SESSION
 
-
+        $session->set('cart', $cart);
         $session->close();
 
         return;

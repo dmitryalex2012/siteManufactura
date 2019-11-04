@@ -85,9 +85,11 @@ class CartController extends Controller
 //            }
 //            return $newtemp;
 
+        return $this->render('temp', [
+            'temp' => $temp
+        ]);
 
-
-            return $productID;
+//            return $productID;
         }
 
         $mytemp = "World";
