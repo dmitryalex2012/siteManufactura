@@ -56,34 +56,21 @@ class CartController extends Controller
     public function actionIndex()
     {
         $pillows = Cart::find()->all();
+        $cart = new Cart();
+        $myTemp = $cart->outFromCart();
+
         return $this->render('cartList', [
             'items' => $pillows,
+            'myTemp' => $myTemp,
         ]);
     }
 
     public function actionAdd()
     {
-//        $linens = Products::find()->where(['categories' => 'linens'])->all();
-//        if (!Yii::$app->session->getIsActive()) {Yii::$app->session->open();}
-//        Yii::$app->session['product'] = $linens;
-//        Yii::$app->session->close();
         if ((Yii::$app->request->isAjax)) {
             $cart = new Cart();
-            $productID = Yii::$app->request->post('productID');
-//            $productID = $cart->addToCart($productID);
-            $temp = $cart->addToCart($productID);
-
-
-//            $newtemp = '';
-//            foreach ($temp as $key=>$item) {
-//                if ($key == "number") {
-//                    $newtemp = $item;
-//                }
-//            }
-//            if ($newtemp == '') {
-//                $newtemp = 'empty';
-//            }
-//            return $newtemp;
+            $productNumber = Yii::$app->request->post('productID');
+            $temp = $cart->addToCart($productNumber);
 
         return $this->render('temp', [
             'temp' => $temp

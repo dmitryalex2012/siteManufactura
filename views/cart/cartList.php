@@ -4,6 +4,8 @@
 /* @var $pillows array */
 /* @var $linens array */
 
+/* @var $myTemp array */
+
 /* @var $productsEnding array */
 
 use yii\helpers\Html;
@@ -17,7 +19,11 @@ $this->params['breadcrumbs'][] = $this->title;
 $productsEnding = new MyHelpers();
 ?>
 
-<?php $cart = $items ?>
+
+<?php echo $myTemp; ?>
+
+
+<?php $cart = $items; ?>
 <h2>В КОРЗИНЕ - <? echo count($cart) . " " . $productsEnding->productsEnding(count($cart)); ?></h2>
 <br>
 
