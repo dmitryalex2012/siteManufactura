@@ -15,6 +15,11 @@ $this->params['breadcrumbs'][] = $this->title = 'Магазин ' . $name;
 
 ?>
 
+
+<?= Html::a('Temp', ['/cart/tempadd'], ['class' => 'btn btn-primary']) ?>
+<?= Html::a('Temp', ['/cart/tempout'], ['class' => 'btn btn-primary']) ?>
+
+
 <?php $i = 0;
 foreach ($items as $item):
     if ((((++$i) % 4) == 1)): ?>

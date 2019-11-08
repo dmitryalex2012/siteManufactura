@@ -72,16 +72,35 @@ class CartController extends Controller
             $productNumber = Yii::$app->request->post('productID');
             $temp = $cart->addToCart($productNumber);
 
+            return;
+        }
+
+        $cart = new Cart();
+        $productNumber = Yii::$app->request->post('productID');
+        $temp = $cart->outFromCart();
+
         return $this->render('temp', [
             'temp' => $temp
         ]);
+    }
 
-//            return $productID;
-        }
+    public function actionTempadd()
+    {
+        $cart = new Cart();
+        $productNumber = 1001;
+        $temp = $cart->addToCart($productNumber);
 
-        $mytemp = "World";
+        return $temp;
+    }
+
+    public function actionTempout()
+    {
+        $cart = new Cart();
+        $productNumber = Yii::$app->request->post('productID');
+        $temp = $cart->outFromCart();
+
         return $this->render('temp', [
-            'temp' => $mytemp
+            'temp' => $temp
         ]);
     }
 
