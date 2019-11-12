@@ -24,10 +24,10 @@ $productsEnding = new MyHelpers();
 <br>
 <br>
 <br>
-<br>
-<br>
-<br>
-<?php echo $temp; ?>
+<?php echo '<pre>';
+print_r($temp);
+echo '</pre>';
+?>
 
 
 

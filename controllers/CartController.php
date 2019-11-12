@@ -90,7 +90,11 @@ class CartController extends Controller
         $productNumber = 1001;
         $temp = $cart->addToCart($productNumber);
 
-        return $temp;
+        $product = Products::find()->where(['number' => $productNumber])->one();
+
+        return $this->render('temp', [
+            'temp' => $product
+        ]);
     }
 
     public function actionTempout()
