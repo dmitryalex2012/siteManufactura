@@ -6,18 +6,11 @@ use yii\base\Model;
 use yii\db\ActiveRecord;
 use Yii;
 
-class Cart extends Model
+class Cart extends ActiveRecord
 {
     public function addToCart ($number) {
 
         $product = Products::find()->where(['number' => $number])->one();
-//        $id = Yii::$app->$product->id;
-//        $id = $this->$product->id;
-//        $array = (array) $product;
-
-
-
-
 
         $session = Yii::$app->session;
         $session->open();
@@ -28,16 +21,24 @@ class Cart extends Model
             $cart = $session->get('cart');
         }
 
-        if(isset($cart['number'][$number])) {
-            $count = $cart[$id]["count"] + 1;
-            if ($count>10){
-                $count = 10;
-            }
-            $cart[$id]['count'] = $count;
-        } else {
-            $cart[$id]['count'] = 1;
-        }
+        $cart[$number]["number"] = $number;
+        $cart[$number]["categories"] = $product->categories ;
+        $cart[$number]["count"] = 1;
+        $cart[$number]["amount"] = $product->price;
+//        $product = (array) $product;
+//        $cart = $product->number;
 
+
+//        if(isset($cart['number'][$number])) {
+//            $count = $cart[$id]["count"] + 1;
+//            if ($count>10){
+//                $count = 10;
+//            }
+//            $cart[$id]['count'] = $count;
+//        } else {
+//            $cart[$id]['count'] = 1;
+//        }
+//
         $session->set('cart', $cart);       // write $product in SESSION
         $session->close();
 
@@ -47,14 +48,13 @@ class Cart extends Model
     public function outFromCart () {
         $session = Yii::$app->session;
         $session->open();
-        if (isset($session['cart'])) {
+        if (!$session->has('cart')) {
             $cart = $session->get('cart');
         } else {
-            $cart = [];
+            $cart = "empty";
         }
         $session->close();
-        return;
-//        return $this->$cart;
+        return $cart;
     }
 
 }

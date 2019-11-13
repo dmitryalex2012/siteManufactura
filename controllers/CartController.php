@@ -11,32 +11,6 @@ use Yii;
 
 class CartController extends Controller
 {
-//    public function actionIndex()
-//    {
-//        echo 'Hello';
-//    }
-//    public function actionPeople()
-//    {
-//        return $this->render('people');
-//        return $this->renderPartial('people');
-//        return $this->asJson(['test' => 1]);
-//        return $this->asJson(['test' => (object)['test' => 1]]);
-//        return $this->render('people', ['countTotal' => 6000000000]);
-
-
-//        return $this->render('people', [
-//            'countTotal' => 6000000000,
-//            'title' => 'My page of oldProducts people'
-//        ]);
-//    }
-//
-//    public function actionNames()
-//    {
-//
-//    }
-//}
-
-
 //    public function actionList()
 //    {
 //        $items = Works::find()->where(['id'=>1]);
@@ -75,32 +49,23 @@ class CartController extends Controller
             return;
         }
 
+        return;
+    }
+
+    public function actionTempadd()
+    {
         $cart = new Cart();
-        $productNumber = Yii::$app->request->post('productID');
-        $temp = $cart->outFromCart();
+        $productNumber = 1002;
+        $temp = $cart->addToCart($productNumber);
 
         return $this->render('temp', [
             'temp' => $temp
         ]);
     }
 
-    public function actionTempadd()
-    {
-        $cart = new Cart();
-        $productNumber = 1001;
-        $temp = $cart->addToCart($productNumber);
-
-        $product = Products::find()->where(['number' => $productNumber])->one();
-
-        return $this->render('temp', [
-            'temp' => $product
-        ]);
-    }
-
     public function actionTempout()
     {
         $cart = new Cart();
-        $productNumber = Yii::$app->request->post('productID');
         $temp = $cart->outFromCart();
 
         return $this->render('temp', [
