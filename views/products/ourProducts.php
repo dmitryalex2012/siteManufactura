@@ -16,8 +16,8 @@ $this->params['breadcrumbs'][] = $this->title = 'Магазин ' . $name;
 ?>
 
 
-<?= Html::a('Temp', ['/cart/tempadd'], ['class' => 'btn btn-primary']) ?>
-<?= Html::a('Temp', ['/cart/tempout'], ['class' => 'btn btn-primary']) ?>
+<?//= Html::a('Temp', ['/cart/tempadd'], ['class' => 'btn btn-primary']) ?>
+<?//= Html::a('Temp', ['/cart/out'], ['class' => 'btn btn-primary']) ?>
 
 
 <?php $i = 0;

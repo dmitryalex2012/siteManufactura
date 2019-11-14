@@ -21,8 +21,10 @@ class Cart extends ActiveRecord
             $cart = $session->get('cart');
         }
 
+// WRITE products (object - table) STRUCTURE AS COMMENT !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
         $cart[$number]["number"] = $number;
-        $cart[$number]["categories"] = $product->categories ;
+        $cart[$number]["title"] = $product->title ;
         $cart[$number]["count"] = 1;
         $cart[$number]["amount"] = $product->price;
 //        $product = (array) $product;
@@ -38,10 +40,10 @@ class Cart extends ActiveRecord
 //        } else {
 //            $cart[$id]['count'] = 1;
 //        }
-//
+
+
         $session->set('cart', $cart);       // write $product in SESSION
         $session->close();
-
         return $cart;
     }
 
@@ -49,9 +51,9 @@ class Cart extends ActiveRecord
         $session = Yii::$app->session;
         $session->open();
         if (!$session->has('cart')) {
-            $cart = $session->get('cart');
-        } else {
             $cart = "empty";
+        } else {
+            $cart = $session->get('cart');
         }
         $session->close();
         return $cart;

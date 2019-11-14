@@ -29,13 +29,10 @@ class CartController extends Controller
 
     public function actionIndex()
     {
-        $pillows = Cart::find()->all();
         $cart = new Cart();
-        $myTemp = $cart->outFromCart();
 
         return $this->render('cartList', [
-            'items' => $pillows,
-            'myTemp' => $myTemp,
+            'items' => $cart->outFromCart()
         ]);
     }
 
@@ -48,22 +45,10 @@ class CartController extends Controller
 
             return;
         }
-
         return;
     }
 
-    public function actionTempadd()
-    {
-        $cart = new Cart();
-        $productNumber = 1002;
-        $temp = $cart->addToCart($productNumber);
-
-        return $this->render('temp', [
-            'temp' => $temp
-        ]);
-    }
-
-    public function actionTempout()
+    public function actionOut()
     {
         $cart = new Cart();
         $temp = $cart->outFromCart();

@@ -19,9 +19,10 @@ $this->params['breadcrumbs'][] = $this->title;
 $productsEnding = new MyHelpers();
 ?>
 
-
-<?php echo $myTemp; ?>
-
+<?php //  echo '<pre>';
+//        print_r($items);
+//        echo '</pre>';
+//?>
 
 <?php $cart = $items; ?>
 <h2>В КОРЗИНЕ - <? echo count($cart) . " " . $productsEnding->productsEnding(count($cart)); ?></h2>
@@ -41,12 +42,12 @@ $productsEnding = new MyHelpers();
                     </tr>
                     <?php foreach ($cart as $item): ?>
                         <tr>
-                            <td class="text-center"><?= $item['title']; ?></td>
-                            <td class="text-center"><?= $item['quantity']; ?></td>
-                            <td class="text-center"><?= $item['price']; ?></td>
-                            <td class="text-center"><?= $item['price'] * $item['quantity']; ?></td>
+                            <td class="text-center"><?= $item['title'] . " (код товара " . $item['number'] . ") "; ?></td>
+                            <td class="text-center"><?= $item['count']; ?></td>
+                            <td class="text-center"><?= $item['amount']; ?></td>
+                            <td class="text-center"><?= $item['amount'] * $item['count']; ?></td>
                         </tr>
-                        <?php $amount += $item['price'] * $item['quantity']; ?>
+                        <?php $amount += $item['amount'] * $item['count']; ?>
                     <?php endforeach; ?>
                     <tr>
                         <td colspan="3" class="text-right">Итого:</td>
