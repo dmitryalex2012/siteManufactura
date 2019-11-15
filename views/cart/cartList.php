@@ -55,7 +55,7 @@ $productsEnding = new MyHelpers();
                     </tr>
                 </table>
             <?php else: ?>
-                <p>Ваша корзина пуста</p>
+                <div class="cartStatus"> <p>Ваша корзина пуста</p> </div>
             <?php endif; ?>
         </div>
         <div class="col-sm-1"></div>

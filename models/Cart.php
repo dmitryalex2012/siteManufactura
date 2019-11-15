@@ -20,12 +20,25 @@ class Cart extends ActiveRecord
         } else {
             $cart = $session->get('cart');
         }
-
-// WRITE products (object - table) STRUCTURE AS COMMENT !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+//  Associative array $cart structure:
+//      $cart {
+//            $number=>array("number"=>$number, "title"=>$title, "count"=>$count, "amount"=>$amount),
+//            $number=>array("number"=>$number, "title"=>$title, "count"=>$count, "amount"=>$amount),
+//                          .
+//                          .
+//            $number=>array("number"=>$number, "title"=>$title, "count"=>$count, "amount"=>$amount)
+//      }
+        $count = 1;
+        if (isset($cart[$number])) {
+            $count = ++$cart[$number]['count'];
+        }
+        if ($count > 10) {
+            $count = 10;
+        }
 
         $cart[$number]["number"] = $number;
         $cart[$number]["title"] = $product->title ;
-        $cart[$number]["count"] = 1;
+        $cart[$number]["count"] = $count;
         $cart[$number]["amount"] = $product->price;
 //        $product = (array) $product;
 //        $cart = $product->number;
@@ -51,7 +64,7 @@ class Cart extends ActiveRecord
         $session = Yii::$app->session;
         $session->open();
         if (!$session->has('cart')) {
-            $cart = "empty";
+            $cart = [];
         } else {
             $cart = $session->get('cart');
         }
