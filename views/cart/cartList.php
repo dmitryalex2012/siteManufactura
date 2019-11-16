@@ -11,8 +11,6 @@
 use yii\helpers\Html;
 use app\common\components\MyHelpers;
 
-
-
 $this->title = 'Корзина';
 $this->params['breadcrumbs'][] = $this->title;
 
@@ -43,7 +41,14 @@ $productsEnding = new MyHelpers();
                     <?php foreach ($cart as $item): ?>
                         <tr>
                             <td class="text-center"><?= $item['title'] . " (код товара " . $item['number'] . ") "; ?></td>
-                            <td class="text-center"><?= $item['count']; ?></td>
+<!--                            <td class="text-center">--><?//= $item['count']; ?><!--</td>-->
+                            <td class="text-center">
+                                <select>
+                                    <?php for ($i=1; $i<=10; $i++): ?>
+                                    <option <?php if ($item['count'] == $i) echo "selected" ?> > <? echo $i ?></option>
+                                    <?php endfor; ?>
+                                </select>
+                            </td>
                             <td class="text-center"><?= $item['amount']; ?></td>
                             <td class="text-center"><?= $item['amount'] * $item['count']; ?></td>
                         </tr>
