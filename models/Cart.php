@@ -10,13 +10,13 @@ class Cart extends ActiveRecord
 {
     public function addToCart ($number) {
 
-        $product = Products::find()->where(['number' => $number])->one();
+        $product = Products::find()->where(['number' => $number])->one();       // $product - OBJECT
 
         $session = Yii::$app->session;
         $session->open();
         if (!$session->has('cart')) {
             $session->set('cart',[]);
-            $cart = [];
+            $cart = [];                             // $cart - ARRAY
         } else {
             $cart = $session->get('cart');
         }
@@ -37,23 +37,9 @@ class Cart extends ActiveRecord
         }
 
         $cart[$number]["number"] = $number;
-        $cart[$number]["title"] = $product->title ;
+        $cart[$number]["title"] = $product->title ;     // title - PROPERTY of the $product OBJECT
         $cart[$number]["count"] = $count;
         $cart[$number]["amount"] = $product->price;
-//        $product = (array) $product;
-//        $cart = $product->number;
-
-
-//        if(isset($cart['number'][$number])) {
-//            $count = $cart[$id]["count"] + 1;
-//            if ($count>10){
-//                $count = 10;
-//            }
-//            $cart[$id]['count'] = $count;
-//        } else {
-//            $cart[$id]['count'] = 1;
-//        }
-
 
         $session->set('cart', $cart);       // write $product in SESSION
         $session->close();

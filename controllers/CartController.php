@@ -58,4 +58,14 @@ class CartController extends Controller
         ]);
     }
 
+    public function changeQuantity()
+    {
+        if ((Yii::$app->request->isAjax)) {
+            $amount = Yii::$app->request->post('quantity');
+
+            return $amount;
+        }
+        return;
+    }
+
 }
