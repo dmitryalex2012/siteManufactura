@@ -73,9 +73,10 @@ $productsEnding = new MyHelpers();
 <?php
 $js = <<<JS
     $('.countAjax').on('change', function() {
-        var temp = $(this).val();
+        // var temp = $(this).val();
+        const temp = 50;
         $.ajax({
-            url: '/cart/changeQuantity',
+            url: '/cart/changequantity',
             data: {quantity: temp},
             type: 'POST',
             success: function (amount) {
@@ -83,7 +84,7 @@ $js = <<<JS
                 // $('.totalAmount').html(amount);
             },
             error: function () {
-                console.log ("Fail");            //  NEED !!!!!!!!!!  better delete???????
+                console.log ("Failed");            //  NEED !!!!!!!!!!  better delete???????
             }
         });
     });
