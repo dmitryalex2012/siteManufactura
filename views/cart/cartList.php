@@ -17,10 +17,10 @@ $this->params['breadcrumbs'][] = $this->title;
 $productsEnding = new MyHelpers();
 ?>
 
-<?php //  echo '<pre>';
-//        print_r($items);
-//        echo '</pre>';
-//?>
+<?php   echo '<pre>';
+        print_r($items);
+        echo '</pre>';
+?>
 
 <?php $cart = $items; ?>
 <h2>В КОРЗИНЕ - <? echo count($cart) . " " . $productsEnding->productsEnding(count($cart)); ?></h2>
