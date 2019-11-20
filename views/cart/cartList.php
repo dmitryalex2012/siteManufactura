@@ -17,6 +17,9 @@ $this->params['breadcrumbs'][] = $this->title;
 $productsEnding = new MyHelpers();
 ?>
 
+<?php
+    echo '<br>';
+?>
 <?php   echo '<pre>';
         print_r($items);
         echo '</pre>';
