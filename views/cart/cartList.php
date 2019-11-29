@@ -18,12 +18,12 @@ $productsEnding = new MyHelpers();
 ?>
 
 <?php
-    echo '<br>';
-?>
-<?php   echo '<pre>';
-        print_r($items);
-        echo '</pre>';
-?>
+//    echo '<br>';
+//?>
+<?php //  echo '<pre>';
+//        print_r($items);
+//        echo '</pre>';
+//?>
 
 <?php $cart = $items; ?>
 <h2>В КОРЗИНЕ - <? echo count($cart) . " " . $productsEnding->productsEnding(count($cart)); ?></h2>
@@ -48,7 +48,9 @@ $productsEnding = new MyHelpers();
                             <td class="text-center">
                                 <select class="countAjax">
                                     <?php for ($i=1; $i<=10; $i++): ?>
-                                    <option <?php if ($item['count'] == $i) echo "selected" ?> > <? echo $i ?></option>
+                                    <option <?php if ($item['count'] == $i) echo "selected" ?> >
+                                        <? echo $i ?>
+                                    </option>
                                     <?php endfor; ?>
                                 </select>
                             </td>
@@ -74,13 +76,15 @@ $productsEnding = new MyHelpers();
 </div>
 
 <?php
-$js = <<<JS
+$script1 = <<<JS
     $('.countAjax').on('change', function() {
+    // $('.countAjax').change(function() {    
         // var temp = $(this).val();
-        const temp = 50;
+        const amount = 50;
         $.ajax({
-            url: '/cart/changequantity',
-            data: {quantity: temp},
+            url: '/cart/changeQuantity',
+            data: {quantity: amount},
+            // data: {},            
             type: 'POST',
             success: function (amount) {
                 console.log(amount);
@@ -88,9 +92,10 @@ $js = <<<JS
             },
             error: function () {
                 console.log ("Failed");            //  NEED !!!!!!!!!!  better delete???????
+                console.log(amount);
             }
         });
     });
 JS;
-$this->registerJs($js);
+$this->registerJs($script1);
 ?>
