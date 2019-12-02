@@ -37,35 +37,32 @@ $productsEnding = new MyHelpers();
                 <table class="table table-bordered">
                     <tr>
                         <th class="text-center">Наименование</th>
+                        <th class="text-center">Код товара</th>
                         <th class="text-center">Количество</th>
                         <th class="text-center">Цена, грн</th>
                         <th class="text-center">Сумма, грн.</th>
                     </tr>
                     <?php foreach ($cart as $item): ?>
                         <tr>
-                            <td class="text-center"><?= $item['title'] . " (код товара " . $item['number'] . ") "; ?></td>
-<!--                            <td class="text-center">--><?//= $item['count']; ?><!--</td>-->
-                            <td class="text-center">
-                                <select class="countAjax">
+                            <td><?= $item['title']; ?></td>
+                            <td class="productID"><?= $item['number']; ?></td>
+                            <td>
+                                <select class="quantityAjax">
                                     <?php for ($i=1; $i<=10; $i++): ?>
-                                    <option <?php if ($item['count'] == $i) echo "selected" ?> >
+                                    <option <?php if ($item['quantity'] == $i) echo "selected" ?> >
                                         <? echo $i ?>
                                     </option>
                                     <?php endfor; ?>
                                 </select>
                             </td>
-                            <td class="text-center"><?= $item['amount']; ?></td>
-                        <div class="amount">
-                            <td class="text-center"><?= $item['amount'] * $item['count']; ?></td>
-                        </div>
+                            <td><?= $item['amount']; ?></td>
+                            <td class="amount"><?= $item['amount'] * $item['quantity']; ?></td>
                         </tr>
-                        <?php $amount += $item['amount'] * $item['count']; ?>
+                        <?php $amount += $item['amount'] * $item['quantity']; ?>
                     <?php endforeach; ?>
                     <tr>
-                        <td colspan="3" class="text-right">Итого:</td>
-                    <div class="totalAmount">
-                        <td class="text-center"><?= $amount; ?></td>
-                    </div>
+                        <td colspan="4" class="text-right">Итого:</td>
+                        <td class="totalAmount"><?= $amount; ?></td>
                     </tr>
                 </table>
             <?php else: ?>
@@ -75,27 +72,32 @@ $productsEnding = new MyHelpers();
         <div class="col-sm-1"></div>
 </div>
 
+<p class="prd">555</p>
+
 <?php
 $script1 = <<<JS
-    $('.countAjax').on('change', function() {
-    // $('.countAjax').change(function() {    
-        // var temp = $(this).val();
-        const amount = 50;
+    $('.quantityAjax').change(function() {
+        var quantity = $(this).val();
+        // var productID = $('.productID').val();
+        // var productID = document.getElementsByClassName('productID').in;
+        // var productID = $('.productID').val();
+        var productID = $('.prd').val();
         $.ajax({
-            url: '/cart/changeQuantity',
-            data: {quantity: amount},
-            // data: {},            
+            url: '/cart/sub',
+            // data: {quantity: quantity, productID: productID},
+            // data: {quantity: quantity},
+            data: {productID: productID},
             type: 'POST',
-            success: function (amount) {
-                console.log(amount);
+            success: function (productID) {
+                console.log(productID);
                 // $('.totalAmount').html(amount);
             },
             error: function () {
                 console.log ("Failed");            //  NEED !!!!!!!!!!  better delete???????
-                console.log(amount);
             }
         });
     });
 JS;
 $this->registerJs($script1);
 ?>
+

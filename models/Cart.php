@@ -22,23 +22,24 @@ class Cart extends ActiveRecord
         }
 //  Associative array $cart structure:
 //      $cart {
-//            $number=>array("number"=>$number, "title"=>$title, "count"=>$count, "amount"=>$amount),
-//            $number=>array("number"=>$number, "title"=>$title, "count"=>$count, "amount"=>$amount),
+//            $number=>array("number"=>$number, "title"=>$title, "quantity"=>$quantity, "amount"=>$amount),
+//            $number=>array("number"=>$number, "title"=>$title, "quantity"=>$quantity, "amount"=>$amount),
 //                          .
 //                          .
-//            $number=>array("number"=>$number, "title"=>$title, "count"=>$count, "amount"=>$amount)
+//            $number=>array("number"=>$number, "title"=>$title, "quantity"=>$quantity, "amount"=>$amount)
 //      }
-        $count = 1;
+        //count
+        $quantity = 1;
         if (isset($cart[$number])) {
-            $count = ++$cart[$number]['count'];
+            $quantity = ++$cart[$number]['quantity'];
         }
-        if ($count > 10) {
-            $count = 10;
+        if ($quantity > 10) {
+            $quantity = 10;
         }
 
         $cart[$number]["number"] = $number;
         $cart[$number]["title"] = $product->title ;     // title - PROPERTY of the $product OBJECT
-        $cart[$number]["count"] = $count;
+        $cart[$number]["quantity"] = $quantity;
         $cart[$number]["amount"] = $product->price;
 
         $session->set('cart', $cart);       // write $product in SESSION

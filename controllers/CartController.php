@@ -41,33 +41,37 @@ class CartController extends Controller
         if ((Yii::$app->request->isAjax)) {
             $cart = new Cart();
             $productNumber = Yii::$app->request->post('productID');
-            $temp = $cart->addToCart($productNumber);
+//            $temp = $cart->addToCart($productNumber);
+            $cart->addToCart($productNumber);
 
             return;
         }
         return;
     }
 
-    public function actionOut()
+    public function actionSub()     // not write completely yet
     {
-        $cart = new Cart();
-        $temp = $cart->outFromCart();
+//        $amount = Yii::$app->request->post('quantity');
+        $productID = Yii::$app->request->post('productID');
+//        return [$amount, $productID];
+        return $productID;
 
-        return $this->render('temp', [
-            'temp' => $temp
-        ]);
+//        $cart = new Cart();
+//        $temp = $cart->outFromCart();
+
+//        return $this->render('temp', [
+//            'temp' => $temp
+//        ]);
     }
 
-    public function changeQuantity()
-    {
-        if ((Yii::$app->request->isAjax)) {
-//            $amount = Yii::$app->request->post('quantity');
-            $amount1 = Yii::$app->request->post('amount');
-
-            return $amount1 = $amount1 - 1;
+//    public function actionQuantity()
+//    {
+//        if ((Yii::$app->request->isAjax)){
+//            $amount = Yii::$app->request->post('temp');
+//
 //            return $amount;
-        }
-        return $amount1 = 33;
-    }
+//        }
+//        return $amount1 = 33;
+//    }
 
 }
