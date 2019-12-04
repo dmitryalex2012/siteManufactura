@@ -45,11 +45,12 @@ $productsEnding = new MyHelpers();
                     <?php foreach ($cart as $item): ?>
                         <tr>
                             <td><?= $item['title']; ?></td>
-                            <td class="productID"><?= $item['number']; ?></td>
+                            <td><?= $item['number']; ?></td>
                             <td>
                                 <select class="quantityAjax">
                                     <?php for ($i=1; $i<=10; $i++): ?>
-                                    <option <?php if ($item['quantity'] == $i) echo "selected" ?> >
+                                    <option value="<?php echo ($i . "***" . $item['number']); ?>"
+                                      <?php if ($item['quantity'] == $i) echo "selected" ?> >
                                         <? echo $i ?>
                                     </option>
                                     <?php endfor; ?>
@@ -72,20 +73,14 @@ $productsEnding = new MyHelpers();
         <div class="col-sm-1"></div>
 </div>
 
-<p class="prd">555</p>
+<!--<p id="productID" value = "123">555</p>-->
 
 <?php
 $script1 = <<<JS
     $('.quantityAjax').change(function() {
-        var quantity = $(this).val();
-        // var productID = $('.productID').val();
-        // var productID = document.getElementsByClassName('productID').in;
-        // var productID = $('.productID').val();
-        var productID = $('.prd').val();
+        var productID = $(this).val();
         $.ajax({
             url: '/cart/sub',
-            // data: {quantity: quantity, productID: productID},
-            // data: {quantity: quantity},
             data: {productID: productID},
             type: 'POST',
             success: function (productID) {
