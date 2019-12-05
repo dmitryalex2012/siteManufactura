@@ -49,12 +49,19 @@ class CartController extends Controller
         return;
     }
 
-    public function actionSub()     // not write completely yet
+    public function actionChange()     // not write completely yet
     {
-//        $amount = Yii::$app->request->post('quantity');
-        $productID = Yii::$app->request->post('productID');
-//        return [$amount, $productID];
-        return $productID;
+        $cart = new Cart();
+
+        $data = Yii::$app->request->post('productData');
+        $data = explode("***", $data);
+        $id = $data[0];
+        $quantity = $data[1];
+        $jjj = $cart->changeCart($id, $quantity);
+
+//        $arr1 = array("0"=>0, "1"=>1, "2"=>2);
+//        $jarr = json_encode($arr1);
+        return $jjj;
 
 //        $cart = new Cart();
 //        $temp = $cart->outFromCart();

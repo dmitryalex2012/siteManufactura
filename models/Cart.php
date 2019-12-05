@@ -22,11 +22,11 @@ class Cart extends ActiveRecord
         }
 //  Associative array $cart structure:
 //      $cart {
-//            $number=>array("number"=>$number, "title"=>$title, "quantity"=>$quantity, "amount"=>$amount),
-//            $number=>array("number"=>$number, "title"=>$title, "quantity"=>$quantity, "amount"=>$amount),
+//            $number=>array("number"=>$number, "title"=>$title, "quantity"=>$quantity, "price"=>$price),
+//            $number=>array("number"=>$number, "title"=>$title, "quantity"=>$quantity, "price"=>$price),
 //                          .
 //                          .
-//            $number=>array("number"=>$number, "title"=>$title, "quantity"=>$quantity, "amount"=>$amount)
+//            $number=>array("number"=>$number, "title"=>$title, "quantity"=>$quantity, "price"=>$price)
 //      }
         //count
         $quantity = 1;
@@ -40,7 +40,7 @@ class Cart extends ActiveRecord
         $cart[$number]["number"] = $number;
         $cart[$number]["title"] = $product->title ;     // title - PROPERTY of the $product OBJECT
         $cart[$number]["quantity"] = $quantity;
-        $cart[$number]["amount"] = $product->price;
+        $cart[$number]["price"] = $product->price;
 
         $session->set('cart', $cart);       // write $product in SESSION
         $session->close();
@@ -57,6 +57,20 @@ class Cart extends ActiveRecord
         }
         $session->close();
         return $cart;
+    }
+
+    public function changeCart ($number, $quantity) {
+        $price = 0;
+        $session = Yii::$app->session;
+        $session->open();
+        if ($session) {
+            $cart = $session->get('cart');
+            $cart[$number]["quantity"] = $quantity;
+            $session->set('cart', $cart);
+            $price = $cart[$number]["quantity"] * $cart[$number]["price"];
+        }
+        $session->close();
+        return $price;
     }
 
 }

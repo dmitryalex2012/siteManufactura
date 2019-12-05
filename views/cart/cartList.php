@@ -33,7 +33,7 @@ $productsEnding = new MyHelpers();
         <div class="col-sm-1"></div>
         <div class="col-sm-10">
             <?php if (!empty($cart)): ?>
-                <?php $amount = 0; ?>
+                <?php $price = 0; ?>
                 <table class="table table-bordered">
                     <tr>
                         <th class="text-center">Наименование</th>
@@ -49,21 +49,21 @@ $productsEnding = new MyHelpers();
                             <td>
                                 <select class="quantityAjax">
                                     <?php for ($i=1; $i<=10; $i++): ?>
-                                    <option value="<?php echo ($i . "***" . $item['number']); ?>"
+                                    <option value="<?php echo ($item['number']) . "***" . $i; ?>"
                                       <?php if ($item['quantity'] == $i) echo "selected" ?> >
                                         <? echo $i ?>
                                     </option>
                                     <?php endfor; ?>
                                 </select>
                             </td>
-                            <td><?= $item['amount']; ?></td>
-                            <td class="amount"><?= $item['amount'] * $item['quantity']; ?></td>
+                            <td><?= $item['price']; ?></td>
+                            <td class="price<?php echo $item['number'];?>"><?= $item['price'] * $item['quantity']; ?></td>
                         </tr>
-                        <?php $amount += $item['amount'] * $item['quantity']; ?>
+                        <?php $price += $item['price'] * $item['quantity']; ?>
                     <?php endforeach; ?>
                     <tr>
                         <td colspan="4" class="text-right">Итого:</td>
-                        <td class="totalAmount"><?= $amount; ?></td>
+                        <td class="totalPrice"><?= $price; ?></td>
                     </tr>
                 </table>
             <?php else: ?>
@@ -78,14 +78,19 @@ $productsEnding = new MyHelpers();
 <?php
 $script1 = <<<JS
     $('.quantityAjax').change(function() {
-        var productID = $(this).val();
+        var productData = $(this).val();
+                            var cl = ".price";
         $.ajax({
-            url: '/cart/sub',
-            data: {productID: productID},
+            url: '/cart/change',
+            data: {productData: productData},
+                    // dataType : 'json',
             type: 'POST',
-            success: function (productID) {
-                console.log(productID);
-                // $('.totalAmount').html(amount);
+            success: function (aaa) {
+                console.log(aaa);
+                            console.log(cl);
+                            $('cl').html(aaa);
+                // $('cl').html(aaa);
+                // $('.totalPrice').html(aaa);
             },
             error: function () {
                 console.log ("Failed");            //  NEED !!!!!!!!!!  better delete???????
