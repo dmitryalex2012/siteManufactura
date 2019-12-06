@@ -57,13 +57,14 @@ $productsEnding = new MyHelpers();
                                 </select>
                             </td>
                             <td><?= $item['price']; ?></td>
-                            <td class="price<?php echo $item['number'];?>"><?= $item['price'] * $item['quantity']; ?></td>
+                            <td class="<?php echo $item['number']; ?>"><?= $item['price'] * $item['quantity']; ?></td>
+<!--                            <td class="--><?php //echo $item['number']; ?><!--">--><?//= $item['number']; ?><!--</td>-->
                         </tr>
                         <?php $price += $item['price'] * $item['quantity']; ?>
                     <?php endforeach; ?>
                     <tr>
                         <td colspan="4" class="text-right">Итого:</td>
-                        <td class="totalPrice"><?= $price; ?></td>
+                        <td id="totalPrice" abbr="<?php echo $price?>"><?= $price; ?></td>
                     </tr>
                 </table>
             <?php else: ?>
@@ -73,25 +74,29 @@ $productsEnding = new MyHelpers();
         <div class="col-sm-1"></div>
 </div>
 
-<!--<p id="productID" value = "123">555</p>-->
+<!--<p class=".price" value = "123">555</p>-->
+<!--<label class=".price">ABC</label>-->
 
 <?php
 $script1 = <<<JS
     $('.quantityAjax').change(function() {
         var productData = $(this).val();
-                            var cl = ".price";
-        $.ajax({
+        var classType ="." + productData.substr(0, 4);      // change price selected product
+        var totalPrice = document.getElementById('totalPrice').abbr;
+         $.ajax({
             url: '/cart/change',
             data: {productData: productData},
-                    // dataType : 'json',
+            dataType : 'json',
             type: 'POST',
-            success: function (aaa) {
-                console.log(aaa);
-                            console.log(cl);
-                            $('cl').html(aaa);
-                // $('cl').html(aaa);
-                // $('.totalPrice').html(aaa);
-            },
+            success: function (newPrice) {              // array ("0"=>price, "1"=>difference)
+                // console.log(newPrice[0]);
+                // console.log(newPrice[1]);
+                // console.log(totalPrice);
+                $(classType).html(Math.abs(newPrice[0]));
+                $('#totalPrice').html(Number(totalPrice)+Number(newPrice[1]));
+                totalPriceClass = document.querySelector("#totalPrice");
+                totalPriceClass.setAttribute('abbr', String(Number(totalPrice)+Number(newPrice[1])));
+             },
             error: function () {
                 console.log ("Failed");            //  NEED !!!!!!!!!!  better delete???????
             }

@@ -60,17 +60,28 @@ class Cart extends ActiveRecord
     }
 
     public function changeCart ($number, $quantity) {
-        $price = 0;
+        $price = $difference = 0;
         $session = Yii::$app->session;
         $session->open();
         if ($session) {
             $cart = $session->get('cart');
+            $oldQuantity = $cart[$number]["quantity"];
+            $oldPrice = $cart[$number]["quantity"] * $cart[$number]["price"];
             $cart[$number]["quantity"] = $quantity;
             $session->set('cart', $cart);
             $price = $cart[$number]["quantity"] * $cart[$number]["price"];
+
+            $difference = $price - $oldPrice;
+
+//            if ($oldQuantity > $quantity) {
+//                $difference = $oldPrice - $price;
+//            } else {
+//                $difference = $price - $oldPrice;
+//            }
         }
         $session->close();
-        return $price;
+        $resultChange = json_encode(array("0"=>$price, "1"=>$difference));
+        return $resultChange;
     }
 
 }
