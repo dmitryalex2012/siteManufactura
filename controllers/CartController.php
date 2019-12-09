@@ -30,9 +30,11 @@ class CartController extends Controller
     public function actionIndex()
     {
         $cart = new Cart();
+        $totalQuantity = $cart->totalQuantity();
 
         return $this->render('cartList', [
-            'items' => $cart->outFromCart()
+            'items' => $cart->outFromCart(),
+            'totalQuantity' => $totalQuantity
         ]);
     }
 
@@ -43,8 +45,9 @@ class CartController extends Controller
             $productNumber = Yii::$app->request->post('productID');
 //            $temp = $cart->addToCart($productNumber);
             $cart->addToCart($productNumber);
+            $totalQuantity = $cart->totalQuantity();
 
-            return;
+            return $totalQuantity;
         }
         return;
     }
@@ -71,14 +74,21 @@ class CartController extends Controller
 //        ]);
     }
 
-//    public function actionQuantity()
+    public function actionTotal()
+    {
+        $cart = new Cart();
+        $totalQuantity = $cart->totalQuantity();
+
+        return $totalQuantity;
+    }
+
+//    public function actionTemp()
 //    {
-//        if ((Yii::$app->request->isAjax)){
-//            $amount = Yii::$app->request->post('temp');
 //
-//            return $amount;
-//        }
-//        return $amount1 = 33;
+//        $cart = new Cart();
+//        $totalQuantity = $cart->temp();
+//
+//        return $totalQuantity;
 //    }
 
 }

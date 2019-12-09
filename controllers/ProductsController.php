@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Cart;
 use app\models\Products;
 use yii\helpers\VarDumper;
 use yii\web\Controller;

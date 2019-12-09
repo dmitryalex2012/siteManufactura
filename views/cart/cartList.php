@@ -3,6 +3,7 @@
 /* @var $this yii\web\View */
 /* @var $pillows array */
 /* @var $linens array */
+/* @var $totalQuantity float */
 
 /* @var $myTemp array */
 
@@ -26,7 +27,9 @@ $productsEnding = new MyHelpers();
 //?>
 
 <?php $cart = $items; ?>
-<h2>В КОРЗИНЕ - <? echo count($cart) . " " . $productsEnding->productsEnding(count($cart)); ?></h2>
+<!--<h2>В КОРЗИНЕ - --><?// echo count($cart) . " " . $productsEnding->productsEnding(count($cart)); ?><!--</h2>-->
+<!--<h2>В КОРЗИНЕ - --><?// echo count($cart) . " " . $productsEnding->productsEnding(count($cart)); ?><!--</h2>-->
+<h2>В КОРЗИНЕ - <? echo $totalQuantity . " " . $productsEnding->productsEnding($totalQuantity); ?></h2>
 <br>
 
     <div class="cartTable row">
@@ -74,6 +77,7 @@ $productsEnding = new MyHelpers();
         <div class="col-sm-1"></div>
 </div>
 
+
 <!--<p class=".price" value = "123">555</p>-->
 <!--<label class=".price">ABC</label>-->
 
@@ -89,9 +93,6 @@ $script1 = <<<JS
             dataType : 'json',
             type: 'POST',
             success: function (newPrice) {              // array ("0"=>price, "1"=>difference)
-                // console.log(newPrice[0]);
-                // console.log(newPrice[1]);
-                // console.log(totalPrice);
                 $(classType).html(Math.abs(newPrice[0]));
                 $('#totalPrice').html(Number(totalPrice)+Number(newPrice[1]));
                 totalPriceClass = document.querySelector("#totalPrice");
