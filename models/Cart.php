@@ -99,18 +99,18 @@ class Cart extends ActiveRecord
         }
         $session->close();
         $resultChange = json_encode(array("0"=>$price, "1"=>$difference));
+
         return $resultChange;
     }
 
-//    public function temp () {
-//        $session = Yii::$app->session;
-//        $session->open();
-//        if ($session) {
-//            $cart = $session->get('cart');
-//        }
-//        $session->close();
-//        $totalQuantity = json_encode($cart);
-//        return $totalQuantity;
-//    }
+    public function clearCart () {
+        $session = Yii::$app->session;
+        $session->open();
+        if ($session) {
+            Yii::$app->session->destroy();
+        }
+        $session->close();
+        return;
+    }
 
 }

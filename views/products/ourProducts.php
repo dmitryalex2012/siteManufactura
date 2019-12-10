@@ -82,37 +82,16 @@ if ((($i % 4) != 0)):
 
 
 
-<?php
-$onLoad = <<<JS
-    $(document).ready(function() {
-         $.ajax({
-            url: '/cart/total',
-            // data: {productData: productData},
-            // dataType : 'json',
-            type: 'POST',
-            success: function (totalQuantity) {              // array ("0"=>price, "1"=>difference)
-                $('.aaa').html("Корзина "+totalQuantity);
-                console.log(totalQuantity);
-             },
-            error: function () {
-                console.log ("Failed");            //  NEED !!!!!!!!!!  better delete???????
-            }
-        })   
-    });
-JS;
-$this->registerJs($onLoad);
-?>
+
 
 <?php
 $js = <<<JS
     $('.buyBtn').on('click', function() {
-        // let temp = 1;
         $.ajax({
             url: '/cart/add',
             data: {productID: $(this).attr('value')},
             type: 'POST',
             success: function (totalQuantity) {
-                console.log(totalQuantity);
                 $('.aaa').html("Корзина "+totalQuantity);
             },
             error: function () {

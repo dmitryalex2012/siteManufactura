@@ -11,26 +11,11 @@ use Yii;
 
 class CartController extends Controller
 {
-//    public function actionList()
-//    {
-//        $items = Works::find()->where(['id'=>1]);
-//
-//        $items = Works::find()->all();
-//
-//        $items = Works::find()->asArray()->all();
-//
-//        return $this->render('list', [
-//            'countTotal' => 6000000000,
-//            'title' => 'My page of world people',
-//            'items' => $items
-//        ]);
-//    }
-//}
-
     public function actionIndex()
     {
         $cart = new Cart();
         $totalQuantity = $cart->totalQuantity();
+        if ($totalQuantity == 0) { $cart->clearCart(); }
 
         return $this->render('cartList', [
             'items' => $cart->outFromCart(),
@@ -60,18 +45,13 @@ class CartController extends Controller
         $data = explode("***", $data);
         $id = $data[0];
         $quantity = $data[1];
-        $jjj = $cart->changeCart($id, $quantity);
+        $resultChange = $cart->changeCart($id, $quantity);
 
-//        $arr1 = array("0"=>0, "1"=>1, "2"=>2);
-//        $jarr = json_encode($arr1);
-        return $jjj;
+        $resultChange = json_decode($resultChange);
+        $resultChange[2] = $cart->totalQuantity();
+        $resultChange = json_encode($resultChange);
 
-//        $cart = new Cart();
-//        $temp = $cart->outFromCart();
-
-//        return $this->render('temp', [
-//            'temp' => $temp
-//        ]);
+        return $resultChange;
     }
 
     public function actionTotal()

@@ -51,7 +51,7 @@ $productsEnding = new MyHelpers();
                             <td><?= $item['number']; ?></td>
                             <td>
                                 <select class="quantityAjax">
-                                    <?php for ($i=1; $i<=10; $i++): ?>
+                                    <?php for ($i=0; $i<=10; $i++): ?>
                                     <option value="<?php echo ($item['number']) . "***" . $i; ?>"
                                       <?php if ($item['quantity'] == $i) echo "selected" ?> >
                                         <? echo $i ?>
@@ -85,18 +85,24 @@ $productsEnding = new MyHelpers();
 $script1 = <<<JS
     $('.quantityAjax').change(function() {
         var productData = $(this).val();
-        var classType ="." + productData.substr(0, 4);      // change price selected product
+        var classType ="." + productData.substr(0, 4);      // change the price of the selected product
         var totalPrice = document.getElementById('totalPrice').abbr;
          $.ajax({
             url: '/cart/change',
             data: {productData: productData},
             dataType : 'json',
             type: 'POST',
-            success: function (newPrice) {              // array ("0"=>price, "1"=>difference)
-                $(classType).html(Math.abs(newPrice[0]));
-                $('#totalPrice').html(Number(totalPrice)+Number(newPrice[1]));
-                totalPriceClass = document.querySelector("#totalPrice");
-                totalPriceClass.setAttribute('abbr', String(Number(totalPrice)+Number(newPrice[1])));
+            success: function (newPrice) {                                      // array ("0"=>price, "1"=>difference)
+                $(classType).html(Math.abs(newPrice[0]));                       // new price  for product
+                $('#totalPrice').html(Number(totalPrice)+Number(newPrice[1]));  // new total price
+                totalPriceClass = document.querySelector("#totalPrice");            // change marker in "total
+                totalPriceClass.setAttribute('abbr', String(Number(totalPrice)+Number(newPrice[1])));   //    price"
+                
+                $('.classCart').html("Корзина "+newPrice[2]);       // change quantity in "Header" line
+//                $('h2').html("В КОРЗИНЕ - " + "$productsEnding->productsEnding"+newPrice[2]);
+                console.log("$productsEnding->productsEnding$totalQuantity" + newPrice[2]);
+                
+                if (Number(newPrice[0]) == 0) { $('.classCart').html("Корзина"); }
              },
             error: function () {
                 console.log ("Failed");            //  NEED !!!!!!!!!!  better delete???????

@@ -56,7 +56,7 @@ AppAsset::register($this);
             ]],
             ['label' => 'Блог', 'url' => ['#']],
             ['label' => 'Контакты', 'url' => ['/site/contact']],
-            ['label' => 'Корзина', 'url' => ['/cart/index'], 'linkOptions' => ['class' => 'aaa', 'name'=>"bbb"]],
+            ['label' => 'Корзина', 'url' => ['/cart/index'], 'linkOptions' => ['class' => 'classCart']],
 //            Yii::$app->user->isGuest ? (
 //            ['label' => 'Login', 'url' => ['/site/login']]
 //            ) : (
@@ -96,6 +96,29 @@ AppAsset::register($this);
         <?= $content ?>
     </div>
 </div>
+
+
+<?php
+$onLoad = <<<JS
+    $(document).ready(function() {
+         $.ajax({
+            url: '/cart/total',
+            // data: {productData: productData},
+            // dataType : 'json',
+            type: 'POST',
+            success: function (totalQuantity) {              // array ("0"=>price, "1"=>difference)
+                if (totalQuantity != 0) { $('.classCart').html("Корзина "+totalQuantity); }
+                console.log(totalQuantity);
+             },
+            error: function () {
+                console.log ("Failed");            //  NEED !!!!!!!!!!  better delete???????
+            }
+        })   
+    });
+JS;
+$this->registerJs($onLoad);
+?>
+
 
 <footer class="footer">
     <div class="container">
