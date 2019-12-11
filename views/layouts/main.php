@@ -108,7 +108,6 @@ $onLoad = <<<JS
             type: 'POST',
             success: function (totalQuantity) {              // array ("0"=>price, "1"=>difference)
                 if (totalQuantity != 0) { $('.classCart').html("Корзина "+totalQuantity); }
-                console.log(totalQuantity);
              },
             error: function () {
                 console.log ("Failed");            //  NEED !!!!!!!!!!  better delete???????

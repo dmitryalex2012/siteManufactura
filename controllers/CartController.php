@@ -8,6 +8,8 @@ use yii\helpers\VarDumper;
 use yii\web\Controller;
 use yii\helpers\Url;
 use Yii;
+use app\common\components\MyHelpers;
+
 
 class CartController extends Controller
 {
@@ -39,6 +41,7 @@ class CartController extends Controller
 
     public function actionChange()     // not write completely yet
     {
+        $productsEnding = new MyHelpers();
         $cart = new Cart();
 
         $data = Yii::$app->request->post('productData');
@@ -49,6 +52,7 @@ class CartController extends Controller
 
         $resultChange = json_decode($resultChange);
         $resultChange[2] = $cart->totalQuantity();
+        $resultChange[3] = $productsEnding->productsEnding($resultChange[2]);;
         $resultChange = json_encode($resultChange);
 
         return $resultChange;

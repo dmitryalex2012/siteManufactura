@@ -12,7 +12,19 @@ h2 {
     font-size: large;
 }
 
-.table-bordered
-{
+.table-bordered{
     text-align: center;
+}
+
+.purchaseRegistration{
+    text-align: center;
+}
+
+.continueBayBtn {
+    margin: 15px 0px;
+    color: green;
+}
+
+.purchaseRegistration{
+    margin: 30px 0px;
 }

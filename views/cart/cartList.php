@@ -5,10 +5,16 @@
 /* @var $linens array */
 /* @var $totalQuantity float */
 
-/* @var $myTemp array */
 
+/* @var $form yii\bootstrap\ActiveForm */
+/* @var $model app\models\ContactForm */
+
+
+/* @var $myTemp array */
 /* @var $productsEnding array */
 
+use yii\bootstrap\ActiveForm;
+use yii\captcha\Captcha;
 use yii\helpers\Html;
 use app\common\components\MyHelpers;
 
@@ -46,23 +52,24 @@ $productsEnding = new MyHelpers();
                         <th class="text-center">Сумма, грн.</th>
                     </tr>
                     <?php foreach ($cart as $item): ?>
-                        <tr>
-                            <td><?= $item['title']; ?></td>
-                            <td><?= $item['number']; ?></td>
-                            <td>
-                                <select class="quantityAjax">
-                                    <?php for ($i=0; $i<=10; $i++): ?>
-                                    <option value="<?php echo ($item['number']) . "***" . $i; ?>"
-                                      <?php if ($item['quantity'] == $i) echo "selected" ?> >
-                                        <? echo $i ?>
-                                    </option>
-                                    <?php endfor; ?>
-                                </select>
-                            </td>
-                            <td><?= $item['price']; ?></td>
-                            <td class="<?php echo $item['number']; ?>"><?= $item['price'] * $item['quantity']; ?></td>
-<!--                            <td class="--><?php //echo $item['number']; ?><!--">--><?//= $item['number']; ?><!--</td>-->
-                        </tr>
+                        <?php if ($item['quantity'] != 0): ?>
+                            <tr>
+                                <td><?= $item['title']; ?></td>
+                                <td><?= $item['number']; ?></td>
+                                <td>
+                                    <select class="quantityAjax">
+                                        <?php for ($i=0; $i<=10; $i++): ?>
+                                        <option value="<?php echo ($item['number']) . "***" . $i; ?>"
+                                          <?php if ($item['quantity'] == $i) echo "selected" ?> >
+                                            <? echo $i ?>
+                                        </option>
+                                        <?php endfor; ?>
+                                    </select>
+                                </td>
+                                <td><?= $item['price']; ?></td>
+                                <td class="<?php echo $item['number']; ?>"><?= $item['price'] * $item['quantity']; ?></td>
+                            </tr>
+                        <?php endif; ?>
                         <?php $price += $item['price'] * $item['quantity']; ?>
                     <?php endforeach; ?>
                     <tr>
@@ -78,8 +85,47 @@ $productsEnding = new MyHelpers();
 </div>
 
 
-<!--<p class=".price" value = "123">555</p>-->
-<!--<label class=".price">ABC</label>-->
+<div class="purchaseRegistration row">
+    <div class="col-12 col-lg-6">
+        <p>ABC</p>
+    </div>
+    <div class="col-12 col-lg-6">
+        <p>ABC</p>
+
+        <div class="row">
+            <div class="col-lg-5">
+
+
+
+
+<!--                --><?php //if (Yii::$app->session->hasFlash('contactFormSubmitted')): ?>
+<!---->
+<!--                    <div class="alert alert-success">-->
+<!--                        Благодарим Вас за обращение к нам. Мы ответим вам как можно скорее.-->
+<!--                    </div>-->
+<!---->
+<!--                --><?php //else: ?>
+<!---->
+<!--                    <div class="row">-->
+<!--                        <div class="col-lg-5">-->
+<!--                            --><?php //$form = ActiveForm::begin(['id' => 'contact-form']); ?>
+<!--                            --><?//= $form->field($model, 'name')->textInput(['autofocus' => true]) ?>
+<!--                            --><?php //ActiveForm::end(); ?>
+<!--                        </div>-->
+<!--                    </div>-->
+<!---->
+<!--                --><?php //endif; ?>
+
+
+
+
+            </div>
+        </div>
+
+        <button class="continueBayBtn" value="<?php  ?>">Оформить заказ</button>
+    </div>
+</div>
+
 
 <?php
 $script1 = <<<JS
@@ -87,22 +133,21 @@ $script1 = <<<JS
         var productData = $(this).val();
         var classType ="." + productData.substr(0, 4);      // change the price of the selected product
         var totalPrice = document.getElementById('totalPrice').abbr;
+        
          $.ajax({
             url: '/cart/change',
             data: {productData: productData},
             dataType : 'json',
             type: 'POST',
-            success: function (newPrice) {                                      // array ("0"=>price, "1"=>difference)
+            success: function (newPrice) {  // array ("0"=>price, "1"=>difference, "2"=>totalQuantity, "3"=> end of the word "Product")
                 $(classType).html(Math.abs(newPrice[0]));                       // new price  for product
                 $('#totalPrice').html(Number(totalPrice)+Number(newPrice[1]));  // new total price
                 totalPriceClass = document.querySelector("#totalPrice");            // change marker in "total
                 totalPriceClass.setAttribute('abbr', String(Number(totalPrice)+Number(newPrice[1])));   //    price"
-                
-                $('.classCart').html("Корзина "+newPrice[2]);       // change quantity in "Header" line
-//                $('h2').html("В КОРЗИНЕ - " + "$productsEnding->productsEnding"+newPrice[2]);
-                console.log("$productsEnding->productsEnding$totalQuantity" + newPrice[2]);
-                
-                if (Number(newPrice[0]) == 0) { $('.classCart').html("Корзина"); }
+                $('.classCart').html("Корзина "+newPrice[2]);                   // change quantity in "Header" line
+               $('h2').html("В КОРЗИНЕ - " + newPrice[2] + " " + newPrice[3]);  // change quantity in "h2" 
+
+                if (Number(newPrice[2]) == 0) { $('.classCart').html("Корзина"); }
              },
             error: function () {
                 console.log ("Failed");            //  NEED !!!!!!!!!!  better delete???????

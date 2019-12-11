@@ -58,7 +58,6 @@ if ((($i % 4) != 0)):
 <?php endif; ?>
 
 
-
 <!--<button class="btn btn-success">Temp</button>-->
 <?php
 //$temp = <<<JS
@@ -81,9 +80,6 @@ if ((($i % 4) != 0)):
 //?>
 
 
-
-
-
 <?php
 $js = <<<JS
     $('.buyBtn').on('click', function() {
@@ -92,7 +88,8 @@ $js = <<<JS
             data: {productID: $(this).attr('value')},
             type: 'POST',
             success: function (totalQuantity) {
-                $('.aaa').html("Корзина "+totalQuantity);
+                $('.classCart').html("Корзина "+totalQuantity);
+                console.log(totalQuantity);
             },
             error: function () {
                 console.log ("Fail");
