@@ -86,41 +86,60 @@ $productsEnding = new MyHelpers();
 
 
 <div class="purchaseRegistration row">
-    <div class="col-12 col-lg-6">
-        <p>ABC</p>
+    <div class="deliveryMethod col-12 col-lg-6">
+        <h4>ВЫБЕРИТЕ СПОСОБ ДОСТАВКИ</h4>
     </div>
-    <div class="col-12 col-lg-6">
-        <p>ABC</p>
-
-        <div class="row">
-            <div class="col-lg-5">
+    <div class="contactInformation col-12 col-lg-6">
+        <h4>КОНТАКТНАЯ ИНФОРМАЦИЯ</h4>
 
 
 
 
-<!--                --><?php //if (Yii::$app->session->hasFlash('contactFormSubmitted')): ?>
-<!---->
-<!--                    <div class="alert alert-success">-->
-<!--                        Благодарим Вас за обращение к нам. Мы ответим вам как можно скорее.-->
-<!--                    </div>-->
-<!---->
-<!--                --><?php //else: ?>
-<!---->
-<!--                    <div class="row">-->
-<!--                        <div class="col-lg-5">-->
-<!--                            --><?php //$form = ActiveForm::begin(['id' => 'contact-form']); ?>
-<!--                            --><?//= $form->field($model, 'name')->textInput(['autofocus' => true]) ?>
-<!--                            --><?php //ActiveForm::end(); ?>
-<!--                        </div>-->
-<!--                    </div>-->
-<!---->
-<!--                --><?php //endif; ?>
 
-
-
-
+        <?php if (Yii::$app->session->hasFlash('contactFormSubmitted')): ?>
+            <div class="alert alert-success">
+                Благодарим Вас за обращение к нам. Мы ответим вам как можно скорее.
             </div>
-        </div>
+            <!--        <p>-->
+            <!--            Note that if you turn on the Yii debugger, you should be able-->
+            <!--            to view the mail message on the mail panel of the debugger.-->
+            <!--            --><?php //if (Yii::$app->mailer->useFileTransport): ?>
+            <!--                Because the application is in development mode, the email is not sent but saved as-->
+            <!--                a file under <code>--><?//= Yii::getAlias(Yii::$app->mailer->fileTransportPath) ?><!--</code>.-->
+            <!--                Please configure the <code>useFileTransport</code> property of the <code>mail</code>-->
+            <!--                application component to be false to enable email sending.-->
+            <!--            --><?php //endif; ?>
+            <!--        </p>-->
+        <?php else: ?>
+            <div class="row">
+                <div class="col-lg-12">
+
+                    <?php $form = ActiveForm::begin(['id' => 'contact-form']); ?>
+<!--                    --><?//= $form->field($model, 'name')->textInput(['autofocus' => true]) ?>
+                    <?= $form->field($model, 'name', ['enableLabel' => false])->textInput(array('placeholder' => 'Ваше имя', 'class'=>'form-control text-center')) ?>
+<!--                    --><?//= $form->field($model, 'phone', ['enableLabel' => false])->textInput(array('placeholder' => 'Ваш номер телефона', 'class'=>'form-control text-center')) ?>
+
+<!--                    --><?//= $form->field($model, 'email')->textInput()->hint('Введите любой текст') ?>
+                    <?= $form->field($model, 'email', ['enableLabel' => false])->textInput(['placeholder' => 'Email', 'class'=>'form-control text-center']) ?>
+
+<!--                    --><?//= $form->field($model, 'subject') ?>
+                    <?= $form->field($model, 'body', ['enableLabel' => false])->textarea(['rows' => 3, 'placeholder' => 'Коментарии к заказу', 'class'=>'form-control text-center']) ?>
+
+                    <?= $form->field($model, 'verifyCode')->widget(Captcha::className(), [
+                        'template' => '<div class="row"><div class="col-lg-3">{image}</div><div class="col-lg-6">{input}</div></div>',
+                    ]) ?>
+                    <div class="form-group">
+                        <?= Html::submitButton('Отправить', ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
+                    </div>
+                    <?php ActiveForm::end(); ?>
+                </div>
+            </div>
+
+        <?php endif; ?>
+
+
+
+
 
         <button class="continueBayBtn" value="<?php  ?>">Оформить заказ</button>
     </div>

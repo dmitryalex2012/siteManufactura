@@ -18,6 +18,7 @@ h2 {
 
 .purchaseRegistration{
     text-align: center;
+    /*margin: 30px 0px;*/
 }
 
 .continueBayBtn {
@@ -25,6 +26,6 @@ h2 {
     color: green;
 }
 
-.purchaseRegistration{
-    margin: 30px 0px;
+h4{
+    margin: 50px 0px 30px;
 }
