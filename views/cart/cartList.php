@@ -17,24 +17,16 @@ use yii\bootstrap\ActiveForm;
 use yii\captcha\Captcha;
 use yii\helpers\Html;
 use app\common\components\MyHelpers;
+use app\common\components\TextFile;
 
 $this->title = 'Корзина';
 $this->params['breadcrumbs'][] = $this->title;
 
 $productsEnding = new MyHelpers();
+$textFile = new TextFile();
 ?>
 
-<?php
-//    echo '<br>';
-//?>
-<?php //  echo '<pre>';
-//        print_r($items);
-//        echo '</pre>';
-//?>
-
 <?php $cart = $items; ?>
-<!--<h2>В КОРЗИНЕ - --><?// echo count($cart) . " " . $productsEnding->productsEnding(count($cart)); ?><!--</h2>-->
-<!--<h2>В КОРЗИНЕ - --><?// echo count($cart) . " " . $productsEnding->productsEnding(count($cart)); ?><!--</h2>-->
 <h2>В КОРЗИНЕ - <? echo $totalQuantity . " " . $productsEnding->productsEnding($totalQuantity); ?></h2>
 <br>
 
@@ -88,12 +80,36 @@ $productsEnding = new MyHelpers();
 <div class="purchaseRegistration row">
     <div class="deliveryMethod col-12 col-lg-6">
         <h4>ВЫБЕРИТЕ СПОСОБ ДОСТАВКИ</h4>
+        <div class="delivery1 row">
+            <div class="col-1">
+                <input type="radio" name="deliveryID" checked>
+            </div>
+            <div class="col-11">
+                <label class="typeDelivery1">Новая почта</label><br>
+                <label><?php echo $textFile->newPost(); ?></label>
+            </div>
+        </div>
+        <div class="delivery2 row">
+            <div class="col-1">
+                <input type="radio" name="deliveryID">
+            </div>
+            <div class="col-11">
+                <label class="typeDelivery2">Курьером</label><br>
+                <label><?php echo $textFile->courier(); ?></label>
+            </div>
+        </div>
+        <div class="delivery3 row">
+            <div class="col-1">
+                <input type="radio" name="deliveryID">
+            </div>
+            <div class="col-11">
+                <label class="typeDelivery3">Самовывоз (бесплатно)</label><br>
+                <label><?php echo $textFile->pickup(); ?></label>
+            </div>
+        </div>
     </div>
     <div class="contactInformation col-12 col-lg-6">
         <h4>КОНТАКТНАЯ ИНФОРМАЦИЯ</h4>
-
-
-
 
 
         <?php if (Yii::$app->session->hasFlash('contactFormSubmitted')): ?>
@@ -112,24 +128,17 @@ $productsEnding = new MyHelpers();
             <!--        </p>-->
         <?php else: ?>
             <div class="row">
-                <div class="col-lg-12">
+                <div class="contactInformation col-lg-12">
 
                     <?php $form = ActiveForm::begin(['id' => 'contact-form']); ?>
-<!--                    --><?//= $form->field($model, 'name')->textInput(['autofocus' => true]) ?>
                     <?= $form->field($model, 'name', ['enableLabel' => false])->textInput(array('placeholder' => 'Ваше имя', 'class'=>'form-control text-center')) ?>
-<!--                    --><?//= $form->field($model, 'phone', ['enableLabel' => false])->textInput(array('placeholder' => 'Ваш номер телефона', 'class'=>'form-control text-center')) ?>
-
-<!--                    --><?//= $form->field($model, 'email')->textInput()->hint('Введите любой текст') ?>
                     <?= $form->field($model, 'email', ['enableLabel' => false])->textInput(['placeholder' => 'Email', 'class'=>'form-control text-center']) ?>
-
-<!--                    --><?//= $form->field($model, 'subject') ?>
                     <?= $form->field($model, 'body', ['enableLabel' => false])->textarea(['rows' => 3, 'placeholder' => 'Коментарии к заказу', 'class'=>'form-control text-center']) ?>
-
                     <?= $form->field($model, 'verifyCode')->widget(Captcha::className(), [
                         'template' => '<div class="row"><div class="col-lg-3">{image}</div><div class="col-lg-6">{input}</div></div>',
                     ]) ?>
                     <div class="form-group">
-                        <?= Html::submitButton('Отправить', ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
+                        <?= Html::submitButton('Подтвердите заказ', ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
                     </div>
                     <?php ActiveForm::end(); ?>
                 </div>
@@ -138,10 +147,6 @@ $productsEnding = new MyHelpers();
         <?php endif; ?>
 
 
-
-
-
-        <button class="continueBayBtn" value="<?php  ?>">Оформить заказ</button>
     </div>
 </div>
 

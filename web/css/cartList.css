@@ -29,3 +29,33 @@ h2 {
 h4{
     margin: 50px 0px 30px;
 }
+
+label{
+    font-weight: 300!important;
+}
+
+.typeDelivery, .typeDelivery2, .typeDelivery3{
+    font-weight: bold!important;
+}
+
+.delivery1, .delivery2, .delivery3{
+    text-align: justify;
+    padding: 10px 50px;
+}
+
+.deliveryMethod{
+    padding: 0px 10px 0px 50px;
+}
+
+.contactInformation{
+    padding: 0px 50px 0px 10px;
+}
+
+.purchaseRegistration{
+    padding: 0px 80px;
+}
+
+.btn{
+    color: green;
+    border: groove;
+}
