@@ -14,6 +14,7 @@
 /* @var $productsEnding array */
 
 use yii\bootstrap\ActiveForm;
+//use yii\widgets\ActiveForm;
 use yii\captcha\Captcha;
 use yii\helpers\Html;
 use app\common\components\MyHelpers;
@@ -118,6 +119,10 @@ $textFile = new TextFile();
         <h4>КОНТАКТНАЯ ИНФОРМАЦИЯ</h4>
 
 
+
+        <?php echo "myTemp=".$myTemp;?>
+
+
         <?php if (Yii::$app->session->hasFlash('contactFormSubmitted')): ?>
             <div class="alert alert-success">
                 Благодарим Вас за обращение к нам. Мы ответим вам как можно скорее.
@@ -136,18 +141,18 @@ $textFile = new TextFile();
             <div class="row">
                 <div class="contactInformation col-lg-12">
 
-                    <?php $form = ActiveForm::begin(['id' => 'contact-form']); ?>
+                    <?php $form = ActiveForm::begin(['id' => 'my-contact']); ?>
                     <?= $form->field($model, 'name', ['enableLabel' => false])->textInput(array('placeholder' => 'Ваше имя', 'class'=>'form-control text-center')) ?>
                     <?= $form->field($model, 'email', ['enableLabel' => false])->textInput(['placeholder' => 'Email', 'class'=>'form-control text-center']) ?>
 
-<!--                    --><?//= $form->field($model, 'phone', ['enableLabel' => false])->textInput(['placeholder' => 'Email', 'class'=>'form-control text-center']) ?>
+                    <?= $form->field($model, 'phone', ['enableLabel' => false])->textInput(['placeholder' => 'Ваш номер телефона', 'class'=>'form-control text-center']) ?>
 
                     <?= $form->field($model, 'body', ['enableLabel' => false])->textarea(['rows' => 3, 'placeholder' => 'Коментарии к заказу', 'class'=>'form-control text-center']) ?>
                     <?= $form->field($model, 'verifyCode')->widget(Captcha::className(), [
                         'template' => '<div class="row"><div class="col-lg-3">{image}</div><div class="col-lg-6">{input}</div></div>',
                     ]) ?>
                     <div class="form-group">
-                        <?= Html::submitButton('Подтвердите заказ', ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
+                        <?= Html::submitButton('Подтвердите заказ', ['class' => 'btn btn-primary', 'name' => 'my-contact-button']) ?>
                     </div>
                     <?php ActiveForm::end(); ?>
                 </div>

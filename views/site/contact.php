@@ -49,6 +49,10 @@ $this->params['breadcrumbs'][] = $this->title;
 
                     <?= $form->field($model, 'email')->textInput()->hint('Введите любой текст') ?>
 
+
+<!--                --><?//= $form->field($model, 'phone')->textInput()->hint('Введите любой текст') ?>
+
+
                     <?= $form->field($model, 'subject') ?>
 
                     <?= $form->field($model, 'body')->textarea(['rows' => 6]) ?>
