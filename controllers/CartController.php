@@ -23,19 +23,17 @@ class CartController extends Controller
 
 
         $model = new MyContact();
-                        $myTemp = 3;
         if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
+//        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             Yii::$app->session->setFlash('contactFormSubmitted');
-                        $myTemp = 7;
-            return $this->refresh();
+//            return $this->refresh();
+            return $this->render('temp');
         }
 
         return $this->render('cartList', [
             'items' => $cart->outFromCart(),
             'totalQuantity' => $totalQuantity,
-                            'model' => $model,
-                            'myTemp' => $myTemp
-
+                            'model' => $model
         ]);
     }
 

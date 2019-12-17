@@ -120,7 +120,6 @@ $textFile = new TextFile();
 
 
 
-        <?php echo "myTemp=".$myTemp;?>
 
 
         <?php if (Yii::$app->session->hasFlash('contactFormSubmitted')): ?>
@@ -147,12 +146,12 @@ $textFile = new TextFile();
 
                     <?= $form->field($model, 'phone', ['enableLabel' => false])->textInput(['placeholder' => 'Ваш номер телефона', 'class'=>'form-control text-center']) ?>
 
-                    <?= $form->field($model, 'body', ['enableLabel' => false])->textarea(['rows' => 3, 'placeholder' => 'Коментарии к заказу', 'class'=>'form-control text-center']) ?>
+                    <?= $form->field($model, 'body', ['enableLabel' => false])->textarea(['rows' => 1, 'placeholder' => 'Коментарии к заказу', 'class'=>'form-control text-center']) ?>
                     <?= $form->field($model, 'verifyCode')->widget(Captcha::className(), [
                         'template' => '<div class="row"><div class="col-lg-3">{image}</div><div class="col-lg-6">{input}</div></div>',
                     ]) ?>
                     <div class="form-group">
-                        <?= Html::submitButton('Подтвердите заказ', ['class' => 'btn btn-primary', 'name' => 'my-contact-button']) ?>
+                        <?= Html::submitButton('Подтвердите заказ', ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
                     </div>
                     <?php ActiveForm::end(); ?>
                 </div>
