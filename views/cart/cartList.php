@@ -7,7 +7,7 @@
 
 
 /* @var $form yii\bootstrap\ActiveForm */
-/* @var $model app\models\ContactForm */
+/* @var $model app\models\CustomerForm */
 
 
 /* @var $myTemp array */
@@ -19,6 +19,7 @@ use yii\captcha\Captcha;
 use yii\helpers\Html;
 use app\common\components\MyHelpers;
 use app\common\components\TextFile;
+
 
 echo "<br>";
 echo "<br>";
@@ -118,11 +119,7 @@ $textFile = new TextFile();
     <div class="contactInformation col-12 col-lg-6">
         <h4>КОНТАКТНАЯ ИНФОРМАЦИЯ</h4>
 
-
-
-
-
-        <?php if (Yii::$app->session->hasFlash('contactFormSubmitted')): ?>
+        <?php if (Yii::$app->session->hasFlash('contactSubmitted')): ?>
             <div class="alert alert-success">
                 Благодарим Вас за обращение к нам. Мы ответим Вам как можно скорее.
             </div>
@@ -139,14 +136,11 @@ $textFile = new TextFile();
         <?php else: ?>
             <div class="row">
                 <div class="contactInformation col-lg-12">
-
-                    <?php if (isset($myTemp)) { echo "$myTemp=" . $myTemp; } ?>
-
                     <?php $form = ActiveForm::begin(['id' => 'my-contact']); ?>
                         <?= $form->field($model, 'name', ['enableLabel' => false])->textInput(array('placeholder' => 'Ваше имя', 'class'=>'form-control text-center')) ?>
                         <?= $form->field($model, 'email', ['enableLabel' => false])->textInput(['placeholder' => 'Email', 'class'=>'form-control text-center']) ?>
                         <?= $form->field($model, 'phone', ['enableLabel' => false])->textInput(['placeholder' => 'Ваш номер телефона', 'class'=>'form-control text-center']) ?>
-                        <?= $form->field($model, 'subject', ['enableLabel' => false]) ?>
+<!--                        --><?//= $form->field($model, 'subject', ['enableLabel' => false]) ?>
                         <?= $form->field($model, 'body', ['enableLabel' => false])->textarea(['rows' => 1, 'placeholder' => 'Коментарии к заказу', 'class'=>'form-control text-center']) ?>
                         <?= $form->field($model, 'verifyCode')->widget(Captcha::className(), [
                             'template' => '<div class="row"><div class="col-lg-3">{image}</div><div class="col-lg-6">{input}</div></div>',
@@ -157,10 +151,7 @@ $textFile = new TextFile();
                     <?php ActiveForm::end(); ?>
                 </div>
             </div>
-
         <?php endif; ?>
-
-
     </div>
 </div>
 
