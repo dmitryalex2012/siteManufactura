@@ -3,8 +3,8 @@
 namespace app\controllers;
 
 use app\models\Cart;
-use app\models\ContactForm;
-use app\models\MyContact;
+//use app\models\ContactForm;
+use app\models\CustomerForm;
 use app\models\Products;
 use yii\helpers\VarDumper;
 use yii\web\Controller;
@@ -17,18 +17,20 @@ class CartController extends Controller
 {
     public function actionIndex()
     {
-        $cart = new Cart();
-        $totalQuantity = $cart->totalQuantity();
-        if ($totalQuantity == 0) { $cart->clearCart(); }
 
-
-        $model = new MyContact();
+        $model = new CustomerForm();
         if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
 //        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             Yii::$app->session->setFlash('contactFormSubmitted');
-//            return $this->refresh();
-            return $this->render('temp');
+
+            return $this->refresh();
+//            return $this->render('temp');
         }
+
+
+        $cart = new Cart();
+        $totalQuantity = $cart->totalQuantity();
+        if ($totalQuantity == 0) { $cart->clearCart(); }
 
         return $this->render('cartList', [
             'items' => $cart->outFromCart(),
@@ -41,7 +43,7 @@ class CartController extends Controller
 //                public function actionContact()
 //                {
 //                    $myTemp = 7;
-//                    $model = new MyContact();
+//                    $model = new CustomerForm();
 //                    if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
 //                        Yii::$app->session->setFlash('contactFormSubmitted');
 //

@@ -8,7 +8,7 @@ use yii\base\Model;
 /**
  * ContactForm is the model behind the contact form.
  */
-class MyContact extends Model
+class CustomerForm extends Model
 {
     public $name;
     public $email;
@@ -26,7 +26,7 @@ class MyContact extends Model
         return [
             // name, email, subject and body are required
 //            [['name', 'email', 'subject', 'body'], 'required', 'message'=>'Не заполнено поле'],
-            [['name', 'email'], 'required', 'message'=>'Не заполнено поле'],
+            [['name', 'email', 'subject', 'body'], 'required', 'message'=>'Не заполнено поле'],
             // email has to be a valid email address
             ['email', 'email', 'message'=>'Некорректный e-mail'],
             // verifyCode needs to be entered correctly
@@ -59,9 +59,6 @@ class MyContact extends Model
 //                ->setFrom(['tpmfd27@gmail.com' => $this->name])
                 ->setFrom(['tpmfd27@gmail.com'])
 //                ->setReplyTo($email)
-
-//                ->setPhone($this->phone)
-
                 ->setSubject($this->subject)
                 ->setTextBody($this->body)
                 ->send();
