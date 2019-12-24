@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\models\Cart;
 use app\models\ContactForm;
+use app\models\CustomerForm;
 use app\models\Products;
 use yii\helpers\VarDumper;
 use yii\web\Controller;
@@ -21,11 +22,11 @@ class CartController extends Controller
         if ($totalQuantity == 0) { $cart->clearCart(); }
 
 
-        $model = new ContactForm();
+        $model = new CustomerForm();
         if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
             Yii::$app->session->setFlash('contactFormSubmitted');
 
-            return $this->refresh();
+//            return $this->refresh();
         }
 
 

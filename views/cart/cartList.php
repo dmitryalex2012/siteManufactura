@@ -76,6 +76,36 @@ $textFile = new TextFile();
         <div class="col-sm-1"></div>
 </div>
 
+<?php
+$script1 = <<<JS
+    $('.quantityAjax').change(function() {
+        var productData = $(this).val();
+        var classType ="." + productData.substr(0, 4);      // change the price of the selected product
+        var totalPrice = document.getElementById('totalPrice').abbr;
+        
+         $.ajax({
+            url: '/cart/change',
+            data: {productData: productData},
+            dataType : 'json',
+            type: 'POST',
+            success: function (newPrice) {  // array ("0"=>price, "1"=>difference, "2"=>totalQuantity, "3"=> end of the word "Product")
+                $(classType).html(Math.abs(newPrice[0]));                       // new price  for product
+                $('#totalPrice').html(Number(totalPrice)+Number(newPrice[1]));  // new total price
+                totalPriceClass = document.querySelector("#totalPrice");            // change marker in "total
+                totalPriceClass.setAttribute('abbr', String(Number(totalPrice)+Number(newPrice[1])));   //    price"
+                $('.classCart').html("Корзина "+newPrice[2]);                   // change quantity in "Header" line
+               $('h2').html("В КОРЗИНЕ - " + newPrice[2] + " " + newPrice[3]);  // change quantity in "h2" 
+
+                if (Number(newPrice[2]) == 0) { $('.classCart').html("Корзина"); }
+             },
+            error: function () {
+                console.log ("Failed");            //  NEED !!!!!!!!!!  better delete???????
+            }
+        });
+    });
+JS;
+$this->registerJs($script1);
+?>
 
 <div class="purchaseRegistration row">
     <div class="deliveryMethod col-12 col-lg-6">
@@ -149,36 +179,4 @@ $textFile = new TextFile();
 
     </div>
 </div>
-
-
-<?php
-$script1 = <<<JS
-    $('.quantityAjax').change(function() {
-        var productData = $(this).val();
-        var classType ="." + productData.substr(0, 4);      // change the price of the selected product
-        var totalPrice = document.getElementById('totalPrice').abbr;
-        
-         $.ajax({
-            url: '/cart/change',
-            data: {productData: productData},
-            dataType : 'json',
-            type: 'POST',
-            success: function (newPrice) {  // array ("0"=>price, "1"=>difference, "2"=>totalQuantity, "3"=> end of the word "Product")
-                $(classType).html(Math.abs(newPrice[0]));                       // new price  for product
-                $('#totalPrice').html(Number(totalPrice)+Number(newPrice[1]));  // new total price
-                totalPriceClass = document.querySelector("#totalPrice");            // change marker in "total
-                totalPriceClass.setAttribute('abbr', String(Number(totalPrice)+Number(newPrice[1])));   //    price"
-                $('.classCart').html("Корзина "+newPrice[2]);                   // change quantity in "Header" line
-               $('h2').html("В КОРЗИНЕ - " + newPrice[2] + " " + newPrice[3]);  // change quantity in "h2" 
-
-                if (Number(newPrice[2]) == 0) { $('.classCart').html("Корзина"); }
-             },
-            error: function () {
-                console.log ("Failed");            //  NEED !!!!!!!!!!  better delete???????
-            }
-        });
-    });
-JS;
-$this->registerJs($script1);
-?>
 
