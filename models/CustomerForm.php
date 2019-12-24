@@ -12,7 +12,12 @@ class CustomerForm extends Model
 {
     public $name;
     public $email;
+<<<<<<< HEAD
     public $subject;
+=======
+    public $phone;
+//    public $subject;
+>>>>>>> master/master
     public $body;
     public $verifyCode;
 
@@ -24,9 +29,16 @@ class CustomerForm extends Model
     {
         return [
             // name, email, subject and body are required
+<<<<<<< HEAD
             [['name', 'email', 'body'], 'required'],
             // email has to be a valid email address
             ['email', 'email'],
+=======
+//            [['name', 'email', 'subject', 'body'], 'required', 'message'=>'Не заполнено поле'],
+            [['name', 'email', 'body'], 'required', 'message'=>'Не заполнено поле'],
+            // email has to be a valid email address
+            ['email', 'email', 'message'=>'Некорректный e-mail'],
+>>>>>>> master/master
             // verifyCode needs to be entered correctly
 //            ['verifyCode', 'captcha'],
         ];
@@ -57,6 +69,10 @@ class CustomerForm extends Model
 //                ->setFrom(['tpmfd27@gmail.com' => $this->name])
                 ->setFrom(['tpmfd27@gmail.com'])
 //                ->setReplyTo($email)
+<<<<<<< HEAD
+=======
+//                ->setSubject($this->subject)
+>>>>>>> master/master
                 ->setSubject($this->name)
                 ->setTextBody($this->body)
                 ->send();

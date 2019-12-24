@@ -25,7 +25,8 @@ $productsEnding = new MyHelpers();
 <br>
 <br>
 <?php echo '<pre>';
-print_r($temp);
+//print_r($temp);
+echo "hello";
 echo '</pre>';
 ?>
 
