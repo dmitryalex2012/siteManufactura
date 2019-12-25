@@ -7,17 +7,23 @@
 
 
 /* @var $form yii\bootstrap\ActiveForm */
-/* @var $model app\models\ContactForm */
+/* @var $model app\models\CustomerForm */
 
 
 /* @var $myTemp array */
 /* @var $productsEnding array */
 
 use yii\bootstrap\ActiveForm;
+//use yii\widgets\ActiveForm;
 use yii\captcha\Captcha;
 use yii\helpers\Html;
 use app\common\components\MyHelpers;
 use app\common\components\TextFile;
+
+
+echo "<br>";
+echo "<br>";
+echo "<br>";
 
 $this->title = 'Корзина';
 $this->params['breadcrumbs'][] = $this->title;
@@ -74,7 +80,7 @@ $textFile = new TextFile();
             <?php endif; ?>
         </div>
         <div class="col-sm-1"></div>
-</div>
+    </div>
 
 <?php
 $script1 = <<<JS
@@ -94,7 +100,7 @@ $script1 = <<<JS
                 totalPriceClass = document.querySelector("#totalPrice");            // change marker in "total
                 totalPriceClass.setAttribute('abbr', String(Number(totalPrice)+Number(newPrice[1])));   //    price"
                 $('.classCart').html("Корзина "+newPrice[2]);                   // change quantity in "Header" line
-               $('h2').html("В КОРЗИНЕ - " + newPrice[2] + " " + newPrice[3]);  // change quantity in "h2" 
+                $('h2').html("В КОРЗИНЕ - " + newPrice[2] + " " + newPrice[3]);  // change quantity in "h2" 
 
                 if (Number(newPrice[2]) == 0) { $('.classCart').html("Корзина"); }
              },
@@ -110,73 +116,60 @@ $this->registerJs($script1);
 <div class="purchaseRegistration row">
     <div class="deliveryMethod col-12 col-lg-6">
         <h4>ВЫБЕРИТЕ СПОСОБ ДОСТАВКИ</h4>
-        <div class="delivery1 row">
-            <div class="col-1">
-                <input type="radio" name="deliveryID" checked>
+        <?php for ($i=1; $i<=3; $i++):
+          switch ($i){
+              case 1: $deliveryType = "Новая почта"; $deliveryFile = $textFile->newPost(); break;
+              case 2: $deliveryType = "Курьером"; $deliveryFile = $textFile->courier(); break;
+              case 3: $deliveryType = "Самовывоз (бесплатно)"; $deliveryFile = $textFile->pickup(); break;
+          }
+        ?>
+            <div class="delivery<? echo $i; ?> row">
+                <div class="col-1">
+                    <input type="radio" name="deliveryID" <? if ($i==1) { echo "checked"; } ?>>
+                </div>
+                <div class="col-11">
+                    <label class="typeDelivery<? echo $i; ?>"><? echo $deliveryType; ?></label><br>
+                    <label><?php echo $deliveryFile; ?></label>
+                </div>
             </div>
-            <div class="col-11">
-                <label class="typeDelivery1">Новая почта</label><br>
-                <label><?php echo $textFile->newPost(); ?></label>
-            </div>
-        </div>
-        <div class="delivery2 row">
-            <div class="col-1">
-                <input type="radio" name="deliveryID">
-            </div>
-            <div class="col-11">
-                <label class="typeDelivery2">Курьером</label><br>
-                <label><?php echo $textFile->courier(); ?></label>
-            </div>
-        </div>
-        <div class="delivery3 row">
-            <div class="col-1">
-                <input type="radio" name="deliveryID">
-            </div>
-            <div class="col-11">
-                <label class="typeDelivery3">Самовывоз (бесплатно)</label><br>
-                <label><?php echo $textFile->pickup(); ?></label>
-            </div>
-        </div>
+        <?php endfor; ?>
     </div>
     <div class="contactInformation col-12 col-lg-6">
         <h4>КОНТАКТНАЯ ИНФОРМАЦИЯ</h4>
-
-
-        <?php if (Yii::$app->session->hasFlash('contactFormSubmitted')): ?>
+        <?php if (Yii::$app->session->hasFlash('contactSubmitted')): ?>
             <div class="alert alert-success">
-                Благодарим Вас за обращение к нам. Мы ответим вам как можно скорее.
+                Благодарим Вас за обращение к нам. Мы ответим Вам как можно скорее.
             </div>
-            <!--        <p>-->
-            <!--            Note that if you turn on the Yii debugger, you should be able-->
-            <!--            to view the mail message on the mail panel of the debugger.-->
-            <!--            --><?php //if (Yii::$app->mailer->useFileTransport): ?>
-            <!--                Because the application is in development mode, the email is not sent but saved as-->
-            <!--                a file under <code>--><?//= Yii::getAlias(Yii::$app->mailer->fileTransportPath) ?><!--</code>.-->
-            <!--                Please configure the <code>useFileTransport</code> property of the <code>mail</code>-->
-            <!--                application component to be false to enable email sending.-->
-            <!--            --><?php //endif; ?>
-            <!--        </p>-->
+<!--                    <p>-->
+<!--                        Note that if you turn on the Yii debugger, you should be able-->
+<!--                        to view the mail message on the mail panel of the debugger.-->
+<!--                        --><?php //if (Yii::$app->mailer->useFileTransport): ?>
+<!--                            Because the application is in development mode, the email is not sent but saved as-->
+<!--                            a file under <code>--><?//= Yii::getAlias(Yii::$app->mailer->fileTransportPath) ?><!--</code>.-->
+<!--                            Please configure the <code>useFileTransport</code> property of the <code>mail</code>-->
+<!--                            application component to be false to enable email sending.-->
+<!--                        --><?php //endif; ?>
+<!--                    </p>-->
         <?php else: ?>
             <div class="row">
                 <div class="contactInformation col-lg-12">
-
-                    <?php $form = ActiveForm::begin(['id' => 'contact-form']); ?>
-                    <?= $form->field($model, 'name', ['enableLabel' => false])->textInput(array('placeholder' => 'Ваше имя', 'class'=>'form-control text-center')) ?>
-                    <?= $form->field($model, 'email', ['enableLabel' => false])->textInput(['placeholder' => 'Email', 'class'=>'form-control text-center']) ?>
-                    <?= $form->field($model, 'body', ['enableLabel' => false])->textarea(['rows' => 3, 'placeholder' => 'Коментарии к заказу', 'class'=>'form-control text-center']) ?>
-                    <?= $form->field($model, 'verifyCode')->widget(Captcha::className(), [
-                        'template' => '<div class="row"><div class="col-lg-3">{image}</div><div class="col-lg-6">{input}</div></div>',
-                    ]) ?>
-                    <div class="form-group">
-                        <?= Html::submitButton('Подтвердите заказ', ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
-                    </div>
+                    <?php $form = ActiveForm::begin(['id' => 'my-contact']); ?>
+                        <?= $form->field($model, 'name', ['enableLabel' => false])->textInput(array('placeholder' => 'Ваше имя', 'class'=>'form-control text-center')) ?>
+                        <?= $form->field($model, 'email', ['enableLabel' => false])->textInput(['placeholder' => 'Email', 'class'=>'form-control text-center']) ?>
+                        <?= $form->field($model, 'phone', ['enableLabel' => false])->textInput(['placeholder' => 'Ваш номер телефона', 'class'=>'form-control text-center']) ?>
+<!--                        --><?//= $form->field($model, 'subject', ['enableLabel' => false]) ?>
+                        <?= $form->field($model, 'body', ['enableLabel' => false])->textarea(['rows' => 4, 'placeholder' => 'Коментарии к заказу', 'class'=>'form-control text-center']) ?>
+<!--                        --><?//= $form->field($model, 'verifyCode')->widget(Captcha::className(), [
+//                            'template' => '<div class="row"><div class="col-lg-3">{image}</div><div class="col-lg-6">{input}</div></div>',
+//                        ]) ?>
+                        <div class="form-group">
+                            <?= Html::submitButton('Подтвердите заказ', ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
+                        </div>
                     <?php ActiveForm::end(); ?>
                 </div>
             </div>
-
         <?php endif; ?>
-
-
     </div>
 </div>
+
 

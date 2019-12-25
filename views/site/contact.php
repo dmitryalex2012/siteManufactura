@@ -10,6 +10,10 @@ use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use yii\captcha\Captcha;
 
+echo "<br>";
+echo "<br>";
+echo "<br>";
+
 $this->title = 'Контакты';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
