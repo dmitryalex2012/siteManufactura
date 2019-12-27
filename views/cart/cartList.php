@@ -20,13 +20,16 @@ use yii\helpers\Html;
 use app\common\components\MyHelpers;
 use app\common\components\TextFile;
 
-
 echo "<br>";
 echo "<br>";
-//echo "<br>";
+echo "<br>";
 
+//echo "Cart";
 $this->title = 'Корзина';
 $this->params['breadcrumbs'][] = $this->title;
+//echo "<br>";
+//echo "Cart";
+//echo "<br>";
 
 $productsEnding = new MyHelpers();
 $textFile = new TextFile();
@@ -124,10 +127,10 @@ $this->registerJs($script1);
           }
         ?>
             <div class="delivery<? echo $i; ?> row">
-                <div class="col-1">
+                <div class="col-2">
                     <input type="radio" name="deliveryID" <? if ($i==1) { echo "checked"; } ?>>
                 </div>
-                <div class="col-11">
+                <div class="onlyCSSinDelivery col-10">
                     <label class="typeDelivery<? echo $i; ?>"><? echo $deliveryType; ?></label><br>
                     <label><?php echo $deliveryFile; ?></label>
                 </div>
