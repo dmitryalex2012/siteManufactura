@@ -74,15 +74,6 @@ AppAsset::register($this);
     ?>
 
 
-<!--    --><?php
-//        echo Nav::widget([
-//        'options' => ['class' => 'navbar-basket navbar-right'],
-//        'items' => [
-//        ['label' => 'Корзина', 'url' => ['/services/list']],
-//        ],
-//        ]);
-//    ?>
-
     <?php
     NavBar::end();
     ?>

@@ -39,6 +39,11 @@ $textFile = new TextFile();
 <h2>В КОРЗИНЕ - <? echo $totalQuantity . " " . $productsEnding->productsEnding($totalQuantity); ?></h2>
 <br>
 
+
+
+
+
+
     <div class="cartTable row">
         <div class="col-sm-1"></div>
         <div class="col-sm-10">
@@ -128,15 +133,42 @@ $this->registerJs($script1);
         ?>
             <div class="delivery<? echo $i; ?> row">
                 <div class="col-2">
-                    <input type="radio" name="deliveryID" <? if ($i==1) { echo "checked"; } ?>>
+<!--                    <input type="radio" name="deliveryID" --><?// if ($i==1) { echo "checked"; } ?>
+<!--                    >-->
+                    <input class="typeDeliveryJS" type="radio" name="deliveryID" value="<?php echo $deliveryType;?>" <? if ($i==1) { echo "checked"; } ?>>
                 </div>
                 <div class="onlyCSSinDelivery col-10">
-                    <label class="typeDelivery<? echo $i; ?>"><? echo $deliveryType; ?></label><br>
+<!--                    <label class="typeDelivery--><?// echo $i; ?><!--">--><?// echo $deliveryType; ?><!--</label><br>-->
+                    <label class="typeDelivery"><? echo $deliveryType; ?></label><br>
                     <label><?php echo $deliveryFile; ?></label>
                 </div>
             </div>
         <?php endfor; ?>
     </div>
+
+
+<?php
+$deliveryTypeJS = <<<JS
+    $('.typeDeliveryJS').change(function() {
+        var deliveryTypeJS = ($(this).val());
+         $.ajax({
+            url: '/cart/delivery',
+            // data: {deliveryTypeJS: deliveryTypeJS},
+            data: {deliveryTypeJS: deliveryTypeJS},
+            type: 'POST',
+            success: function (temp) {
+                console.log(temp);
+             },
+            error: function () {
+                console.log ("Failed");            //  NEED !!!!!!!!!!  better delete???????
+            }
+        });
+    })
+JS;
+$this->registerJs($deliveryTypeJS);
+?>
+
+
     <div class="contactInformation col-12 col-lg-6">
         <h4>КОНТАКТНАЯ ИНФОРМАЦИЯ</h4>
         <?php if (Yii::$app->session->hasFlash('contactSubmitted')): ?>

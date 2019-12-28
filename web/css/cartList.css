@@ -34,7 +34,10 @@ label{
     font-weight: 300!important;
 }
 
-.typeDelivery, .typeDelivery2, .typeDelivery3{
+/*.typeDelivery, .typeDelivery2, .typeDelivery3{*/
+/*    font-weight: bold!important;*/
+/*}*/
+.typeDelivery{
     font-weight: bold!important;
 }
 
@@ -42,6 +45,10 @@ label{
     text-align: justify;
     padding: 10px 30px 10px 30px;
 }
+/*.delivery{*/
+/*    text-align: justify;*/
+/*    padding: 10px 30px 10px 30px;*/
+/*}*/
 
 .onlyCSSinDelivery{
     /*padding: 0px 5px!important;*/

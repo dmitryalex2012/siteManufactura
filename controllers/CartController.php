@@ -80,6 +80,17 @@ class CartController extends Controller
         return $totalQuantity;
     }
 
+    public function actionDelivery()
+    {
+
+//        $cart = new Cart();
+//        $totalQuantity = $cart->temp();
+
+        $temp = Yii::$app->request->post('deliveryTypeJS');
+
+        return $temp;
+    }
+
 //    public function actionTemp()
 //    {
 //
