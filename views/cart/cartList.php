@@ -35,14 +35,13 @@ $productsEnding = new MyHelpers();
 $textFile = new TextFile();
 ?>
 
+<pre>
+    <?php var_dump($items); ?>
+</pre>
+
 <?php $cart = $items; ?>
 <h2>В КОРЗИНЕ - <? echo $totalQuantity . " " . $productsEnding->productsEnding($totalQuantity); ?></h2>
 <br>
-
-
-
-
-
 
     <div class="cartTable row">
         <div class="col-sm-1"></div>
