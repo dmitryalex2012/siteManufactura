@@ -14,7 +14,7 @@ class Cart extends ActiveRecord
         $session = Yii::$app->session;
         $session->open();
         if (!$session->has('cart')) {
-            $cart = [];
+            $cart = [];         // ??????????????????????????????
         } else {
             $cart = $session->get('cart');
         }
@@ -38,7 +38,8 @@ class Cart extends ActiveRecord
         $session->open();
         if (!$session->has('cart')) {
             $session->set('cart',[]);
-            $cart = [];                             // $cart - ARRAY
+//            $cart = [];                             // $cart - ARRAY
+            $cart ["delivery"]["deliveryType"] = "Новая почта";
         } else {
             $cart = $session->get('cart');
         }
@@ -48,7 +49,8 @@ class Cart extends ActiveRecord
 //            $number=>array("number"=>$number, "title"=>$title, "quantity"=>$quantity, "price"=>$price),   *
 //                          .                                                                               *
 //                          .                                                                               *
-//            $number=>array("number"=>$number, "title"=>$title, "quantity"=>$quantity, "price"=>$price)    *
+//            $number=>array("number"=>$number, "title"=>$title, "quantity"=>$quantity, "price"=>$price),   *
+//            $deliveryType=>array("deliveryType"=>$deliveryType)                                           *
 //      }                                                                                                   *
 //***********************************************************************************************************
         //count
@@ -111,6 +113,24 @@ class Cart extends ActiveRecord
         }
         $session->close();
         return;
+    }
+
+    public function changeDelivery ($deliveryType) {
+        $session = Yii::$app->session;
+        $session->open();
+        if ($session->has('cart')) {
+            $cart ["delivery"]["deliveryType"] = $deliveryType;
+//            $cart ["delivery"]["deliveryType"] = "$deliveryType";
+            $temp = "ok";
+        } else {
+            $cart ["delivery"]["deliveryType"] = "Новая почта";
+            $temp = "err";
+        }
+        $session->set('cart', $cart);       // write delivery type in SESSION
+        $session->close();
+
+        return $temp;
+//        return;
     }
 
 }
