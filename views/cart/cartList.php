@@ -35,17 +35,13 @@ $productsEnding = new MyHelpers();
 $textFile = new TextFile();
 ?>
 
-<pre>
-    <?php var_dump($items); ?>
-</pre>
+<!--<pre>-->
+<!--    --><?php //var_dump($items); ?>
+<!--</pre>-->
 
 <?php $cart = $items; ?>
 <h2>В КОРЗИНЕ - <? echo $totalQuantity . " " . $productsEnding->productsEnding($totalQuantity); ?></h2>
 <br>
-
-<?php foreach ($cart as $item){
-    print_r($item);
-} ?>
 
     <div class="cartTable row">
         <div class="col-sm-1"></div>
@@ -60,11 +56,9 @@ $textFile = new TextFile();
                         <th class="text-center">Цена, грн</th>
                         <th class="text-center">Сумма, грн.</th>
                     </tr>
+                    <?php $deliveryType = current(current($cart)); ?>
                     <?php foreach ($cart as $item): ?>
                         <?php if ($item['quantity'] != 0): ?>
-                            <?php if ($item == "delivery") {
-                                $deliveryType = $item["deliveryType"];
-                            } ?>
                             <tr>
                                 <td><?= $item['title']; ?></td>
                                 <td><?= $item['number']; ?></td>
@@ -89,7 +83,7 @@ $textFile = new TextFile();
                         <td id="totalPrice" abbr="<?php echo $price?>"><?= $price; ?></td>
                     </tr>
                     <tr>
-                        <td colspan="5" class="text-right">Тип доставки: <?php echo $deliveryType; ?></td>
+                        <td colspan="5" class="text-center">Тип доставки: <?php echo $deliveryType; ?></td>
                     </tr>
                 </table>
             <?php else: ?>
