@@ -43,6 +43,10 @@ $textFile = new TextFile();
 <h2>В КОРЗИНЕ - <? echo $totalQuantity . " " . $productsEnding->productsEnding($totalQuantity); ?></h2>
 <br>
 
+<?php foreach ($cart as $item){
+    print_r($item);
+} ?>
+
     <div class="cartTable row">
         <div class="col-sm-1"></div>
         <div class="col-sm-10">
@@ -58,6 +62,9 @@ $textFile = new TextFile();
                     </tr>
                     <?php foreach ($cart as $item): ?>
                         <?php if ($item['quantity'] != 0): ?>
+                            <?php if ($item == "delivery") {
+                                $deliveryType = $item["deliveryType"];
+                            } ?>
                             <tr>
                                 <td><?= $item['title']; ?></td>
                                 <td><?= $item['number']; ?></td>
@@ -80,6 +87,9 @@ $textFile = new TextFile();
                     <tr>
                         <td colspan="4" class="text-right">Итого:</td>
                         <td id="totalPrice" abbr="<?php echo $price?>"><?= $price; ?></td>
+                    </tr>
+                    <tr>
+                        <td colspan="5" class="text-right">Тип доставки: <?php echo $deliveryType; ?></td>
                     </tr>
                 </table>
             <?php else: ?>

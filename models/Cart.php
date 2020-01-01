@@ -119,13 +119,16 @@ class Cart extends ActiveRecord
         $session = Yii::$app->session;
         $session->open();
         if ($session->has('cart')) {
+            $cart = $session->get('cart');
             $cart ["delivery"]["deliveryType"] = $deliveryType;
 //            $cart ["delivery"]["deliveryType"] = "$deliveryType";
             $temp = "ok";
-        } else {
-            $cart ["delivery"]["deliveryType"] = "Новая почта";
-            $temp = "err";
         }
+          else { $cart ["delivery"]["deliveryType"] = "Новая почта"; $temp = "empty"; }     // need delete
+//        else {
+//            $cart ["delivery"]["deliveryType"] = "Новая почта";
+//            $temp = "err";
+//        }
         $session->set('cart', $cart);       // write delivery type in SESSION
         $session->close();
 
