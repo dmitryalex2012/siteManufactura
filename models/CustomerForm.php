@@ -21,7 +21,7 @@ class CustomerForm extends Model
         return [
             // name, email, subject and body are required
 //            [['name', 'email', 'subject', 'body'], 'required', 'message'=>'Не заполнено поле'],
-            [['name', 'email', 'body'], 'required', 'message'=>'Не заполнено поле'],
+            [['name', 'email', 'body', 'phone'], 'required', 'message'=>'Не заполнено поле'],
             // email has to be a valid email address
             ['email', 'email', 'message'=>'Некорректный e-mail'],
             // verifyCode needs to be entered correctly
@@ -44,6 +44,30 @@ class CustomerForm extends Model
      */
     public function contact($email)
     {
+        $session = Yii::$app->session;
+        $session->open();
+        if (!$session->has('cart')) {
+            $temp = "Корзина пуста";
+        } else {
+            $cart = $session->get('cart');
+            $temp = "Имя:" . $this->name . ";" . "\r\n";        //  "\r\n" - write in file with new string
+            $temp = $temp . "Телефон: " . $this->phone . ";" . "\r\n";
+            $temp = $temp . "Сообщение: " . $this->body . ";" . "\r\n";
+            $temp = $temp . "Вид доставки: " . $cart ["delivery"]["deliveryType"] . ";" . "\r\n" . "\r\n" . "Состав заказа:" . "\r\n";
+            foreach ($cart as $item){
+                if ($item['quantity'] != 0){
+                    $temp = $temp . "Номер: " . $item['number'] . "\r\n";
+                    $temp = $temp . "Название: " . $item['title'] . "\r\n";
+                    $temp = $temp . "Количество: " . $item['title'] . "\r\n";
+                    $temp = $temp . "Стоимость товаров под даным номером: " . $item['price'] * $item['quantity'] . "\r\n";
+                }
+
+            }
+
+//            $temp = json_encode($temp);
+        }
+        $session->close();
+
         if ($this->validate()) {
             Yii::$app->mailer->compose()
 //                ->setTo([$this->email => $this->name])
@@ -54,7 +78,8 @@ class CustomerForm extends Model
 //                ->setReplyTo($email)
 //                ->setSubject($this->subject)
                 ->setSubject($this->name)
-                ->setTextBody($this->body)
+//                ->setTextBody($this->$temp)
+                ->setTextBody($temp)
                 ->send();
             return true;
         }

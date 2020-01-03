@@ -21,7 +21,7 @@ use app\common\components\MyHelpers;
 use app\common\components\TextFile;
 
 echo "<br>";
-echo "<br>";
+//echo "<br>";
 echo "<br>";
 
 //echo "Cart";
@@ -196,7 +196,7 @@ $this->registerJs($deliveryTypeJS);
                         <?= $form->field($model, 'email', ['enableLabel' => false])->textInput(['placeholder' => 'Email', 'class'=>'form-control text-center']) ?>
                         <?= $form->field($model, 'phone', ['enableLabel' => false])->textInput(['placeholder' => 'Ваш номер телефона', 'class'=>'form-control text-center']) ?>
 <!--                        --><?//= $form->field($model, 'subject', ['enableLabel' => false]) ?>
-                        <?= $form->field($model, 'body', ['enableLabel' => false])->textarea(['rows' => 4, 'placeholder' => 'Коментарии к заказу', 'class'=>'form-control text-center']) ?>
+                        <?= $form->field($model, 'body', ['enableLabel' => false])->textarea(['rows' => 1, 'placeholder' => 'Коментарии к заказу', 'class'=>'form-control text-center']) ?>
 <!--                        --><?//= $form->field($model, 'verifyCode')->widget(Captcha::className(), [
 //                            'template' => '<div class="row"><div class="col-lg-3">{image}</div><div class="col-lg-6">{input}</div></div>',
 //                        ]) ?>
