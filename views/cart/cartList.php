@@ -5,7 +5,6 @@
 /* @var $linens array */
 /* @var $totalQuantity float */
 
-
 /* @var $form yii\bootstrap\ActiveForm */
 /* @var $model app\models\CustomerForm */
 
@@ -174,7 +173,7 @@ $this->registerJs($deliveryTypeJS);
 
     <div class="contactInformation col-12 col-lg-6">
         <h4>КОНТАКТНАЯ ИНФОРМАЦИЯ</h4>
-        <?php if (Yii::$app->session->hasFlash('contactSubmitted')): ?>
+        <?php if (Yii::$app->session->hasFlash('contactFormSubmitted')): ?>
             <div class="alert alert-success">
                 Благодарим Вас за обращение к нам. Мы ответим Вам как можно скорее.
             </div>

@@ -50,20 +50,25 @@ class CustomerForm extends Model
             $temp = "Корзина пуста";
         } else {
             $cart = $session->get('cart');
-            $temp = "Имя:" . $this->name . ";" . "\r\n";        //  "\r\n" - write in file with new string
-            $temp = $temp . "Телефон: " . $this->phone . ";" . "\r\n";
-            $temp = $temp . "Сообщение: " . $this->body . ";" . "\r\n";
-            $temp = $temp . "Вид доставки: " . $cart ["delivery"]["deliveryType"] . ";" . "\r\n" . "\r\n" . "Состав заказа:" . "\r\n";
+            $temp = "Имя:" . $this->name . ";  ";
+            $temp = $temp . "Телефон: " . $this->phone . ";  ";
+            $temp = $temp . "Вид доставки: " . $cart ["delivery"]["deliveryType"] . ";" . "\r\n"; //  "\r\n" - write in file with new string
+            $temp = $temp . "Сообщение Заказчика: " . $this->body . ";" . "\r\n" . "\r\n";
+            $temp = $temp . "Состав заказа:" . "\r\n" . "\r\n";
+            $totalPrice = 0;
             foreach ($cart as $item){
                 if ($item['quantity'] != 0){
-                    $temp = $temp . "Номер: " . $item['number'] . "\r\n";
+                    $itemPrice = 0;
+                    $temp = $temp . "Номер товара: " . $item['number'] . "\r\n";
                     $temp = $temp . "Название: " . $item['title'] . "\r\n";
-                    $temp = $temp . "Количество: " . $item['title'] . "\r\n";
-                    $temp = $temp . "Стоимость товаров под даным номером: " . $item['price'] * $item['quantity'] . "\r\n";
+                    $temp = $temp . "Количество: " . $item['quantity'] . "\r\n";
+                    $temp = $temp . "Стоимость товаров под даным номером: " .
+                        $itemPrice = $itemPrice + $item['price'] * $item['quantity'] . "\r\n" . "\r\n";
+                    $totalPrice = $totalPrice + $itemPrice;
                 }
 
             }
-
+            $temp = $temp . "Общая стоимость заказа: " . $totalPrice;
 //            $temp = json_encode($temp);
         }
         $session->close();

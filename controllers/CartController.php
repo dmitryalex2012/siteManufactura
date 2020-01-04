@@ -21,21 +21,17 @@ class CartController extends Controller
         $totalQuantity = $cart->totalQuantity();
         if ($totalQuantity == 0) { $cart->clearCart(); }
 
-
         $model = new CustomerForm();
         if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
             Yii::$app->session->setFlash('contactFormSubmitted');
-
-//            return $this->refresh();
+            return $this->refresh();
         }
-
 
         return $this->render('cartList', [
             'items' => $cart->outFromCart(),
             'totalQuantity' => $totalQuantity,
 
             'model' => $model
-
         ]);
     }
 
@@ -87,14 +83,5 @@ class CartController extends Controller
 
         return $temp;
     }
-
-//    public function actionTemp()
-//    {
-//
-//        $cart = new Cart();
-//        $totalQuantity = $cart->temp();
-//
-//        return $totalQuantity;
-//    }
 
 }
