@@ -123,12 +123,9 @@ $this->registerJs($script1);
         ?>
             <div class="delivery<? echo $i; ?> row">
                 <div class="col-2">
-<!--                    <input type="radio" name="deliveryID" --><?// if ($i==1) { echo "checked"; } ?>
-<!--                    >-->
                     <input class="typeDeliveryJS" type="radio" name="deliveryID" value="<?php echo $deliveryType;?>" <? if ($i==1) { echo "checked"; } ?>>
                 </div>
                 <div class="onlyCSSinDelivery col-10">
-<!--                    <label class="typeDelivery--><?// echo $i; ?><!--">--><?// echo $deliveryType; ?><!--</label><br>-->
                     <label class="typeDelivery"><? echo $deliveryType; ?></label><br>
                     <label><?php echo $deliveryFile; ?></label>
                 </div>
@@ -158,8 +155,29 @@ JS;
 $this->registerJs($deliveryTypeJS);
 ?>
 
+    <div class="purchaseInformation col-12 col-lg-3">
+        <h4>ВЫБЕРИТЕ СПОСОБ ОПЛАТЫ</h4>
+        <?php for ($i=1; $i<=3; $i++):
+            switch ($i){
+                case 1: $purchaseType = "Наложным платежом"; break;
+                case 2: $purchaseType = "На карту Приват-банка"; break;
+                case 3: $purchaseType = "Наличными"; break;
+            }
+            ?>
+            <div class="purchase<? echo $i; ?> row">
+                <div class="col-2">
+                    <input class="typePurchaseJS" type="radio" name="purchaseID" value="<?php echo $purchaseType;?>" <? if ($i==1) { echo "checked"; } ?>>
+                </div>
+                <div class="onlyCSSinPurchase col-10">
+                    <label class="typePurchase"><? echo $purchaseType; ?></label><br>
+                    <?php if ($i==2) { echo "<label>" . "(банковские реквизиты будут высланы Вам после оформления заказа)" . "</label>"; }
+                    ?>
+                </div>
+            </div>
+        <?php endfor; ?>
+    </div>
 
-    <div class="contactInformation col-12 col-lg-6">
+    <div class="contactInformation col-12 col-lg-3">
         <h4>КОНТАКТНАЯ ИНФОРМАЦИЯ</h4>
         <?php if (Yii::$app->session->hasFlash('contactFormSubmitted')): ?>
             <div class="alert alert-success">
