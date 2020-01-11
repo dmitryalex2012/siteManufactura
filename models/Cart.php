@@ -121,13 +121,12 @@ class Cart extends ActiveRecord
         if ($session->has('cart')) {
             $cart = $session->get('cart');
             $cart ["delivery"]["deliveryType"] = $deliveryType;
-            $temp = "ok";
         }
           else { $cart ["delivery"]["deliveryType"] = "Новая почта"; $temp = "empty"; }     // need delete
         $session->set('cart', $cart);       // write delivery type in SESSION
         $session->close();
 
-        return $temp;
+        return $deliveryType;
     }
 
 //    public function setFlash(){

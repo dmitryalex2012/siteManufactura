@@ -79,9 +79,8 @@ class CartController extends Controller
     public function actionDelivery()
     {
         $cart = new Cart();
-        $temp = $cart->changeDelivery(Yii::$app->request->post('deliveryTypeJS'));
 
-        return $temp;
+        return $cart->changeDelivery(Yii::$app->request->post('deliveryTypeJS'));
     }
 
 }

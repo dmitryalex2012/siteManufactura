@@ -47,7 +47,7 @@ label{
 
 .delivery1, .delivery2, .delivery3{
     text-align: justify;
-    padding: 10px 30px 10px 30px;
+    padding: 10px 10px 10px 10px;
 }
 /*.delivery{*/
 /*    text-align: justify;*/
@@ -58,6 +58,13 @@ label{
     /*padding: 0px 5px!important;*/
     /*padding-right: 0px;*/
     padding-left: 0px;
+    /*padding-right: 0px;*/
+}
+
+.onlyCSSinPurchase{
+    text-align: justify;
+    padding-bottom: 15px;
+    padding-left: 0px;
 }
 
 .deliveryMethod{
@@ -65,7 +72,7 @@ label{
 }
 
 .contactInformation{
-    padding: 0px 10px 0px 10px;
+    padding: 0px 20px 0px 20px;
 }
 
 .purchaseRegistration{

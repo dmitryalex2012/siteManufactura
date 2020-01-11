@@ -70,7 +70,7 @@ $textFile = new TextFile();
                         <td id="totalPrice" abbr="<?php echo $price?>"><?= $price; ?></td>
                     </tr>
                     <tr>
-                        <td colspan="5" class="text-center">Тип доставки: <?php echo $deliveryType; ?></td>
+                        <td class="deliveryTypeInTable" colspan="5" class="text-center">Тип доставки: <?php echo $deliveryType; ?></td>
                     </tr>
                 </table>
             <?php else: ?>
@@ -112,11 +112,11 @@ $this->registerJs($script1);
 ?>
 
 <div class="purchaseRegistration row">
-    <div class="deliveryMethod col-12 col-lg-6">
+    <div class="deliveryMethod col-12 col-lg-4">
         <h4>ВЫБЕРИТЕ СПОСОБ ДОСТАВКИ</h4>
         <?php for ($i=1; $i<=3; $i++):
           switch ($i){
-              case 1: $deliveryType = "Новая почта"; $deliveryFile = $textFile->newPost(); break;
+              case 1: $deliveryType = "Новая Почта"; $deliveryFile = $textFile->newPost(); break;
               case 2: $deliveryType = "Курьером"; $deliveryFile = $textFile->courier(); break;
               case 3: $deliveryType = "Самовывоз (бесплатно)"; $deliveryFile = $textFile->pickup(); break;
           }
@@ -143,8 +143,9 @@ $deliveryTypeJS = <<<JS
             // data: {deliveryTypeJS: deliveryTypeJS},
             data: {deliveryTypeJS: deliveryTypeJS},
             type: 'POST',
-            success: function (temp) {
-                console.log(temp);
+            success: function (deliveryType) {
+                console.log(deliveryType);
+                $('.deliveryTypeInTable').html("Тип доставки: "+ deliveryType);
              },
             error: function () {
                 console.log ("Failed");            //  NEED !!!!!!!!!!  better delete???????
@@ -155,7 +156,7 @@ JS;
 $this->registerJs($deliveryTypeJS);
 ?>
 
-    <div class="purchaseInformation col-12 col-lg-3">
+    <div class="purchaseInformation col-12 col-lg-4">
         <h4>ВЫБЕРИТЕ СПОСОБ ОПЛАТЫ</h4>
         <?php for ($i=1; $i<=3; $i++):
             switch ($i){
@@ -170,14 +171,15 @@ $this->registerJs($deliveryTypeJS);
                 </div>
                 <div class="onlyCSSinPurchase col-10">
                     <label class="typePurchase"><? echo $purchaseType; ?></label><br>
-                    <?php if ($i==2) { echo "<label>" . "(банковские реквизиты будут высланы Вам после оформления заказа)" . "</label>"; }
+                    <?php   if ($i==1) { echo "<label>" . '(данный способ оплаты возможен при отправке товара "Новой Почтой")' . "</label>"; }
+                            if ($i==2) { echo "<label>" . "(банковские реквизиты будут высланы Вам после оформления заказа)" . "</label>"; }
                     ?>
                 </div>
             </div>
         <?php endfor; ?>
     </div>
 
-    <div class="contactInformation col-12 col-lg-3">
+    <div class="contactInformation col-12 col-lg-4">
         <h4>КОНТАКТНАЯ ИНФОРМАЦИЯ</h4>
         <?php if (Yii::$app->session->hasFlash('contactFormSubmitted')): ?>
             <div class="alert alert-success">
