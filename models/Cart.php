@@ -122,17 +122,25 @@ class Cart extends ActiveRecord
             $cart = $session->get('cart');
             $cart ["delivery"]["deliveryType"] = $deliveryType;
         }
-          else { $cart ["delivery"]["deliveryType"] = "Новая почта"; $temp = "empty"; }     // need delete
+          else { $cart ["delivery"]["deliveryType"] = "Новая почта"; }     // need delete
         $session->set('cart', $cart);       // write delivery type in SESSION
         $session->close();
 
         return $deliveryType;
     }
 
-//    public function setFlash(){
-//        $session = Yii::$app->session;
-//        $session->open();
-//        Yii::$app->session->setFlash('contactFormSubmitted');
-//        $session->close();
-//    }
+    public function changePurchase ($purchaseType) {
+        $session = Yii::$app->session;
+        $session->open();
+        if ($session->has('cart')) {
+            $cart = $session->get('cart');
+            $cart ["purchase"]["purchaseType"] = $purchaseType;
+        }
+        else { $cart ["purchase"]["purchaseType"] = "Наложным платежом"; }     // need delete
+        $session->set('cart', $cart);       // write delivery type in SESSION
+        $session->close();
+
+        return $purchaseType;
+    }
+
 }

@@ -43,7 +43,13 @@ $textFile = new TextFile();
                         <th class="text-center">Цена, грн</th>
                         <th class="text-center">Сумма, грн.</th>
                     </tr>
-                    <?php $deliveryType = current(current($cart)); ?>
+
+
+
+                    <?php $deliveryType = current(current($cart)); $purchaseType = "Наложным платежом"; ?>  <!-- modify: $purchaseType -->
+
+
+
                     <?php foreach ($cart as $item): ?>
                         <?php if ($item['quantity'] != 0): ?>
                             <tr>
@@ -70,7 +76,8 @@ $textFile = new TextFile();
                         <td id="totalPrice" abbr="<?php echo $price?>"><?= $price; ?></td>
                     </tr>
                     <tr>
-                        <td class="deliveryTypeInTable" colspan="5" class="text-center">Тип доставки: <?php echo $deliveryType; ?></td>
+                        <td class="deliveryTypeInTable" colspan="2" class="text-center">Тип доставки: <?php echo $deliveryType; ?></td>
+                        <td class="purchaseTypeInTable" colspan="3" class="text-center">Способ оплаты: <?php echo $purchaseType; ?></td>
                     </tr>
                 </table>
             <?php else: ?>
@@ -140,7 +147,6 @@ $deliveryTypeJS = <<<JS
         var deliveryTypeJS = ($(this).val());
          $.ajax({
             url: '/cart/delivery',
-            // data: {deliveryTypeJS: deliveryTypeJS},
             data: {deliveryTypeJS: deliveryTypeJS},
             type: 'POST',
             success: function (deliveryType) {
@@ -178,6 +184,29 @@ $this->registerJs($deliveryTypeJS);
             </div>
         <?php endfor; ?>
     </div>
+
+
+    <?php
+    $purchaseTypeJS = <<<JS
+    $('.typePurchaseJS').change(function() {
+        var purchaseTypeJS = ($(this).val());
+         $.ajax({
+            url: '/cart/purchase',
+            data: {purchaseTypeJS: purchaseTypeJS},
+            type: 'POST',
+            success: function (purchaseType) {
+                console.log(purchaseType);
+                $('.purchaseTypeInTable').html("Способ оплаты: "+ purchaseType);
+             },
+            error: function () {
+                console.log ("Failed");            //  NEED !!!!!!!!!!  better delete???????
+            }
+        });
+    })
+JS;
+    $this->registerJs($purchaseTypeJS);
+    ?>
+
 
     <div class="contactInformation col-12 col-lg-4">
         <h4>КОНТАКТНАЯ ИНФОРМАЦИЯ</h4>

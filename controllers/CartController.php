@@ -83,4 +83,10 @@ class CartController extends Controller
         return $cart->changeDelivery(Yii::$app->request->post('deliveryTypeJS'));
     }
 
+    public function actionPurchase()
+    {
+        $cart = new Cart();
+
+        return $cart->changePurchase(Yii::$app->request->post('purchaseTypeJS'));
+    }
 }
