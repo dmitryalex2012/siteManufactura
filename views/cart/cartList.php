@@ -133,12 +133,16 @@ $this->registerJs($script1);
                     <input class="typeDeliveryJS" type="radio" name="deliveryID" value="<?php echo $deliveryType;?>"
 
 
-                        <? if ($i==1) { echo "checked"; } ?>>
+<!--                        --><?php //if ($i==1) { echo "checked"; } ?>
+
+                        <?      if (($i==1) && ($deliveryType == "Новая Почта")) { echo "checked"; }
+                                if (($i==2) && ($deliveryType == "Курьером")) { echo "checked"; }
+                                if (($i==3) && ($deliveryType == "Самовывоз (бесплатно)")) { echo "checked"; }
+                        ?>
 
 
-<!--                        --><?php //if (($i==1) && ($deliveryType == "Новая Почта")) { echo "checked"; } ?>
-<!--                        --><?php //if (($i==2) && ($deliveryType == "Курьером")) { echo "checked"; } ?>
-<!--                        --><?php //if (($i==3) && ($deliveryType == 'Самовывоз (бесплатно)')) { echo "checked"; } ?>
+
+                    >
                  </div>
                 <div class="onlyCSSinDelivery col-10">
                     <label class="typeDelivery"><? echo $deliveryTypeTemp; ?></label><br>
