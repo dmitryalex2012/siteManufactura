@@ -76,8 +76,8 @@ $textFile = new TextFile();
                         <td id="totalPrice" abbr="<?php echo $price?>"><?= $price; ?></td>
                     </tr>
                     <tr>
-                        <td class="deliveryTypeInTable" colspan="2" class="text-center">Тип доставки: <?php echo $deliveryType; ?></td>
-                        <td class="purchaseTypeInTable" colspan="3" class="text-center">Способ оплаты: <?php echo $purchaseType; ?></td>
+                        <td class="deliveryTypeInTable" colspan="3" class="text-center">Тип доставки: <?php echo $deliveryType; ?></td>
+                        <td class="purchaseTypeInTable" colspan="2" class="text-center">Способ оплаты: <?php echo $purchaseType; ?></td>
                     </tr>
                 </table>
             <?php else: ?>
@@ -123,22 +123,34 @@ $this->registerJs($script1);
         <h4>ВЫБЕРИТЕ СПОСОБ ДОСТАВКИ</h4>
         <?php for ($i=1; $i<=3; $i++):
           switch ($i){
-              case 1: $deliveryType = "Новая Почта"; $deliveryFile = $textFile->newPost(); break;
-              case 2: $deliveryType = "Курьером"; $deliveryFile = $textFile->courier(); break;
-              case 3: $deliveryType = "Самовывоз (бесплатно)"; $deliveryFile = $textFile->pickup(); break;
+              case 1: $deliveryTypeTemp = "Новая Почта"; $deliveryFile = $textFile->newPost(); break;
+              case 2: $deliveryTypeTemp = "Курьером"; $deliveryFile = $textFile->courier(); break;
+              case 3: $deliveryTypeTemp = "Самовывоз (бесплатно)"; $deliveryFile = $textFile->pickup(); break;
           }
         ?>
             <div class="delivery<? echo $i; ?> row">
                 <div class="col-2">
-                    <input class="typeDeliveryJS" type="radio" name="deliveryID" value="<?php echo $deliveryType;?>" <? if ($i==1) { echo "checked"; } ?>>
-                </div>
+                    <input class="typeDeliveryJS" type="radio" name="deliveryID" value="<?php echo $deliveryType;?>"
+
+
+                        <? if ($i==1) { echo "checked"; } ?>>
+
+
+<!--                        --><?php //if (($i==1) && ($deliveryType == "Новая Почта")) { echo "checked"; } ?>
+<!--                        --><?php //if (($i==2) && ($deliveryType == "Курьером")) { echo "checked"; } ?>
+<!--                        --><?php //if (($i==3) && ($deliveryType == 'Самовывоз (бесплатно)')) { echo "checked"; } ?>
+                 </div>
                 <div class="onlyCSSinDelivery col-10">
-                    <label class="typeDelivery"><? echo $deliveryType; ?></label><br>
+                    <label class="typeDelivery"><? echo $deliveryTypeTemp; ?></label><br>
                     <label><?php echo $deliveryFile; ?></label>
+
+                    <label><?php echo $deliveryType; ?></label>
+
                 </div>
             </div>
         <?php endfor; ?>
     </div>
+
 
 
 <?php
