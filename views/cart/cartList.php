@@ -30,19 +30,19 @@ $textFile = new TextFile();
 
 
 <?php
-echo '<pre>';
-print_r($items);
-echo '</pre>';
-?>
+//echo '<pre>';
+//print_r($items);
+//echo '</pre>';
+//?>
 <?php
-foreach ($cart as $item){
+//foreach ($cart as $item){
 //    if ($item['deliveryType']) {
 //        echo $item['deliveryType'];
 //    }
 //    print_r($item);
 //    echo "<br>";
-}
-?>
+//}
+//?>
 
 
 <h2>В КОРЗИНЕ - <? echo $totalQuantity . " " . $productsEnding->productsEnding($totalQuantity); ?></h2>
@@ -62,23 +62,18 @@ foreach ($cart as $item){
                         <th class="text-center">Сумма, грн.</th>
                     </tr>
 
-
-
-
                     <?php   $deliveryType = "Новая Почта"; $purchaseType = "Наложным платежом";
                             if ($cart):
                                 foreach ($cart as $item):                           // set active radio button DELIVERY TYPE
                                     if ($item['deliveryType']) {                    // and PURCHASE TYPE in case if
-                                        echo $deliveryType = $item['deliveryType']; // it  was selected before
+                                        $deliveryType = $item['deliveryType'];      // it  was selected before
                                     }
                                     if ($item['purchaseType']) {
-                                        echo $purchaseType = $item['purchaseType'];
+                                        $purchaseType = $item['purchaseType'];
                                     }
                                 endforeach;
                             endif;
                     ?>
-
-
 
                     <?php foreach ($cart as $item): ?>
                         <?php if ($item['quantity'] != 0): ?>
@@ -202,17 +197,26 @@ $this->registerJs($deliveryTypeJS);
         <h4>ВЫБЕРИТЕ СПОСОБ ОПЛАТЫ</h4>
         <?php for ($i=1; $i<=3; $i++):
             switch ($i){
-                case 1: $purchaseType = "Наложным платежом"; break;
-                case 2: $purchaseType = "На карту Приват-банка"; break;
-                case 3: $purchaseType = "Наличными"; break;
+                case 1: $purchaseTypeTemp = "Наложным платежом"; break;
+                case 2: $purchaseTypeTemp = "На карту Приват-банка"; break;
+                case 3: $purchaseTypeTemp = "Наличными"; break;
             }
             ?>
             <div class="purchase<? echo $i; ?> row">
                 <div class="col-2">
-                    <input class="typePurchaseJS" type="radio" name="purchaseID" value="<?php echo $purchaseType;?>" <? if ($i==1) { echo "checked"; } ?>>
+                    <input class="typePurchaseJS" type="radio" name="purchaseID" value="<?php echo $purchaseTypeTemp;?>"
+
+
+                    <?  if (($i==1) && ($purchaseType == "Наложным платежом")) { echo "checked"; }
+                        if (($i==2) && ($purchaseType == "На карту Приват-банка")) { echo "checked"; }
+                        if (($i==3) && ($purchaseType == "Наличными")) { echo "checked"; }
+                    ?>
+
+                    <?// if ($i==1) { echo "checked"; } ?>
+                    >
                 </div>
                 <div class="onlyCSSinPurchase col-10">
-                    <label class="typePurchase"><? echo $purchaseType; ?></label><br>
+                    <label class="typePurchase"><? echo $purchaseTypeTemp; ?></label><br>
                     <?php   if ($i==1) { echo "<label>" . '(данный способ оплаты возможен при отправке товара "Новой Почтой")' . "</label>"; }
                             if ($i==2) { echo "<label>" . "(банковские реквизиты будут высланы Вам после оформления заказа)" . "</label>"; }
                     ?>
