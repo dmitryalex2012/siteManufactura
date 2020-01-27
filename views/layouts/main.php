@@ -117,7 +117,7 @@ $this->registerJs($onLoad);
     <div class="container">
         <div class="row">
             <div class="containerLogo col-sm-7 col-12">
-                <p>&copy; Дизайн-бюро "Мануфактура" 2012-2019</p>
+                <p>&copy; Дизайн-бюро "Мануфактура" 2012-2020</p>
             </div>
             <div class="containerRef col-sm-5 col-12">
                 <a href="https://www.facebook.com/kievshtoranazakaz/" target="_blank"><img src="/foto/facebook1.png" alt=""/></a>

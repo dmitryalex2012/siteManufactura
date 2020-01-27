@@ -47,44 +47,41 @@ class CustomerForm extends Model
         $session = Yii::$app->session;
         $session->open();
         if (!$session->has('cart')) {
-            $temp = "Корзина пуста";
+            $messageContent = "Корзина пуста";
         } else {
             $cart = $session->get('cart');
-            $temp = "Имя:" . $this->name . ";  ";
-            $temp = $temp . "Телефон: " . $this->phone . ";  ";
-            $temp = $temp . "Вид доставки: " . $cart ["delivery"]["deliveryType"] . ";" . "\r\n"; //  "\r\n" - write in file with new string
-            $temp = $temp . "Сообщение Заказчика: " . $this->body . ";" . "\r\n" . "\r\n";
-            $temp = $temp . "Состав заказа:" . "\r\n" . "\r\n";
+            $messageContent = "Имя: " . $this->name . ";" . "\r\n";
+            $messageContent = $messageContent . "Телефон: " . $this->phone . ";" . "\r\n";
+            $messageContent = $messageContent . "Вид доставки: " . $cart ["delivery"]["deliveryType"] . ";" . "\r\n"; //  "\r\n" - write in file with new string
+            $messageContent = $messageContent . "Форма оплаты: " . $cart["purchase"]["purchaseType"] .  ";" . "\r\n";
+            $messageContent = $messageContent . "Сообщение Заказчика: " . $this->body . "." . "\r\n" . "\r\n";
+            $messageContent = $messageContent . "Состав заказа: " . "\r\n" . "\r\n";
             $totalPrice = 0;
             foreach ($cart as $item){
                 if ($item['quantity'] != 0){
                     $itemPrice = 0;
-                    $temp = $temp . "Номер товара: " . $item['number'] . "\r\n";
-                    $temp = $temp . "Название: " . $item['title'] . "\r\n";
-                    $temp = $temp . "Количество: " . $item['quantity'] . "\r\n";
-                    $temp = $temp . "Стоимость товаров под даным номером: " .
+                    $messageContent = $messageContent . "Номер товара: " . $item['number'] . "\r\n";
+                    $messageContent = $messageContent . "Название: " . $item['title'] . "\r\n";
+                    $messageContent = $messageContent . "Количество: " . $item['quantity'] . "\r\n";
+                    $messageContent = $messageContent . "Стоимость товаров под даным номером: " .
                         $itemPrice = $itemPrice + $item['price'] * $item['quantity'] . "\r\n" . "\r\n";
                     $totalPrice = $totalPrice + $itemPrice;
                 }
 
             }
-            $temp = $temp . "Общая стоимость заказа: " . $totalPrice;
-//            $temp = json_encode($temp);
+            $messageContent = $messageContent . "Общая стоимость заказа: " . $totalPrice;
         }
         $session->close();
 
         if ($this->validate()) {
             Yii::$app->mailer->compose()
-//                ->setTo([$this->email => $this->name])
                 ->setTo([$this->email])
 //                ->setFrom([Yii::$app->params['senderEmail'] => Yii::$app->params['senderName']])
 //                ->setFrom(['tpmfd27@gmail.com' => $this->name])
                 ->setFrom(['tpmfd27@gmail.com'])
 //                ->setReplyTo($email)
-//                ->setSubject($this->subject)
                 ->setSubject($this->name)
-//                ->setTextBody($this->$temp)
-                ->setTextBody($temp)
+                ->setTextBody($messageContent)
                 ->send();
             return true;
         }

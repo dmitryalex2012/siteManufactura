@@ -33,7 +33,7 @@ $textFile = new TextFile();
 //echo '<pre>';
 //print_r($items);
 //echo '</pre>';
-//?>
+?>
 <?php
 //foreach ($cart as $item){
 //    if ($item['deliveryType']) {
@@ -42,7 +42,7 @@ $textFile = new TextFile();
 //    print_r($item);
 //    echo "<br>";
 //}
-//?>
+?>
 
 
 <h2>В КОРЗИНЕ - <? echo $totalQuantity . " " . $productsEnding->productsEnding($totalQuantity); ?></h2>

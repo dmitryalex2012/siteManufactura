@@ -50,7 +50,7 @@ class Cart extends ActiveRecord
 //                          .                                                                               *
 //                          .                                                                               *
 //            $number=>array("number"=>$number, "title"=>$title, "quantity"=>$quantity, "price"=>$price),   *
-//            $deliveryType=>array("deliveryType"=>$deliveryType)                                           *
+//            $delivery=>array("deliveryType"=>$deliveryType)                                           *
 //      }                                                                                                   *
 //***********************************************************************************************************
         //count
