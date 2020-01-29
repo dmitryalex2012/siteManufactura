@@ -37,7 +37,7 @@ AppAsset::register($this);
     NavBar::begin([
 //        'brandLabel' => Yii::$app->name,
 //        'brandUrl' => Yii::$app->homeUrl,
-        'brandLabel' => '<img src="/foto/logo.jpg"; class="img-responsive">',
+        'brandLabel' => '<img src="/web/foto/logo.jpg"; class="img-responsive">',
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
@@ -120,8 +120,8 @@ $this->registerJs($onLoad);
                 <p>&copy; Дизайн-бюро "Мануфактура" 2012-2020</p>
             </div>
             <div class="containerRef col-sm-5 col-12">
-                <a href="https://www.facebook.com/kievshtoranazakaz/" target="_blank"><img src="/foto/facebook1.png" alt=""/></a>
-                <a href="https://www.instagram.com/kievshtoranazakaz/" target="_blank"><img src="/foto/inst1.png" alt=""/></a>
+                <a href="https://www.facebook.com/kievshtoranazakaz/" target="_blank"><img src="/web/foto/facebook1.png" alt=""/></a>
+                <a href="https://www.instagram.com/kievshtoranazakaz/" target="_blank"><img src="/web/foto/inst1.png" alt=""/></a>
             </div>
         </div>
 <!--        <p class="pull-right">--><?//= Yii::powered() ?><!--</p>-->
