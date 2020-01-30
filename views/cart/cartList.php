@@ -40,7 +40,7 @@ $textFile = new TextFile();
 //        echo $item['deliveryType'];
 //    }
 //    print_r($item);
-//    echo "<br>";
+    echo "<br,>";
 //}
 ?>
 
