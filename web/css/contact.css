@@ -15,3 +15,17 @@ body.contact {
     background-size: cover;
 }
 
+.contactsHeading{
+    font-style: normal;
+    text-align: center;
+    font-size: 20px;
+    margin: 0px 0px 10px 0px;
+}
+
+.contactsInformation {
+    text-align: center;
+}
+
+p{
+    margin: 0;
+}

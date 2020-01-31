@@ -15,56 +15,27 @@ $this->params['breadcrumbs'][] = $this->title;
 echo "<br>";
 ?>
 
-<div class="site-contact">
-    <h1><?= Html::encode($this->title) ?></h1>
 
-    <?php if (Yii::$app->session->hasFlash('contactFormSubmitted')): ?>
+<div class="weOnMap col-12 col-lg-9">
+    <h4>Place for map</h4>
+</div>
 
-        <div class="alert alert-success">
-            Благодарим Вас за обращение к нам. Мы ответим вам как можно скорее.
-        </div>
+<div class="ourContacts col-12 col-lg-3">
+    <p class="contactsHeading">ЗВОНИТЕ:</p>
+    <p class="contactsInformation">+38(097)927-25-84</p>
+    <p class="contactsInformation">+38(066)034-39-57 (viber)</p>
+    <br>
+    <br>
 
-<!--        <p>-->
-<!--            Note that if you turn on the Yii debugger, you should be able-->
-<!--            to view the mail message on the mail panel of the debugger.-->
-<!--            --><?php //if (Yii::$app->mailer->useFileTransport): ?>
-<!--                Because the application is in development mode, the email is not sent but saved as-->
-<!--                a file under <code>--><?//= Yii::getAlias(Yii::$app->mailer->fileTransportPath) ?><!--</code>.-->
-<!--                Please configure the <code>useFileTransport</code> property of the <code>mail</code>-->
-<!--                application component to be false to enable email sending.-->
-<!--            --><?php //endif; ?>
-<!--        </p>-->
+    <p class="contactsHeading">ПИШИТЕ:</p>
+    <p class="contactsInformation">snn.manufactura@gmail.com</p>
+    <br>
+    <br>
 
-    <?php else: ?>
-
-        <p>
-            Если у вас есть вопросы, пожалуйста, заполните следующую форму, чтобы связаться с нами. Спасибо.
-        </p>
-
-        <div class="row">
-            <div class="col-lg-5">
-
-                <?php $form = ActiveForm::begin(['id' => 'contact-form']); ?>
-
-                    <?= $form->field($model, 'name')->textInput(['autofocus' => true]) ?>
-                    <?= $form->field($model, 'email')->textInput()->hint('Введите любой текст') ?>
-
-<!--                --><?//= $form->field($model, 'phone')->textInput()->hint('Введите любой текст') ?>
-
-                    <?= $form->field($model, 'subject') ?>
-                    <?= $form->field($model, 'body')->textarea(['rows' => 6]) ?>
-                    <?= $form->field($model, 'verifyCode')->widget(Captcha::className(), [
-                        'template' => '<div class="row"><div class="col-lg-3">{image}</div><div class="col-lg-6">{input}</div></div>',
-                    ]) ?>
-
-                    <div class="form-group">
-                        <?= Html::submitButton('Отправить', ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
-                    </div>
-
-                <?php ActiveForm::end(); ?>
-
-            </div>
-        </div>
-
-    <?php endif; ?>
+    <p class="contactsHeading">ПРИЕЗЖАЙТЕ:</p>
+    <p class="contactsInformation">г. Киев, ул. Шалетт Города 1, оф. 208</p>
+    <p class="contactsInformation">Мы работаем каждый день с 9 до 20</p>
+    <p class="contactsInformation">Пожалуйста, перезвоните заранее</p>
+    <br>
+    <br>
 </div>
