@@ -212,7 +212,6 @@ $this->registerJs($deliveryTypeJS);
                         if (($i==3) && ($purchaseType == "Наличными")) { echo "checked"; }
                     ?>
 
-                    <?// if ($i==1) { echo "checked"; } ?>
                     >
                 </div>
                 <div class="onlyCSSinPurchase col-10">

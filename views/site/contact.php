@@ -17,8 +17,21 @@ echo "<br>";
 
 
 <div class="weOnMap col-12 col-lg-9">
-    <h4>Place for map</h4>
+    <div id="map"></div>
 </div>
+
+<script>
+function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: {lat: 50.466316, lng: 30.615281},
+            zoom: 16
+        });
+}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJhXz9qSSw8KjSOnjMW8b1qeD1AfRmU-4&callback=initMap"
+        async defer>
+</script>
+
 
 <div class="ourContacts col-12 col-lg-3">
     <p class="contactsHeading">ЗВОНИТЕ:</p>
