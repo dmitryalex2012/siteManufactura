@@ -19,6 +19,18 @@ echo "<br>";
 <div class="weOnMap col-12 col-lg-9">
     <div id="map"></div>
 </div>
+<script>
+    var map;
+    function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: {lat: -34.397, lng: 150.644},
+            zoom: 15
+        });
+    }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJhXz9qSSw8KjSOnjMW8b1qeD1AfRmU-4&callback=initMap"
+        async defer>
+</script>
 
 <script>
 function initMap() {
