@@ -34,10 +34,12 @@ echo "<br>";
 
 <script>
 function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-            center: {lat: 50.466316, lng: 30.615281},
-            zoom: 16
+    let position = {lat: 50.466316, lng: 30.615281};
+    let map = new google.maps.Map(document.getElementById('map'), {
+            center: position,
+            zoom: 15
         });
+    let marker = new google.maps.Marker({position: position, map: map, title: "Дизайн-бюро Мануфактура"});
 }
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJhXz9qSSw8KjSOnjMW8b1qeD1AfRmU-4&callback=initMap"
@@ -60,7 +62,8 @@ function initMap() {
     <p class="contactsHeading">ПРИЕЗЖАЙТЕ:</p>
     <p class="contactsInformation">г. Киев, ул. Шалетт Города 1, оф. 208</p>
     <p class="contactsInformation">Мы работаем каждый день с 9 до 20</p>
-    <p class="contactsInformation">Пожалуйста, перезвоните заранее</p>
+<!--    <p class="contactsInformation">Пожалуйста, перезвоните заранее</p>-->
+    <p class="contactsInformation">(пожалуйста, согласуйте время Вашего приезда заранее)</p>
     <br>
     <br>
 </div>
