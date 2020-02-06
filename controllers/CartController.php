@@ -40,7 +40,6 @@ class CartController extends Controller
         if ((Yii::$app->request->isAjax)) {
             $cart = new Cart();
             $productNumber = Yii::$app->request->post('productID');
-//            $temp = $cart->addToCart($productNumber);
             $cart->addToCart($productNumber);
             $totalQuantity = $cart->totalQuantity();
 
