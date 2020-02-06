@@ -23,7 +23,7 @@ echo "<br>";
     var map;
     function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
-            center: {lat: -34.397, lng: 150.644},
+            center: {lat: 50.466384, lng: 30.615957},
             zoom: 15
         });
     }
@@ -31,21 +31,6 @@ echo "<br>";
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJhXz9qSSw8KjSOnjMW8b1qeD1AfRmU-4&callback=initMap"
         async defer>
 </script>
-
-<script>
-function initMap() {
-    let position = {lat: 50.466316, lng: 30.615281};
-    let map = new google.maps.Map(document.getElementById('map'), {
-            center: position,
-            zoom: 15
-        });
-    let marker = new google.maps.Marker({position: position, map: map, title: "Дизайн-бюро Мануфактура"});
-}
-</script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJhXz9qSSw8KjSOnjMW8b1qeD1AfRmU-4&callback=initMap"
-        async defer>
-</script>
-
 
 <div class="ourContacts col-12 col-lg-3">
     <p class="contactsHeading">ЗВОНИТЕ:</p>
@@ -62,8 +47,7 @@ function initMap() {
     <p class="contactsHeading">ПРИЕЗЖАЙТЕ:</p>
     <p class="contactsInformation">г. Киев, ул. Шалетт Города 1, оф. 208</p>
     <p class="contactsInformation">Мы работаем каждый день с 9 до 20</p>
-<!--    <p class="contactsInformation">Пожалуйста, перезвоните заранее</p>-->
-    <p class="contactsInformation">(пожалуйста, согласуйте время Вашего приезда заранее)</p>
+    <p class="contactsInformation">Пожалуйста, перезвоните заранее</p>
     <br>
     <br>
 </div>
