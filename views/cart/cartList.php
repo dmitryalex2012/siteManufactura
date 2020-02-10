@@ -100,9 +100,15 @@ $textFile = new TextFile();
                         <td colspan="4" class="text-right">Итого:</td>
                         <td id="totalPrice" abbr="<?php echo $price?>"><?= $price; ?></td>
                     </tr>
+<!--                    <tr>-->
+<!--                        <td class="deliveryTypeInTable" colspan="3" class="text-center">Тип доставки: --><?php //echo $deliveryType; ?><!--</td>-->
+<!--                        <td class="purchaseTypeInTable" colspan="2" class="text-center">Способ оплаты: --><?php //echo $purchaseType; ?><!--</td>-->
+<!--                    </tr>-->
                     <tr>
-                        <td class="deliveryTypeInTable" colspan="3" class="text-center">Тип доставки: <?php echo $deliveryType; ?></td>
-                        <td class="purchaseTypeInTable" colspan="2" class="text-center">Способ оплаты: <?php echo $purchaseType; ?></td>
+                        <td class="deliveryTypeInTable" colspan="5" class="text-center">Тип доставки: <?php echo $deliveryType; ?></td>
+                    </tr>
+                    <tr>
+                        <td class="purchaseTypeInTable" colspan="5" class="text-center">Способ оплаты: <?php echo $purchaseType; ?></td>
                     </tr>
                 </table>
             <?php else: ?>
@@ -111,6 +117,7 @@ $textFile = new TextFile();
         </div>
         <div class="col-sm-1"></div>
     </div>
+
 
 <?php
 $script1 = <<<JS

@@ -40,6 +40,7 @@ class Cart extends ActiveRecord
             $session->set('cart',[]);
 //            $cart = [];                             // $cart - ARRAY
             $cart ["delivery"]["deliveryType"] = "выберите удобный Вам тип доставки";
+            $cart ["purchase"]["purchaseType"] = "выберите удобный Вам способ оплаты";
         } else {
             $cart = $session->get('cart');
         }
