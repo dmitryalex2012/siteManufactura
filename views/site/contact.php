@@ -24,10 +24,16 @@ echo "<br>";
 </div>
 <script>
     var map;
+    var marker;
     function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
             center: {lat: 50.466384, lng: 30.615957},
             zoom: 15
+        });
+        marker = google.maps.Marker({
+            position: {lat: 50.466384, lng: 30.615957},
+            map: map
+            // title: "Дизайн-бюро 'Мануфактура'"
         });
     }
 </script>
