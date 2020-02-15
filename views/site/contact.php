@@ -36,7 +36,7 @@ echo "<br>";
             map: map,
             // title: "Дизайн-бюро 'Мануфактура'",
             title: inscription,
-            label: "Мануфактура",
+            // label: "Мануфактура",
         });
 
     }
