@@ -25,7 +25,7 @@ echo "<br>";
 <script>
     let map;
     let marker;
-    let inscription = ['Bondi ', -33.890542, 151.274856, 4];
+    let inscription = ['Bondi ', 50.466282, 30.615236, 4];
     function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
             center: {lat: 50.466282, lng: 30.615236},
@@ -34,9 +34,12 @@ echo "<br>";
         marker = new google.maps.Marker({
             position: {lat: 50.466282, lng: 30.615236},
             map: map,
-            // title: "Дизайн-бюро 'Мануфактура'",
-            title: inscription,
-            // label: "Мануфактура",
+            title: 'Дизайн-бюро "Мануфактура"',
+            label: {
+                text: "М",
+                fontWeight: 'bold',
+                fontSize: '18px',
+            },
         });
 
     }
