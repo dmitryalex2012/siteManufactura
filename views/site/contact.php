@@ -13,10 +13,9 @@ use yii\captcha\Captcha;
 $this->title = 'Контакты';
 $this->params['breadcrumbs'][] = $this->title;
 echo "<br>";
-
 echo "<br>";
 //echo "<br>";
-
+//echo "<br>";
 ?>
 
 
@@ -26,7 +25,6 @@ echo "<br>";
 <script>
     let map;
     let marker;
-    let inscription = ['Bondi ', 50.466282, 30.615236, 4];
     function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
             center: {lat: 50.466282, lng: 30.615236},
@@ -42,7 +40,6 @@ echo "<br>";
                 fontSize: '18px',
             },
         });
-
     }
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJhXz9qSSw8KjSOnjMW8b1qeD1AfRmU-4&callback=initMap"
