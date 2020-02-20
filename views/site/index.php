@@ -1,6 +1,13 @@
 <body class="home">
+<?php
+use yii\helpers\Html;
+?>
 
 <h1>This page is not ready yet.</h1>
+<?php
+echo Html::a('Перейти', '/products/pillows', ['class'=>'btn btn-lg btn-primary']);
+?>
+<!--/services/list-->
 
 <div class="card" style="width: 18rem;">
     <div class="card-body">
