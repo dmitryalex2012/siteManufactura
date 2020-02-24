@@ -105,6 +105,18 @@ button.btn.btn-outline-success {
     bottom: 0;
 }
 
+
+
+/*.myBtn{*/
+/*    color: red!important;*/
+/*}*/
+
+.btn{
+    color: red!important;
+}
+
+
+
 @media (max-width: 765px) {
     .navbar-nav {
         flex-direction: column;
