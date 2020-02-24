@@ -6,6 +6,7 @@ use yii\helpers\Html;
 <h1>This page is not ready yet.</h1>
 <?php
 echo Html::a('Перейти', '/products/pillows', ['class'=>'btn btn-lg btn-primary']);
+echo "<br>";
 ?>
 <!--/services/list-->
 
