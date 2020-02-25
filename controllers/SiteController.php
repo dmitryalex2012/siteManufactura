@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\OurOffers;
 use app\models\Works;
 use Yii;
 use yii\filters\AccessControl;
@@ -20,7 +21,11 @@ class SiteController extends Controller
 {
     public function actionIndex()
     {
-        return $this->render('index');
+        $ourOffers = ouroffers::find()->all();       // "OurOffers() - object from DB with our offers data"
+
+        return $this->render('index', [
+            'ourOffers' => $ourOffers,
+        ]);
     }
 
     public function actionContact()

@@ -3,41 +3,64 @@
 use yii\helpers\Html;
 ?>
 
+<?php
+/* @var $ourOffers string */
+?>
+
+
+<!--var_dump($ourOffers);-->
+
+
+
 <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
         <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
         <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
         <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
         <li data-target="#carouselExampleCaptions" data-slide-to="3"></li>
+        <li data-target="#carouselExampleCaptions" data-slide-to="4"></li>
     </ol>
     <div class="carousel-inner">
         <div class="carousel-item active">
             <img src="foto/servicesDelivery.jpg" class="d-block w-100" alt="100%">
             <div class="carousel-caption d-none d-md-block">
-                <h5>First slide label</h5>
-                <div class="myBtn"><?php echo Html::a('Перейти', '/products/pillows', ['class'=>'btn']); ?> </div>
+                <h4>Индивидуальный дизайн и пошив штор</h4>
                 <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+<!--                --><?php //echo Html::a('Детальнее', '/products/pillows', ['id'=>"myBtn", 'class'=>'btn btn-outline-info']); ?>
+<!--                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>-->
             </div>
         </div>
         <div class="carousel-item">
             <img src="foto/servicesDesignProgect.jpg" class="d-block w-100" alt="100%">
             <div class="carousel-caption d-none d-md-block">
-                <h5>Second slide label</h5>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <h4>Жалюзи, ролеты</h4>
+<!--                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>-->
             </div>
         </div>
         <div class="carousel-item">
             <img src="foto/servicesTextileSelection.jpg" class="d-block w-100" alt="100%">
             <div class="carousel-caption d-none d-md-block">
-                <h5>Third slide label</h5>
-                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                <h4>Стильные подушки</h4>
+                <!--                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>-->
+                <?php echo Html::a('Выбрать модель', '/products/pillows', ['id'=>"myBtn", 'class'=>'btn btn-outline-info']); ?>
+                <br> <br>
             </div>
         </div>
         <div class="carousel-item">
             <img src="foto/servicesDesignProgect.jpg" class="d-block w-100" alt="100%">
             <div class="carousel-caption d-none d-md-block">
-                <h5>Second slide label</h5>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <p class="pInIndex">Постельное белье</p>
+<!--                <h3>Постельное белье</h3>-->
+<!--                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>-->
+                <?php echo Html::a('Выбрать модель', '/products/pillows', ['id'=>"myBtn", 'class'=>'btn btn-outline-info']); ?>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="foto/servicesDesignProgect.jpg" class="d-block w-100" alt="100%">
+            <div class="carousel-caption d-none d-md-block">
+                <h4>Apero</h4>
+                <!--                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>-->
+                <?php echo Html::a('Выбрать модель', '/products/pillows', ['id'=>"myBtn", 'class'=>'btn btn-outline-info']); ?>
             </div>
         </div>
     </div>
