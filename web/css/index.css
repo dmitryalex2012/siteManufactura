@@ -1,8 +1,39 @@
 #myBtn{
     color: green;
+
+    position: absolute;
+    bottom: 10px;
+    left: 40%;
 }
 
 .pInIndex{
     font-size: xx-large;
     font-style: italic;
+    /*position: absolute;*/
+    /*left: 40%;*/
+    text-align: center;
+}
+
+@media (max-width:575px){
+    #myBtn{
+        font-size: small;
+        left: 35%;
+        padding: 0;
+    }
+
+    .pInIndex{
+        font-size: x-large;
+    }
+}
+
+@media (max-width:400px){
+    #myBtn{
+        font-size: x-small;
+        left: 30%;
+        padding: 0;
+    }
+
+    .pInIndex{
+        font-size: medium;
+    }
 }

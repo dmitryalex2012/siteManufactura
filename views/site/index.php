@@ -11,6 +11,25 @@ use yii\helpers\Html;
 <!--var_dump($ourOffers);-->
 
 
+<div class="card bg-dark text-white">
+    <img src="foto\indexFoto\example4.jpg" class="card-img" alt="100%">
+    <div class="card-img-overlay">
+<!--        <h5 class="card-title">Название карточки</h5>-->
+
+        <p class="pInIndex">Постельное белье</p>
+        <?php echo Html::a('Выбрать модель', '/products/pillows', ['id'=>"myBtn", 'class'=>'btn btn-outline-info']); ?>
+<!--        #myBtn {-->
+<!--        color: green;-->
+<!--        position: absolute;-->
+<!--        bottom: 10px;-->
+<!--        left: 45%;-->
+<!--        }-->
+
+<!--        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>-->
+<!--        <p class="card-text">Last updated 3 mins ago</p>-->
+    </div>
+</div>
+
 
 <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
@@ -19,6 +38,7 @@ use yii\helpers\Html;
         <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
         <li data-target="#carouselExampleCaptions" data-slide-to="3"></li>
         <li data-target="#carouselExampleCaptions" data-slide-to="4"></li>
+        <li data-target="#carouselExampleCaptions" data-slide-to="5"></li>
     </ol>
     <div class="carousel-inner">
         <div class="carousel-item active">
@@ -33,7 +53,7 @@ use yii\helpers\Html;
         <div class="carousel-item">
             <img src="foto/servicesDesignProgect.jpg" class="d-block w-100" alt="100%">
             <div class="carousel-caption d-none d-md-block">
-                <h4>Жалюзи, ролеты</h4>
+                <h4>Все типы жалюзей и ролет</h4>
 <!--                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>-->
             </div>
         </div>
@@ -47,11 +67,20 @@ use yii\helpers\Html;
             </div>
         </div>
         <div class="carousel-item">
-            <img src="foto/servicesDesignProgect.jpg" class="d-block w-100" alt="100%">
+            <img src="foto\indexFoto\example4.jpg" class="d-block w-100" alt="100%">
             <div class="carousel-caption d-none d-md-block">
                 <p class="pInIndex">Постельное белье</p>
 <!--                <h3>Постельное белье</h3>-->
 <!--                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>-->
+                <?php echo Html::a('Выбрать модель', '/products/pillows', ['id'=>"myBtn", 'class'=>'btn btn-outline-info']); ?>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="foto\indexFoto\example4.jpg" class="d-block w-100" alt="100%">
+            <div class="carousel-caption d-none d-md-block">
+                <p class="pInIndex">Клевые полотенца для всей семьи</p>
+                <!--                <h3>Постельное белье</h3>-->
+                <!--                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>-->
                 <?php echo Html::a('Выбрать модель', '/products/pillows', ['id'=>"myBtn", 'class'=>'btn btn-outline-info']); ?>
             </div>
         </div>
