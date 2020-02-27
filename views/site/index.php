@@ -18,12 +18,7 @@ use yii\helpers\Html;
 
         <p class="pInIndex">Постельное белье</p>
         <?php echo Html::a('Выбрать модель', '/products/pillows', ['id'=>"myBtn", 'class'=>'btn btn-outline-info']); ?>
-<!--        #myBtn {-->
-<!--        color: green;-->
-<!--        position: absolute;-->
-<!--        bottom: 10px;-->
-<!--        left: 45%;-->
-<!--        }-->
+
 
 <!--        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>-->
 <!--        <p class="card-text">Last updated 3 mins ago</p>-->
