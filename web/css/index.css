@@ -3,8 +3,20 @@
 
     position: absolute;
     bottom: 10px;
-    left: 40%;
+    left: 45%;
 }
+
+
+
+#myBtn1, #myBtn2, #myBtn3, #myBtn4, #myBtn5{
+    color: green;
+
+    position: absolute;
+    bottom: 10px;
+    left: 45%;
+}
+
+
 
 .pInIndex{
     font-size: xx-large;

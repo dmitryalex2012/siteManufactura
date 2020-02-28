@@ -11,19 +11,39 @@ use yii\helpers\Html;
 <!--var_dump($ourOffers);-->
 
 
+<!--<div class="card bg-dark text-white">-->
+<!--    <img src="foto\indexFoto\example4.jpg" class="card-img" alt="100%">-->
+<!--    <div class="card-img-overlay">-->
+<!--        <p class="pInIndex">Постельное белье</p>-->
+<!--        --><?php //echo Html::a('Выбрать модель', '/products/pillows', ['id'=>"myBtn", 'class'=>'btn btn-outline-info']); ?>
+<!--    </div>-->
+<!--</div>-->
+<!--<br>-->
+
 <div class="card bg-dark text-white">
-    <img src="foto\indexFoto\example4.jpg" class="card-img" alt="100%">
     <div class="card-img-overlay">
-<!--        <h5 class="card-title">Название карточки</h5>-->
-
-        <p class="pInIndex">Постельное белье</p>
-        <?php echo Html::a('Выбрать модель', '/products/pillows', ['id'=>"myBtn", 'class'=>'btn btn-outline-info']); ?>
-
-
-<!--        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>-->
-<!--        <p class="card-text">Last updated 3 mins ago</p>-->
+        <img src="foto\indexFoto\example4.jpg" class="card-img" alt="100%">
+        <div class="card-body">
+            <p class="pInIndex">Постельное белье</p>
+            <?php echo Html::a('Выбрать модель', '/products/pillows', ['id'=>"myBtn1", 'class'=>'btn btn-outline-info']); ?>
+        </div>
+    </div>
+    <div class="card-img-overlay">
+        <img src="foto\indexFoto\example4.jpg" class="card-img" alt="100%">
+        <div class="card-body">
+            <p class="pInIndex">Постельное белье</p>
+            <?php echo Html::a('Выбрать модель', '/products/pillows', ['id'=>"myBtn2", 'class'=>'btn btn-outline-info']); ?>
+        </div>
+    </div>
+    <div class="card-img-overlay">
+        <img src="foto\indexFoto\example4.jpg" class="card-img" alt="100%">
+        <div class="card-body">
+            <p class="pInIndex">Постельное белье</p>
+            <?php echo Html::a('Выбрать модель', '/products/pillows', ['id'=>"myBtn3", 'class'=>'btn btn-outline-info']); ?>
+        </div>
     </div>
 </div>
+
 
 
 <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
