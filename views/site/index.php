@@ -15,7 +15,7 @@ use yii\helpers\Html;
         <img src="foto\indexFoto\example4.jpg" class="card-img" alt="100%">
         <div class="card-img-overlay">
             <p class="pInIndex"><?php echo $ourOffer->inscription; ?></p>
-            <?php echo Html::a('Выбрать модель', '/products/pillows', ['id'=>"myBtn", 'class'=>'btn btn-outline-info']); ?>
+            <?php echo Html::a('Выбрать модель', '/products/pillows', ['class'=>'indexBtn btn btn-outline-info']); ?>
         </div>
     </div>
 
@@ -23,7 +23,7 @@ use yii\helpers\Html;
         <img src="foto\indexFoto\example4.jpg" class="card-img" alt="100%">
         <div class="card-img-overlay">
             <p class="pInIndex">Постельное белье</p>
-            <?php echo Html::a('Выбрать модель', '/products/pillows', ['id'=>"myBtn", 'class'=>'btn btn-outline-info']); ?>
+            <?php echo Html::a('Выбрать модель', '/products/pillows', ['class'=>'indexBtn btn btn-outline-info']); ?>
         </div>
     </div>
 
@@ -31,7 +31,7 @@ use yii\helpers\Html;
         <img src="foto\indexFoto\example4.jpg" class="card-img" alt="100%">
         <div class="card-img-overlay">
             <p class="pInIndex">Постельное белье</p>
-            <?php echo Html::a('Выбрать модель', '/products/pillows', ['id'=>"myBtn", 'class'=>'btn btn-outline-info']); ?>
+            <?php echo Html::a('Выбрать модель', '/products/pillows', ['class'=>'indexBtn btn btn-outline-info']); ?>
         </div>
     </div>
 
@@ -39,7 +39,7 @@ use yii\helpers\Html;
         <img src="foto\indexFoto\example4.jpg" class="card-img" alt="100%">
         <div class="card-img-overlay">
             <p class="pInIndex">Постельное белье</p>
-            <?php echo Html::a('Выбрать модель', '/products/pillows', ['id'=>"myBtn", 'class'=>'btn btn-outline-info']); ?>
+            <?php echo Html::a('Выбрать модель', '/products/pillows', ['class'=>'indexBtn btn btn-outline-info']); ?>
         </div>
     </div>
 </div>
