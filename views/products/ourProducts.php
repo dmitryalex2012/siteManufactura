@@ -41,7 +41,8 @@ foreach ($items as $item):
         </div>
     <?php endif; ?>
 <?php endforeach;
-if ($i < 3)    { echo  "</div>";    }
+//if ($i < 3)    { echo  "</div>";    }
+if (($i % 3) != 0)    { echo  "</div>";    }            // it's necessary to close "row" by "/div" when "col" are odd
 ?>
 
 

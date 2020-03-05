@@ -9,41 +9,22 @@ use yii\helpers\Html;
 
 
 <?php foreach ($ourOffers as $key=>$ourOffer):
+    if ((((++$i) % 2) == 1)):
 ?>
-<div class="row">
+    <div class="row">
+        <?php endif; ?>
     <div class="card text-white col-12 col-lg-6">
-        <img src="foto\indexFoto\example4.jpg" class="card-img" alt="100%">
+        <img src="<?php echo $ourOffer->imageURL; ?>" class="card-img" alt="100%">
         <div class="card-img-overlay">
             <p class="pInIndex"><?php echo $ourOffer->inscription; ?></p>
-            <?php echo Html::a('Выбрать модель', '/products/pillows', ['class'=>'indexBtn btn btn-outline-info']); ?>
+            <?php echo Html::a($ourOffer->buttonText, '/products/pillows', ['class'=>'indexBtn btn btn-outline-info']); ?>
         </div>
     </div>
-
-    <div class="card text-white col-12 col-lg-6">
-        <img src="foto\indexFoto\example4.jpg" class="card-img" alt="100%">
-        <div class="card-img-overlay">
-            <p class="pInIndex">Постельное белье</p>
-            <?php echo Html::a('Выбрать модель', '/products/pillows', ['class'=>'indexBtn btn btn-outline-info']); ?>
-        </div>
+<?php if ((($i % 2) == 0)): ?>
     </div>
-
-    <div class="card text-white col-12 col-lg-6">
-        <img src="foto\indexFoto\example4.jpg" class="card-img" alt="100%">
-        <div class="card-img-overlay">
-            <p class="pInIndex">Постельное белье</p>
-            <?php echo Html::a('Выбрать модель', '/products/pillows', ['class'=>'indexBtn btn btn-outline-info']); ?>
-        </div>
-    </div>
-
-    <div class="card text-white col-12 col-lg-6">
-        <img src="foto\indexFoto\example4.jpg" class="card-img" alt="100%">
-        <div class="card-img-overlay">
-            <p class="pInIndex">Постельное белье</p>
-            <?php echo Html::a('Выбрать модель', '/products/pillows', ['class'=>'indexBtn btn btn-outline-info']); ?>
-        </div>
-    </div>
-</div>
+<?php endif; ?>
 <?php endforeach;
+if (($i % 2) != 0)    { echo  "</div>";    }            // it's necessary to close "row" by "/div" when "col" are odd
 ?>
 
 
