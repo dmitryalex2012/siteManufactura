@@ -17,7 +17,8 @@ use yii\helpers\Html;
         <img src="<?php echo $ourOffer->imageURL; ?>" class="card-img" alt="100%">
         <div class="card-img-overlay">
             <p class="pInIndex"><?php echo $ourOffer->inscription; ?></p>
-            <?php echo Html::a($ourOffer->buttonText, '/products/pillows', ['class'=>'indexBtn btn btn-outline-info']); ?>
+<!--            --><?php //  if ($i > 2) {   echo Html::a($ourOffer->buttonText, '/products/pillows', ['class'=>'indexBtn btn btn-outline-info']);   } ?>
+            <?php   if ($i > 2) {   echo Html::a($ourOffer->buttonText, $ourOffer->redirect, ['class'=>'indexBtn btn btn-outline-info']);   } ?>
         </div>
     </div>
 <?php if ((($i % 2) == 0)): ?>

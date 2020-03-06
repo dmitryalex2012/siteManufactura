@@ -1,5 +1,27 @@
 .indexBtn{
     font-size: larger;
-    color: red;
+    color: #ffc107;
+    position: absolute;
+    bottom: 10px;
+    left: 40%;
+
+    border: 1px solid #ffc107!important;
 }
 
+.pInIndex {
+    font-size: xx-large;
+    font-style: italic;
+    text-align: center;
+    /*color: #eeeeee;*/
+    color: #ffc107;
+}
+
+.card{
+    padding: 0;
+    border: groove;
+}
+
+.indexBtn:hover{
+    background-color: #ffc107;
+    border: #eeeeee;
+}

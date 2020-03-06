@@ -104,6 +104,15 @@ class ProductsController extends Controller
         return $this->redirect('summary');
     }
 
+    public function actionTowels()
+    {
+        $linens = Products::find()->where(['categories' => 'towel'])->all();
+        if (!Yii::$app->session->getIsActive()) {Yii::$app->session->open();}
+        Yii::$app->session['product'] = $linens;
+        Yii::$app->session->close();
+        return $this->redirect('summary');
+    }
+
     public function actionApero()
     {
         $apero = Products::find()->where(['categories' => 'apero'])->all();
