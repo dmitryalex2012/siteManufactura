@@ -22,7 +22,8 @@ border-color: #d4d4d46b;
 }
 
 .navbar-nav > li > a:hover {
-    color: #314f59 !important;
+    /*color: #314f59 !important;*/
+    color: #27dc7c !important;
 }
 
 .navbar-nav {
@@ -45,7 +46,8 @@ padding: 15px 0px 15px 0px;
 
 .navbar-inverse .navbar-nav > .active > a{
     background-color: transparent!important;
-    color: #105e89 !important;
+    /*color: #105e89 !important;*/
+    color: #ec614d !important;
 }
 
 .navbar-brand {

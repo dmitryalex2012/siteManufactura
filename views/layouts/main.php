@@ -53,7 +53,7 @@ AppAsset::register($this);
                 ['label' => 'Подушки', 'url' => ['/products/pillows']],
                 ['label' => 'Постельное белье', 'url' => ['/products/linens']],
                 ['label' => 'Полотенца', 'url' => ['/products/towels']],
-                ['label' => 'Apero', 'url' => ['/products/apero']],
+                ['label' => 'Товары ТМ "Apero"', 'url' => ['/products/apero']],
             ]],
             ['label' => 'Блог', 'url' => ['#']],
             ['label' => 'Контакты', 'url' => ['/site/contact']],
