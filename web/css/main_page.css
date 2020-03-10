@@ -9,8 +9,8 @@ body.home{
 }
 
 #w0{
-background-color: #d4d4d46b;
-border-color: #d4d4d46b;
+    background-color: #d4d4d46b;
+    border-color: #d4d4d46b;
 }
 
 .navbar{
@@ -27,21 +27,21 @@ border-color: #d4d4d46b;
 }
 
 .navbar-nav {
-flex-direction: row;
-justify-content: center;
-float: none !important;
-text-align: center;
+    flex-direction: row;
+    justify-content: center;
+    float: none !important;
+    text-align: center;
 }
 
 .navbar-collapse {
-flex-basis: 0%;
-border-top: none;
+    flex-basis: 0%;
+    border-top: none;
 }
 
 .navbar-inverse .navbar-brand {
-color: #dadada6b;
-font-size: 14px;
-padding: 15px 0px 15px 0px;
+    color: #dadada6b;
+    font-size: 14px;
+    padding: 15px 0px 15px 0px;
 }
 
 .navbar-inverse .navbar-nav > .active > a{
@@ -51,26 +51,26 @@ padding: 15px 0px 15px 0px;
 }
 
 .navbar-brand {
-padding: 0px!important;
+    padding: 0px!important;
 }
 
 .navbar-toggle {
-/*position: relative;*/
-float: initial;
-/*left: 20px;*/
-left: 25%;
+    /*position: relative;*/
+    float: initial;
+    /*left: 20px;*/
+    left: 25%;
 }
 
 .sidebar2 img{
-width: 100%;
+    width: 100%;
 }
 
 #header {
-margin: 10px 0px;
-padding: 15px;
-background: khaki;
-font-size: 18px;
-/*text-shadow: 0 0 #;*/
+    margin: 10px 0px;
+    padding: 15px;
+    background: khaki;
+    font-size: 18px;
+    /*text-shadow: 0 0 #;*/
     text-decoration: none;
 }
 
@@ -120,15 +120,8 @@ button.btn.btn-outline-success {
     .navbar-nav {
         flex-direction: column;
     }
-/*@media (max-width: 575px) {*/
-/*    .navbar-nav {*/
-/*        flex-direction: column;*/
-/*    }*/
+    /*@media (max-width: 575px) {*/
+    /*    .navbar-nav {*/
+    /*        flex-direction: column;*/
+    /*    }*/
 }
-
-
-
-
-
-
-
