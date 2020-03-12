@@ -122,6 +122,14 @@ class ProductsController extends Controller
         return $this->redirect('summary');
     }
 
+    public function actionBaby()
+    {
+        $baby = Products::find()->where(['categories' => 'baby'])->all();
+        if (!Yii::$app->session->getIsActive()) {Yii::$app->session->open();}
+        Yii::$app->session['product'] = $baby;
+        Yii::$app->session->close();
+        return $this->redirect('summary');
+    }
 
     public function actionSummary()
     {
