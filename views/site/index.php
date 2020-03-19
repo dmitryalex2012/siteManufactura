@@ -5,7 +5,7 @@ use yii\helpers\Html;
 
 <?php
 /* @var $ourOffers object */
-echo $ourOffers;
+//echo $ourOffers;
 ?>
 
 
