@@ -56,7 +56,7 @@ AppAsset::register($this);
                     ['label' => 'Товары ТМ "Apero"', 'url' => ['/products/apero']],
                     ['label' => 'Товары для "бебиков"', 'url' => ['/products/baby']],
                 ]],
-            ['label' => 'Блог', 'url' => ['#']],
+//            ['label' => 'Блог', 'url' => ['#']],
                 ['label' => 'Контакты', 'url' => ['/site/contact']],
                 ['label' => 'Корзина', 'url' => ['/cart/index'], 'linkOptions' => ['class' => 'classCart']],
 //            Yii::$app->user->isGuest ? (
