@@ -1,11 +1,21 @@
 <body class="home">
 <?php
 use yii\helpers\Html;
+
+
+use app\common\components\TextFile;
+
+
+
 ?>
 
 <?php
 /* @var $ourOffers object */
 //echo $ourOffers;
+//echo $temp->tempPublic;
+var_dump($temp->myWork());
+echo $temp->myWork();
+//myWork()
 ?>
 
 
