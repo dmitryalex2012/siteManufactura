@@ -3,19 +3,23 @@
 use yii\helpers\Html;
 
 
-use app\common\components\TextFile;
-
-
+use app\common\components\Temp;
+//use app\common\components\TextFile;
 
 ?>
 
 <?php
 /* @var $ourOffers object */
 //echo $ourOffers;
-//echo $temp->tempPublic;
-var_dump($temp->myWork());
-echo $temp->myWork();
-//myWork()
+
+
+//$tempData = new Temp();
+//echo $tempData->myTemp();
+//echo "<br>";
+//echo $tempData->tempPublic;
+//echo $tempData->tempPrivate;
+//echo $tempData->tempProtected;
+
 ?>
 
 
