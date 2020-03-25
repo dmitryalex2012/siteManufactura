@@ -89,8 +89,4 @@ class CartController extends Controller
         return $cart->changePurchase(Yii::$app->request->post('purchaseTypeJS'));
     }
 
-//    public function actionOurOffers()
-//    {
-//        return;
-//    }
 }
