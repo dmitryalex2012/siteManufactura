@@ -48,7 +48,6 @@ AppAsset::register($this);
 //            ['label' => 'Главная', 'url' => ['/site/index']],
                 ['label' => 'Услуги', 'url' => ['/services/list']],
                 ['label' => 'Наши работы', 'url' => ['/site/works']],
-//            ['label' => 'Магазин', 'url' => ['/products/list']],
                 ['label' => 'Магазин', 'items' => [
                     ['label' => 'Подушки', 'url' => ['/products/pillows']],
                     ['label' => 'Постельное белье', 'url' => ['/products/linens']],
@@ -56,7 +55,6 @@ AppAsset::register($this);
                     ['label' => 'Товары ТМ "Apero"', 'url' => ['/products/apero']],
                     ['label' => 'Товары для "бебиков"', 'url' => ['/products/baby']],
                 ]],
-//            ['label' => 'Блог', 'url' => ['#']],
                 ['label' => 'Контакты', 'url' => ['/site/contact']],
                 ['label' => 'Корзина', 'url' => ['/cart/index'], 'linkOptions' => ['class' => 'classCart']],
 //            Yii::$app->user->isGuest ? (
@@ -81,10 +79,7 @@ AppAsset::register($this);
         ?>
 
 
-        <!--    <br>-->
-
         <div class="container">
-            <!--        --><?php //       echo "<br>";        echo "<br>";        echo "<br>";        ?>
             <?= Breadcrumbs::widget([
                 'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
             ]) ?>
@@ -99,8 +94,6 @@ AppAsset::register($this);
     $(document).ready(function() {
          $.ajax({
             url: '/cart/total',
-            // data: {productData: productData},
-            // dataType : 'json',
             type: 'POST',
             success: function (totalQuantity) {              // array ("0"=>price, "1"=>difference)
                 if (totalQuantity != 0) { $('.classCart').html("Корзина "+totalQuantity); }

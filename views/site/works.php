@@ -69,11 +69,6 @@
                         </p>
                     <?php endwhile; ?>
                 </div>
-                <!--                            <a href="-->
-                <!--                -->
-                <?php //echo \yii\helpers\Url::to(['/buy/presentation', 'singerId'=>$item->id]) ?><!--">-->
-                <!--                                <button type="button" class="btn btn-outline-success">Buy</button>-->
-                <!--                            </a>-->
             </div>
 
         </div>
