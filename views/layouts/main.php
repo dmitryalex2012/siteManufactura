@@ -26,7 +26,8 @@ AppAsset::register($this);
         <!--        <link href="css/shop.css" rel="stylesheet">-->
 
         <?php $this->registerCsrfMetaTags() ?>
-        <title><?= Html::encode($this->title) ?></title>
+<!--        <title>--><?//= Html::encode($this->title) ?><!--</title>-->
+        <title><?php echo "Дизайн-бюро штор"; ?></title>
         <?php $this->head() ?>
     </head>
     <body>
