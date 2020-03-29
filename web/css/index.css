@@ -1,19 +1,24 @@
 .indexBtn{
     font-size: larger;
-    color: #ffc107;
+    color: #127579;
     position: absolute;
     bottom: 10px;
     left: 40%;
 
-    border: 1px solid #ffc107!important;
+    border: 1px solid #127579!important;
 }
 
-.pInIndex {
+.pInIndex, .pInIndexAdd {
     font-size: xx-large;
     font-style: italic;
     text-align: center;
-    /*color: #eeeeee;*/
     color: #ffc107;
+}
+
+.pInIndexAdd{
+    position: absolute;
+    bottom: 5%;
+    width: 95%;
 }
 
 .card{

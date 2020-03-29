@@ -29,8 +29,16 @@ use app\common\components\Temp;
     <div class="card text-white col-12 col-lg-6">
         <img src="<?php echo $ourOffer->imageURL; ?>" class="card-img" alt="100%">
         <div class="card-img-overlay">
-            <p class="pInIndex"><?php echo $ourOffer->inscription; ?></p>
-            <?php   if ($i > 2) {   echo Html::a($ourOffer->buttonText, $ourOffer->redirect, ['class'=>'indexBtn btn btn-outline-info']);   } ?>
+            <p class="pInIndex">    <?php   echo $ourOffer->inscription; ?> </p>
+
+
+
+            <?php   if ($i == 1): ?>
+                <p class="pInIndexAdd"> <?php echo $ourOffer->inscription2; ?> </p>
+            <?php   endif;  ?>
+
+
+            <?php   if ($i > 1) {   echo Html::a($ourOffer->buttonText, $ourOffer->redirect, ['class'=>'indexBtn btn btn-outline-info']);   } ?>
         </div>
     </div>
 <?php if ((($i % 2) == 0)): ?>
