@@ -9,10 +9,11 @@
 }
 
 .pInIndex, .pInIndexAdd {
-    font-size: xx-large;
+    font-size: x-large;
     font-style: italic;
     text-align: center;
-    color: #ffc107;
+    color: #ff9900;
+    /*#ffc107*/
 }
 
 .pInIndexAdd{
@@ -29,4 +30,10 @@
 .indexBtn:hover{
     background-color: #ffc107;
     border: #eeeeee;
+}
+
+@media (max-width:575px) {
+    .pInIndex, .pInIndexAdd {
+        font-size: medium;
+    }
 }
