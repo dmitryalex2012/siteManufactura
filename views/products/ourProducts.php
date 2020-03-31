@@ -21,10 +21,24 @@ foreach ($items as $item):
     if ((((++$i) % 3) == 1)): ?>
         <div class="row listProduct">
     <?php endif; ?>
-    <div class="col-12 col-md-6 col-xl-4">
+    <div class="col-12 col-md-4 col-xl-4">
+
+<!--        --><?php //$form = ActiveForm::begin(); ?>
+
         <div class="card">
             <div class="card-body">
-                <img src="/<?php echo $item->address; ?>" class="card-img-top" alt="100%">
+<!--                <a href="/products/details" title="Подробнее" name="--><?php //echo $item->number; ?><!--">-->
+<!--                    <img src="/--><?php //echo $item->address; ?><!--" class="card-img-top" alt="100%">-->
+<!--                </a>-->
+
+<!--                --><?php //Html::a(Html::img($item->address), ['/products/details', 'name' => "123"] ); ?>
+<!--                --><?php //Html::a(Html::img('/foto/products/pillow/1001.jpg'), ['/products/details', 'name' => "123"] ); ?>
+                <?php Html::img('/foto/products/pillow/1001.jpg'); ?>
+<!--                --><?php
+//                Html::a(Html::img('/foto/products/pillow/1001.jpg'), ['products/details']);
+//                ?>
+
+
                 <p class="card-text"><?php echo $item->content; ?></p>
                 <div id="boxProduct">
                     <div class="priceProduct">
@@ -36,6 +50,9 @@ foreach ($items as $item):
                 </div>
             </div>
         </div>
+
+<!--        --><?php //ActiveForm::end(); ?>
+
     </div>
     <?php if ((($i % 3) == 0)): ?>
         </div>

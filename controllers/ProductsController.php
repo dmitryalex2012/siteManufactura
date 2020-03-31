@@ -66,4 +66,15 @@ class ProductsController extends Controller
         ]);
     }
 
+    public function actionDetails()
+
+    {
+        $temp = "empty";
+//        $temp = Yii::$app->request->get('name');
+//        isset(Yii::$app->name) ? $temp = Yii::$app->name : $temp = "empty";
+        return $this->render('details', [
+            'items' => $temp
+        ]);
+    }
+
 }
