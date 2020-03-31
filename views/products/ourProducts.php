@@ -32,11 +32,16 @@ foreach ($items as $item):
 <!--                </a>-->
 
 <!--                --><?php //Html::a(Html::img($item->address), ['/products/details', 'name' => "123"] ); ?>
-<!--                --><?php //Html::a(Html::img('/foto/products/pillow/1001.jpg'), ['/products/details', 'name' => "123"] ); ?>
-                <?php Html::img('/foto/products/pillow/1001.jpg'); ?>
-<!--                --><?php
-//                Html::a(Html::img('/foto/products/pillow/1001.jpg'), ['products/details']);
-//                ?>
+<!--                --><?php //Html::a(Html::fotoimg('/foto/products/pillow/1001.jpg'), ['/products/details', 'name' => "123"] ); ?>
+<!--                --><?//= Html::img('$item->address') ?>
+<!--                --><?//= Html::a('Профиль', ['user/view', 'id' => $item], ['class' => 'profile-link']) ?>
+
+<!--                                --><?//= Html::img('/foto/products/pillow/1001.jpg', ['alt' => '100%']) ?>
+<!--                <img src="/foto/products/pillow/1001.jpg" alt="10%">-->
+
+                <?=
+                Html::a(Html::img($item->address, ['alt'=>'',  'width'=>"100%", 'height'=>"100%"]), ['products/details', 'name' => 125]);
+                ?>
 
 
                 <p class="card-text"><?php echo $item->content; ?></p>
