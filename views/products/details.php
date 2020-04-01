@@ -1,23 +1,29 @@
 <?php
 
 /* @var $this yii\web\View */
-/* @var $pillows array */
+/* @var $product object */
 
-/* @var $linens array */
 
 use yii\helpers\Html;
 
-//foreach ($items as $key => $item) {
-//    $name = $item->categoriesBredCrumbs;
-//    break;
-//}
-//$this->params['breadcrumbs'][] = $this->title = 'Магазин ' . $name;
-$this->params['breadcrumbs'][] = $this->title = 'Магазин ' . $items;
+switch ($product->categories){                                      // determine previous address for Bread Crumbs
+    case 'pillow': $previousAddress = "/products/pillows"; break;
+    case 'apero': $previousAddress = "/products/apero"; break;
+    case 'linens': $previousAddress = "/products/linens"; break;
+    case 'towel': $previousAddress = "/products/towels"; break;
+    case 'baby': $previousAddress = "/products/baby"; break;
+}
+$this->params['breadcrumbs'][] = $this->title = array(
+    'label'=> 'Магазин ' . $product->categoriesBredCrumbs,
+    'url'=> $previousAddress
+);
+$this->params['breadcrumbs'][] = $product->content;
 
 ?>
 
-
-
+<?=
+Html::a(Html::img($product->address, ['width'=>"100%", 'height'=>"100%"]));
+?>
 
 <!--<button class="buyBtn" value="--><?php //echo $item->number; ?><!--">Купить</button>-->
 

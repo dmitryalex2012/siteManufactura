@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\models\Cart;
 use app\models\Products;
+use yii\helpers\Html;
 use yii\helpers\VarDumper;
 use yii\web\Controller;
 use yii\helpers\Url;
@@ -66,14 +67,12 @@ class ProductsController extends Controller
         ]);
     }
 
-    public function actionDetails()
+    public function actionDetail()
 
     {
-        $temp = "empty";
-//        $temp = Yii::$app->request->get('name');
-//        isset(Yii::$app->name) ? $temp = Yii::$app->name : $temp = "empty";
+        $selectedProduct = Products::find()->where(['number' => Yii::$app->request->get('productID')])->one();
         return $this->render('details', [
-            'items' => $temp
+            'product' => $selectedProduct
         ]);
     }
 
