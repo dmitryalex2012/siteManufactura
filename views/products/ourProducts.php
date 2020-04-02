@@ -27,9 +27,6 @@ foreach ($items as $item):
 
         <div class="card">
             <div class="card-body">
-<!--                <a href="/products/details" title="Подробнее" name="--><?php //echo $item->number; ?><!--">-->
-<!--                    <img src="/--><?php //echo $item->address; ?><!--" class="card-img-top" alt="100%">-->
-<!--                </a>-->
 
 
                 <?=
