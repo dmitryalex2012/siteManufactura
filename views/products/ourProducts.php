@@ -22,17 +22,17 @@ foreach ($items as $item):
         <div class="row listProduct">
     <?php endif; ?>
     <div class="col-12 col-md-4 col-xl-4">
-
-<!--        --><?php //$form = ActiveForm::begin(); ?>
-
         <div class="card">
             <div class="card-body">
 
-
-                <?=
-                Html::a(Html::img($item->address, ['width'=>"100%", 'height'=>"100%"]), ['products/detail', 'productID' => $item->number]);
+                <?php
+                if (strpos($item->address, ',') == true){     //  is presented ONE photo of product in DB or MORE?
+                $productURL = strstr($item->address, ',', true);   // more then 1 photo
+                } else {                                                               // 1 photo
+                    $productURL = $item->address;
+                }
                 ?>
-
+                <?= Html::a(Html::img($productURL, ['width'=>"100%", 'height'=>"100%"]), ['products/detail', 'productID' => $item->number]); ?>
 
                 <p class="card-text"><?php echo $item->content; ?></p>
                 <div id="boxProduct">
