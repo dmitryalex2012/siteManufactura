@@ -34,6 +34,11 @@ body.ourProducts{
     border-color: #fff;
 }
 
+.buyBtn:hover{
+    color: #2ca02c;
+    /*border-color: #00aa88;*/
+}
+
 @media (max-width: 575px) {
     .container {
          text-align: left!important;

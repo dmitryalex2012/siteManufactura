@@ -59,7 +59,7 @@ $this->params['breadcrumbs'][] = $product->content;
                                 </div>
                        <?php else: ?>
                        <?php     for ($i = 0; $i < $photoQuantity; $i++) : ?>   <!-- when > 1 photo of the product -->
-                                    <div class="carousel-item <?php if ($i == 0) { echo "active"; }  ?> ">
+                                    <div class="carousel-item <?php if ($i == 0) { echo "active"; }  ?> " data-interval="1000000">
                                         <img src="<?php echo $temp[$i]; ?>" class="d-block w-100" alt="...">
                                     </div>
                        <?php     endfor; ?>
@@ -83,12 +83,13 @@ $this->params['breadcrumbs'][] = $product->content;
             <div class="col-12 col-md-5">
                 <div class="detailDescription">
                     <p class="detailProductTitle"><?php echo $product->content; ?></p>
-<!--                    <br><br><br>-->
                     <p class="detailProductDescription"><?php echo $product->description; ?></p>
-<!--                    <br>-->
-                    <p class="detailProductSize">Размер полотенца <?php echo $product->size; ?></p>
-<!--                    <br>-->
-<!--                    <br>-->
+                    <?php
+                    if (isset($product->size)){
+                        echo '<p class="detailProductSize">Размер полотенца: ' . $product->size . '</p>';
+                    }
+                    ?>
+                    <p class="detailProductPrice"><?php echo "Цена: " . $product->price . " грн"; ?></p>
                     <button class="buyBtnDetail" value="<?php echo $product->number; ?>">Купить</button>
                 </div>
             </div>
