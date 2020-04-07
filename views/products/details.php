@@ -86,7 +86,7 @@ $this->params['breadcrumbs'][] = $product->content;
                     <p class="detailProductDescription"><?php echo $product->description; ?></p>
                     <?php
                     if (isset($product->size)){
-                        echo '<p class="detailProductSize">Размер полотенца: ' . $product->size . '</p>';
+                        echo '<p class="detailProductSize">Размер изделия: ' . $product->size . '</p>';
                     }
                     ?>
                     <p class="detailProductPrice"><?php echo "Цена: " . $product->price . " грн"; ?></p>
