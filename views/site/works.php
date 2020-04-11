@@ -8,7 +8,7 @@
 ///* @var $countTotal string */
 ///* @var $notes string */
 /* @var $temp string */
-/* @var $i float */
+///* @var $i float */
 
 ?>
 
@@ -18,6 +18,11 @@
 
             <div class="col-12 col-sm-5">
                 <h3><?php echo $item->title; ?></h3>
+
+                <?php           // make array with photo addresses and count photo quantity
+                $photoAddress = (explode(",",$item->notes));
+                $quantity = count(explode(",",$item->notes));
+                ?>
 
                 <div id="carouselExampleInterval<?php echo $item->id; ?>" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
@@ -31,13 +36,10 @@
 
                     <div class="carousel-inner">
                         <?php $temp = $item->notes; ?>
-                        <?php for ($i = 0; $i < $item->quantity; $i++): ?>
+                        <?php for ($i = 0; $i < $quantity; $i++): ?>
                             <div class="carousel-item <?php if ($i === 0) { ?> active <?php } ?>"
                                  data-interval="1000000">
-                                <img src="/<?php echo stristr($temp, ',', true); ?>" class="d-block w-100">
-                                <?php $temp = stristr($temp, ',');
-                                $temp = substr($temp, 1);
-                                ?>
+                                <img src="/<?php echo $photoAddress[$i]; ?>" class="d-block w-100" alt="...">
                             </div>
                         <?php endfor; ?>
                     </div>
