@@ -26,7 +26,7 @@
 
                 <div id="carouselExampleInterval<?php echo $item->id; ?>" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
-                        <?php for ($i = 0; $i < $item->quantity; $i++): ?>
+                        <?php for ($i = 0; $i < $quantity; $i++): ?>
                             <li data-target="#carouselExampleIndicators1<?php echo $item->id; ?>"
                                 data-slide-to="<?php echo $i; ?>" <?php if ($i === 0) {
                                 $b++; ?> class="active" <?php } ?>>
