@@ -20,14 +20,27 @@ AppAsset::register($this);
         <meta charset="<?= Yii::$app->charset ?>">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Дизайн-бюро штор. Дизайн и пошив штор. Карнизы. Жалюзи. Ролеты. Текстиль для детей. Полотенца. Постельное белье. Apero." />
 
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+        <link rel="canonical" href="http://www.designburoshtor.website">
+        <meta property="og:locale" content="ru_RU">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Дизайн-бюро штор. Дизайн и пошив штор. Полотенца. Постельное белье. Apero. Карнизы• жалюзи. Ролеты. Текстиль для детей">
+        <meta property="og:description" content="Дизайн-бюро штор. Дизайн и пошив штор. Карнизы. Жалюзи. Ролеты. Текстиль для детей. Полотенца. Постельное белье. Apero.">
+        <meta property="og:url" content="http://www.designburoshtor.website">
+        <meta property="og:site_name" content="designburoshtor">
+        <meta name="twitter:description" content="Дизайн-бюро штор. Дизайн и пошив штор. Карнизы. Жалюзи. Ролеты. Текстиль для детей. Полотенца. Постельное белье. Apero.">
+        <meta name="twitter:title" content="Дизайн-бюро штор• дизайн и пошив штор• полотенца• постельное белье• Apero• карнизы• жалюзи• ролеты• текстиль для детей">
+
         <!--    <link href="css/list.css" rel="stylesheet">-->
         <!--        <link href="css/shop.css" rel="stylesheet">-->
 
         <?php $this->registerCsrfMetaTags() ?>
 <!--        <title>--><?//= Html::encode($this->title) ?><!--</title>-->
-        <title><?php echo "Дизайн-бюро штор"; ?></title>
+        <title><?php echo "Дизайн-бюро штор• дизайн и пошив штор• полотенца• постельное белье• Apero• карнизы• жалюзи• ролеты• текстиль для детей"; ?></title>
         <?php $this->head() ?>
     </head>
     <body>
