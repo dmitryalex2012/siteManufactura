@@ -188,7 +188,7 @@ $deliveryTypeJS = <<<JS
             data: {deliveryTypeJS: deliveryTypeJS},
             type: 'POST',
             success: function (deliveryType) {
-                console.log(deliveryType);
+                // console.log(deliveryType);
                 $('.deliveryTypeInTable').html("Тип доставки: "+ deliveryType);
              },
             error: function () {

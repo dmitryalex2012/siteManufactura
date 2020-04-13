@@ -76,7 +76,5 @@
         </div>
     <?php endforeach; ?>
 </div>
-<script src="/docs/4.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o"
-        crossorigin="anonymous"></script>
+<!--<script src="/docs/4.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>-->
 

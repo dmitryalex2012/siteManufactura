@@ -66,7 +66,7 @@ $js = <<<JS
             type: 'POST',
             success: function (totalQuantity) {
                 $('.classCart').html("Корзина "+totalQuantity);
-                console.log(totalQuantity);
+                // console.log(totalQuantity);
             },
             error: function () {
                 console.log ("Fail");
