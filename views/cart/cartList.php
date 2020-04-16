@@ -14,7 +14,7 @@
 
 use yii\bootstrap\ActiveForm;
 //use yii\widgets\ActiveForm;
-use yii\captcha\Captcha;
+//use yii\captcha\Captcha;
 use yii\helpers\Html;
 use app\common\components\MyHelpers;
 use app\common\components\TextFile;
@@ -28,20 +28,8 @@ $textFile = new TextFile();
 
 <?php $cart = $items; ?>
 
-
 <?php
-//echo '<pre>';
-//print_r($items);
-//echo '</pre>';
-?>
-<?php
-//foreach ($cart as $item){
-//    if ($item['deliveryType']) {
-//        echo $item['deliveryType'];
-//    }
-//    print_r($item);
     echo "<br,>";
-//}
 ?>
 
 
@@ -81,7 +69,8 @@ $textFile = new TextFile();
                                 <td><?= $item['title']; ?></td>
                                 <td><?= $item['number']; ?></td>
                                 <td>
-                                    <select class="quantityAjax">
+                                    <label for="idQuantityAjax"></label>    <!-- add empty "label" because "select" need id=for in "label" -->
+                                    <select id="idQuantityAjax" class="quantityAjax">
                                         <?php for ($i=0; $i<=10; $i++): ?>
                                         <option value="<?php echo ($item['number']) . "***" . $i; ?>"
                                           <?php if ($item['quantity'] == $i) echo "selected" ?> >
@@ -98,7 +87,8 @@ $textFile = new TextFile();
                     <?php endforeach; ?>
                     <tr>
                         <td colspan="4" class="text-right">Итого:</td>
-                        <td id="totalPrice" abbr="<?php echo $price?>"><?= $price; ?></td>
+<!--                        <td id="totalPrice" abbr="--><?php //echo $price?><!--">--><?//= $price; ?><!--</td>-->
+                        <td id="totalPrice"><?= $price; ?></td>
                     </tr>
 <!--                    <tr>-->
 <!--                        <td class="deliveryTypeInTable" colspan="3" class="text-center">Тип доставки: --><?php //echo $deliveryType; ?><!--</td>-->
@@ -122,10 +112,13 @@ $textFile = new TextFile();
 <?php
 $script1 = <<<JS
     $('.quantityAjax').change(function() {
-        var productData = $(this).val();
-        var classType ="." + productData.substr(0, 4);      // change the price of the selected product
-        var totalPrice = document.getElementById('totalPrice').abbr;
-        
+        let totalPriceClass;
+        let classMyCart = $('.classCart');
+        let productData = $(this).val();
+        let classType ="." + productData.substr(0, 4);      // change the price of the selected product
+        // let totalPrice = document.getElementById('totalPrice').abbr;
+        let totalPrice = document.getElementById('totalPrice').innerHTML;
+
          $.ajax({
             url: '/cart/change',
             data: {productData: productData},
@@ -135,11 +128,11 @@ $script1 = <<<JS
                 $(classType).html(Math.abs(newPrice[0]));                       // new price  for product
                 $('#totalPrice').html(Number(totalPrice)+Number(newPrice[1]));  // new total price
                 totalPriceClass = document.querySelector("#totalPrice");            // change marker in "total
-                totalPriceClass.setAttribute('abbr', String(Number(totalPrice)+Number(newPrice[1])));   //    price"
-                $('.classCart').html("Корзина "+newPrice[2]);                   // change quantity in "Header" line
+                // totalPriceClass.setAttribute('abbr', String(Number(totalPrice)+Number(newPrice[1])));   //    price"
+                classMyCart.html("Корзина "+newPrice[2]);                   // change quantity in "Header" line
                 $('h2').html("В КОРЗИНЕ - " + newPrice[2] + " " + newPrice[3]);  // change quantity in "h2" 
 
-                if (Number(newPrice[2]) == 0) { $('.classCart').html("Корзина"); }
+                if (Number(newPrice[2]) === 0) { $('.classCart').html("Корзина"); }
              },
             error: function () {
                 console.log ("Failed");            //  NEED !!!!!!!!!!  better delete???????
@@ -162,7 +155,7 @@ $this->registerJs($script1);
         ?>
             <div class="delivery<? echo $i; ?> row">
                 <div class="col-2">
-                    <input class="typeDeliveryJS" type="radio" name="deliveryID" value="<?php echo $deliveryTypeTemp;?>"
+                    <input id="idTypeDeliveryJS" class="typeDeliveryJS" type="radio" name="deliveryID" value="<?php echo $deliveryTypeTemp;?>"
                         <?      if (($i==1) && ($deliveryType == "Новая Почта")) { echo "checked"; }
                                 if (($i==2) && ($deliveryType == "Курьером")) { echo "checked"; }
                                 if (($i==3) && ($deliveryType == "Самовывоз (бесплатно)")) { echo "checked"; }
@@ -170,7 +163,7 @@ $this->registerJs($script1);
                     >
                  </div>
                 <div class="onlyCSSinDelivery col-10">
-                    <label class="typeDelivery"><? echo $deliveryTypeTemp; ?></label><br>
+                    <label for="idTypeDeliveryJS" class="typeDelivery"><? echo $deliveryTypeTemp; ?></label><br>
                     <label><?php echo $deliveryFile; ?></label>
                 </div>
             </div>
@@ -182,7 +175,7 @@ $this->registerJs($script1);
 <?php
 $deliveryTypeJS = <<<JS
     $('.typeDeliveryJS').change(function() {
-        var deliveryTypeJS = ($(this).val());
+        let deliveryTypeJS = ($(this).val());
          $.ajax({
             url: '/cart/delivery',
             data: {deliveryTypeJS: deliveryTypeJS},
@@ -211,18 +204,15 @@ $this->registerJs($deliveryTypeJS);
             ?>
             <div class="purchase<? echo $i; ?> row">
                 <div class="col-2">
-                    <input class="typePurchaseJS" type="radio" name="purchaseID" value="<?php echo $purchaseTypeTemp;?>"
-
-
+                    <input id="idTypePurchaseJS" class="typePurchaseJS" type="radio" name="purchaseID" value="<?php echo $purchaseTypeTemp;?>"
                     <?  if (($i==1) && ($purchaseType == "Наложным платежом")) { echo "checked"; }
                         if (($i==2) && ($purchaseType == "На карту Приват-банка")) { echo "checked"; }
                         if (($i==3) && ($purchaseType == "Наличными")) { echo "checked"; }
                     ?>
-
                     >
                 </div>
                 <div class="onlyCSSinPurchase col-10">
-                    <label class="typePurchase"><? echo $purchaseTypeTemp; ?></label><br>
+                    <label for="idTypePurchaseJS" class="typePurchase"><? echo $purchaseTypeTemp; ?></label><br>
                     <?php   if ($i==1) { echo "<label>" . '(данный способ оплаты возможен при отправке товара "Новой Почтой")' . "</label>"; }
                             if ($i==2) { echo "<label>" . "(банковские реквизиты будут высланы Вам после оформления заказа)" . "</label>"; }
                     ?>
@@ -235,13 +225,13 @@ $this->registerJs($deliveryTypeJS);
     <?php
     $purchaseTypeJS = <<<JS
     $('.typePurchaseJS').change(function() {
-        var purchaseTypeJS = ($(this).val());
+        let purchaseTypeJS = ($(this).val());
          $.ajax({
             url: '/cart/purchase',
             data: {purchaseTypeJS: purchaseTypeJS},
             type: 'POST',
             success: function (purchaseType) {
-                console.log(purchaseType);
+                // console.log(purchaseType);
                 $('.purchaseTypeInTable').html("Способ оплаты: "+ purchaseType);
              },
             error: function () {
@@ -273,7 +263,8 @@ JS;
         <?php else: ?>
             <div class="row">
                 <div class="contactInformation col-lg-12">
-                    <?php $form = ActiveForm::begin(['id' => 'my-contact']); ?>
+                    <?php $form = ActiveForm::begin(['id' => 'my-contact', 'enableClientScript' => false]); ?> <!-- add "'enableClientScript' => false" for -->
+                                                                                                    <!-- disable jquery library including second time -->
                         <?= $form->field($model, 'name', ['enableLabel' => false])->textInput(array('placeholder' => 'Ваше имя', 'class'=>'form-control text-center')) ?>
                         <?= $form->field($model, 'email', ['enableLabel' => false])->textInput(['placeholder' => 'Email', 'class'=>'form-control text-center']) ?>
                         <?= $form->field($model, 'phone', ['enableLabel' => false])->textInput(['placeholder' => 'Ваш номер телефона', 'class'=>'form-control text-center']) ?>
