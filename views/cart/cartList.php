@@ -108,7 +108,6 @@ $textFile = new TextFile();
         <div class="col-sm-1"></div>
     </div>
 
-
 <?php
 $script1 = <<<JS
     $('.quantityAjax').change(function() {
