@@ -19,19 +19,11 @@ use yii\helpers\Html;
 use app\common\components\MyHelpers;
 use app\common\components\TextFile;
 
-//$this->title = 'Корзина';
-//$this->params['breadcrumbs'][] = $this->title;
-
 $productsEnding = new MyHelpers();
 $textFile = new TextFile();
 ?>
 
 <?php $cart = $items; ?>
-
-<?php
-    echo "<br,>";
-?>
-
 
 <h2>В КОРЗИНЕ - <? echo $totalQuantity . " " . $productsEnding->productsEnding($totalQuantity); ?></h2>
 <br>
@@ -170,7 +162,6 @@ $this->registerJs($script1);
     </div>
 
 
-
 <?php
 $deliveryTypeJS = <<<JS
     $('.typeDeliveryJS').change(function() {
@@ -219,7 +210,6 @@ $this->registerJs($deliveryTypeJS);
             </div>
         <?php endfor; ?>
     </div>
-
 
     <?php
     $purchaseTypeJS = <<<JS

@@ -5,27 +5,19 @@ namespace app\controllers;
 use app\models\OurOffers;
 use app\models\Works;
 use Yii;
-use yii\filters\AccessControl;
 use yii\web\Controller;
-use yii\web\Response;
-use yii\filters\VerbFilter;
-use app\models\LoginForm;
 use app\models\ContactForm;
 
-use yii\db\Query;
-
-
-//use yii\views\site\contact;
 
 class SiteController extends Controller
 {
     public function actionIndex()
     {
-        $ourOffers = ouroffers::find()->all();       // "OurOffers() - object from DB with our offers data"
-
-        return $this->render('index', [
-            'ourOffers' => $ourOffers,
-        ]);
+        $ourOffers = ouroffers::find()->all();      // "ourOffers - object from DB with data about our offers": curtains,
+                                                    //   pillows, linens, towels, Apero, baby products.
+        return $this->render('index', [       // This data (like the photo address, the inscription on the card and button,
+            'ourOffers' => $ourOffers,              //   names controller/view for redirect ) is used for display of the cards
+        ]);                                         //   with our offers.
     }
 
     public function actionContact()
