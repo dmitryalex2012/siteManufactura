@@ -1,41 +1,31 @@
 <body class="works">
 
 <?php
-
-//use yii\bootstrap\BootstrapPluginAsset;
-
-///* @var $title string */
-///* @var $countTotal string */
-///* @var $notes string */
 /* @var $temp string */
-///* @var $i float */
-
+/* @var $worksList array */
 ?>
 
 <div class="products">
-    <?php foreach ($items as $key => $item): ?>
+    <?php foreach ($worksList as $key => $item): ?>
         <div class="row">
+            <div class="col-12 col-sm-5">               <!-- output "carousel" photos in this column -->
+                <h3><?php echo $item->title; ?></h3>    <!-- output title photos group -->
 
-            <div class="col-12 col-sm-5">
-                <h3><?php echo $item->title; ?></h3>
-
-                <?php           // make array with photo addresses and count photo quantity
-                $photoAddress = (explode(",",$item->notes));
-                $quantity = count(explode(",",$item->notes));
-                ?>
+                <?php                                                  // make array with photo addresses and count photo quantity
+                $photoAddress = (explode(",",$item->notes));  // $worksList[notes] contains relative path to
+                $quantity = count(explode(",",$item->notes)); //   some photo of our work. Relative paths is
+                ?>                                                    <!--  divided by "," each from other -->
 
                 <div id="carouselExampleInterval<?php echo $item->id; ?>" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
                         <?php for ($i = 0; $i < $quantity; $i++): ?>
                             <li data-target="#carouselExampleIndicators1<?php echo $item->id; ?>"
-                                data-slide-to="<?php echo $i; ?>" <?php if ($i === 0) {
-                                $b++; ?> class="active" <?php } ?>>
+                                data-slide-to="<?php echo $i; ?>" <?php if ($i === 0) { ?> class="active" <?php } ?>>
                             </li>
                         <?php endfor; ?>
                     </ol>
 
                     <div class="carousel-inner">
-                        <?php $temp = $item->notes; ?>
                         <?php for ($i = 0; $i < $quantity; $i++): ?>
                             <div class="carousel-item <?php if ($i === 0) { ?> active <?php } ?>"
                                  data-interval="1000000">
@@ -58,10 +48,10 @@
                 </div>
             </div>
 
-            <div class="col-12 col-sm-7">
+            <div class="col-12 col-sm-7">       <!-- output the photos description in this column -->
                 <div class="worksDescription">
-                    <?php $temp = $item->content;
-                    while (strpos($temp, '*') > 0) :
+                    <?php $temp = $item->content;           // $worksList[content] contains the description of the "carousel" photos.
+                    while (strpos($temp, '*') > 0) : // "*" is used instead of paragraph in description text.
                         ?>
                         <p><?php
                             echo stristr($temp, '*', true);
