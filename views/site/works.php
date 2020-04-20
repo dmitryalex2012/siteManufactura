@@ -5,11 +5,17 @@
 /* @var $worksList array */
 ?>
 
+<!--    $worksList {                                                                                        -->
+<!--        [title] =>   "Гостиная"                                                 (photo address)         -->
+<!--        [content] => "Важнейшую роль в интерьере играют шторы, поэтому"         (our work description)  -->
+<!--        [notes] =>   "foto/ourworks/livingRoom1.jpg,foto/ourworks/living....."  (photos address)        -->
+<!--              }                                                                                         -->
+
 <div class="products">
     <?php foreach ($worksList as $key => $item): ?>
         <div class="row">
-            <div class="col-12 col-sm-5">               <!-- output "carousel" photos in this column -->
-                <h3><?php echo $item->title; ?></h3>    <!-- output title photos group -->
+            <div class="col-12 col-sm-5">                            <!-- output "carousel" photos in this column -->
+                <h3><?php echo $item->title; ?></h3>                 <!-- output title photos group -->
 
                 <?php                                                  // make array with photo addresses and count photo quantity
                 $photoAddress = (explode(",",$item->notes));  // $worksList[notes] contains relative path to
@@ -66,5 +72,4 @@
         </div>
     <?php endforeach; ?>
 </div>
-<!--<script src="/docs/4.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>-->
 

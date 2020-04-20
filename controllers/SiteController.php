@@ -35,9 +35,9 @@ class SiteController extends Controller
 
     public function actionWorks()
     {
-        $items = Works::find()->all();          // "Works"  - associative array from DB with data about our works.
-        return $this->render('works', [    // This data (like the photo address, photo description)  is used for display
-            'worksList' => $items,              //   of the cards with our works and it description.
+        $items = Works::find()->all();          // "Works" - associative array from DB with data about our works.
+        return $this->render('works', [    // This data (like the photo address, photo description) is used for
+            'worksList' => $items,              //   display of the cards with our works and it description.
         ]);
     }
 

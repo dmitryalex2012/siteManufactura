@@ -3,25 +3,16 @@
 namespace app\controllers;
 
 use app\models\Services;
-use Yii;
-use yii\filters\AccessControl;
 use yii\web\Controller;
-use yii\web\Response;
-use yii\filters\VerbFilter;
-use app\models\LoginForm;
-use app\models\ContactForm;
 
-use yii\db\Query;
-
-//use yii\views\site\contact;
 
 class ServicesController extends Controller
 {
      public function actionList()
     {
-        $items = Services::find()->all();
-        return $this->render('list', [
-            'items' => $items,
+        $items = Services::find()->all();       // "Services" - associative array from DB with data about our services.
+        return $this->render('list', [     // This data (like the photo address, service description) is used
+            'services' => $items,               //    for display on card in view page.
         ]);
     }
 }
