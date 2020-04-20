@@ -5,7 +5,6 @@
 /* @var $content string */
 
 use app\widgets\Alert;
-use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
@@ -34,9 +33,6 @@ AppAsset::register($this);
         <meta property="og:site_name" content="designburoshtor">
         <meta name="twitter:description" content="Дизайн-бюро штор. Дизайн и пошив штор. Карнизы. Жалюзи. Ролеты. Текстиль для детей. Полотенца. Постельное белье. Apero.">
         <meta name="twitter:title" content="Дизайн-бюро штор• дизайн и пошив штор• полотенца• постельное белье• Apero• карнизы• жалюзи• ролеты• текстиль для детей">
-
-        <!--    <link href="css/list.css" rel="stylesheet">-->
-        <!--        <link href="css/shop.css" rel="stylesheet">-->
 
         <?php $this->registerCsrfMetaTags() ?>
 <!--        <title>--><?//= Html::encode($this->title) ?><!--</title>-->
@@ -105,15 +101,15 @@ AppAsset::register($this);
 
     <?php
     $onLoad = <<<JS
-    $(document).ready(function() {
-         $.ajax({
+    $(document).ready(function() {                  <!-- Output products quantity near inscription "CURT" -->
+         $.ajax({                                   <!--   on all pages -->
             url: '/cart/total',
             type: 'POST',
             success: function (totalQuantity) {              // array ("0"=>price, "1"=>difference)
                 if (totalQuantity != 0) { $('.classCart').html("Корзина "+totalQuantity); }
              },
             error: function () {
-                console.log ("Failed");            //  NEED !!!!!!!!!!  better delete???????
+                console.log ("Failed");
             }
         })   
     });
@@ -139,9 +135,6 @@ JS;
 
     <?php $this->endBody() ?>
 
-    <?php
-//    Yii::app()->clientScript->registerCoreScript('jquery');
-    ?>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
