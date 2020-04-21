@@ -4,9 +4,7 @@
 /* @var $product object */
 
 
-use yii\helpers\Html;
-
-switch ($product->categories){                                      // determine previous address for Bread Crumbs
+switch ($product->categories){                                      // determine previous address (for Bread Crumbs)
     case 'pillow': $previousAddress = "/products/pillows"; break;
     case 'apero': $previousAddress = "/products/apero"; break;
     case 'linens': $previousAddress = "/products/linens"; break;
@@ -19,16 +17,9 @@ $this->params['breadcrumbs'][] = $this->title = array(
 );
 $this->params['breadcrumbs'][] = $product->content;
 
-?>
-
-<?//=
-//Html::a(Html::img($product->address, ['width'=>"100%", 'height'=>"100%"]));
-//?>
-<!--<button class="buyBtn" value="--><?php //echo $item->number; ?><!--">Купить</button>-->
-
-<?php
-    if (strpos($product->address, ',') == true) {           //  is presented ONE photo of product in DB or MORE?
-        $photoArray = explode(",", $product->address);  // >1 photo
+// photo addresses is separated by the ","
+    if (strpos($product->address, ',') == true) {           //  Is presented ONE photo of product in DB or MORE?
+        $photoArray = explode(",", $product->address);    // >1 photo
         $photoQuantity = count($photoArray);
     } else {
         $photoQuantity = 1;                                        // 1 photo
@@ -40,7 +31,7 @@ $this->params['breadcrumbs'][] = $product->content;
         <div class="row">
             <div class="col-0 col-md-1">
             </div>
-            <div class="col-12 col-md-5">
+            <div class="col-12 col-md-5">           <!-- column with product photos -->
                 <div id="carouselExampleInterval<?php echo $product->id; ?>" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
                         <?php for ($i = 0; $i < $photoQuantity; $i++): ?>
@@ -80,7 +71,7 @@ $this->params['breadcrumbs'][] = $product->content;
                 </div>
             </div>
 
-            <div class="col-12 col-md-5">
+            <div class="col-12 col-md-5">       <!-- column with product description -->
                 <div class="detailDescription">
                     <p class="detailProductTitle"><?php echo $product->content; ?></p>
                     <p class="detailProductDescription"><?php echo $product->description; ?></p>
@@ -99,7 +90,7 @@ $this->params['breadcrumbs'][] = $product->content;
 </div>
 
 
-<?php
+<?php           // add product to curt
 $js = <<<JS
     $('.buyBtnDetail').on('click', function() {
         $.ajax({
@@ -107,9 +98,8 @@ $js = <<<JS
             data: {productID: $(this).attr('value')},
             type: 'POST',
             success: function (totalQuantity) {
-                $('.classCart').html("Корзина "+totalQuantity);
-                console.log(totalQuantity);
-            },
+                $('.classCart').html("Корзина "+totalQuantity);     <!-- add quantity of the bought products near -->
+            },                                                      <!-- inscription "Curt in HEADER" -->
             error: function () {
                 console.log ("Fail");
             }
@@ -119,7 +109,7 @@ JS;
 $this->registerJs($js);
 ?>
 
-<script src="/docs/4.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o"
-        crossorigin="anonymous"></script>
+<!--<script src="/docs/4.3/dist/js/bootstrap.bundle.min.js"-->
+<!--        integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o"-->
+<!--        crossorigin="anonymous"></script>-->
 
