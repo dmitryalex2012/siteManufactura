@@ -10,6 +10,9 @@ use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 
+use yii\helpers\Html;
+use yii\helpers\Url;
+
 AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
@@ -22,7 +25,6 @@ AppAsset::register($this);
         <meta name="description" content="Дизайн-бюро штор. Дизайн и пошив штор. Карнизы. Жалюзи. Ролеты. Текстиль для детей. Полотенца. Постельное белье. Apero." />
 
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
 
         <link rel="canonical" href="http://www.designburoshtor.website">
         <meta property="og:locale" content="ru_RU">
@@ -47,7 +49,7 @@ AppAsset::register($this);
         NavBar::begin([
 //        'brandLabel' => Yii::$app->name,
 //        'brandUrl' => Yii::$app->homeUrl,
-            'brandLabel' => '<img src="/foto/logo.jpg" class="img-responsive" alt="">',
+            'brandLabel' => Html::img(Url::to('@web/foto/logo.jpg'), ['alt' => '', 'class' => 'img-responsive']),
             'options' => [
                 'class' => 'navbar-inverse navbar-fixed-top',
             ],
@@ -117,7 +119,6 @@ JS;
     $this->registerJs($onLoad);
     ?>
 
-
     <footer class="footer">
         <div class="container">
             <div class="row">
@@ -125,8 +126,8 @@ JS;
                     <p>&copy; Дизайн-бюро "Мануфактура" 2012-2020</p>
                 </div>
                 <div class="containerRef col-sm-5 col-12">
-                    <a href="https://www.facebook.com/manufacture.design/" target="_blank"><img src="/foto/facebook1.png" alt=""/></a>
-                    <a href="https://www.instagram.com/textile_decor_kiev/?hl=uk" target="_blank"><img src="/foto/inst1.png" alt=""/></a>
+                    <a href="https://www.facebook.com/manufacture.design/" target="_blank">   <img src="<?php echo "/foto/facebook1.png" ?>" alt=""/></a>
+                    <a href="https://www.instagram.com/textile_decor_kiev/?hl=uk" target="_blank"><img src="<?php echo "/foto/inst1.png" ?>" alt=""/></a>
                 </div>
             </div>
             <!--        <p class="pull-right">--><?//= Yii::powered() ?><!--</p>-->
