@@ -50,6 +50,7 @@ AppAsset::register($this);
 //        'brandLabel' => Yii::$app->name,
 //        'brandUrl' => Yii::$app->homeUrl,
             'brandLabel' => Html::img(Url::to('@web/foto/logo.jpg'), ['alt' => '', 'class' => 'img-responsive']),
+//            'brandLabel' => '<img src="/foto/logo.jpg" class="img-responsive" alt="">',
             'options' => [
                 'class' => 'navbar-inverse navbar-fixed-top',
             ],

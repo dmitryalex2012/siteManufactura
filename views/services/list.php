@@ -17,15 +17,15 @@ foreach ($services as $key => $item):
     if ((((++$i) % 4) == 1)): ?>                        <!--  output 4 cards in line -->
         <div class="row">
     <?php endif; ?>
-            <div class="card-group col-12 col-lg-6 col-xl-3">
-                <div class="card">
-                    <img src="/<?php echo $item->notes; ?>" class="card-img-top" alt="100%">
-                    <div class="card-body">
-                        <p class="card-text"><?php echo $item->content; ?></p>
-                    </div>
-                </div>
+    <div class="card-group col-12 col-lg-6 col-xl-3">
+        <div class="card">
+            <img src="/<?php echo $item->notes; ?>" class="card-img-top" alt="100%">
+            <div class="card-body">
+                <p class="card-text"><?php echo $item->content; ?></p>
             </div>
-    <?php if ((($i % 4) == 0)): ?>                     <!-- close "div" after fourth card -->
         </div>
-    <?php endif; ?>
+    </div>
+    <?php if ((($i % 4) == 0)): ?>                     <!-- close "div" after fourth card -->
+    </div>
+<?php endif; ?>
 <?php endforeach; ?>
