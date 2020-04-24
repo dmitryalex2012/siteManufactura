@@ -9,7 +9,6 @@ use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
-
 use yii\helpers\Html;
 use yii\helpers\Url;
 
@@ -58,18 +57,25 @@ AppAsset::register($this);
         echo Nav::widget([
             'options' => ['class' => 'navbar-nav navbar-right'],
             'items' => [
-//            ['label' => 'Главная', 'url' => ['/site/index']],
-                ['label' => 'Услуги', 'url' => ['/services/list']],
-                ['label' => 'Наши работы', 'url' => ['/site/works']],
+//                ['label' => 'Магазин', 'items' => [                                   // this is OLD VERSION
+//                    ['label' => 'Подушки', 'url' => ['/products/pillows']],
+//                    ['label' => 'Постельное белье', 'url' => ['/products/linens']],
+//                    ['label' => 'Полотенца', 'url' => ['/products/towels']],
+//                    ['label' => 'Товары ТМ "Apero"', 'url' => ['/products/apero']],
+//                    ['label' => 'Товары для "бебиков"', 'url' => ['/products/baby']],
+//                ]],
+                ['label' => 'Услуги',       'url' => ['/services/list']],
+                ['label' => 'Наши работы',  'url' => ['/site/works']],
                 ['label' => 'Магазин', 'items' => [
-                    ['label' => 'Подушки', 'url' => ['/products/pillows']],
-                    ['label' => 'Постельное белье', 'url' => ['/products/linens']],
-                    ['label' => 'Полотенца', 'url' => ['/products/towels']],
-                    ['label' => 'Товары ТМ "Apero"', 'url' => ['/products/apero']],
-                    ['label' => 'Товары для "бебиков"', 'url' => ['/products/baby']],
+                    ['label' => 'Подушки',              'url' => ['/products/list', 'value' => 'pillow']],
+                    ['label' => 'Постельное белье',     'url' => ['/products/list', 'value' => 'linens']],
+                    ['label' => 'Полотенца',            'url' => ['/products/list', 'value' => 'towel']],
+                    ['label' => 'Товары ТМ "Apero"',    'url' => ['/products/list', 'value' => 'apero']],
+                    ['label' => 'Товары для "бебиков"', 'url' => ['/products/list', 'value' => 'baby']],
                 ]],
                 ['label' => 'Контакты', 'url' => ['/site/contact']],
-                ['label' => 'Корзина', 'url' => ['/cart/index'], 'linkOptions' => ['class' => 'classCart']],
+                ['label' => 'Корзина',  'url' => ['/cart/index'], 'linkOptions' => ['class' => 'classCart']],
+
 //            Yii::$app->user->isGuest ? (
 //            ['label' => 'Login', 'url' => ['/site/login']]
 //            ) : (

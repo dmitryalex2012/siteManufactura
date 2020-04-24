@@ -5,11 +5,11 @@
 
 
 switch ($product->categories){                                      // determine previous address (for Bread Crumbs)
-    case 'pillow': $previousAddress = "/products/pillows"; break;
-    case 'apero': $previousAddress = "/products/apero"; break;
-    case 'linens': $previousAddress = "/products/linens"; break;
-    case 'towel': $previousAddress = "/products/towels"; break;
-    case 'baby': $previousAddress = "/products/baby"; break;
+    case 'pillow':  $previousAddress = "/products/pillows"; break;
+    case 'apero':   $previousAddress = "/products/apero";   break;
+    case 'linens':  $previousAddress = "/products/linens";  break;
+    case 'towel':   $previousAddress = "/products/towels";  break;
+    case 'baby':    $previousAddress = "/products/baby";    break;
 }
 $this->params['breadcrumbs'][] = $this->title = array(
     'label'=> 'Магазин ' . $product->categoriesBredCrumbs,
@@ -19,7 +19,7 @@ $this->params['breadcrumbs'][] = $product->content;
 
 // photo addresses is separated by the ","
     if (strpos($product->address, ',') == true) {           //  Is presented ONE photo of product in DB or MORE?
-        $photoArray = explode(",", $product->address);    // >1 photo
+        $photoArray = explode(",", $product->address);    // >1 photo. Make array with products photos addresses.
         $photoQuantity = count($photoArray);
     } else {
         $photoQuantity = 1;                                        // 1 photo
@@ -41,22 +41,17 @@ $this->params['breadcrumbs'][] = $product->content;
                             </li>
                         <?php endfor; ?>
                     </ol>
-
                     <div class="carousel-inner">
-                        <?php   $temp = $photoArray; ?>
-                        <?php if ($photoQuantity === 1): ?>
-                                <div class="carousel-item active">              <!-- when only 1 photo of the product -->
-                                    <img src="<?php echo $photoArray; ?>" class="d-block w-100" alt="...">
+                       <?php  for ($i = 0; $i < $photoQuantity; $i++) : ?>
+                                <div class="carousel-item <?php if ($i == 0) { echo "active"; }  ?> " data-interval="1000000">
+                                    <?php if ($photoQuantity === 1): ?>
+                                        <img src="<?php echo $photoArray; ?>" class="d-block w-100" alt="...">
+                                    <?php else: ?>
+                                        <img src="<?php echo $photoArray[$i]; ?>" class="d-block w-100" alt="..."> <!-- > 1 product photo -->
+                                    <?php endif; ?>
                                 </div>
-                       <?php else: ?>
-                       <?php     for ($i = 0; $i < $photoQuantity; $i++) : ?>   <!-- when > 1 photo of the product -->
-                                    <div class="carousel-item <?php if ($i == 0) { echo "active"; }  ?> " data-interval="1000000">
-                                        <img src="<?php echo $temp[$i]; ?>" class="d-block w-100" alt="...">
-                                    </div>
-                       <?php     endfor; ?>
-                       <?php endif; ?>
+                       <?php  endfor; ?>
                     </div>
-
                     <a class="carousel-control-prev" href="#carouselExampleInterval<?php echo $product->id; ?>"
                        role="button" data-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -67,11 +62,10 @@ $this->params['breadcrumbs'][] = $product->content;
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="sr-only">Next</span>
                     </a>
-
                 </div>
             </div>
 
-            <div class="col-12 col-md-5">       <!-- column with product description -->
+            <div class="col-12 col-md-5">                             <!-- column with product description -->
                 <div class="detailDescription">
                     <p class="detailProductTitle"><?php echo $product->content; ?></p>
                     <p class="detailProductDescription"><?php echo $product->description; ?></p>
@@ -81,7 +75,7 @@ $this->params['breadcrumbs'][] = $product->content;
                     }
                     ?>
                     <p class="detailProductPrice"><?php echo "Цена: " . $product->price . " грн"; ?></p>
-                    <button class="buyBtnDetail" value="<?php echo $product->number; ?>">Купить</button>
+                    <button class="buyBtnDetail" value="<?php echo $product->number; ?>">Купить</button>  <!-- "value" is used for JS -->
                 </div>
             </div>
             <div class="col-0 col-md-1">
@@ -89,8 +83,7 @@ $this->params['breadcrumbs'][] = $product->content;
         </div>
 </div>
 
-
-<?php           // add product to curt
+<?php                                                               // Add product to cart
 $js = <<<JS
     $('.buyBtnDetail').on('click', function() {
         $.ajax({
@@ -98,8 +91,8 @@ $js = <<<JS
             data: {productID: $(this).attr('value')},
             type: 'POST',
             success: function (totalQuantity) {
-                $('.classCart').html("Корзина "+totalQuantity);     <!-- add quantity of the bought products near -->
-            },                                                      <!-- inscription "Curt in HEADER" -->
+                $('.classCart').html("Корзина "+totalQuantity);     <!-- Add quantity of the bought products near -->
+            },                                                      <!--   inscription "Cart in HEADER" -->
             error: function () {
                 console.log ("Fail");
             }
@@ -109,7 +102,4 @@ JS;
 $this->registerJs($js);
 ?>
 
-<!--<script src="/docs/4.3/dist/js/bootstrap.bundle.min.js"-->
-<!--        integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o"-->
-<!--        crossorigin="anonymous"></script>-->
 
