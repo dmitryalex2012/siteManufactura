@@ -49,36 +49,44 @@ class CustomerForm extends Model
         if (!$session->has('cart')) {
             $messageContent = "Корзина пуста";
         } else {
+    // Make message form, that will send to seller
             $cart = $session->get('cart');
+
+          //  Information about buyer -------------------------------------------------------
             $messageContent = "Имя: " . $this->name . ";" . "\r\n";
-            $messageContent = $messageContent . "Телефон: " . $this->phone . ";" . "\r\n";
-            $messageContent = $messageContent . "Вид доставки: " . $cart ["delivery"]["deliveryType"] . ";" . "\r\n"; //  "\r\n" - write in file with new string
+            $messageContent = $messageContent . "Телефон: " . $this->phone . ";" . "\r\n"; //  "\r\n" - write in file with new string and left side
+            $messageContent = $messageContent . "e-mail: " . $this->email . ";" . "\r\n";
+            $messageContent = $messageContent . "Вид доставки: " . $cart ["delivery"]["deliveryType"] . ";" . "\r\n";
             $messageContent = $messageContent . "Форма оплаты: " . $cart["purchase"]["purchaseType"] .  ";" . "\r\n";
             $messageContent = $messageContent . "Сообщение Заказчика: " . $this->body . "." . "\r\n" . "\r\n";
-            $messageContent = $messageContent . "Состав заказа: " . "\r\n" . "\r\n";
+            $messageContent = $messageContent . "СОСТАВ ЗАКАЗА: " . "\r\n" . "\r\n";
+          //  End information about buyer ---------------------------------------------------
             $totalPrice = 0;
+
+          //  information about selected products -------------------------------------------
             foreach ($cart as $item){
                 if ($item['quantity'] != 0){
                     $itemPrice = 0;
                     $messageContent = $messageContent . "Номер товара: " . $item['number'] . "\r\n";
                     $messageContent = $messageContent . "Название: " . $item['title'] . "\r\n";
                     $messageContent = $messageContent . "Количество: " . $item['quantity'] . "\r\n";
-                    $messageContent = $messageContent . "Стоимость товаров под даным номером: " .
-                        $itemPrice = $itemPrice + $item['price'] * $item['quantity'] . "\r\n" . "\r\n";
+                    $itemPrice = $itemPrice + $item['price'] * $item['quantity'];
+                    $messageContent = $messageContent . "Стоимость товаров под даным номером: " . $itemPrice . "\r\n" . "\r\n";
                     $totalPrice = $totalPrice + $itemPrice;
                 }
-
             }
             $messageContent = $messageContent . "Общая стоимость заказа: " . $totalPrice;
+          //  end information about selected products ---------------------------------------
         }
         $session->close();
 
-        if ($this->validate()) {
+        if ($this->validate()) {            //  sending mail to buyer
             Yii::$app->mailer->compose()
-                ->setTo([$this->email])
+//                ->setTo([$this->email])
+                ->setTo(['snn.manufactura@gmail.com', 'DmitryAlex2012@gmail.com'])      // send mail to buyer and mine mail
 //                ->setFrom([Yii::$app->params['senderEmail'] => Yii::$app->params['senderName']])
 //                ->setFrom(['tpmfd27@gmail.com' => $this->name])
-                ->setFrom(['tpmfd27@gmail.com'])
+                ->setFrom([$email])
 //                ->setReplyTo($email)
                 ->setSubject($this->name)
                 ->setTextBody($messageContent)

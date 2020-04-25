@@ -33,7 +33,6 @@ $config = [
             // for the mailer to send real emails.
 //            'useFileTransport' => true,
 
-
             'useFileTransport' => false,
 //                    'viewPath' => '@app/mail',
             'transport' => [
@@ -45,7 +44,6 @@ $config = [
                 'encryption' => 'tls',
                 'streamOptions' => ['ssl' => ['allow_self_signed' => true, 'verify_peer' => false, 'verify_peer_name' => false,],]
             ],
-
 
         ],
         'log' => [
@@ -68,7 +66,6 @@ $config = [
 //                'contact' => 'site/contact',
             ],
         ],
-
     ],
     'params' => $params,
 ];

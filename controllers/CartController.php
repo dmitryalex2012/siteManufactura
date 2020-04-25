@@ -3,12 +3,8 @@
 namespace app\controllers;
 
 use app\models\Cart;
-use app\models\ContactForm;
 use app\models\CustomerForm;
-use app\models\Products;
-use yii\helpers\VarDumper;
 use yii\web\Controller;
-use yii\helpers\Url;
 use Yii;
 use app\common\components\MyHelpers;
 
@@ -21,15 +17,14 @@ class CartController extends Controller
         $totalQuantity = $cart->totalQuantity();
         if ($totalQuantity == 0) { $cart->clearCart(); }
 
-
         $model = new CustomerForm();
-        if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
-            Yii::$app->session->setFlash('contactFormSubmitted');
-            return $this->refresh();
+        if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) { // When "Html::submitButton" was pressed
+            Yii::$app->session->setFlash('contactFormSubmitted');       // Set marker "contactFormSubmitted", that means:
+            return $this->refresh();                                        //   message sent.
         }
 
         return $this->render('cartList', [
-            'items' => $cart->outFromCart(),
+            'cart' => $cart->outFromCart(),
             'totalQuantity' => $totalQuantity,
             'model' => $model
         ]);
