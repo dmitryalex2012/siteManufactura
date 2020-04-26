@@ -22,7 +22,7 @@ $textFile = new TextFile();         // text, that describe delivery types in cla
     <div class="cartTable row">
         <div class="col-sm-1"></div>
         <div class="col-sm-10">
-            <?php if (!empty($cart)): ?>    <!-- output table with selected products -->
+            <?php if (!empty($cart)): ?>                    <!-- output table with selected products -->
                 <?php $price = 0; ?>
                 <table class="table table-bordered">
                     <tr>
@@ -48,9 +48,9 @@ $textFile = new TextFile();         // text, that describe delivery types in cla
 
                     <?php foreach ($cart as $item): ?>
                         <?php if ($item['quantity'] != 0): ?>
-                            <tr>    // output information about products
+                            <tr>                                            <!--  output information about products -->
                                 <td><?= $item['title']; ?></td>
-                                <td><?= $item['number']; ?></td>
+                                <td><?= $item['number']; ?></td>            <!-- $item['number'] == product ID -->
                                 <td>
                                     <label for="idQuantityAjax"></label>    <!-- add empty "label" because "select" need id=for in "label" -->
                                     <select id="idQuantityAjax" class="quantityAjax">
@@ -63,7 +63,7 @@ $textFile = new TextFile();         // text, that describe delivery types in cla
                                     </select>
                                 </td>
                                 <td><?= $item['price']; ?></td>
-                                <td class="<?php echo $item['number']; ?>"><?= $item['price'] * $item['quantity']; ?></td>
+                                <td class="<?php echo $item['number']; ?>"><?= $item['price'] * $item['quantity']; ?></td>  <!-- summary price for CURRENT product -->
                             </tr>
                         <?php endif; ?>
                         <?php $price += $item['price'] * $item['quantity']; ?>      <!-- "$price" is the total price -->
@@ -90,13 +90,13 @@ $textFile = new TextFile();         // text, that describe delivery types in cla
         <div class="col-sm-1"></div>
     </div>
 
-<?php       //  Change product quantity using "select" tag
+<?php       //  Changing product quantity using "select" tag
 $script1 = <<<JS
     $('.quantityAjax').change(function() {
-        let totalPriceClass;
+        // let totalPriceClass;
         let classMyCart = $('.classCart');
-        let productData = $(this).val();
-        let classType ="." + productData.substr(0, 4);      // change the price of the selected product
+        let productData = $(this).val();                    // value = product ID *** products quantity
+        let classType ="." + productData.substr(0, 4);      // use for set the new summary price of the selected product
         let totalPrice = document.getElementById('totalPrice').innerHTML;
 
          $.ajax({
@@ -104,12 +104,13 @@ $script1 = <<<JS
             data: {productData: productData},
             dataType : 'json',
             type: 'POST',
-            success: function (newPrice) {  // array ("0"=>price, "1"=>difference, "2"=>totalQuantity, "3"=> end of the word "Product")
-                $(classType).html(Math.abs(newPrice[0]));                       // new price  for product
+            success: function (newPrice) {
+              // newPrice = array ("0" => price, "1" => difference, "2" => totalQuantity, "3" => end "Product" word)
+                $(classType).html(newPrice[0]);                                 // price for new quantity of product  
                 $('#totalPrice').html(Number(totalPrice)+Number(newPrice[1]));  // new total price
-                totalPriceClass = document.querySelector("#totalPrice");        // change marker in "total
+                // totalPriceClass = document.querySelector("#totalPrice");        // change marker in "total
                 classMyCart.html("Корзина "+newPrice[2]);                       // change quantity in "Header" line
-                $('h2').html("В КОРЗИНЕ - " + newPrice[2] + " " + newPrice[3]); // change quantity in "h2" 
+                $('h2').html("В КОРЗИНЕ - " + newPrice[2] + " " + newPrice[3]); // change total quantity in "h2" 
 
                 if (Number(newPrice[2]) === 0) { $('.classCart').html("Корзина"); }
              },
@@ -123,34 +124,35 @@ $this->registerJs($script1);
 ?>
 
 <div class="purchaseRegistration row">
-    <div class="deliveryMethod col-12 col-lg-4">
+    <div class="deliveryMethod col-12 col-lg-4">    <!-- Purchase type description -->
         <h4>ВЫБЕРИТЕ СПОСОБ ДОСТАВКИ</h4>
         <?php for ($i=1; $i<=3; $i++):
           switch ($i){
-              case 1: $deliveryTypeTemp = "Новая Почта"; $deliveryFile = $textFile->newPost(); break;
-              case 2: $deliveryTypeTemp = "Курьером"; $deliveryFile = $textFile->courier(); break;
+              case 1: $deliveryTypeTemp = "Новая Почта"; $deliveryFile = $textFile->newPost();          break;
+              case 2: $deliveryTypeTemp = "Курьером"; $deliveryFile = $textFile->courier();             break;
               case 3: $deliveryTypeTemp = "Самовывоз (бесплатно)"; $deliveryFile = $textFile->pickup(); break;
           }
         ?>
             <div class="delivery<? echo $i; ?> row">
-                <div class="col-2">
+                <div class="col-2">                 <-- using radio buttons delivery determination -->
                     <input id="idTypeDeliveryJS" class="typeDeliveryJS" type="radio" name="deliveryID" value="<?php echo $deliveryTypeTemp;?>"
-                        <?      if (($i==1) && ($deliveryType == "Новая Почта")) { echo "checked"; }
-                                if (($i==2) && ($deliveryType == "Курьером")) { echo "checked"; }
-                                if (($i==3) && ($deliveryType == "Самовывоз (бесплатно)")) { echo "checked"; }
+                        <?      if (($i==1) && ($deliveryType == "Новая Почта"))            { echo "checked"; } // Select active radio button
+                                if (($i==2) && ($deliveryType == "Курьером"))               { echo "checked"; } //   of the delivery type
+                                if (($i==3) && ($deliveryType == "Самовывоз (бесплатно)"))  { echo "checked"; }
                         ?>
                     >
                  </div>
                 <div class="onlyCSSinDelivery col-10">
-                    <label for="idTypeDeliveryJS" class="typeDelivery"><? echo $deliveryTypeTemp; ?></label><br>
-                    <label><?php echo $deliveryFile; ?></label>
+                    <label for="idTypeDeliveryJS" class="typeDelivery"><? echo $deliveryTypeTemp; ?></label>
+                    <br>
+                    <label><?php echo $deliveryFile; ?></label>     <!-- additional information about delivery -->
                 </div>
             </div>
         <?php endfor; ?>
     </div>
 
 
-<?php
+<?php       // save new delivery type in DB
 $deliveryTypeJS = <<<JS
     $('.typeDeliveryJS').change(function() {
         let deliveryTypeJS = ($(this).val());
@@ -159,11 +161,10 @@ $deliveryTypeJS = <<<JS
             data: {deliveryTypeJS: deliveryTypeJS},
             type: 'POST',
             success: function (deliveryType) {
-                // console.log(deliveryType);
-                $('.deliveryTypeInTable').html("Тип доставки: "+ deliveryType);
+                $('.deliveryTypeInTable').html("Тип доставки: "+ deliveryType);   <!-- out new delivery type in table for customer -->
              },
             error: function () {
-                console.log ("Failed");            //  NEED !!!!!!!!!!  better delete???????
+                console.log ("Failed");
             }
         });
     })
@@ -220,8 +221,8 @@ JS;
     $this->registerJs($purchaseTypeJS);
     ?>
 
- <!-- Form for mail sending -->
-    <div class="contactInformation col-12 col-lg-4">
+
+    <div class="contactInformation col-12 col-lg-4">    <!-- Form for mail sending -->
         <h4>КОНТАКТНАЯ ИНФОРМАЦИЯ</h4>
         <?php if (Yii::$app->session->hasFlash('contactFormSubmitted')): ?>
             <div class="alert alert-success">

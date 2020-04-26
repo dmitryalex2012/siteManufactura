@@ -2,7 +2,6 @@
 
 namespace app\models;
 
-use yii\base\Model;
 use yii\db\ActiveRecord;
 use Yii;
 
@@ -92,7 +91,7 @@ class Cart extends ActiveRecord
         $session->open();
         if ($session) {
             $cart = $session->get('cart');
-            $oldQuantity = $cart[$number]["quantity"];
+//            $oldQuantity = $cart[$number]["quantity"];
             $oldPrice = $cart[$number]["quantity"] * $cart[$number]["price"];
             $cart[$number]["quantity"] = $quantity;
             $session->set('cart', $cart);
@@ -101,7 +100,7 @@ class Cart extends ActiveRecord
             $difference = $price - $oldPrice;
         }
         $session->close();
-        $resultChange = json_encode(array("0"=>$price, "1"=>$difference));
+        $resultChange = array("0" => $price, "1" => $difference);
 
         return $resultChange;
     }
@@ -123,7 +122,7 @@ class Cart extends ActiveRecord
             $cart = $session->get('cart');
             $cart ["delivery"]["deliveryType"] = $deliveryType;
         }
-          else { $cart ["delivery"]["deliveryType"] = "Новая почта"; }     // need delete
+          else { $cart ["delivery"]["deliveryType"] = "Новая почта"; }
         $session->set('cart', $cart);       // write delivery type in SESSION
         $session->close();
 
