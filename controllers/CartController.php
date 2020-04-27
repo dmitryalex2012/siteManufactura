@@ -19,18 +19,18 @@ class CartController extends Controller
 
         $model = new CustomerForm();
         if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) { // When "Html::submitButton" was pressed
-            Yii::$app->session->setFlash('contactFormSubmitted');       // Set marker "contactFormSubmitted", that means:
-            return $this->refresh();                                        //   message sent.
+            Yii::$app->session->setFlash('contactFormSubmitted');   // Set marker "contactFormSubmitted", that means:
+            return $this->refresh();                                    //   message sent.
         }
 
         return $this->render('cartList', [
             'cart' => $cart->outFromCart(),
             'totalQuantity' => $totalQuantity,
-            'model' => $model
+            'model' => $model                                           // object in ActiveForm (for email sending)
         ]);
     }
 
-    public function actionAdd()
+    public function actionAdd()         // add product to Cart
     {
             $cart = new Cart();
             $productNumber = Yii::$app->request->post('productID');
@@ -40,7 +40,7 @@ class CartController extends Controller
             return $totalQuantity;
     }
 
-    public function actionChange()
+    public function actionChange()          // change quantity products from Cart Page
     {
         $productsEnding = new MyHelpers();
         $cart = new Cart();
@@ -65,8 +65,8 @@ class CartController extends Controller
         return $resultChange;
     }
 
-    public function actionTotal()
-    {
+    public function actionTotal()       // Using for determination total quantity products and it
+    {                                   //   out near inscription "Cart" in Layout
         $cart = new Cart();
         $totalQuantity = $cart->totalQuantity();
 
@@ -80,7 +80,7 @@ class CartController extends Controller
         return $cart->changeDelivery(Yii::$app->request->post('deliveryTypeJS'));
     }
 
-    public function actionPurchase()
+    public function actionPurchase()           // save purchase type in DB
     {
         $cart = new Cart();
 

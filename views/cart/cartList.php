@@ -90,7 +90,7 @@ $textFile = new TextFile();         // text, that describe delivery types in cla
         <div class="col-sm-1"></div>
     </div>
 
-<?php       //  Changing product quantity using "select" tag
+<?php                                                       //  Changing product quantity using "select" tag
 $script1 = <<<JS
     $('.quantityAjax').change(function() {
         // let totalPriceClass;
@@ -124,17 +124,17 @@ $this->registerJs($script1);
 ?>
 
 <div class="purchaseRegistration row">
-    <div class="deliveryMethod col-12 col-lg-4">    <!-- Purchase type description -->
+    <div class="deliveryMethod col-12 col-lg-4">    <!-- Delivery type description -->
         <h4>ВЫБЕРИТЕ СПОСОБ ДОСТАВКИ</h4>
         <?php for ($i=1; $i<=3; $i++):
-          switch ($i){
+          switch ($i){                                // select delivery type for description near radio button
               case 1: $deliveryTypeTemp = "Новая Почта"; $deliveryFile = $textFile->newPost();          break;
               case 2: $deliveryTypeTemp = "Курьером"; $deliveryFile = $textFile->courier();             break;
               case 3: $deliveryTypeTemp = "Самовывоз (бесплатно)"; $deliveryFile = $textFile->pickup(); break;
           }
         ?>
             <div class="delivery<? echo $i; ?> row">
-                <div class="col-2">                 <-- using radio buttons delivery determination -->
+                <div class="col-2">                 <!-- using radio buttons delivery determination -->
                     <input id="idTypeDeliveryJS" class="typeDeliveryJS" type="radio" name="deliveryID" value="<?php echo $deliveryTypeTemp;?>"
                         <?      if (($i==1) && ($deliveryType == "Новая Почта"))            { echo "checked"; } // Select active radio button
                                 if (($i==2) && ($deliveryType == "Курьером"))               { echo "checked"; } //   of the delivery type
@@ -152,7 +152,7 @@ $this->registerJs($script1);
     </div>
 
 
-<?php       // save new delivery type in DB
+<?php                                               // save new delivery type in DB
 $deliveryTypeJS = <<<JS
     $('.typeDeliveryJS').change(function() {
         let deliveryTypeJS = ($(this).val());
@@ -172,20 +172,20 @@ JS;
 $this->registerJs($deliveryTypeJS);
 ?>
 
-    <div class="purchaseInformation col-12 col-lg-4">
+    <div class="purchaseInformation col-12 col-lg-4">   <!-- Purchase type description -->
         <h4>ВЫБЕРИТЕ СПОСОБ ОПЛАТЫ</h4>
         <?php for ($i=1; $i<=3; $i++):
-            switch ($i){
-                case 1: $purchaseTypeTemp = "Наложным платежом"; break;
-                case 2: $purchaseTypeTemp = "На карту Приват-банка"; break;
-                case 3: $purchaseTypeTemp = "Наличными"; break;
+            switch ($i){                                // Select purchase type for description near radio button
+                case 1: $purchaseTypeTemp = "Наложным платежом";        break;
+                case 2: $purchaseTypeTemp = "На карту Приват-банка";    break;
+                case 3: $purchaseTypeTemp = "Наличными";                break;
             }
             ?>
             <div class="purchase<? echo $i; ?> row">
                 <div class="col-2">
                     <input id="idTypePurchaseJS" class="typePurchaseJS" type="radio" name="purchaseID" value="<?php echo $purchaseTypeTemp;?>"
-                    <?  if (($i==1) && ($purchaseType == "Наложным платежом")) { echo "checked"; }
-                        if (($i==2) && ($purchaseType == "На карту Приват-банка")) { echo "checked"; }
+                    <?  if (($i==1) && ($purchaseType == "Наложным платежом")) { echo "checked"; }        // Select active radio button
+                        if (($i==2) && ($purchaseType == "На карту Приват-банка")) { echo "checked"; }    //   of the purchase type
                         if (($i==3) && ($purchaseType == "Наличными")) { echo "checked"; }
                     ?>
                     >
@@ -200,7 +200,7 @@ $this->registerJs($deliveryTypeJS);
         <?php endfor; ?>
     </div>
 
-    <?php
+    <?php          // save new purchase type in DB
     $purchaseTypeJS = <<<JS
     $('.typePurchaseJS').change(function() {
         let purchaseTypeJS = ($(this).val());
@@ -209,8 +209,7 @@ $this->registerJs($deliveryTypeJS);
             data: {purchaseTypeJS: purchaseTypeJS},
             type: 'POST',
             success: function (purchaseType) {
-                // console.log(purchaseType);
-                $('.purchaseTypeInTable').html("Способ оплаты: "+ purchaseType);
+                $('.purchaseTypeInTable').html("Способ оплаты: "+ purchaseType);   <!-- out new purchase type in table for customer -->
              },
             error: function () {
                 console.log ("Failed");
