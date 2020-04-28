@@ -6,12 +6,6 @@
 /* @var $form yii\bootstrap\ActiveForm */
 /* @var $model app\models\ContactForm */
 
-use yii\helpers\Html;
-use yii\bootstrap\ActiveForm;
-use yii\captcha\Captcha;
-
-//$this->title = 'Контакты';
-//$this->params['breadcrumbs'][] = $this->title;
 echo "<br>";
 echo "<br>";
 echo "<br>";
@@ -23,15 +17,14 @@ echo "<br>";
     <div id="map"></div>
 </div>
 <script>
-    let map;
-    let marker;
+    let  setLatLng = {lat: 50.466282, lng: 30.615236};
     function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-            center: {lat: 50.466282, lng: 30.615236},
+        let map = new google.maps.Map(document.getElementById('map'), { // load map with zoom 15
+            center: setLatLng,
             zoom: 15
         });
-        marker = new google.maps.Marker({
-            position: {lat: 50.466282, lng: 30.615236},
+        let marker = new google.maps.Marker({                           // load marker
+            position: setLatLng,
             map: map,
             title: 'Дизайн-бюро "Мануфактура"',
             label: {
