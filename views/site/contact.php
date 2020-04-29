@@ -6,14 +6,14 @@
 /* @var $form yii\bootstrap\ActiveForm */
 /* @var $model app\models\ContactForm */
 
-echo "<br>";
-echo "<br>";
-echo "<br>";
-echo "<br>";
+//echo "<br>";
+//echo "<br>";
+//echo "<br>";
+//echo "<br>";
 ?>
 
 
-<div class="weOnMap col-12 col-lg-9">
+<div class="weOnMap col-12 col-md-9">
     <div id="map"></div>
 </div>
 <script>
@@ -39,17 +39,17 @@ echo "<br>";
         async defer>
 </script>
 
-<div class="ourContacts col-12 col-lg-3">
+<div class="ourContacts col-12 col-md-3">
     <p class="contactsHeading">ЗВОНИТЕ:</p>
     <p class="contactsInformation">+38(097)927-25-84</p>
     <p class="contactsInformation">+38(066)034-39-57 (viber)</p>
-    <br>
-    <br>
+<!--    <br>-->
+<!--    <br>-->
 
     <p class="contactsHeading">ПИШИТЕ:</p>
     <p class="contactsInformation">snn.manufactura@gmail.com</p>
-    <br>
-    <br>
+<!--    <br>-->
+<!--    <br>-->
 
     <p class="contactsHeading">ПРИЕЗЖАЙТЕ:</p>
     <p class="contactsInformation">г. Киев, ул. Шалетт Города 1, оф. 208</p>
