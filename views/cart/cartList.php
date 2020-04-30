@@ -4,7 +4,7 @@
 /* @var $totalQuantity float */
 /* @var $form yii\bootstrap\ActiveForm */
 /* @var $model app\models\CustomerForm */
-/* @var $productsEnding array */
+///* @var $productsEnding array */
 
 use yii\bootstrap\ActiveForm;
 //use yii\captcha\Captcha;
@@ -12,11 +12,13 @@ use yii\helpers\Html;
 use app\common\components\MyHelpers;
 use app\common\components\TextFile;
 
-$productsEnding = new MyHelpers();  // make correct word ("ТОВАР", "ТОВАРА", "ТОВАРОВ") in <h2> inscription
+//$productsEnding = new MyHelpers();  // make correct word ("ТОВАР", "ТОВАРА", "ТОВАРОВ") in <h2> inscription
 $textFile = new TextFile();         // text, that describe delivery types in class="deliveryMethod"
 ?>
 
-<h2>В КОРЗИНЕ - <? echo $totalQuantity . " " . $productsEnding->productsEnding($totalQuantity); ?></h2>
+<!-- MyHelpers() - make correct word "Product" ("ТОВАР", "ТОВАРА", "ТОВАРОВ") in <h2> inscription -->
+<h2>В КОРЗИНЕ - <? echo $totalQuantity . " " . MyHelpers::productsEnding($totalQuantity); ?></h2>
+
 <br>
 
     <div class="cartTable row">
