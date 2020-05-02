@@ -2,11 +2,6 @@
 
 namespace app\common\components;
 
-///* @var $this yii\web\View */
-///* @var $pillows array */
-
-///* @var $linens array */
-
 class TextFile
 {
     public function newPost()

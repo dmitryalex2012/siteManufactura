@@ -65,7 +65,7 @@ AppAsset::register($this);
 //                    ['label' => 'Товары для "бебиков"', 'url' => ['/products/baby']],
 //                ]],
                 ['label' => 'Услуги',       'url' => ['/services/list']],
-                ['label' => 'Наши работы',  'url' => ['/site/works']],
+                ['label' => 'Наши работы',  'url' => ['/works/portfolio']],
                 ['label' => 'Магазин', 'items' => [
                     ['label' => 'Подушки',              'url' => ['/products/list', 'value' => 'pillow']],
                     ['label' => 'Постельное белье',     'url' => ['/products/list', 'value' => 'linens']],
@@ -73,7 +73,7 @@ AppAsset::register($this);
                     ['label' => 'Товары ТМ "Apero"',    'url' => ['/products/list', 'value' => 'apero']],
                     ['label' => 'Товары для "бебиков"', 'url' => ['/products/list', 'value' => 'baby']],
                 ]],
-                ['label' => 'Контакты', 'url' => ['/site/contact']],
+                ['label' => 'Контакты', 'url' => ['/contacts/load']],
                 ['label' => 'Корзина',  'url' => ['/cart/index'], 'linkOptions' => ['class' => 'classCart']],
 
 //            Yii::$app->user->isGuest ? (
