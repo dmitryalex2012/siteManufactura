@@ -3,17 +3,25 @@
 /* @var $this yii\web\View */
 /* @var $product object */
 
-
+$previousAddress = "/products/list";
 switch ($product->categories){                                      // determine previous address (for Bread Crumbs)
-    case 'pillow':  $previousAddress = "/products/pillows"; break;
-    case 'apero':   $previousAddress = "/products/apero";   break;
-    case 'linens':  $previousAddress = "/products/linens";  break;
-    case 'towel':   $previousAddress = "/products/towels";  break;
-    case 'baby':    $previousAddress = "/products/baby";    break;
+//    case 'pillow':  $previousAddress = "/products/pillows"; break;
+//    case 'apero':   $previousAddress = "/products/apero";   break;
+//    case 'linens':  $previousAddress = "/products/linens";  break;
+//    case 'towel':   $previousAddress = "/products/towels";  break;
+//    case 'baby':    $previousAddress = "/products/baby";    break;
+
+    case 'pillow':  $value = "pillow"; break;
+    case 'apero':   $value = "apero";   break;
+    case 'linens':  $value = "linens";  break;
+    case 'towel':   $value = "towel";  break;
+    case 'baby':    $value = "baby";    break;
+
 }
 $this->params['breadcrumbs'][] = $this->title = array(
     'label'=> 'Магазин ' . $product->categoriesBredCrumbs,
-    'url'=> $previousAddress
+    'url'=> $previousAddress,
+    'value'=>$value
 );
 $this->params['breadcrumbs'][] = $product->content;
 

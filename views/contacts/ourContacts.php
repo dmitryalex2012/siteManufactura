@@ -1,15 +1,9 @@
 <body class="contact">
 
 <?php
-
 /* @var $this yii\web\View */
 /* @var $form yii\bootstrap\ActiveForm */
 /* @var $model app\models\ContactForm */
-
-//echo "<br>";
-//echo "<br>";
-//echo "<br>";
-//echo "<br>";
 ?>
 
 

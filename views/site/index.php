@@ -25,7 +25,7 @@ use yii\helpers\Html;
                 <?php   endif;  ?>
 
                 <!-- the button in the bottom of the card will appear from second card-->
-                <?php   if ($i > 1) {   echo Html::a($ourOffer->buttonText, $ourOffer->redirect, ['class'=>'indexBtn btn btn-outline-info']);   } ?>
+                <?php   if ($i > 1) {   echo Html::a($ourOffer->buttonText, ['/products/list', 'value' => $ourOffer->redirect], ['class'=>'indexBtn btn btn-outline-info']);   } ?>
             </div>
         </div>
 <?php if ((($i % 2) == 0)): ?>
