@@ -33,7 +33,7 @@ class ProductsController extends Controller
     public function actionList()
     {
         $result = Products::find()->where(['categories' => 'pillow'])->all();   // when "Pillow" item is selected
-        switch (Yii::$app->request->get('value')){
+        switch (Yii::$app->request->get('value')){      // or:      switch ($_GET['value']){
             case 'apero':   $result = Products::find()->where(['categories' => 'apero'])->all();    break;
             case 'linens':  $result = Products::find()->where(['categories' => 'linens'])->all();   break;
             case 'towel':   $result = Products::find()->where(['categories' => 'towel'])->all();    break;

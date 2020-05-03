@@ -4,10 +4,6 @@
 /* @var $pillows array */
 /* @var $linens array */
 
-
-/* @var $temp string */
-
-
 use yii\helpers\Html;
 
 foreach ($items as $key => $item) {

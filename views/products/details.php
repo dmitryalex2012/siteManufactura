@@ -3,34 +3,27 @@
 /* @var $this yii\web\View */
 /* @var $product object */
 
-$previousAddress = "/products/list";
-switch ($product->categories){                                      // determine previous address (for Bread Crumbs)
-//    case 'pillow':  $previousAddress = "/products/pillows"; break;
-//    case 'apero':   $previousAddress = "/products/apero";   break;
-//    case 'linens':  $previousAddress = "/products/linens";  break;
-//    case 'towel':   $previousAddress = "/products/towels";  break;
-//    case 'baby':    $previousAddress = "/products/baby";    break;
 
-    case 'pillow':  $value = "pillow"; break;
+switch ($product->categories){                                      // determine previous address (for Bread Crumbs)
+    case 'pillow':  $value = "pillow";  break;
     case 'apero':   $value = "apero";   break;
     case 'linens':  $value = "linens";  break;
-    case 'towel':   $value = "towel";  break;
+    case 'towel':   $value = "towel";   break;
     case 'baby':    $value = "baby";    break;
-
 }
-$this->params['breadcrumbs'][] = $this->title = array(
+$this->params['breadcrumbs'][] = $this->title = [
     'label'=> 'Магазин ' . $product->categoriesBredCrumbs,
-    'url'=> $previousAddress,
-    'value'=>$value
-);
+    'url'=> ['/products/list', 'value' => $value],                  // The 'value' is used in Controller for
+];                                                                  //   determination the type of product in previous page
 $this->params['breadcrumbs'][] = $product->content;
 
+
 // photo addresses is separated by the ","
-    if (strpos($product->address, ',') == true) {           //  Is presented ONE photo of product in DB or MORE?
-        $photoArray = explode(",", $product->address);    // >1 photo. Make array with products photos addresses.
+    if (strpos($product->address, ',') == true) {            //  Is presented ONE photo of product in DB or MORE?
+        $photoArray = explode(",", $product->address);     // >1 photo. Make array with products photos addresses.
         $photoQuantity = count($photoArray);
     } else {
-        $photoQuantity = 1;                                        // 1 photo
+        $photoQuantity = 1;                                         // 1 photo
         $photoArray = $product->address;
     }
 ?>
