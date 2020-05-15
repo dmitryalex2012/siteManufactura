@@ -2,25 +2,20 @@
     font-size: larger;
     color: #127579;
     position: absolute;
-    bottom: 10px;
+    bottom: 20px;
     left: 40%;
 
     border: 1px solid #127579!important;
 
     background: #ffffff6b;
     text-shadow: 0.5px 0.5px 0.5px #ccc, 0 0 1em #3a2727;
-    /*text-shadow: 0.5px 0.5px 0.5px #eaeaea, 0 0 1em #040303;*/
 }
 
 .pInIndex, .pInIndexAdd {
     font-size: x-large;
     font-style: italic;
     text-align: center;
-    /*color: #cc4a4a;*/
     color: #ff9900;
-    /*#ffc107*/
-    /*text-shadow: 1px 1px 1px #ca3f3f, 0 0em red;*/
-    /*text-shadow: 1px 1px 1px #060606, 0 0 1em mintcream;*/
     text-shadow: 1px 1px 1px #4e674a, 0 0 1em #cfe0d7;
 }
 

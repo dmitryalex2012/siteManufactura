@@ -5,8 +5,9 @@ body.home{
 }
 
 #w0{
-    background-color: #d4d4d46b;
-    border-color: #d4d4d46b;
+    background-color: #e2e2e2;
+    border-color: #e2e2e2;
+    /*border-color: #d4d4d46b;*/
 }
 
 .img-responsive{
@@ -18,7 +19,7 @@ body.home{
 }
 
 .navbar-nav > li > a {
-    color: #808080!important;
+    color: #669978!important;
 }
 
 .navbar-nav > li > a:hover {
