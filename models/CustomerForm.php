@@ -68,7 +68,8 @@ class CustomerForm extends Model
                 if ($item['quantity'] != 0){
                     $itemPrice = 0;
                     $messageContent = $messageContent . "Номер товара: " . $item['number'] . "\r\n";
-                    $messageContent = $messageContent . "Название: " . $item['title'] . "\r\n";
+                    $messageContent = $messageContent . "Категория: " . $item['title'] . "\r\n";
+                    $messageContent = $messageContent . "Название: " . $item['content'] . "\r\n";
                     $messageContent = $messageContent . "Количество: " . $item['quantity'] . "\r\n";
                     $itemPrice = $itemPrice + $item['price'] * $item['quantity'];
                     $messageContent = $messageContent . "Стоимость товаров под даным номером: " . $itemPrice . "\r\n" . "\r\n";

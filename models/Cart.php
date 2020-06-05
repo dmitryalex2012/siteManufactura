@@ -62,6 +62,7 @@ class Cart extends ActiveRecord
 
         $cart[$number]["number"] = $number;
         $cart[$number]["title"] = $product["title"] ;
+        $cart[$number]["content"] = $product["content"] ;
         $cart[$number]["quantity"] = $quantity;
         $cart[$number]["price"] = $product["price"];
 
