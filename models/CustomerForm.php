@@ -81,7 +81,7 @@ class CustomerForm extends Model
         }
         $session->close();
 
-        if ($this->validate()) {            //  sending mail to buyer
+        if ($this->validate()) {                        //  sending mail to buyer
             Yii::$app->mailer->compose()
 //                ->setTo([$this->email])
                 ->setTo(['snn.manufactura@gmail.com', 'DmitryAlex2012@gmail.com'])      // send mail to buyer and mine mail
@@ -91,6 +91,34 @@ class CustomerForm extends Model
 //                ->setReplyTo($email)
                 ->setSubject($this->name)
                 ->setTextBody($messageContent)
+                ->send();
+
+            $reply = "";
+
+
+            if (($session->has('cart'))) {
+                foreach ($cart as $item) {
+                    if ($item['quantity'] != 0) {
+                        $itemPrice = 0;
+                        $reply = $reply . "Номер товара: " . $item['number'] . "\r\n";
+                        $reply = $reply . "Категория: " . $item['title'] . "\r\n";
+                        $reply = $reply . "Название: " . $item['content'] . "\r\n";
+                        $reply = $reply . "Количество: " . $item['quantity'] . "\r\n";
+                        $itemPrice = $itemPrice + $item['price'] * $item['quantity'];
+                        $reply = $reply . "Стоимость товаров под даным номером: " . $itemPrice . "\r\n" . "\r\n";
+                        $totalPrice = $totalPrice + $itemPrice;
+                    }
+                }
+                $reply = $reply . "Общая стоимость заказа: " . $totalPrice;
+            }
+
+
+            Yii::$app->mailer->compose()
+                ->setTo([$this->email])                 // send mail to buyer and mine mail
+//                ->setFrom(['tpmfd27@gmail.com' => $this->name])
+                ->setFrom(['tpmfd27@gmail.com'])
+                ->setSubject("Администратор")
+                ->setTextBody($reply)
                 ->send();
             return true;
         }
