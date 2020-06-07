@@ -16,6 +16,7 @@ $textFile = new TextFile();         // text, that describe delivery types in cla
 <!-- MyHelpers() - make correct word "Product" ("ТОВАР", "ТОВАРА", "ТОВАРОВ") in <h2> inscription -->
 <h2>В КОРЗИНЕ - <? echo $totalQuantity . " " . MyHelpers::productsEnding($totalQuantity); ?></h2>
 
+
 <br>
 
     <div class="cartTable row">

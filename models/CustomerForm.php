@@ -44,10 +44,12 @@ class CustomerForm extends Model
      */
     public function contact($email)
     {
+        $orderNumber = date("mdyHis");
+
         $session = Yii::$app->session;
         $session->open();
         if (!$session->has('cart')) {
-            $messageContent = "Корзина пуста";
+            $messageContent = $reply = "Корзина пуста";
         } else {
     // Make message form, that will send to seller
             $cart = $session->get('cart');
@@ -56,35 +58,39 @@ class CustomerForm extends Model
             $messageContent = "Имя: " . $this->name . ";" . "\r\n";
             $messageContent = $messageContent . "Телефон: " . $this->phone . ";" . "\r\n"; //  "\r\n" - write in file with new string and left side
             $messageContent = $messageContent . "e-mail: " . $this->email . ";" . "\r\n";
+            $messageContent = $messageContent . "Номер заказа: " . $orderNumber . ";" . "\r\n";
             $messageContent = $messageContent . "Вид доставки: " . $cart ["delivery"]["deliveryType"] . ";" . "\r\n";
             $messageContent = $messageContent . "Форма оплаты: " . $cart["purchase"]["purchaseType"] .  ";" . "\r\n";
-            $messageContent = $messageContent . "Сообщение Заказчика: " . $this->body . "." . "\r\n" . "\r\n";
-            $messageContent = $messageContent . "СОСТАВ ЗАКАЗА: " . "\r\n" . "\r\n";
+            $messageContent = $messageContent . "Сообщение Заказчика: " . $this->body . "." . "\n" . "\r\n";
+            $messageContent = $messageContent . "СОСТАВ ЗАКАЗА: " . "\n" . "\r\n";
           //  End information about buyer ---------------------------------------------------
             $totalPrice = 0;
 
           //  information about selected products -------------------------------------------
+            $reply = "";
             foreach ($cart as $item){
                 if ($item['quantity'] != 0){
                     $itemPrice = 0;
-                    $messageContent = $messageContent . "Номер товара: " . $item['number'] . "\r\n";
-                    $messageContent = $messageContent . "Категория: " . $item['title'] . "\r\n";
-                    $messageContent = $messageContent . "Название: " . $item['content'] . "\r\n";
-                    $messageContent = $messageContent . "Количество: " . $item['quantity'] . "\r\n";
+//                    $messageContent = $messageContent . "Номер товара: " . $item['number'] . "\r\n";
+                    $reply = "Номер товара: " . $item['number'] . "\r\n";
+                    $reply = $reply . "Категория: " . $item['title'] . "\r\n";
+                    $reply = $reply . "Название: " . $item['content'] . "\r\n";
+                    $reply = $reply . "Количество: " . $item['quantity'] . "\r\n";
                     $itemPrice = $itemPrice + $item['price'] * $item['quantity'];
-                    $messageContent = $messageContent . "Стоимость товаров под даным номером: " . $itemPrice . "\r\n" . "\r\n";
+                    $reply = $reply . "Стоимость товаров под даным номером: " . $itemPrice . "\n" . "\r\n";
                     $totalPrice = $totalPrice + $itemPrice;
                 }
             }
-            $messageContent = $messageContent . "Общая стоимость заказа: " . $totalPrice;
+            $reply = $reply . "Общая стоимость заказа: " . $totalPrice;
+            $messageContent = $messageContent . $reply;
           //  end information about selected products ---------------------------------------
         }
         $session->close();
 
-        if ($this->validate()) {                        //  sending mail to buyer
-            Yii::$app->mailer->compose()
+        if ($this->validate()) {
+            Yii::$app->mailer->compose()                //  sending mail to "Manufaktura"
 //                ->setTo([$this->email])
-                ->setTo(['snn.manufactura@gmail.com', 'DmitryAlex2012@gmail.com'])      // send mail to buyer and mine mail
+                ->setTo(['snn.manufactura@gmail.com', 'DmitryAlex2012@gmail.com'])      // send mails
 //                ->setFrom([Yii::$app->params['senderEmail'] => Yii::$app->params['senderName']])
 //                ->setFrom(['tpmfd27@gmail.com' => $this->name])
                 ->setFrom([$email])
@@ -93,33 +99,16 @@ class CustomerForm extends Model
                 ->setTextBody($messageContent)
                 ->send();
 
-            $reply = "";
-
-
-            if (($session->has('cart'))) {
-                foreach ($cart as $item) {
-                    if ($item['quantity'] != 0) {
-                        $itemPrice = 0;
-                        $reply = $reply . "Номер товара: " . $item['number'] . "\r\n";
-                        $reply = $reply . "Категория: " . $item['title'] . "\r\n";
-                        $reply = $reply . "Название: " . $item['content'] . "\r\n";
-                        $reply = $reply . "Количество: " . $item['quantity'] . "\r\n";
-                        $itemPrice = $itemPrice + $item['price'] * $item['quantity'];
-                        $reply = $reply . "Стоимость товаров под даным номером: " . $itemPrice . "\r\n" . "\r\n";
-                        $totalPrice = $totalPrice + $itemPrice;
-                    }
-                }
-                $reply = $reply . "Общая стоимость заказа: " . $totalPrice;
-            }
-
-
+            $reply = "Здравствуйте." . "\n" . "\r\n" . "№ заказа:" . $orderNumber . "\r\n" .
+                        "     Состав заказа:" . "\r\n" . $reply . "\r\n" .
+                        "Спасибо за то, что выбрали нас. Наш дизайнер свяжется с Вами в ближайшее время.";
             Yii::$app->mailer->compose()
-                ->setTo([$this->email])                 // send mail to buyer and mine mail
-//                ->setFrom(['tpmfd27@gmail.com' => $this->name])
+                ->setTo([$this->email])                 // send mail to buyer
                 ->setFrom(['tpmfd27@gmail.com'])
-                ->setSubject("Администратор")
+                ->setSubject("Администратор Дмитрий")
                 ->setTextBody($reply)
                 ->send();
+
             return true;
         }
         return false;
