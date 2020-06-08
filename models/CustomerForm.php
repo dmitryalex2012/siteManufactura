@@ -44,7 +44,7 @@ class CustomerForm extends Model
      */
     public function contact($email)
     {
-        $orderNumber = date("mdyHis");
+        $orderNumber = date("dmyHis");
 
         $session = Yii::$app->session;
         $session->open();
@@ -70,18 +70,17 @@ class CustomerForm extends Model
             $reply = "";
             foreach ($cart as $item){
                 if ($item['quantity'] != 0){
-                    $itemPrice = 0;
 //                    $messageContent = $messageContent . "Номер товара: " . $item['number'] . "\r\n";
-                    $reply = "Номер товара: " . $item['number'] . "\r\n";
+                    $reply = $reply . "Номер товара: " . $item['number'] . "\r\n";
                     $reply = $reply . "Категория: " . $item['title'] . "\r\n";
                     $reply = $reply . "Название: " . $item['content'] . "\r\n";
                     $reply = $reply . "Количество: " . $item['quantity'] . "\r\n";
-                    $itemPrice = $itemPrice + $item['price'] * $item['quantity'];
-                    $reply = $reply . "Стоимость товаров под даным номером: " . $itemPrice . "\n" . "\r\n";
+                    $itemPrice = $item['price'] * $item['quantity'];
+                    $reply = $reply . "Стоимость товаров под даным номером: " . $itemPrice . " грн." . "\n" . "\r\n";
                     $totalPrice = $totalPrice + $itemPrice;
                 }
             }
-            $reply = $reply . "Общая стоимость заказа: " . $totalPrice;
+            $reply = $reply . "Общая стоимость заказа: " . $totalPrice . " грн.";
             $messageContent = $messageContent . $reply;
           //  end information about selected products ---------------------------------------
         }
@@ -99,8 +98,8 @@ class CustomerForm extends Model
                 ->setTextBody($messageContent)
                 ->send();
 
-            $reply = "Здравствуйте." . "\n" . "\r\n" . "№ заказа:" . $orderNumber . "\r\n" .
-                        "     Состав заказа:" . "\r\n" . $reply . "\r\n" .
+            $reply = "Здравствуйте." . "\r\n" . "Номер Вашего заказа:" . $orderNumber . "." . "\n" . "\r\n" .
+                        "Состав заказа:" . "\n" . "\r\n" . $reply . "\r\n" .
                         "Спасибо за то, что выбрали нас. Наш дизайнер свяжется с Вами в ближайшее время.";
             Yii::$app->mailer->compose()
                 ->setTo([$this->email])                 // send mail to buyer

@@ -49,7 +49,7 @@ $textFile = new TextFile();         // text, that describe delivery types in cla
                     <?php foreach ($cart as $item): ?>
                         <?php if ($item['quantity'] != 0): ?>
                             <tr>                                            <!--  output information about products -->
-                                <td><?= $item['title']; ?></td>
+                                <td><?= $item['content']; ?></td>
                                 <td><?= $item['number']; ?></td>            <!-- $item['number'] == product ID -->
                                 <td>
                                     <label for="idQuantityAjax"></label>    <!-- add empty "label" because "select" need id=for in "label" -->

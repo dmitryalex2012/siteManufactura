@@ -41,17 +41,17 @@ class Cart extends ActiveRecord
         } else {
             $cart = $session->get('cart');
         }
-// ************************  Associative array $cart structure: *********************************************
-//      $cart {                                                                                             *
-//            $number=>array("number"=>$number, "title"=>$title, "quantity"=>$quantity, "price"=>$price),   *
-//            $number=>array("number"=>$number, "title"=>$title, "quantity"=>$quantity, "price"=>$price),   *
-//                          .                                                                               *
-//                          .                                                                               *
-//            $number=>array("number"=>$number, "title"=>$title, "quantity"=>$quantity, "price"=>$price),   *
-//            $delivery=>array("deliveryType"=>$deliveryType),                                               *
-//            $purchase=>array("purchaseType"=>$purchaseType)
-//      }                                                                                                   *
-//***********************************************************************************************************
+// **************************************  Associative array $cart structure: ***************************************************
+//      $cart {                                                                                                                 *
+//            $number=>array("number"=>$number, "title"=>$title, "content"=>$content, "quantity"=>$quantity, "price"=>$price),  *
+//            $number=>array("number"=>$number, "title"=>$title, "content"=>$content, "quantity"=>$quantity, "price"=>$price),  *
+//                          .                                                                                                   *
+//                          .                                                                                                   *
+//            $number=>array("number"=>$number, "title"=>$title, "content"=>$content, "quantity"=>$quantity, "price"=>$price),  *
+//            $delivery=>array("deliveryType"=>$deliveryType),                                                                  *
+//            $purchase=>array("purchaseType"=>$purchaseType)                                                                   *
+//      }                                                                                                                       *
+//*******************************************************************************************************************************
         $quantity = 1;
         if (isset($cart[$number])) {
             $quantity = ++$cart[$number]['quantity'];
