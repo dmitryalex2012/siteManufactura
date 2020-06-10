@@ -223,8 +223,10 @@ JS;
 
     <div class="contactInformation col-12 col-lg-4">    <!-- Form for mail sending -->
         <h4>КОНТАКТНАЯ ИНФОРМАЦИЯ</h4>
-        <?php if (Yii::$app->session->hasFlash('contactFormSubmitted')): ?>
+        <?php $messageData = Yii::$app->session->getFlash('customerMessage') ?> <!-- $customerMessage {   0 => $orderNumber,  1 => "contactFormSubmitted" -->
+        <?php if ($messageData[1] === "contactFormSubmitted"): ?>
             <div class="alert alert-success">
+                <?php echo "Номер Вашего заказа: " . $messageData[0] . "\n"; ?>
                 Благодарим Вас за обращение к нам. Мы ответим Вам как можно скорее.
             </div>
         <?php else: ?>

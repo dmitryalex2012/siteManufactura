@@ -87,7 +87,9 @@ class CustomerForm extends Model
         $session->close();
 
         if ($this->validate()) {
-            Yii::$app->mailer->compose()                //  sending mail to "Manufaktura"
+//                                      array "$customerMessage" is used in "cartList" view for determine validation
+            Yii::$app->session->addFlash('customerMessage', $orderNumber);  // $customerMessage[0] = $orderNumber;
+            Yii::$app->mailer->compose()                                        //  sending mail to TM "Manufaktura"
 //                ->setTo([$this->email])
                 ->setTo(['snn.manufactura@gmail.com', 'DmitryAlex2012@gmail.com'])      // send mails
 //                ->setFrom([Yii::$app->params['senderEmail'] => Yii::$app->params['senderName']])
