@@ -12,7 +12,7 @@ class CustomerForm extends Model
     public $phone;
 //    public $subject;
     public $body;
-    public $verifyCode;
+//    public $verifyCode;
     /**
      * @return array the validation rules.
      */
@@ -21,7 +21,13 @@ class CustomerForm extends Model
         return [
             // name, email, subject and body are required
 //            [['name', 'email', 'subject', 'body'], 'required', 'message'=>'Не заполнено поле'],
-            [['name', 'email', 'body', 'phone'], 'required', 'message'=>'Не заполнено поле'],
+
+
+//            [['name', 'email', 'body', 'phone'], 'required', 'message'=>'Не заполнено поле'],
+            [['name', 'email', 'phone'], 'required', 'message'=>'Не заполнено поле'],
+            ['body', 'string', 'min' => 0],
+
+
             // email has to be a valid email address
             ['email', 'email', 'message'=>'Некорректный e-mail'],
             // verifyCode needs to be entered correctly
@@ -61,7 +67,7 @@ class CustomerForm extends Model
             $messageContent = $messageContent . "Номер заказа: " . $orderNumber . ";" . "\r\n";
             $messageContent = $messageContent . "Вид доставки: " . $cart ["delivery"]["deliveryType"] . ";" . "\r\n";
             $messageContent = $messageContent . "Форма оплаты: " . $cart["purchase"]["purchaseType"] .  ";" . "\r\n";
-            $messageContent = $messageContent . "Сообщение Заказчика: " . $this->body . "." . "\n" . "\r\n";
+            $messageContent = $messageContent . "Сообщение Заказчика: " . $this->body . "\n" . "\r\n";
             $messageContent = $messageContent . "СОСТАВ ЗАКАЗА: " . "\n" . "\r\n";
           //  End information about buyer ---------------------------------------------------
             $totalPrice = 0;
