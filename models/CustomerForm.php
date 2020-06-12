@@ -12,7 +12,7 @@ class CustomerForm extends Model
     public $phone;
 //    public $subject;
     public $body;
-//    public $verifyCode;
+    public $verifyCode;
     /**
      * @return array the validation rules.
      */
@@ -27,11 +27,11 @@ class CustomerForm extends Model
             [['name', 'email', 'phone'], 'required', 'message'=>'Не заполнено поле'],
             ['body', 'string', 'min' => 0],
 
-
             // email has to be a valid email address
             ['email', 'email', 'message'=>'Некорректный e-mail'],
             // verifyCode needs to be entered correctly
-//            ['verifyCode', 'captcha'],
+            ['verifyCode', 'captcha', 'captchaAction'=>'cart/captcha'],
+//            ['captcha', 'required']                   // NEED to ADD!!!!!!!!!!!!!!!
         ];
     }
     /**
@@ -40,7 +40,7 @@ class CustomerForm extends Model
     public function attributeLabels()
     {
         return [
-            'verifyCode' => 'Verification Code',
+            'verifyCode' => 'Код проверки',
         ];
     }
     /**
