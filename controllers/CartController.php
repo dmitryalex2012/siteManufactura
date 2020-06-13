@@ -88,18 +88,4 @@ class CartController extends Controller
 
         return $cart->changePurchase(Yii::$app->request->post('purchaseTypeJS'));
     }
-
-
-
-    public function actionCaptcha()
-    {
-        return [
-            'captcha' => [
-                'class' => 'yii\captcha\CaptchaAction',
-            ],
-        ];
-    }
-
-
-
 }
