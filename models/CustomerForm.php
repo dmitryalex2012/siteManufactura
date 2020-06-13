@@ -30,8 +30,8 @@ class CustomerForm extends Model
             // email has to be a valid email address
             ['email', 'email', 'message'=>'Некорректный e-mail'],
             // verifyCode needs to be entered correctly
-            ['verifyCode', 'captcha', 'captchaAction'=>'cart/captcha'],
-//            ['captcha', 'required']                   // NEED to ADD!!!!!!!!!!!!!!!
+            ['verifyCode', 'captcha'],
+//            ['verifyCode', 'captcha', 'captchaAction'=>'cart/captcha'],
         ];
     }
     /**
@@ -40,7 +40,7 @@ class CustomerForm extends Model
     public function attributeLabels()
     {
         return [
-            'verifyCode' => 'Код проверки',
+            'verifyCode' => 'Код проверки:',
         ];
     }
     /**

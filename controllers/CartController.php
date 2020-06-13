@@ -91,14 +91,14 @@ class CartController extends Controller
 
 
 
-//    public function actionCaptcha()
-//    {
-//        return [
-//            'captcha' => [
-//                'class' => 'yii\captcha\CaptchaAction',
-//            ],
-//        ];
-//    }
+    public function actionCaptcha()
+    {
+        return [
+            'captcha' => [
+                'class' => 'yii\captcha\CaptchaAction',
+            ],
+        ];
+    }
 
 
 

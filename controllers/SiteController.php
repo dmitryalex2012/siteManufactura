@@ -16,4 +16,14 @@ class SiteController extends Controller
             'ourOffers' => $ourOffers,              //   names controller/view for redirect ) is used for display of the cards
         ]);                                         //   with our offers.
     }
+
+
+    public function actions()
+    {
+        return [
+            'captcha' => [
+                'class' => 'yii\captcha\CaptchaAction',
+            ],
+        ];
+    }
 }
