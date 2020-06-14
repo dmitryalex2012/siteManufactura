@@ -13,6 +13,7 @@ class CustomerForm extends Model
 //    public $subject;
     public $body;
     public $verifyCode;
+    public $code;
     /**
      * @return array the validation rules.
      */
@@ -40,7 +41,8 @@ class CustomerForm extends Model
     public function attributeLabels()
     {
         return [
-            'verifyCode' => 'Код проверки:',
+//            'verifyCode' => 'Код проверки:',
+            'verifyCode' => 'Введите код проверки:',
         ];
     }
     /**

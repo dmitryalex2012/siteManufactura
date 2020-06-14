@@ -240,9 +240,15 @@ JS;
                         <?= $form->field($model, 'phone', ['enableLabel' => false])->textInput(['placeholder' => 'Ваш номер телефона', 'class'=>'form-control text-center']) ?>
 <!--                        --><?//= $form->field($model, 'subject', ['enableLabel' => false]) ?>
                         <?= $form->field($model, 'body', ['enableLabel' => false])->textarea(['rows' => 3, 'placeholder' => 'Коментарии к заказу', 'class'=>'form-control text-center']) ?>
+                        <?= $form->field($model, 'code', ['enableLabel' => false])->textInput(['placeholder' => 'Введите промокод (при наличии)', 'class'=>'form-control text-center']) ?>
 
 <!--                        --><?//= $form->field($model, 'verifyCode')->widget(Captcha::className(), [
-//                            'template' => '<div class="row"><div class="col-lg-3">{image}</div><div class="col-lg-6">{input}</div></div>',
+//                            'template' => '<div class="row">
+//                                            <div class="col-lg-1"></div>
+//                                            <div class="col-lg-4">{image}</div>
+//                                            <div class="col-lg-1"></div>
+//                                            <div class="col-lg-5">{input}</div>
+//                                            <div class="col-lg-1"></div></div>',
 //                        ]) ?>
                         <?= $form->field($model, 'verifyCode')->widget(Captcha::className()) ?>
 
