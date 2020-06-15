@@ -222,6 +222,27 @@ JS;
     ?>
 
 
+
+
+
+    <label>
+        <input id="PromoCodeID" class="promoCode" name="login"><br>
+    </label>
+
+    <?php       // processing the entered promo code
+    $promoCodeJS = <<<JS
+    $('.promoCode').change(function() {
+      let promoCode = document.getElementById('PromoCodeID').value;
+      console.log(promoCode);
+    })
+JS;
+    $this->registerJs($promoCodeJS);
+    ?>
+
+
+
+
+
     <div class="contactInformation col-12 col-lg-4">    <!-- Form for mail sending -->
         <h4>КОНТАКТНАЯ ИНФОРМАЦИЯ</h4>
         <?php $messageData = Yii::$app->session->getFlash('customerMessage') ?> <!-- $customerMessage {   0 => $orderNumber,  1 => "contactFormSubmitted" -->
@@ -240,7 +261,7 @@ JS;
                         <?= $form->field($model, 'phone', ['enableLabel' => false])->textInput(['placeholder' => 'Ваш номер телефона', 'class'=>'form-control text-center']) ?>
 <!--                        --><?//= $form->field($model, 'subject', ['enableLabel' => false]) ?>
                         <?= $form->field($model, 'body', ['enableLabel' => false])->textarea(['rows' => 3, 'placeholder' => 'Коментарии к заказу', 'class'=>'form-control text-center']) ?>
-                        <?= $form->field($model, 'code', ['enableLabel' => false])->textInput(['placeholder' => 'Введите промокод (при наличии)', 'class'=>'form-control text-center']) ?>
+                        <?= $form->field($model, 'code', ['enableLabel' => false])->textInput(['placeholder' => 'Введите промокод (при наличии)', 'class'=>'promoCode form-control text-center']) ?>
 
 <!--                        --><?//= $form->field($model, 'verifyCode')->widget(Captcha::className(), [
 //                            'template' => '<div class="row">
@@ -260,6 +281,10 @@ JS;
             </div>
         <?php endif; ?>
     </div>
+
+
+
+
 </div>
 
 

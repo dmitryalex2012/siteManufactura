@@ -57,13 +57,6 @@ AppAsset::register($this);
         echo Nav::widget([
             'options' => ['class' => 'navbar-nav navbar-right'],
             'items' => [
-//                ['label' => 'Магазин', 'items' => [                                   // this is OLD VERSION
-//                    ['label' => 'Подушки', 'url' => ['/products/pillows']],
-//                    ['label' => 'Постельное белье', 'url' => ['/products/linens']],
-//                    ['label' => 'Полотенца', 'url' => ['/products/towels']],
-//                    ['label' => 'Товары ТМ "Apero"', 'url' => ['/products/apero']],
-//                    ['label' => 'Товары для "бебиков"', 'url' => ['/products/baby']],
-//                ]],
                 ['label' => 'Услуги',       'url' => ['/services/list']],
                 ['label' => 'Наши работы',  'url' => ['/works/portfolio']],
                 ['label' => 'Магазин', 'items' => [
