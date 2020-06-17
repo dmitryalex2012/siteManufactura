@@ -225,19 +225,19 @@ JS;
 
 
 
-    <label>
-        <input id="PromoCodeID" class="promoCode" name="login"><br>
-    </label>
-
-    <?php       // processing the entered promo code
-    $promoCodeJS = <<<JS
-    $('.promoCode').change(function() {
-      let promoCode = document.getElementById('PromoCodeID').value;
-      console.log(promoCode);
-    })
-JS;
-    $this->registerJs($promoCodeJS);
-    ?>
+<!--    <label>-->
+<!--        <input id="PromoCodeID" class="promoCode" name="login"><br>-->
+<!--    </label>-->
+<!---->
+<!--    --><?php //      // processing the entered promo code
+//    $promoCodeJS = <<<JS
+//    $('.promoCode').change(function() {
+//      let promoCode = document.getElementById('PromoCodeID').value;
+//      console.log(promoCode);
+//    })
+//JS;
+//    $this->registerJs($promoCodeJS);
+//    ?>
 
 
 
@@ -263,6 +263,8 @@ JS;
                         <?= $form->field($model, 'body', ['enableLabel' => false])->textarea(['rows' => 3, 'placeholder' => 'Коментарии к заказу', 'class'=>'form-control text-center']) ?>
                         <?= $form->field($model, 'code', ['enableLabel' => false])->textInput(['placeholder' => 'Введите промокод (при наличии)', 'class'=>'promoCode form-control text-center']) ?>
 
+                    <?= $form->field($model, 'verifyCode')->widget(Captcha::className());?>
+
 <!--                        --><?//= $form->field($model, 'verifyCode')->widget(Captcha::className(), [
 //                            'template' => '<div class="row">
 //                                            <div class="col-lg-1"></div>
@@ -271,7 +273,8 @@ JS;
 //                                            <div class="col-lg-5">{input}</div>
 //                                            <div class="col-lg-1"></div></div>',
 //                        ]) ?>
-                        <?= $form->field($model, 'verifyCode')->widget(Captcha::className()) ?>
+
+<!--                        --><?//= $form->field($model, 'verifyCode')->widget(Captcha::className()) ?>
 
                         <div class="form-group">
                             <?= Html::submitButton('Подтвердите заказ', ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
