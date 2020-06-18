@@ -66,6 +66,17 @@ $config = [
 //                'contact' => 'site/contact',
             ],
         ],
+
+        'reCaptcha' => [
+            'name' => 'reCaptcha',
+            'class' => 'himiklab\yii2\recaptcha\ReCaptcha',
+//            'siteKey' => '6LcZT6YZAAAAAGlTcbM1oXVHDNboHhmbwVhnhnBY',      // v3 for http://www.designburoshtor.website/
+//            'secret' => '6LcZT6YZAAAAAJWT5oQwDMWSBFvqT6kIsESBszWO',       // v3 for http://www.designburoshtor.website/
+//            'siteKey' => '6LeVU6YZAAAAAB7GPQ99rDkx03F3-SwB6B1XjMbi',      // v3 for fw0308.loc
+//            'secret' => '6LeVU6YZAAAAAC6wvEZFMiyU85lPf7mEIPGLc3e7',       // v3 for fw0308.loc
+            'siteKey' => '6Lc-VKYZAAAAADMXy0se_2qRN6t442GoV8aHBrVS',        // v2 for fw0308.loc
+            'secret' => '6Lc-VKYZAAAAADzlOjaP0sPnafw221YJ1lb70FAl',         // v2 for fw0308.loc
+        ],
     ],
     'params' => $params,
 ];

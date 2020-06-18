@@ -5,8 +5,9 @@
 /* @var $form yii\bootstrap\ActiveForm */
 /* @var $model app\models\CustomerForm */
 
+use himiklab\yii2\recaptcha\ReCaptcha2;
 use yii\bootstrap\ActiveForm;
-use yii\captcha\Captcha;
+//use yii\captcha\Captcha;
 use yii\helpers\Html;
 use app\common\components\MyHelpers;
 use app\common\components\TextFile;
@@ -263,7 +264,18 @@ JS;
                         <?= $form->field($model, 'body', ['enableLabel' => false])->textarea(['rows' => 3, 'placeholder' => 'Коментарии к заказу', 'class'=>'form-control text-center']) ?>
                         <?= $form->field($model, 'code', ['enableLabel' => false])->textInput(['placeholder' => 'Введите промокод (при наличии)', 'class'=>'promoCode form-control text-center']) ?>
 
-                    <?= $form->field($model, 'verifyCode')->widget(Captcha::className());?>
+                        <?= $form->field($model, 'reCaptcha')->widget(ReCaptcha2::className(),
+                            [
+                                'siteKey' => '6Lc-VKYZAAAAADMXy0se_2qRN6t442GoV8aHBrVS', // unnecessary is reCaptcha component was set up
+                            ]
+                        ) ?>
+<!--                    --><?//= ReCaptcha2::widget(['name' => 'reCaptcha', 'siteKey' => '6Lc-VKYZAAAAADMXy0se_2qRN6t442GoV8aHBrVS']) ?>
+
+<!--                        --><?//= \himiklab\yii2\recaptcha\ReCaptcha3::widget(['name' => 'reCaptcha', 'siteKey' => '6LeVU6YZAAAAAB7GPQ99rDkx03F3-SwB6B1XjMbi']) ?>
+
+
+
+<!--                    --><?//= $form->field($model, 'verifyCode')->widget(Captcha::className()); ?>
 
 <!--                        --><?//= $form->field($model, 'verifyCode')->widget(Captcha::className(), [
 //                            'template' => '<div class="row">

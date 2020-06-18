@@ -1,5 +1,7 @@
 <?php
 namespace app\models;
+
+use himiklab\yii2\recaptcha\ReCaptchaValidator2;
 use Yii;
 use yii\base\Model;
 /**
@@ -12,8 +14,12 @@ class CustomerForm extends Model
     public $phone;
 //    public $subject;
     public $body;
-    public $verifyCode;
+//    public $verifyCode;
     public $code;
+
+    public $reCaptcha;
+
+
     /**
      * @return array the validation rules.
      */
@@ -30,9 +36,25 @@ class CustomerForm extends Model
 
             // email has to be a valid email address
             ['email', 'email', 'message'=>'Некорректный e-mail'],
+
             // verifyCode needs to be entered correctly
-            ['verifyCode', 'captcha'],
+//            ['verifyCode', 'captcha'],
 //            ['verifyCode', 'captcha', 'captchaAction'=>'cart/captcha'],
+
+//            [['reCaptcha'], \himiklab\yii2\recaptcha\ReCaptchaValidator::className(),
+//                'secret' => 'Секретный ключ',
+//                'uncheckedMessage' => 'Please confirm that you are not a bot.'
+//            ],
+//            [['reCaptcha'], \himiklab\yii2\recaptcha\ReCaptcha2::className(),
+//                'secret' => '6LeVU6YZAAAAAC6wvEZFMiyU85lPf7mEIPGLc3e7', // unnecessary if reСaptcha is already configured
+//                'threshold' => 0.5,
+//                'action' => 'homepage',
+        //                'uncheckedMessage' => 'Please confirm that you are not a bot.',
+//            ],
+            [['reCaptcha'], ReCaptchaValidator2::className(),
+                'secret' => '6Lc-VKYZAAAAADzlOjaP0sPnafw221YJ1lb70FAl', // unnecessary if reСaptcha is already configured
+                'uncheckedMessage' => 'Please confirm that you are not a bot.'
+            ],
         ];
     }
     /**
