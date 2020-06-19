@@ -22,12 +22,12 @@ h2 {
 }
 
 .continueBayBtn {
-    margin: 15px 0px;
+    margin: 15px 0;
     color: green;
 }
 
 h4{
-    margin: 20px 0px;
+    margin: 20px 0;
 }
 
 label{
@@ -57,31 +57,37 @@ label{
 .onlyCSSinDelivery{
     /*padding: 0px 5px!important;*/
     /*padding-right: 0px;*/
-    padding-left: 0px;
+    padding-left: 0;
     /*padding-right: 0px;*/
 }
 
 .onlyCSSinPurchase{
     text-align: justify;
     padding-bottom: 15px;
-    padding-left: 0px;
+    padding-left: 0;
 }
 
 .deliveryMethod{
-    padding: 0px 10px 0px 10px;
+    padding: 0 10px 0 10px;
 }
 
 .contactInformation{
-    padding: 0px 20px 0px 20px;
+    padding: 0 20px 0 20px;
 }
 
 .purchaseRegistration{
-    padding: 0px 0px;
+    padding: 0 0;
 }
 
 .btn{
     color: green;
     border: groove;
+}
+
+.g-recaptcha{
+/*    transform: scale(0.8);*/
+/*    transform-origin: 0 0;*/
+/*text-align: center;*/
 }
 
 

@@ -53,7 +53,7 @@ class CustomerForm extends Model
 //            ],
             [['reCaptcha'], ReCaptchaValidator2::className(),
                 'secret' => '6Lc-VKYZAAAAADzlOjaP0sPnafw221YJ1lb70FAl', // unnecessary if reСaptcha is already configured
-                'uncheckedMessage' => 'Please confirm that you are not a bot.'
+//                'uncheckedMessage' => 'Please confirm that you are not a bot.'
             ],
         ];
     }
@@ -63,7 +63,6 @@ class CustomerForm extends Model
     public function attributeLabels()
     {
         return [
-//            'verifyCode' => 'Код проверки:',
             'verifyCode' => 'Введите код проверки:',
         ];
     }
