@@ -223,27 +223,6 @@ JS;
     ?>
 
 
-
-
-
-<!--    <label>-->
-<!--        <input id="PromoCodeID" class="promoCode" name="login"><br>-->
-<!--    </label>-->
-<!---->
-<!--    --><?php //      // processing the entered promo code
-//    $promoCodeJS = <<<JS
-//    $('.promoCode').change(function() {
-//      let promoCode = document.getElementById('PromoCodeID').value;
-//      console.log(promoCode);
-//    })
-//JS;
-//    $this->registerJs($promoCodeJS);
-//    ?>
-
-
-
-
-
     <div class="contactInformation col-12 col-lg-4">    <!-- Form for mail sending -->
         <h4>КОНТАКТНАЯ ИНФОРМАЦИЯ</h4>
         <?php $messageData = Yii::$app->session->getFlash('customerMessage') ?> <!-- $customerMessage {   0 => $orderNumber,  1 => "contactFormSubmitted" -->
@@ -260,33 +239,15 @@ JS;
                         <?= $form->field($model, 'name', ['enableLabel' => false])->textInput(array('placeholder' => 'Ваше имя', 'class'=>'form-control text-center')) ?>
                         <?= $form->field($model, 'email', ['enableLabel' => false])->textInput(['placeholder' => 'Email', 'class'=>'form-control text-center']) ?>
                         <?= $form->field($model, 'phone', ['enableLabel' => false])->textInput(['placeholder' => 'Ваш номер телефона', 'class'=>'form-control text-center']) ?>
-<!--                        --><?//= $form->field($model, 'subject', ['enableLabel' => false]) ?>
                         <?= $form->field($model, 'body', ['enableLabel' => false])->textarea(['rows' => 3, 'placeholder' => 'Коментарии к заказу', 'class'=>'form-control text-center']) ?>
-                        <?= $form->field($model, 'code', ['enableLabel' => false])->textInput(['placeholder' => 'Введите промокод (при наличии)', 'class'=>'promoCode form-control text-center']) ?>
+                        <?= $form->field($model, 'code', ['enableLabel' => false])->textInput(['placeholder' => 'Введите промокод (при наличии)', 'id' => 'PromoCodeID', 'class'=>'promoCode form-control text-center']) ?>
 
-                        <?= $form->field($model, 'reCaptcha')->widget(ReCaptcha2::className(),
-                            [
-                                'siteKey' => '6Lc-VKYZAAAAADMXy0se_2qRN6t442GoV8aHBrVS', // unnecessary is reCaptcha component was set up
+                    <label class="promoCodeOut"></label>
+
+                        <?= $form->field($model, 'reCaptcha', ['enableLabel' => false])->widget(ReCaptcha2::className(),
+                            [   'siteKey' => '6Lc-VKYZAAAAADMXy0se_2qRN6t442GoV8aHBrVS', // unnecessary is reCaptcha component was set up
                             ]
                         ) ?>
-<!--                    --><?//= ReCaptcha2::widget(['name' => 'reCaptcha', 'siteKey' => '6Lc-VKYZAAAAADMXy0se_2qRN6t442GoV8aHBrVS']) ?>
-
-<!--                        --><?//= \himiklab\yii2\recaptcha\ReCaptcha3::widget(['name' => 'reCaptcha', 'siteKey' => '6LeVU6YZAAAAAB7GPQ99rDkx03F3-SwB6B1XjMbi']) ?>
-
-
-
-<!--                    --><?//= $form->field($model, 'verifyCode')->widget(Captcha::className()); ?>
-
-<!--                        --><?//= $form->field($model, 'verifyCode')->widget(Captcha::className(), [
-//                            'template' => '<div class="row">
-//                                            <div class="col-lg-1"></div>
-//                                            <div class="col-lg-4">{image}</div>
-//                                            <div class="col-lg-1"></div>
-//                                            <div class="col-lg-5">{input}</div>
-//                                            <div class="col-lg-1"></div></div>',
-//                        ]) ?>
-
-<!--                        --><?//= $form->field($model, 'verifyCode')->widget(Captcha::className()) ?>
 
                         <div class="form-group">
                             <?= Html::submitButton('Подтвердите заказ', ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
@@ -296,6 +257,29 @@ JS;
             </div>
         <?php endif; ?>
     </div>
+
+
+
+        <?php       // processing the entered promo code
+        $promoCodeJS = <<<JS
+        $('.promoCode').change(function() {
+            // let classMyCart = $('.promoCode');
+            // let classMyCart = $('.classCart');
+            
+          let promoCode = document.getElementById('PromoCodeID').value;
+          // console.log(promoCode.length);
+          console.log(promoCode);
+          // promoCode.value = promoCode.length;
+           $('.promoCodeOut').html('ok');
+           
+           
+           classMyCart.html("Кор");
+        })
+JS;
+        $this->registerJs($promoCodeJS);
+        ?>
+
+
 </div>
 
 
