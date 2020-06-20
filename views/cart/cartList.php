@@ -263,17 +263,18 @@ JS;
         <?php       // processing the entered promo code
         $promoCodeJS = <<<JS
         $('.promoCode').change(function() {
-            // let classMyCart = $('.promoCode');
-            // let classMyCart = $('.classCart');
-            
-          let promoCode = document.getElementById('PromoCodeID').value;
-          // console.log(promoCode.length);
-          console.log(promoCode);
-          // promoCode.value = promoCode.length;
-           $('.promoCodeOut').html('ok');
-           
-           
-           classMyCart.html("Кор");
+          let promoCodeJS = document.getElementById('PromoCodeID').value;
+          $.ajax({
+               url: '/cart/promocode',
+                data: {promoCodeJS: promoCodeJS},
+                type: 'POST',
+                success: function (promoCodeMessage) {
+                    $('.promoCodeOut').html(promoCodeMessage);   <!-- out information about promo code validation -->
+                 },
+                error: function () {
+                    console.log ("Failed");
+                }          
+          });
         })
 JS;
         $this->registerJs($promoCodeJS);

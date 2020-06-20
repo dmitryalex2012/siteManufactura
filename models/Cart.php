@@ -140,5 +140,4 @@ class Cart extends ActiveRecord
 
         return $purchaseType;
     }
-
 }
