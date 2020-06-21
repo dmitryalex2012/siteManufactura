@@ -72,7 +72,7 @@ $textFile = new TextFile();         // text, that describe delivery types in cla
                     <?php endforeach; ?>
 
                     <tr>
-                        <td colspan="4" class="text-right">Итого:</td>
+                        <td colspan="4" class="totalPriceDescription text-right">Итого:</td>
                         <td id="totalPrice"><?= $price; ?></td>
                     </tr>
                     <tr>
@@ -110,7 +110,7 @@ $script1 = <<<JS
               // newPrice = array ("0" => price, "1" => difference, "2" => totalQuantity, "3" => end "Product" word)
                 $(classType).html(newPrice[0]);                                 // price for new quantity of product  
                 $('#totalPrice').html(Number(totalPrice)+Number(newPrice[1]));  // new total price
-                // totalPriceClass = document.querySelector("#totalPrice");        // change marker in "total
+                // totalPriceClass = document.querySelector("#totalPrice");     // change marker in "total
                 classMyCart.html("Корзина "+newPrice[2]);                       // change quantity in "Header" line
                 $('h2').html("В КОРЗИНЕ - " + newPrice[2] + " " + newPrice[3]); // change total quantity in "h2" 
 
@@ -242,7 +242,7 @@ JS;
                         <?= $form->field($model, 'body', ['enableLabel' => false])->textarea(['rows' => 3, 'placeholder' => 'Коментарии к заказу', 'class'=>'form-control text-center']) ?>
                         <?= $form->field($model, 'code', ['enableLabel' => false])->textInput(['placeholder' => 'Введите промокод (при наличии)', 'id' => 'PromoCodeID', 'class'=>'promoCode form-control text-center']) ?>
 
-                    <label class="promoCodeOut"></label>
+                    <label class="discountOut"></label>
 
                         <?= $form->field($model, 'reCaptcha', ['enableLabel' => false])->widget(ReCaptcha2::className(),
                             [   'siteKey' => '6Lc-VKYZAAAAADMXy0se_2qRN6t442GoV8aHBrVS', // unnecessary is reCaptcha component was set up
@@ -268,8 +268,15 @@ JS;
                url: '/cart/promocode',
                 data: {promoCodeJS: promoCodeJS},
                 type: 'POST',
-                success: function (promoCodeMessage) {
-                    $('.promoCodeOut').html(promoCodeMessage);   <!-- out information about promo code validation -->
+                success: function (discount) {
+                   if (discount !== 0){                               <!-- out information about promo code validation -->
+                        $('.discountOut').html("Ваша скидка " + discount + "%");
+                        totalPrice = document.getElementById('totalPrice').innerHTML;
+                        $('.totalPriceDescription').html("Стоимость заказа с учетом " + discount + "% скидки:");
+                        $('#totalPrice').html(Number(totalPrice) - Number(totalPrice)*discount);
+                   } else {
+                       $('.discountOut').html("Ваш промокод не активен.");
+                   }
                  },
                 error: function () {
                     console.log ("Failed");

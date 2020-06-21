@@ -19,7 +19,6 @@ class CartController extends Controller
 
         $model = new CustomerForm();
         if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) { // When "Html::submitButton" was pressed
-
 //            $customerMessage[1] = "contactFormSubmitted"
             Yii::$app->session->addFlash('customerMessage', 'contactFormSubmitted');  // Set marker "contactFormSubmitted" in $customerMessage[1]
             return $this->refresh();                                                            //    means: message to customer is sent.
@@ -91,8 +90,14 @@ class CartController extends Controller
 
     public function actionPromocode()
     {
-        $promoCodeMessage = Yii::$app->request->post('promoCodeJS') . "ok";
+        $promoCode = Yii::$app->request->post('promoCodeJS');
 
-        return $promoCodeMessage;
+        $discount = 0;
+        if ($promoCode === "173415210620"){
+            $cart = new Cart();
+            $cart->promoCode($discount = 0.15);
+        }
+
+        return $discount;
     }
 }
