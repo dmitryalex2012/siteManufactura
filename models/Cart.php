@@ -96,6 +96,10 @@ class Cart extends ActiveRecord
 
             $price = $cart[$number]["quantity"] * $cart[$number]["price"];
             $difference = $price - $oldPrice;               // "difference" using for determination NEW total price in "cartList" view
+            if (isset($cart ["promoCode"]["discount"]))
+            {
+                $difference = $difference - $difference * $cart ["promoCode"]["discount"];  // change difference when discount is present
+            }
         }
         $session->close();
         $resultChange = array("0" => $price, "1" => $difference);
@@ -141,8 +145,8 @@ class Cart extends ActiveRecord
         return $purchaseType;
     }
 
-    public function promoCode ($promoCode)
-    {             // add promo code
+    public function promoCode ($promoCode)             // add promo code
+    {
         $session = Yii::$app->session;
         $session->open();
         $cart = $session->get('cart');

@@ -109,7 +109,12 @@ class CustomerForm extends Model
                     $totalPrice = $totalPrice + $itemPrice;
                 }
             }
-            $reply = $reply . "Общая стоимость заказа: " . $totalPrice . " грн.";
+            $discountMessage = ":";
+            if ($cart["promoCode"]["discount"] != 0){       // change total price using discount
+                $totalPrice = $totalPrice - $totalPrice * $cart["promoCode"]["discount"];
+                $discountMessage = " с учетом скидки " . $cart["promoCode"]["discount"] * 100 . "%" . " составляет: ";
+            }
+            $reply = $reply . "Общая стоимость заказа " . $discountMessage . $totalPrice . " грн.";
             $messageContent = $messageContent . $reply;
           //  end information about selected products ---------------------------------------
         }

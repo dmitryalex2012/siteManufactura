@@ -88,7 +88,7 @@ class CartController extends Controller
         return $cart->changePurchase(Yii::$app->request->post('purchaseTypeJS'));
     }
 
-    public function actionPromocode()
+    public function actionPromocode()             // change product price when promo code is entered
     {
         $promoCode = Yii::$app->request->post('promoCodeJS');
 

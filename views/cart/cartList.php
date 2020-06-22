@@ -18,13 +18,19 @@ $textFile = new TextFile();         // text, that describe delivery types in cla
 <!-- MyHelpers() - make correct word "Product" ("ТОВАР", "ТОВАРА", "ТОВАРОВ") in <h2> inscription -->
 <h2>В КОРЗИНЕ - <? echo $totalQuantity . " " . MyHelpers::productsEnding($totalQuantity); ?></h2>
 
-<pre>
+
+
+<!--<pre>-->
 <?php
-if (!empty($cart)){
-    print_r($cart);
-}
-?>
-</pre>
+//if (!empty($cart)){
+//    print_r($cart);
+//}
+//if (!empty($cart["promoCode"]["discount"])){
+//    print_r($cart["promoCode"]["discount"]);
+//}
+//?>
+<!--</pre>-->
+
 
 
 <br>
@@ -79,8 +85,17 @@ if (!empty($cart)){
                         <?php $price += $item['price'] * $item['quantity']; ?>      <!-- "$price" is the total price -->
                     <?php endforeach; ?>
 
+                    <?php
+                    if ($cart["promoCode"]["discount"] != 0){             // change total price when promo code is entered
+                        $price = $price - $price * $cart["promoCode"]["discount"];
+                        $totalPriceInscription = "Стоимость заказа с учетом " . $cart["promoCode"]["discount"]*100 . "% скидки:";
+                    } else {
+                        $totalPriceInscription = "Итого:";
+                    }
+                    ?>
+
                     <tr>
-                        <td colspan="4" class="totalPriceDescription text-right">Итого:</td>
+                        <td colspan="4" class="totalPriceDescription text-right"><?= $totalPriceInscription; ?></td>
                         <td id="totalPrice"><?= $price; ?></td>
                     </tr>
                     <tr>
@@ -117,12 +132,9 @@ $script1 = <<<JS
             success: function (newPrice) {
               // newPrice = array ("0" => price, "1" => difference, "2" => totalQuantity, "3" => end "Product" word)
                 $(classType).html(newPrice[0]);                                 // price for new quantity of product
-                  
                 $('#totalPrice').html(Number(totalPrice)+Number(newPrice[1]));  // new total price
-                // $('#totalPrice').html(promoCode);  // new total price
-                
-                // totalPriceClass = document.querySelector("#totalPrice");     // change marker in "total
-                classMyCart.html("Корзина "+newPrice[2]);                       // change quantity in "Header" line
+                // totalPriceClass = document.querySelector("#totalPrice");     // change marker in "total"
+                classMyCart.html("Корзина "+ newPrice[2]);                       // change quantity in "Header" line
                 $('h2').html("В КОРЗИНЕ - " + newPrice[2] + " " + newPrice[3]); // change total quantity in "h2" 
 
                 if (Number(newPrice[2]) === 0) { $('.classCart').html("Корзина"); }
@@ -288,7 +300,7 @@ JS;
                         $('.totalPriceDescription').html("Стоимость заказа с учетом " + discount + "% скидки:");
                         $('#totalPrice').html(totalPrice - totalPrice*discount);
                    } else {
-                       $('.discountOut').html("Ваш промокод не активен.");
+                       $('.discountOut').html("Ваш промокод неверный.");
                    }
                  },
                 error: function () {
