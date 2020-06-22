@@ -18,6 +18,14 @@ $textFile = new TextFile();         // text, that describe delivery types in cla
 <!-- MyHelpers() - make correct word "Product" ("ТОВАР", "ТОВАРА", "ТОВАРОВ") in <h2> inscription -->
 <h2>В КОРЗИНЕ - <? echo $totalQuantity . " " . MyHelpers::productsEnding($totalQuantity); ?></h2>
 
+<pre>
+<?php
+if (!empty($cart)){
+    print_r($cart);
+}
+?>
+</pre>
+
 
 <br>
 
@@ -108,8 +116,11 @@ $script1 = <<<JS
             type: 'POST',
             success: function (newPrice) {
               // newPrice = array ("0" => price, "1" => difference, "2" => totalQuantity, "3" => end "Product" word)
-                $(classType).html(newPrice[0]);                                 // price for new quantity of product  
+                $(classType).html(newPrice[0]);                                 // price for new quantity of product
+                  
                 $('#totalPrice').html(Number(totalPrice)+Number(newPrice[1]));  // new total price
+                // $('#totalPrice').html(promoCode);  // new total price
+                
                 // totalPriceClass = document.querySelector("#totalPrice");     // change marker in "total
                 classMyCart.html("Корзина "+newPrice[2]);                       // change quantity in "Header" line
                 $('h2').html("В КОРЗИНЕ - " + newPrice[2] + " " + newPrice[3]); // change total quantity in "h2" 
@@ -262,18 +273,20 @@ JS;
 
         <?php       // processing the entered promo code
         $promoCodeJS = <<<JS
+
         $('.promoCode').change(function() {
           let promoCodeJS = document.getElementById('PromoCodeID').value;
+          let totalPrice = Number(document.getElementById('totalPrice').innerHTML);
+          
           $.ajax({
                url: '/cart/promocode',
                 data: {promoCodeJS: promoCodeJS},
                 type: 'POST',
                 success: function (discount) {
-                   if (discount !== 0){                               <!-- out information about promo code validation -->
+                   if (Number(discount) !== 0){                               <!-- out information about promo code validation -->
                         $('.discountOut').html("Ваша скидка " + discount + "%");
-                        totalPrice = document.getElementById('totalPrice').innerHTML;
                         $('.totalPriceDescription').html("Стоимость заказа с учетом " + discount + "% скидки:");
-                        $('#totalPrice').html(Number(totalPrice) - Number(totalPrice)*discount);
+                        $('#totalPrice').html(totalPrice - totalPrice*discount);
                    } else {
                        $('.discountOut').html("Ваш промокод не активен.");
                    }
@@ -283,6 +296,7 @@ JS;
                 }          
           });
         })
+        
 JS;
         $this->registerJs($promoCodeJS);
         ?>

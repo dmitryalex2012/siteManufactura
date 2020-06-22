@@ -141,10 +141,13 @@ class Cart extends ActiveRecord
         return $purchaseType;
     }
 
-    public function promoCode ($promoCode){             // add promo code
+    public function promoCode ($promoCode)
+    {             // add promo code
         $session = Yii::$app->session;
         $session->open();
-        $cart["promoCode"] = $promoCode;
+        $cart = $session->get('cart');
+        $cart ["promoCode"]["discount"] = $promoCode;
+        $session->set('cart', $cart);
         $session->close();
     }
 }
