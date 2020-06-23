@@ -53,6 +53,7 @@ class CustomerForm extends Model
 //            ],
             [['reCaptcha'], ReCaptchaValidator2::className(),
                 'secret' => '6Lc-VKYZAAAAADzlOjaP0sPnafw221YJ1lb70FAl', // unnecessary if reСaptcha is already configured
+//                'secret' => '6Le5gagZAAAAAPo4phWXR7XRg-YWvjgO6Eq4NBZy', // (V2 for designburoshtor.website) unnecessary if reСaptcha is already configured
 //                'uncheckedMessage' => 'Please confirm that you are not a bot.'
             ],
         ];
