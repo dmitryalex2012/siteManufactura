@@ -6,12 +6,11 @@ class MyHelpers
 {
     public static function productsEnding($quantity)
     {
-        $quantity = $quantity % 100;
+        $quantity = $quantity % 100;            //  cart contains less 100 items products (in this case)
         if ($quantity>=11 && $quantity<=19) {
             $ending="ТОВАРОВ";
         } else  {
-            $i = $quantity % 10;
-            switch ($i) {
+            switch ($quantity % 10) {
                 case (1): $ending = "ТОВАР"; break;
                 case (2): case (3): case (4): $ending = "ТОВАРА"; break;
                 default: $ending="ТОВАРОВ";

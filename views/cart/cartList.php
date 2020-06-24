@@ -7,7 +7,6 @@
 
 use himiklab\yii2\recaptcha\ReCaptcha2;
 use yii\bootstrap\ActiveForm;
-//use yii\captcha\Captcha;
 use yii\helpers\Html;
 use app\common\components\MyHelpers;
 use app\common\components\TextFile;
@@ -17,21 +16,6 @@ $textFile = new TextFile();         // text, that describe delivery types in cla
 
 <!-- MyHelpers() - make correct word "Product" ("ТОВАР", "ТОВАРА", "ТОВАРОВ") in <h2> inscription -->
 <h2>В КОРЗИНЕ - <? echo $totalQuantity . " " . MyHelpers::productsEnding($totalQuantity); ?></h2>
-
-
-
-<!--<pre>-->
-<?php
-//if (!empty($cart)){
-//    print_r($cart);
-//}
-//if (!empty($cart["promoCode"]["discount"])){
-//    print_r($cart["promoCode"]["discount"]);
-//}
-//?>
-<!--</pre>-->
-
-
 
 <br>
 
