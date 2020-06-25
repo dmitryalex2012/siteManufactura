@@ -48,8 +48,9 @@ class Cart extends ActiveRecord
 //                          .                                                                                                   *
 //                          .                                                                                                   *
 //            $number=>array("number"=>$number, "title"=>$title, "content"=>$content, "quantity"=>$quantity, "price"=>$price),  *
-//            "delivery"=>array("deliveryType"=>$deliveryType),                                                                  *
-//            "purchase"=>array("purchaseType"=>$purchaseType)                                                                   *
+//            "delivery"=>array("deliveryType"=>$deliveryType),                                                                 *
+//            "purchase"=>array("purchaseType"=>$purchaseType)                                                                  *
+//            "promoCode"=>array("discount"=>$promoCode)         // add in "promoCode" method                                   *
 //      }                                                                                                                       *
 //*******************************************************************************************************************************
         $quantity = 1;

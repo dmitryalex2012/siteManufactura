@@ -252,8 +252,8 @@ JS;
                     <label class="discountOut"></label>
 
                         <?= $form->field($model, 'reCaptcha', ['enableLabel' => false])->widget(ReCaptcha2::className(),
-                            [   'siteKey' => '6Lc-VKYZAAAAADMXy0se_2qRN6t442GoV8aHBrVS', // unnecessary is reCaptcha component was set up
-//                                'siteKey' => '6Le5gagZAAAAAC0iqMNpb1G7GcAZjqOsO-arp8jP', // (V2 for designburoshtor.website)  (unnecessary is reCaptcha component was set up)
+                            [   'siteKey' => '6Lc-VKYZAAAAADMXy0se_2qRN6t442GoV8aHBrVS', // V2 for FW0308.loc
+//                                'siteKey' => '6Le5gagZAAAAAC0iqMNpb1G7GcAZjqOsO-arp8jP', // V2 for designburoshtor.website
                             ]
                         ) ?>
 

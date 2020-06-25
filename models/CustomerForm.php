@@ -29,8 +29,6 @@ class CustomerForm extends Model
             // name, email, subject and body are required
 //            [['name', 'email', 'subject', 'body'], 'required', 'message'=>'Не заполнено поле'],
 
-
-//            [['name', 'email', 'body', 'phone'], 'required', 'message'=>'Не заполнено поле'],
             [['name', 'email', 'phone'], 'required', 'message'=>'Не заполнено поле'],
             ['body', 'string', 'min' => 0],
 
@@ -41,16 +39,6 @@ class CustomerForm extends Model
 //            ['verifyCode', 'captcha'],
 //            ['verifyCode', 'captcha', 'captchaAction'=>'cart/captcha'],
 
-//            [['reCaptcha'], \himiklab\yii2\recaptcha\ReCaptchaValidator::className(),
-//                'secret' => 'Секретный ключ',
-//                'uncheckedMessage' => 'Please confirm that you are not a bot.'
-//            ],
-//            [['reCaptcha'], \himiklab\yii2\recaptcha\ReCaptcha2::className(),
-//                'secret' => '6LeVU6YZAAAAAC6wvEZFMiyU85lPf7mEIPGLc3e7', // unnecessary if reСaptcha is already configured
-//                'threshold' => 0.5,
-//                'action' => 'homepage',
-        //                'uncheckedMessage' => 'Please confirm that you are not a bot.',
-//            ],
             [['reCaptcha'], ReCaptchaValidator2::className(),
                 'secret' => '6Lc-VKYZAAAAADzlOjaP0sPnafw221YJ1lb70FAl', // unnecessary if reСaptcha is already configured
 //                'secret' => '6Le5gagZAAAAAPo4phWXR7XRg-YWvjgO6Eq4NBZy', // (V2 for designburoshtor.website) unnecessary if reСaptcha is already configured
@@ -125,7 +113,6 @@ class CustomerForm extends Model
 //                                      array "$customerMessage" is used in "cartList" view for determine validation
             Yii::$app->session->addFlash('customerMessage', $orderNumber);  // $customerMessage[0] = $orderNumber;
             Yii::$app->mailer->compose()                                        //  sending mail to TM "Manufaktura"
-//                ->setTo([$this->email])
                 ->setTo(['snn.manufactura@gmail.com', 'DmitryAlex2012@gmail.com'])      // send mails
 //                ->setFrom([Yii::$app->params['senderEmail'] => Yii::$app->params['senderName']])
 //                ->setFrom(['tpmfd27@gmail.com' => $this->name])
@@ -139,7 +126,7 @@ class CustomerForm extends Model
                         "Состав заказа:" . "\n" . "\r\n" . $reply . "\r\n" .
                         "Спасибо за то, что выбрали нас. Наш дизайнер свяжется с Вами в ближайшее время.";
             Yii::$app->mailer->compose()
-                ->setTo([$this->email])                 // send mail to buyer
+                ->setTo([$this->email])                 // send mail to customer
                 ->setFrom(['tpmfd27@gmail.com'])
                 ->setSubject("Администратор Дмитрий")
                 ->setTextBody($reply)
