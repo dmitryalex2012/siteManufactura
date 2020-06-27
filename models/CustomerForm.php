@@ -81,7 +81,7 @@ class CustomerForm extends Model
             $messageContent = $messageContent . "Форма оплаты: " . $cart["purchase"]["purchaseType"] .  ";" . "\r\n";
             $messageContent = $messageContent . "Сообщение Заказчика: " . $this->body . "\n" . "\r\n";
             $messageContent = $messageContent . "СОСТАВ ЗАКАЗА: " . "\n" . "\r\n";
-          //  End information about buyer ---------------------------------------------------
+          //  End information about customer ---------------------------------------------------
             $totalPrice = 0;
 
           //  information about selected products -------------------------------------------

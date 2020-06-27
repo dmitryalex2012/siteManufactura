@@ -19,7 +19,6 @@ class CartController extends Controller
 
         $model = new CustomerForm();
         if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) { // When "Html::submitButton" was pressed
-//            $customerMessage[1] = "contactFormSubmitted"
             Yii::$app->session->addFlash('customerMessage', 'contactFormSubmitted');  // Set marker "contactFormSubmitted" in $customerMessage[1]
             return $this->refresh();                                                            //    means: message to customer is sent.
         }
