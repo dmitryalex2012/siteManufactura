@@ -7,7 +7,8 @@ use Yii;
 
 class Cart extends ActiveRecord
 {
-    public function totalQuantity () {             //  determination total products amount in cart
+    public function totalQuantity ()
+    {   //  determination total products amount in cart
         $totalQuantity = 0;
 
         $session = Yii::$app->session;
@@ -72,7 +73,8 @@ class Cart extends ActiveRecord
         return;
     }
 
-    public function outFromCart () {                    // take all products from Cart for output
+    public function outFromCart ()
+    {       // take all products from Cart for output
         $session = Yii::$app->session;
         $session->open();
         if (!$session->has('cart')) {
@@ -84,7 +86,8 @@ class Cart extends ActiveRecord
         return $cart;
     }
 
-    public function changeCart ($number, $quantity) {       // change product quantity in Cart
+    public function changeCart ($number, $quantity)
+    {   // change product quantity in Cart
         $price = $difference = 0;
         $session = Yii::$app->session;
         $session->open();
@@ -108,7 +111,8 @@ class Cart extends ActiveRecord
         return $resultChange;
     }
 
-    public function clearCart () {              // Delete Cart from SESSION
+    public function clearCart ()
+    {   // Delete Cart from SESSION
         $session = Yii::$app->session;
         $session->open();
         if ($session) {
@@ -118,7 +122,8 @@ class Cart extends ActiveRecord
         return;
     }
 
-    public function changeDelivery ($deliveryType) {    // change delivery type
+    public function changeDelivery ($deliveryType)
+    {   // change delivery type
         $session = Yii::$app->session;
         $session->open();
         if ($session->has('cart')) {
@@ -132,7 +137,8 @@ class Cart extends ActiveRecord
         return $deliveryType;
     }
 
-    public function changePurchase ($purchaseType) {    // change purchase type
+    public function changePurchase ($purchaseType)
+    {       // change purchase type
         $session = Yii::$app->session;
         $session->open();
         if ($session->has('cart')) {
@@ -146,8 +152,8 @@ class Cart extends ActiveRecord
         return $purchaseType;
     }
 
-    public function promoCode ($promoCode)             // add promo code
-    {
+    public function promoCode ($promoCode)
+    {   // add promo code
         $session = Yii::$app->session;
         $session->open();
         $cart = $session->get('cart');

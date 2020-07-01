@@ -4,17 +4,10 @@
 /* @var $product object */
 
 
-switch ($product->categories){                                      // determine previous address (for Bread Crumbs)
-    case 'pillow':  $value = "pillow";  break;
-    case 'apero':   $value = "apero";   break;
-    case 'linens':  $value = "linens";  break;
-    case 'towel':   $value = "towel";   break;
-    case 'baby':    $value = "baby";    break;
-}
 $this->params['breadcrumbs'][] = $this->title = [
     'label'=> 'Магазин ' . $product->categoriesBredCrumbs,
-    'url'=> ['/products/list', 'value' => $value],                  // The 'value' is used in Controller for
-];                                                                  //   determination the type of product in previous page
+    'url'=> ['/products/list', 'value' => $product->categories],    // The 'value' is used in Controller for
+];                                                                  //   determination the type of product in PREVIOUS PAGE
 $this->params['breadcrumbs'][] = $product->content;
 
 

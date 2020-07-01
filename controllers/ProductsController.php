@@ -3,31 +3,19 @@
 namespace app\controllers;
 
 use app\models\Products;
+use app\services\ProductServices;
 use yii\web\Controller;
 use Yii;
 
 class ProductsController extends Controller
 {
-    // this is OLD VERSION ---------------------------------------------------------
-//    public function actionPillows()
-//    {
-//        $product = Products::find()->where(['categories' => 'pillow'])->all();
-//        if (!Yii::$app->session->getIsActive()) { Yii::$app->session->open(); }
-//        Yii::$app->session['product'] = $product;
-//        Yii::$app->session->close();
-//        return $this->redirect('summary');
-//    }
-//
-//    public function actionSummary()
-//    {
-//        if (!Yii::$app->session->getIsActive()) {Yii::$app->session->open();}
-//        $result = Yii::$app->session['product'];
-//        Yii::$app->session->close();
-//        return $this->render('ourProducts', [
-//            'items' => $result
-//        ]);
-//    }
-    // finish OLD VERSION ---------------------------------------------------------
+    private $productServices;
+
+    public function __construct($id, $module, $config = [])
+    {
+        $this->productServices = new ProductServices();
+        parent::__construct($id, $module, $config);
+    }
 
 
     public function actionList()
@@ -45,8 +33,6 @@ class ProductsController extends Controller
         ]);
     }
 
-
-
     public function actionDetail()
     {
         $selectedProduct = Products::find()->where(['number' => Yii::$app->request->get('productID')])->one();
@@ -54,5 +40,4 @@ class ProductsController extends Controller
             'product' => $selectedProduct
         ]);
     }
-
 }
