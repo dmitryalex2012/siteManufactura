@@ -18,18 +18,30 @@ class ProductsController extends Controller
     }
 
 
+    /**
+     * Render list of products by specified category
+     *
+     * @return string
+     */
     public function actionList()
     {
-        $result = Products::find()->where(['categories' => 'pillow'])->all();   // when "Pillow" item is selected
-        switch (Yii::$app->request->get('value')){      // or:      switch ($_GET['value']){
-            case 'apero':   $result = Products::find()->where(['categories' => 'apero'])->all();    break;
-            case 'linens':  $result = Products::find()->where(['categories' => 'linens'])->all();   break;
-            case 'towel':   $result = Products::find()->where(['categories' => 'towel'])->all();    break;
-            case 'baby':    $result = Products::find()->where(['categories' => 'baby'])->all();     break;
-        }
+//        $result = Products::find()->where(['categories' => 'pillow'])->all();   // when "Pillow" item is selected
+//        switch (Yii::$app->request->get('value')){      // or:      switch ($_GET['value']){
+//            case 'apero':   $result = Products::find()->where(['categories' => 'apero'])->all();    break;
+//            case 'linens':  $result = Products::find()->where(['categories' => 'linens'])->all();   break;
+//            case 'towel':   $result = Products::find()->where(['categories' => 'towel'])->all();    break;
+//            case 'baby':    $result = Products::find()->where(['categories' => 'baby'])->all();     break;
+//        }
+
+//        return $this->render('ourProducts', [
+//            'items' => $result
+//        ]);
+
+        $category = Yii::$app->request->get('value');
+        $products = $this->productServices->getProductsByCategory($category);
 
         return $this->render('ourProducts', [
-            'items' => $result
+            'items' => $products
         ]);
     }
 
