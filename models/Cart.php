@@ -161,4 +161,5 @@ class Cart extends ActiveRecord
         $session->set('cart', $cart);
         $session->close();
     }
+
 }

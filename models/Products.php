@@ -17,4 +17,17 @@ class Products extends ActiveRecord
     {
         return static::find()->where(['categories' => $category])->all();
     }
+
+    /**
+     * Find product in DB by ID
+     *
+     * @param $productID
+     *
+     * @return array|ActiveRecord|null
+     */
+    public static function findByNumber($productID)
+    {
+        return $product = Products::find()->where(['number' => $productID])->one();
+    }
+
 }
