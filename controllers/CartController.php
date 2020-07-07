@@ -8,9 +8,19 @@ use yii\web\Controller;
 use Yii;
 use app\common\components\MyHelpers;
 
+use app\services\CartService;
+
 
 class CartController extends Controller
 {
+    private $cartService;
+
+    public function __construct($id, $module, $config = [])
+    {
+        $this->cartService = new CartService();
+        parent::__construct($id, $module, $config);
+    }
+
     public function actionIndex()
     {
         $cart = new Cart();
@@ -32,12 +42,19 @@ class CartController extends Controller
 
     public function actionAdd()         // add product to Cart
     {
-            $cart = new Cart();
-            $productNumber = Yii::$app->request->post('productID');
-            $cart->addToCart($productNumber);
-            $totalQuantity = $cart->totalQuantity();
+//            $cart = new Cart();
+//            $productNumber = Yii::$app->request->post('productID');
+//            $cart->addToCart($productNumber);
+//            $totalQuantity = $cart->totalQuantity();
+//
+//            return $totalQuantity;
 
-            return $totalQuantity;
+        $productNumber = Yii::$app->request->post('productID');
+
+        $cartService = new CartService();
+        $cartService->addToCart($productNumber);
+
+        return $this->cartService->addToCart($productNumber);
     }
 
     public function actionChange()          // change quantity products from Cart Page

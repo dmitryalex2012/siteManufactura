@@ -27,6 +27,7 @@ class Cart extends ActiveRecord
                 }
             }
         }
+
         return $totalQuantity;
     }
 
