@@ -81,11 +81,14 @@ class CartService
             return $cart;
         }
 
-        $cart[$productID]['number'] = $productID;
-        $cart[$productID]['title'] = $product['title'] ;
-        $cart[$productID]['content'] = $product['content'] ;
-        $cart[$productID]['price'] = $product['price'];
+        $cart[$productID] = $product->toArray();
         $cart[$productID]['quantity'] = 1;
+
+//        $cart[$productID]['number'] = $productID;
+//        $cart[$productID]['title'] = $product['title'] ;
+//        $cart[$productID]['content'] = $product['content'] ;
+//        $cart[$productID]['price'] = $product['price'];
+//        $cart[$productID]['quantity'] = 1;
 
         return $cart;
     }
@@ -116,5 +119,24 @@ class CartService
         }
 
         return $totalQuantity;
+    }
+
+    /**
+     * Delete Cart from SESSION when total quantity of products = 0
+     *
+     * @param $totalQuantity
+     */
+    public function cartCapacityTest ($totalQuantity)
+    {
+        if ($totalQuantity == 0){
+            $session = Yii::$app->session;
+            $session->open();
+            if ($session) {
+                Yii::$app->session->destroy();
+            }
+            $session->close();
+        }
+
+        return;
     }
 }

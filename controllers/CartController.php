@@ -9,34 +9,40 @@ use Yii;
 use app\common\components\MyHelpers;
 
 use app\services\CartService;
+use yii\web\Response;
 
 
 class CartController extends Controller
 {
     private $cartService;
+    private $cart;
+    private $model;
 
     public function __construct($id, $module, $config = [])
     {
         $this->cartService = new CartService();
+        $this->cart = new Cart();
+        $this->model = new CustomerForm();
         parent::__construct($id, $module, $config);
     }
 
+    /**
+     * @return string|Response
+     */
     public function actionIndex()
     {
-        $cart = new Cart();
-        $totalQuantity = $cart->totalQuantity();
-        if ($totalQuantity == 0) { $cart->clearCart(); }
+        $totalQuantity = $this->cart->totalQuantity();
+        $this->cartService->cartCapacityTest($totalQuantity);
 
-        $model = new CustomerForm();
-        if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) { // When "Html::submitButton" was pressed
+        if ($this->model->load(Yii::$app->request->post()) && $this->model->contact(Yii::$app->params['adminEmail'])) { // When "Html::submitButton" was pressed
             Yii::$app->session->addFlash('customerMessage', 'contactFormSubmitted');  // Set marker "contactFormSubmitted" in $customerMessage[1]
             return $this->refresh();                                                            //    means: message to customer is sent.
         }
 
         return $this->render('cartList', [
-            'cart' => $cart->outFromCart(),
+            'cart' => $this->cart->outFromCart(),
             'totalQuantity' => $totalQuantity,
-            'model' => $model                                           // object in ActiveForm (for email sending)
+            'model' => $this->model                                           // object in ActiveForm (for email sending)
         ]);
     }
 
@@ -81,24 +87,17 @@ class CartController extends Controller
 
     public function actionTotal()       // Using for determination total quantity products and it
     {                                   //   out near inscription "Cart" in Layout
-        $cart = new Cart();
-        $totalQuantity = $cart->totalQuantity();
-
-        return $totalQuantity;
+        return $this->cart->totalQuantity();
     }
 
     public function actionDelivery()           // save delivery type in DB
     {
-        $cart = new Cart();
-
-        return $cart->changeDelivery(Yii::$app->request->post('deliveryTypeJS'));
+        return $this->cart->changeDelivery(Yii::$app->request->post('deliveryTypeJS'));
     }
 
     public function actionPurchase()           // save purchase type in DB
     {
-        $cart = new Cart();
-
-        return $cart->changePurchase(Yii::$app->request->post('purchaseTypeJS'));
+        return $this->cart->changePurchase(Yii::$app->request->post('purchaseTypeJS'));
     }
 
     public function actionPromocode()             // change product price when promo code is entered

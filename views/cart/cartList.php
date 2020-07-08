@@ -5,6 +5,10 @@
 /* @var $form yii\bootstrap\ActiveForm */
 /* @var $model app\models\CustomerForm */
 
+
+/* @var $cart array */
+
+
 use himiklab\yii2\recaptcha\ReCaptcha2;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
@@ -13,6 +17,17 @@ use app\common\components\TextFile;
 
 $textFile = new TextFile();         // text, that describe delivery types in class="deliveryMethod"
 ?>
+
+
+
+<pre>
+<?php
+print_r($cart);
+?>
+</pre>
+
+
+
 
 <!-- MyHelpers() - make correct word "Product" ("ТОВАР", "ТОВАРА", "ТОВАРОВ") in <h2> inscription -->
 <h2>В КОРЗИНЕ - <? echo $totalQuantity . " " . MyHelpers::productsEnding($totalQuantity); ?></h2>
