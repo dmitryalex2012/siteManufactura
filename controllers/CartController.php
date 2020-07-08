@@ -51,9 +51,6 @@ class CartController extends Controller
 
         $productNumber = Yii::$app->request->post('productID');
 
-        $cartService = new CartService();
-        $cartService->addToCart($productNumber);
-
         return $this->cartService->addToCart($productNumber);
     }
 
@@ -109,7 +106,7 @@ class CartController extends Controller
         $promoCode = Yii::$app->request->post('promoCodeJS');
 
         $discount = 0;
-        if ($promoCode === "173415210620"){
+        if ($promoCode === "Family"){
             $cart = new Cart();
             $cart->promoCode($discount = 0.15);
         }

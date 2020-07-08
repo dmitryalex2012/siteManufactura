@@ -10,7 +10,11 @@ use Yii;
 class CartService
 {
     /**
+     * Adding chosen product in cart (cart - in session)
+     *
      * @param $productID
+     *
+     * @return int
      */
     public function addToCart($productID)
     {
@@ -20,9 +24,9 @@ class CartService
         $session->open();
 
         $cart = $this->getCart($session);
-        $cart = $this->addProductToCart($product, $cart);
+        $cart = $this->addProductToCart($product, $cart, $productID);
 
-        $session->set('cart', $cart);                   // write $product in SESSION
+        $session->set('cart', $cart);
         $session->close();
 
         return $this->getTotalQuantity();
@@ -50,9 +54,11 @@ class CartService
      *
      * @param array $cart
      *
+     * @param $productID
+     *
      * @return array
      */
-    // **************************************  Associative array $cart structure: ***************************************************
+// **************************************  Associative array $cart structure: ***************************************************
 //      $cart {                                                                                                                 *
 //            $number=>array("number"=>$number, "title"=>$title, "content"=>$content, "quantity"=>$quantity, "price"=>$price),  *
 //            $number=>array("number"=>$number, "title"=>$title, "content"=>$content, "quantity"=>$quantity, "price"=>$price),  *
@@ -61,39 +67,45 @@ class CartService
 //            $number=>array("number"=>$number, "title"=>$title, "content"=>$content, "quantity"=>$quantity, "price"=>$price),  *
 //            "delivery"=>array("deliveryType"=>$deliveryType),                                                                 *
 //            "purchase"=>array("purchaseType"=>$purchaseType)                                                                  *
-//            "promoCode"=>array("discount"=>$promoCode)         // add in "promoCode" method                                   *
+//            "promoCode"=>array("discount"=>$promoCode)                // add in "promoCode" method                            *
 //      }                                                                                                                       *
 //*******************************************************************************************************************************
-    private function addProductToCart(ActiveRecord $product, array $cart)
+    private function addProductToCart(ActiveRecord $product, array $cart, $productID)
     {
-        $productNumber = $product->number;
-        if (isset($cart[$productNumber])) {
-            if ($cart[$productNumber]['quantity'] < 10){
-                $cart[$productNumber]['quantity']++;
+//        $productNumber = $product->number;
+        if (isset($cart[$productID])) {
+            if ($cart[$productID]['quantity'] < 10){
+                $cart[$productID]['quantity']++;
             }
 
             return $cart;
         }
 
-        $cart[$productNumber]['number'] = $productNumber;
-        $cart[$productNumber]['title'] = $product['title'] ;
-        $cart[$productNumber]['content'] = $product['content'] ;
-        $cart[$productNumber]['price'] = $product['price'];
-        $cart[$productNumber]['quantity'] = 1;
+        $cart[$productID]['number'] = $productID;
+        $cart[$productID]['title'] = $product['title'] ;
+        $cart[$productID]['content'] = $product['content'] ;
+        $cart[$productID]['price'] = $product['price'];
+        $cart[$productID]['quantity'] = 1;
 
         return $cart;
     }
 
+    /**
+     * Determination total products amount in cart
+     *
+     * @return int
+     */
     public function getTotalQuantity ()
-    {   //  determination total products amount in cart
+    {
 
         $session = Yii::$app->session;
         $session->open();
-        if (!$session->has('cart')) {
-            $cart = [];
-        } else {
-            $cart = $session->get('cart');
-        }
+//        if (!$session->has('cart')) {
+//            $cart = [];
+//        } else {
+//            $cart = $session->get('cart');
+//        }
+        $cart = $session->get('cart');
         $session->close();
 
         $totalQuantity = 0;
