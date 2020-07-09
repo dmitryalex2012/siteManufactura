@@ -2,6 +2,7 @@
 
 namespace app\services;
 
+use app\common\components\MyHelpers;
 use app\models\Products;
 use yii\db\ActiveRecord;
 use yii\web\Session;
@@ -32,12 +33,13 @@ class CartService
         return $this->getTotalQuantity();
     }
 
+
     /**
      * @param Session $session
      *
      * @return array|mixed
      */
-    private function getCart(Session $session)
+    public function getCart(Session $session)
     {
         if ($session->has('cart')) {
             return $session->get('cart');
@@ -48,6 +50,7 @@ class CartService
             'purchase' => ['purchaseType' => 'выберите удобный Вам способ оплаты']
         ];
     }
+
 
     /**
      * @param ActiveRecord $product
@@ -72,7 +75,6 @@ class CartService
 //*******************************************************************************************************************************
     private function addProductToCart(ActiveRecord $product, array $cart, $productID)
     {
-//        $productNumber = $product->number;
         if (isset($cart[$productID])) {
             if ($cart[$productID]['quantity'] < 10){
                 $cart[$productID]['quantity']++;
@@ -93,6 +95,56 @@ class CartService
         return $cart;
     }
 
+
+    /**
+     * Take all products from Cart for output
+     *
+     * @return array|mixed
+     */
+    public function getProductsFromCart()
+    {
+        $session = Yii::$app->session;
+        $session->open();
+        if ($session->has('cart')) {
+            $cart = [];
+        } else {
+            $cart = $session->get('cart');
+        }
+        $session->close();
+        return $cart;
+    }
+
+
+    /**
+     * Change quantity products (performs from Cart Page)
+     *
+     * @param $productData
+     *
+     * @return array|false|string
+     */
+// **********************************************************************
+// $resultChange {                                                      *
+//                "0" : product price,                                  *
+//                "1" : difference between old and new prices,          *
+//                "2" : total quantity of products,                     *
+//                "3" : ending of the product (товар, товарА, товарОВ)  *
+//               }                                                      *
+//***********************************************************************
+    public function changeQuantityProducts($productData)
+    {
+        $productData = explode("***", $productData);    // productData = product ID *** product quantity
+        $id = $productData[0];
+        $quantity = $productData[1];
+
+        $resultChange = $this->changeCart($id, $quantity);      // $resultChange[0] = $price, $resultChange[1] =  $difference
+        $resultChange[2] = $this->getTotalQuantity();
+        $resultChange[3] = MyHelpers::productsEnding($resultChange[2]);
+        $resultChange = json_encode($resultChange);             // AJAX use JSON data, because convert result in JSON format
+
+        return $resultChange;
+    }
+
+
     /**
      * Determination total products amount in cart
      *
@@ -103,12 +155,14 @@ class CartService
 
         $session = Yii::$app->session;
         $session->open();
-//        if (!$session->has('cart')) {
-//            $cart = [];
-//        } else {
-//            $cart = $session->get('cart');
-//        }
-        $cart = $session->get('cart');
+
+        if (!$session->has('cart')) {
+            $cart = [];
+        } else {
+            $cart = $session->get('cart');
+        }
+
+//        $cart = $session->get('cart');
         $session->close();
 
         $totalQuantity = 0;
@@ -120,6 +174,7 @@ class CartService
 
         return $totalQuantity;
     }
+
 
     /**
      * Delete Cart from SESSION when total quantity of products = 0
@@ -138,6 +193,63 @@ class CartService
         }
 
         return;
+    }
+
+
+    /**
+     * Change product quantity in Cart
+     * Return: $resultChange[0] = $price, $resultChange[1] =  $difference
+     *
+     * @param $number
+     *
+     * @param $quantity
+     *
+     * @return array
+     */
+    private function changeCart ($number, $quantity)
+    {
+        $price = $difference = 0;
+        $session = Yii::$app->session;
+        $session->open();
+        if ($session){
+            $cart = $session->get('cart');
+            $oldPrice = $cart[$number]["quantity"] * $cart[$number]["price"];
+            $cart[$number]["quantity"] = $quantity;
+            $session->set('cart', $cart);
+
+            $price = $cart[$number]["quantity"] * $cart[$number]["price"];
+            $difference = $price - $oldPrice;               // "difference" using for determination NEW total price in "cartList" view
+            if (isset($cart ["promoCode"]["discount"])){
+                $difference = $difference - $difference * $cart ["promoCode"]["discount"];  // change difference when discount is present
+            }
+        }
+        $session->close();
+        $resultChange = array("0" => $price, "1" => $difference);
+
+        return $resultChange;
+    }
+
+
+    /**
+     * Change delivery type
+     *
+     * @param $deliveryType
+     *
+     * @return mixed
+     */
+    public function changeDelivery ($deliveryType)
+    {   // change delivery type
+        $session = Yii::$app->session;
+        $session->open();
+        if ($session->has('cart')) {
+            $cart = $session->get('cart');
+            $cart ["delivery"]["deliveryType"] = $deliveryType;
+        }
+        else { $cart ["delivery"]["deliveryType"] = "Новая почта"; }
+        $session->set('cart', $cart);
+        $session->close();
+
+        return $deliveryType;
     }
 
 
@@ -166,6 +278,7 @@ class CartService
 
         return $purchaseType;
     }
+
 
     /**
      * Testing promo code authenticity
