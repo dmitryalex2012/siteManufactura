@@ -97,19 +97,20 @@ class CartController extends Controller
 
     public function actionPurchase()           // save purchase type in DB
     {
-        return $this->cart->changePurchase(Yii::$app->request->post('purchaseTypeJS'));
+        $purchaseType = Yii::$app->request->post('purchaseTypeJS');
+
+        return $this->cartService->changePurchase($purchaseType);
     }
 
+    /**
+     * Testing promo code authenticity
+     *
+     * @return float|int
+     */
     public function actionPromocode()             // change product price when promo code is entered
     {
         $promoCode = Yii::$app->request->post('promoCodeJS');
 
-        $discount = 0;
-        if ($promoCode === "Family"){
-            $cart = new Cart();
-            $cart->promoCode($discount = 0.15);
-        }
-
-        return $discount;
+        return $this->cartService->checkPromoCode($promoCode);
     }
 }

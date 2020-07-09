@@ -138,20 +138,20 @@ class Cart extends ActiveRecord
         return $deliveryType;
     }
 
-    public function changePurchase ($purchaseType)
-    {       // change purchase type
-        $session = Yii::$app->session;
-        $session->open();
-        if ($session->has('cart')) {
-            $cart = $session->get('cart');
-            $cart ["purchase"]["purchaseType"] = $purchaseType;
-        }
-        else { $cart ["purchase"]["purchaseType"] = "Наложным платежом"; }
-        $session->set('cart', $cart);                   // write delivery type in SESSION
-        $session->close();
-
-        return $purchaseType;
-    }
+//    public function changePurchase ($purchaseType)
+//    {       // change purchase type
+//        $session = Yii::$app->session;
+//        $session->open();
+//        if ($session->has('cart')) {
+//            $cart = $session->get('cart');
+//            $cart ["purchase"]["purchaseType"] = $purchaseType;
+//        }
+//        else { $cart ["purchase"]["purchaseType"] = "Наложным платежом"; }
+//        $session->set('cart', $cart);                   // write delivery type in SESSION
+//        $session->close();
+//
+//        return $purchaseType;
+//    }
 
     public function promoCode ($promoCode)
     {   // add promo code

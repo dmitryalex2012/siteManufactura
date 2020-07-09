@@ -139,4 +139,54 @@ class CartService
 
         return;
     }
+
+
+    /**
+     * Change purchase type
+     *
+     * @param $purchaseType
+     *
+     * @return mixed
+     */
+    public function changePurchase ($purchaseType)
+    {
+        $session = Yii::$app->session;
+        $session->open();
+
+        if ($session->has('cart')) {
+            $cart = $session->get('cart');
+            $cart ["purchase"]["purchaseType"] = $purchaseType;
+        }
+        else{
+            $cart ["purchase"]["purchaseType"] = "Наложным платежом";
+        }
+
+        $session->set('cart', $cart);
+        $session->close();
+
+        return $purchaseType;
+    }
+
+    /**
+     * Testing promo code authenticity
+     *
+     * @param $promoCode
+     *
+     * @return float|int
+     */
+    public function checkPromoCode($promoCode)
+    {
+        $discount = 0;
+        if ($promoCode === "Family"){
+            $session = Yii::$app->session;
+            $session->open();
+            $cart = $session->get('cart');
+            $discount = 0.15;
+            $cart ["promoCode"]["discount"] = $discount;
+            $session->set('cart', $cart);
+            $session->close();
+        }
+
+        return $discount;
+    }
 }
