@@ -86,12 +86,6 @@ class CartService
         $cart[$productID] = $product->toArray();
         $cart[$productID]['quantity'] = 1;
 
-//        $cart[$productID]['number'] = $productID;
-//        $cart[$productID]['title'] = $product['title'] ;
-//        $cart[$productID]['content'] = $product['content'] ;
-//        $cart[$productID]['price'] = $product['price'];
-//        $cart[$productID]['quantity'] = 1;
-
         return $cart;
     }
 
@@ -105,12 +99,13 @@ class CartService
     {
         $session = Yii::$app->session;
         $session->open();
-        if ($session->has('cart')) {
+        if (!$session->has('cart')) {
             $cart = [];
         } else {
             $cart = $session->get('cart');
         }
         $session->close();
+
         return $cart;
     }
 
@@ -152,7 +147,6 @@ class CartService
      */
     public function getTotalQuantity ()
     {
-
         $session = Yii::$app->session;
         $session->open();
 
@@ -162,7 +156,6 @@ class CartService
             $cart = $session->get('cart');
         }
 
-//        $cart = $session->get('cart');
         $session->close();
 
         $totalQuantity = 0;

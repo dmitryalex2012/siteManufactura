@@ -18,12 +18,11 @@ class CartController extends Controller
     {
         $this->cartService = new CartService();
 
-//        $this->cart = new Cart();
-
         $this->model = new CustomerForm();
 
         parent::__construct($id, $module, $config);
     }
+
 
     /**
      * @return string|Response
@@ -45,12 +44,19 @@ class CartController extends Controller
         ]);
     }
 
-    public function actionAdd()         // add product to Cart
+
+    /**
+     * Add product to Cart
+     *
+     * @return int
+     */
+    public function actionAdd()
     {
         $productNumber = Yii::$app->request->post('productID');
 
         return $this->cartService->addToCart($productNumber);
     }
+
 
     /**
      * Change quantity products from "Cart" Page
@@ -63,6 +69,7 @@ class CartController extends Controller
         $productData = Yii::$app->request->post('productData');
 
         return $this->cartService->changeQuantityProducts($productData);
+
 
     }
     /**
@@ -88,6 +95,7 @@ class CartController extends Controller
         return $this->cartService->changeDelivery($deliveryType);
     }
 
+
     /**
      * Save purchase type in session
      *
@@ -99,6 +107,7 @@ class CartController extends Controller
 
         return $this->cartService->changePurchase($purchaseType);
     }
+
 
     /**
      * Testing promo code authenticity and change product price when promo code is entered correct.
