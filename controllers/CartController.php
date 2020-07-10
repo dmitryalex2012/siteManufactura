@@ -29,16 +29,17 @@ class CartController extends Controller
      */
     public function actionIndex()
     {
-        $totalQuantity = $this->cartService->getTotalQuantity();
-        $this->cartService->cartCapacityTest($totalQuantity);
-
         if ($this->model->load(Yii::$app->request->post()) && $this->model->contact(Yii::$app->params['adminEmail'])) { // When "Html::submitButton" was pressed
             Yii::$app->session->addFlash('customerMessage', 'contactFormSubmitted');  // Set marker "contactFormSubmitted" in $customerMessage[1]
             return $this->refresh();                                                            //    means: message to customer is sent.
         }
 
+        $totalQuantity = $this->cartService->getTotalQuantity();
+        $this->cartService->cartCapacityTest($totalQuantity);
+        $cart = $this->cartService->getProductsFromCart();
+
         return $this->render('cartList', [
-            'cart' => $this->cartService->getProductsFromCart(),
+            'cart' => $cart,
             'totalQuantity' => $totalQuantity,
             'model' => $this->model                                           // object in ActiveForm (for email sending)
         ]);

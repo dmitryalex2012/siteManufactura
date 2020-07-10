@@ -2,7 +2,6 @@
 
 namespace app\controllers;
 
-use app\models\Products;
 use app\services\ProductServices;
 use yii\web\Controller;
 use Yii;
@@ -38,9 +37,17 @@ class ProductsController extends Controller
         ]);
     }
 
+
+    /**
+     * Render detail information about selected product, that displayed on single page
+     *
+     * @return string
+     */
     public function actionDetail()
     {
-        $selectedProduct = Products::find()->where(['number' => Yii::$app->request->get('productID')])->one();
+        $productID = Yii::$app->request->get('productID');
+        $selectedProduct = $this->productServices->getProductByNumber($productID);
+
         return $this->render('details', [
             'product' => $selectedProduct
         ]);

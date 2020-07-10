@@ -27,7 +27,6 @@ class Products extends ActiveRecord
      */
     public static function findByNumber($productID)
     {
-        return $product = Products::find()->where(['number' => $productID])->one();
+        return static::find()->where(['number' => $productID])->one();
     }
-
 }

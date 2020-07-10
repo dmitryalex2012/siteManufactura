@@ -17,4 +17,17 @@ class ProductServices
     {
         return Products::findByCategory($category);
     }
+
+
+    /**
+     * Get product by ID
+     *
+     * @param $productID
+     *
+     * @return array|\yii\db\ActiveRecord|null
+     */
+    public function getProductByNumber($productID)
+    {
+        return Products::findByNumber($productID);
+    }
 }

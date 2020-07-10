@@ -2,18 +2,42 @@
 
 namespace app\controllers;
 
-use app\models\OurOffers;
+use app\services\SiteService;
 use yii\web\Controller;
 
 
 class SiteController extends Controller
 {
+    /**
+     * The service to handle offers
+     *
+     * @var SiteService
+     */
+    private $offerServices;
+
+    public function __construct($id, $module, $config = [])
+    {
+        $this->offerServices = new SiteService();
+
+        parent::__construct($id, $module, $config);
+    }
+
+
+    /**
+     * @return string
+     */
     public function actionIndex()
     {
-        $ourOffers = ouroffers::find()->all();      // "ourOffers" - associative array from DB with data about our offers: curtains,
-                                                    //   pillows, linens, towels, Apero, baby products.
-        return $this->render('index', [       // This data (like the photo address, the inscription on the card and button,
-            'ourOffers' => $ourOffers,              //   names controller/view for redirect ) is used for display of the cards
-        ]);                                         //   with our offers.
+        /**
+         * The "ourOffers" is associative array from DB with data about our offers: curtains, pillows, linens, towels, Apero, baby products.
+         * This data (like the photo address, the inscription on the card and button, names controller/view for redirect ) is used for
+         * display of the cards with our offers.
+         */
+
+        $ourOffers = $this->offerServices->getOurOffers();
+
+        return $this->render('index', [
+            'ourOffers' => $ourOffers,
+        ]);
     }
 }
