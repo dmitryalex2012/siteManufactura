@@ -18,7 +18,8 @@ use yii\helpers\Html;
         <div class="card text-white col-12 col-lg-6">
             <img src="<?php echo $ourOffer->imageURL; ?>" class="card-img" alt="100%">
             <div class="card-img-overlay">
-                <p class="pInIndex">    <?php   echo $ourOffer->inscription; ?> </p>
+<!--                <p class="pInIndex">    --><?php //  echo $ourOffer->inscription; ?><!-- </p>-->
+                <H2 class="pInIndex">    <?php   echo $ourOffer->inscription; ?> </H2>
 
                 <?php   if ($i == 1): ?>  <!-- "inscription2" will appear only for first card (this is inscription in bottom of the card) -->
                     <p class="pInIndexAdd"> <?php echo $ourOffer->inscription2; ?> </p>

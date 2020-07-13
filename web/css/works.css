@@ -10,12 +10,12 @@ body.works{
     margin-top: 50px;
     text-indent: 30px;
     text-align: justify;
-    font-style: italic;
+    /*font-style: italic;*/
     font-family: cursive;
 }
 
 h3, .h3 {
-    font-family: cursive;
+    /*font-family: cursive;*/
 }
 
 .wrap {
