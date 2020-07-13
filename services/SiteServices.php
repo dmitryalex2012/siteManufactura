@@ -4,14 +4,14 @@ namespace app\services;
 
 use app\models\OurOffers;
 
-class SiteService
+class SiteServices
 {
     /**
-     * Get list of our products
+     * Get data of our offers
      *
      * @return array|\yii\db\ActiveRecord[]
      */
-    public function getOurOffers()
+    public static function getOurOffers()
     {
         return OurOffers::findOurOffers();
     }

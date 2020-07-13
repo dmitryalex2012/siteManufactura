@@ -5,7 +5,7 @@ namespace app\controllers;
 use app\models\CustomerForm;
 use yii\web\Controller;
 use Yii;
-use app\services\CartService;
+use app\services\CartServices;
 use yii\web\Response;
 
 
@@ -16,7 +16,7 @@ class CartController extends Controller
 
     public function __construct($id, $module, $config = [])
     {
-        $this->cartService = new CartService();
+        $this->cartService = new CartServices();
 
         $this->model = new CustomerForm();
 

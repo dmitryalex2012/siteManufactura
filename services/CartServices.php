@@ -8,7 +8,7 @@ use yii\db\ActiveRecord;
 use yii\web\Session;
 use Yii;
 
-class CartService
+class CartServices
 {
     /**
      * Adding chosen product in cart (cart - in session)

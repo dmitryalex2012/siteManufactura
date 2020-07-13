@@ -7,11 +7,11 @@ use app\models\Works;
 class WorksServices
 {
     /**
-     * Get list of our works list
+     * Get information about our works
      *
      * @return mixed
      */
-    public function getOurWorks ()
+    public static function getOurWorks ()
     {
         return Works::findOurWorks();
     }

@@ -7,7 +7,7 @@ use yii\db\ActiveRecord;
 class Works extends ActiveRecord
 {
     /**
-     * Find our works list in DB
+     * Find information in DB about our works
      *
      * @return array|ActiveRecord[]
      */
