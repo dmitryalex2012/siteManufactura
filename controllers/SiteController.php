@@ -9,7 +9,7 @@ use yii\web\Controller;
 class SiteController extends Controller
 {
     /**
-     * The service to handle offers
+     * The service to handle our offers
      *
      * @var SiteService
      */
