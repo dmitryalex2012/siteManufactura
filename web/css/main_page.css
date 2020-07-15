@@ -10,6 +10,10 @@ body.home{
     /*border-color: #d4d4d46b;*/
 }
 
+h1{
+    color: #669978!important;
+}
+
 .img-responsive{
     padding-left: 80px !important;
 }

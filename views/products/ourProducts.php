@@ -13,6 +13,8 @@ foreach ($items as $key => $item) {
 $this->params['breadcrumbs'][] = $this->title = 'Магазин ' . $name;
 ?>
 
+<h1>Магазин <?php echo $name?></h1>
+
 <?php $i = 0;
 foreach ($items as $item):
     if ((((++$i) % 3) == 1)): ?>
@@ -31,7 +33,7 @@ foreach ($items as $item):
                 ?>
                 <?= Html::a(Html::img($productURL, ['width'=>"100%", 'height'=>"100%"]), ['products/detail', 'productID' => $item->number]); ?>
 
-                <p class="card-text"><?php echo $item->content; ?></p>
+                <h5 class="card-text"><?php echo $item->content; ?></h5>
                 <div id="boxProduct">
                     <div class="priceProduct">
                         <?php echo $item->price; ?> грн.

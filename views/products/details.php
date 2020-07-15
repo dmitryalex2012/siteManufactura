@@ -61,7 +61,7 @@ $this->params['breadcrumbs'][] = $product->content;
 
             <div class="col-12 col-md-5">                             <!-- column with product description -->
                 <div class="detailDescription">
-                    <p class="detailProductTitle"><?php echo $product->content; ?></p>
+                    <h1 class="detailProductTitle"><?php echo $product->content; ?></h1>
                     <p class="detailProductDescription"><?php echo $product->description; ?></p>
                     <?php
                     if (isset($product->size)){

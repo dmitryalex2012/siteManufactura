@@ -14,8 +14,8 @@ body.works{
     font-family: cursive;
 }
 
-h3, .h3 {
-    /*font-family: cursive;*/
+.h1InWorks {
+  margin: 20px 0 0!important;
 }
 
 .wrap {

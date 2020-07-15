@@ -11,10 +11,12 @@
 <!--        [notes] =>   "foto/ourworks/livingRoom1.jpg,foto/ourworks/living....."  (photos address)        -->
 <!--              }                                                                                         -->
 
+<h1 class="h1InWorks">Наши работы</h1>
+
 <div class="products">
     <?php foreach ($worksList as $key => $item): ?>
         <div class="row">
-            <div class="col-12 col-sm-5">                            <!-- output "carousel" photos in this column -->
+            <div class="col-12 col-lg-5">                            <!-- output "carousel" photos in this column -->
                 <h3><?php echo $item->title; ?></h3>                 <!-- output title photos group -->
 
                 <?php                                                  // make array with photo addresses and count photo quantity
@@ -54,7 +56,7 @@
                 </div>
             </div>
 
-            <div class="col-12 col-sm-7">       <!-- output the photos description in this column -->
+            <div class="col-12 col-lg-7">       <!-- output the photos description in this column -->
                 <div class="worksDescription">
                     <?php $temp = $item->content;           // $worksList[content] contains the description of the "carousel" photos.
                     while (strpos($temp, '*') > 0) : // "*" is used instead of paragraph in description text.

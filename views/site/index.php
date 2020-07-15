@@ -7,7 +7,9 @@ use yii\helpers\Html;
 /* @var $ourOffers object */
 ?>
 
-<br>
+<!--<br>-->
+<h1 class="h1MainPage">Дизайн-бюро штор "Мануфактура" - создаем уют в Вашем доме</h1>
+
 <?php $i = 0; ?>
 
 <?php foreach ($ourOffers as $key=>$ourOffer):
