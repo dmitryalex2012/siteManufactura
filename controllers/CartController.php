@@ -64,15 +64,14 @@ class CartController extends Controller
      *
      * @return array|false|string
      */
-
     public function actionChange()
     {
         $productData = Yii::$app->request->post('productData');
 
         return $this->cartService->changeQuantityProducts($productData);
-
-
     }
+
+
     /**
      * Determination total products quantity in cart.
      * The total products quantity outputs near inscription "Cart" in layout.
@@ -83,6 +82,7 @@ class CartController extends Controller
     {
         return $this->cartService->getTotalQuantity();
     }
+
 
     /**
      * Save delivery type in session
