@@ -36,6 +36,15 @@
     border: #eeeeee;
 }
 
+.card:hover .pInIndex {
+        font-size: xx-large;
+        text-align: center;
+        color: #ff9900;
+        text-shadow: 1px 1px 1px #4e674a, 0 0 1em #cfe0d7;
+        margin: 0;
+
+}
+
 @media (max-width:575px) {
     .pInIndex, .pInIndexAdd {
         font-size: medium;
