@@ -5,7 +5,6 @@
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
-use yii\helpers\Url;
 use app\assets\AppAsset;
 
 AppAsset::register($this);
@@ -27,26 +26,24 @@ AppAsset::register($this);
     <header>
         <?php
         NavBar::begin([
-            'brandLabel' => 'Панель управления',
-            'brandUrl' => Url::to(['/admin/default/index']),
-            'options' => [
-                'class' => 'navbar-inverse',
-
-//                'class' => 'navbar-inverseAdmin',
-
-            ],
+//            'brandLabel' => 'Панель управления',
+//            'brandUrl' => Url::to(['/admin/default/index']),
+//            'options' => [
+//                'class' => 'navbar-inverse',
+//            ],
         ]);
         echo Nav::widget([
 //            'options' => ['class' => 'navbar-nav'],
             'options' => ['class' => 'navbar-navAdmin'],
             'items' => [
-                [
-                    'label' => 'Каталог',
-                    'items' => [
-                        ['label' => 'Категории', 'url' => ['/admin/category/index']],
-                        ['label' => 'Товары', 'url' => ['/admin/product/index']],
-                    ],
-                ],
+//                [
+//                    'label' => 'Каталог',
+//                    'items' => [
+//                        ['label' => 'Категории', 'url' => ['/admin/category/index']],
+//                        ['label' => 'Товары', 'url' => ['/admin/product/index']],
+//                    ],
+//                ],
+                ['label' => 'Панель управления', 'url' => ['/admin/default/index']],
                 ['label' => 'Заказы', 'url' => ['/admin/order/index']],
                 ['label' => 'Пользователи', 'url' => ['/admin/user/index']],
                 ['label' => 'Страницы', 'url' => ['/admin/page/index']],
