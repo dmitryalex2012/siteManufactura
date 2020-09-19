@@ -62,13 +62,15 @@ AppAsset::register($this);
         ?>
     </header>
 
-    <div class="container">
-        <?= $content; ?>
+    <div class="containerAdmin">
+        <div class="container">
+            <?= $content; ?>
+        </div>
     </div>
 
     <footer class="footer">
         <div class="container">
-            <p>&copy; <?= Yii::$app->params['shopName'] ?></p>
+            <p class="pLayoutsAdmin">&copy; <?= Yii::$app->params['shopName'] ?></p>
         </div>
     </footer>
 
