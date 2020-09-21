@@ -27,14 +27,22 @@ $this->params['breadcrumbs'][] = $this->title;
             'categories',
             'categoriesBredCrumbs',
             'title',
-            'address',
-            //'content',
-            //'description',
-            //'size',
-            //'number',
-            //'price',
+//            'address',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'attribute' => 'address',
+                'headerOptions' => ['style' => 'width:30%; text-align:center;'],
+//                'contentOptions' => ['style' => 'min-width:400px; max-width:480px;'],
+            ],
+
+            'content',
+            'description',
+            'size',
+            'number',
+            'price',
+
+            ['class' => 'yii\grid\ActionColumn',
+                'headerOptions' => ['style' => 'width:15%; text-align:center;']],
         ],
     ]); ?>
 

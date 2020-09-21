@@ -36,6 +36,9 @@ class ProductsController extends AdminController
     {
         $dataProvider = new ActiveDataProvider([
             'query' => Products::find(),
+            'pagination' => [
+                'pageSize' => 20,
+            ],
         ]);
 
         return $this->render('index', [

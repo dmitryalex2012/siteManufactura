@@ -111,35 +111,6 @@ button.btn.btn-outline-success {
     bottom: 0;
 }
 
-
-
-
-
-
-.navbar-navAdmin{
-
-    /*width: 75%;*/
-    display: flex;
-    justify-content: center;
-
-    /*flex-direction: row;*/
-    /*justify-content: center;*/
-    /*float: none !important;*/
-    /*text-align: center;*/
-}
-
-/*.navbar-inverseAdmin{*/
-/*    padding: 0!important;*/
-/*}*/
-
-/*.navbar-brand {*/
-/*     padding: 15px;*/
-/*}*/
-
-
-
-
-
 @media (max-width: 765px) {
     .navbar-nav {
         flex-direction: column;

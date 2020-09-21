@@ -7,3 +7,10 @@
     text-align: center;
     padding: 7px 0 0;
 }
+
+.navbar-navAdmin {
+    /*width: 75%;*/
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+}

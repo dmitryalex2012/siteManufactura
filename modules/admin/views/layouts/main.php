@@ -39,14 +39,23 @@ AppAsset::register($this);
 //                [
 //                    'label' => 'Каталог',
 //                    'items' => [
-//                        ['label' => 'Категории', 'url' => ['/admin/category/index']],
-//                        ['label' => 'Товары', 'url' => ['/admin/product/index']],
+//                        ['label' => 'Категории', 'url' => ['/admin/products/index']],
+//                        ['label' => 'Товары', 'url' => ['/admin/products/index']],
+
+//                ['label' => 'Подушки',              'url' => ['/admin/products/index', 'value' => 'Pillow']],
+//                ['label' => 'Постельное белье',     'url' => ['/admin/products/index', 'value' => 'linens']],
+//                ['label' => 'Полотенца',            'url' => ['/admin/products/index', 'value' => 'towel']],
+//                ['label' => 'Товары ТМ "Apero"',    'url' => ['/admin/products/index', 'value' => 'apero']],
+//                ['label' => 'Товары для "бебиков"', 'url' => ['/admin/products/index', 'value' => 'baby']],
+
 //                    ],
 //                ],
                 ['label' => 'Панель управления', 'url' => ['/admin/default/index']],
-                ['label' => 'Заказы', 'url' => ['/admin/order/index']],
-                ['label' => 'Пользователи', 'url' => ['/admin/user/index']],
-                ['label' => 'Страницы', 'url' => ['/admin/page/index']],
+                ['label' => 'Товары', 'url' => ['/admin/products/index']],
+
+//                ['label' => 'Заказы', 'url' => ['/admin/products/index']],
+//                ['label' => 'Пользователи', 'url' => ['/admin/user/index']],
+//                ['label' => 'Страницы', 'url' => ['/admin/page/index']],
 
                 ['label' => 'Выйти', 'url' => ['/admin/auth/logout']],
 

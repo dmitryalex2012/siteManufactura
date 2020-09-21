@@ -2,7 +2,7 @@
 
 return [
     'adminEmail' => 'admin@example.com',
-    'adminPassword' => 'qwerty123456',
+    'adminPassword' => '010981',
     'senderEmail' => 'noreply@example.com',
     'senderName' => 'Example.com mailer',
 

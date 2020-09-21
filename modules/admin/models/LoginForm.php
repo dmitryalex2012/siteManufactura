@@ -22,7 +22,7 @@ class LoginForm extends Model {
             // поле email должно быть адресом почты
             ['email', 'email'],
             // пароль не может быть короче 12 символов
-            [['password'], 'string', 'min' => 12],
+            [['password'], 'string', 'min' => 6],
         ];
     }
 
