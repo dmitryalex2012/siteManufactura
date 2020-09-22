@@ -12,6 +12,8 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
+    <?= $form->field($model, 'id')->textInput(['maxlength' => true]) ?>
+
     <?= $form->field($model, 'categories')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'categoriesBredCrumbs')->textInput(['maxlength' => true]) ?>

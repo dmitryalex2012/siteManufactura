@@ -51,6 +51,7 @@ AppAsset::register($this);
 //                    ],
 //                ],
                 ['label' => 'Панель управления', 'url' => ['/admin/default/index']],
+                ['label' => 'Работы', 'url' => ['/admin/works/index']],
                 ['label' => 'Товары', 'url' => ['/admin/products/index']],
 
 //                ['label' => 'Заказы', 'url' => ['/admin/products/index']],
