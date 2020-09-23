@@ -121,9 +121,17 @@ class ProductsController extends AdminController
     protected function findModel($id)
     {
         if (($model = Products::findOne($id)) !== null) {
+
             return $model;
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+
+    public function actionCopy()
+    {
+
+        return "Ok";
+    }
+
 }

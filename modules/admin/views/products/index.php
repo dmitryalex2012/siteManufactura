@@ -72,6 +72,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
                         $url = Url::current(['', 'id' => $key]);
 
+//                        https://coderius.biz.ua/blog/article/kak-sozdat-svou-knopku-v-gridview-yii2
+
 
                         //Обработка клика на кнопку
 //                        $js = <<<JS
@@ -90,6 +92,29 @@ $this->params['breadcrumbs'][] = $this->title;
 //JS;
                         //Регистрируем скрипты
 //                        $this->registerJs($js, \yii\web\View::POS_READY, $id);
+
+
+                        // save new purchase type in DB
+                        $purchaseTypeJS = <<<JS
+                        // $("#1").on("click",function() {
+                        $("#info-1").on("click",function() {
+                            // let purchaseTypeJS = ($(this).val());
+                             $.ajax({
+                                url: '/admin/products/copy',
+                                // data: {purchaseTypeJS: purchaseTypeJS},
+                                type: 'POST',
+                                success: function (purchaseType) {
+                                    // $('.purchaseTypeInTable').html("Способ оплаты: "+ purchaseType);   <!-- out new purchase type in table for customer -->
+                                    console.log(purchaseType);
+                                 },
+                                error: function () {
+                                    console.log ("Failed");
+                                }
+                            });
+                        })
+JS;
+                        $this->registerJs($purchaseTypeJS);
+
 
                         return Html::a($icon, $url, $options);
                     },
