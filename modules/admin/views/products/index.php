@@ -28,7 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             'categories',
-            'categoriesBredCrumbs',
+//            'categoriesBredCrumbs',
             'title',
             [
                 'attribute' => 'address',
@@ -36,7 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
 //                'contentOptions' => ['style' => 'min-width:400px; max-width:480px;'],
             ],
             'content',
-            'description',
+//            'description',
             'size',
             'number',
             'price',
@@ -59,12 +59,15 @@ $this->params['breadcrumbs'][] = $this->title;
 //                        $title = \Yii::t('yii', 'Copy');
                         $title = Yii::t('yii', 'Copy');
 
-//                        $id = 'info-'.$key;
+                        $id = 'info-'.$key;
+//                        $idJS = '"#' . $id . '"';
+//                        $idJS = $id;
+
                         $options = [
                             'title' => $title,
                             'aria-label' => $title,
                             'data-pjax' => '0',
-//                            'id' => $id
+                            'id' => $id
                         ];
 
                         //Для стилизации используем библиотеку иконок Bootstrap
@@ -93,11 +96,20 @@ $this->params['breadcrumbs'][] = $this->title;
                         //Регистрируем скрипты
 //                        $this->registerJs($js, \yii\web\View::POS_READY, $id);
 
+                        // let idJS = $("#info-" + "1");
+                        // let idJS1 = 'echo $idJS;';
+
 
                         // save new purchase type in DB
                         $purchaseTypeJS = <<<JS
+
+                        
+                        idJS = "<?php $id; ?>";
+//                       idJS = {$id};
+
                         // $("#1").on("click",function() {
-                        $("#info-1").on("click",function() {
+                        // $(idJS).on("click",function() {
+                        $("#{$id}").on("click",function() {
                             // let purchaseTypeJS = ($(this).val());
                              $.ajax({
                                 url: '/admin/products/copy',
@@ -106,6 +118,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 success: function (purchaseType) {
                                     // $('.purchaseTypeInTable').html("Способ оплаты: "+ purchaseType);   <!-- out new purchase type in table for customer -->
                                     console.log(purchaseType);
+                                    console.log(idJS);
                                  },
                                 error: function () {
                                     console.log ("Failed");
