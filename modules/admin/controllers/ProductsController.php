@@ -2,6 +2,7 @@
 
 namespace app\modules\admin\controllers;
 
+use app\modules\services\ProductServices;
 use Yii;
 use app\modules\admin\models\Products;
 use yii\data\ActiveDataProvider;
@@ -13,6 +14,15 @@ use yii\filters\VerbFilter;
  */
 class ProductsController extends AdminController
 {
+    private $productService;
+
+    public function __construct($id, $module, $config = [])
+    {
+        $this->productService = new ProductServices();
+
+        parent::__construct($id, $module, $config);
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -103,6 +113,8 @@ class ProductsController extends AdminController
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
+     * @throws \Throwable
+     * @throws \yii\db\StaleObjectException
      */
     public function actionDelete($id)
     {
@@ -128,10 +140,17 @@ class ProductsController extends AdminController
         throw new NotFoundHttpException('The requested page does not exist.');
     }
 
+
+    /**
+     * This method allows to copy the product string for possibility it inserting during creation new product.
+     */
     public function actionCopy()
     {
+        $idCopedString = Yii::$app->request->post('idCopedString');
 
-        return "Ok";
+        $this->productService->saveCopedString($idCopedString);
+
+        return;
     }
 
 }

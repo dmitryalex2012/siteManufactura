@@ -16,10 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>
-        <?= Html::a('Create Products', ['create'], ['class' => 'btn btn-success btnAdmin']) ?>
-    </p>
-
+    <p> <?= Html::a('Create new Product', ['create'], ['class' => 'btn btn-success btnAdmin']) ?>  </p>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -45,80 +42,38 @@ $this->params['breadcrumbs'][] = $this->title;
                 'headerOptions' => ['style' => 'width:20%; text-align:center;'],
                 'contentOptions' => ['style' => 'padding:20px 0 0;'],
 
+                // add "Copy" button
                 'template' => '{view} {update} {delete} {copy}',
-
-
-
-
-
-
                 'buttons' => [
                     'copy' => function ($url, $model, $key) {
-
                         //Текст в title ссылки, что виден при наведении
-//                        $title = \Yii::t('yii', 'Copy');
                         $title = Yii::t('yii', 'Copy');
 
+                        // button ID
                         $id = 'info-'.$key;
-//                        $idJS = '"#' . $id . '"';
-//                        $idJS = $id;
 
                         $options = [
                             'title' => $title,
-                            'aria-label' => $title,
-                            'data-pjax' => '0',
                             'id' => $id
                         ];
 
                         //Для стилизации используем библиотеку иконок Bootstrap
                         $icon = Html::tag('span', '', ['class' => "glyphicon glyphicon-duplicate"]);
 
+                        // button URL
                         $url = Url::current(['', 'id' => $key]);
 
-//                        https://coderius.biz.ua/blog/article/kak-sozdat-svou-knopku-v-gridview-yii2
-
-
-                        //Обработка клика на кнопку
-//                        $js = <<<JS
-//                           $("#{$id}").on("click",function(event){
-//                                   event.preventDefault();
-//                                   var myModal = $("#myModal");
-//                                   var modalBody = myModal.find('.modal-body');
-//                                   var modalTitle = myModal.find('.modal-header');
-//
-//                                   modalTitle.find('h2').html('Информация.');
-//                                   modalBody.html('Тут будет информация.');
-//
-//                                   myModal.modal("show");
-//                               }
-//                           );
-//JS;
-                        //Регистрируем скрипты
-//                        $this->registerJs($js, \yii\web\View::POS_READY, $id);
-
-                        // let idJS = $("#info-" + "1");
-                        // let idJS1 = 'echo $idJS;';
-
-
-                        // save new purchase type in DB
+                        // "Copy" button click handling
                         $purchaseTypeJS = <<<JS
 
-                        
-                        idJS = "<?php $id; ?>";
-//                       idJS = {$id};
-
-                        // $("#1").on("click",function() {
-                        // $(idJS).on("click",function() {
                         $("#{$id}").on("click",function() {
-                            // let purchaseTypeJS = ($(this).val());
                              $.ajax({
                                 url: '/admin/products/copy',
-                                // data: {purchaseTypeJS: purchaseTypeJS},
+                                data: {idCopedString: "{$key}"},
                                 type: 'POST',
-                                success: function (purchaseType) {
-                                    // $('.purchaseTypeInTable').html("Способ оплаты: "+ purchaseType);   <!-- out new purchase type in table for customer -->
-                                    console.log(purchaseType);
-                                    console.log(idJS);
+                                success: function () {
+                                    // console.log(purchaseType);
+                                    // alert(purchaseType);
                                  },
                                 error: function () {
                                     console.log ("Failed");
@@ -128,16 +83,9 @@ $this->params['breadcrumbs'][] = $this->title;
 JS;
                         $this->registerJs($purchaseTypeJS);
 
-
                         return Html::a($icon, $url, $options);
                     },
                 ],
-
-
-
-
-
-
             ],
         ],
     ]); ?>

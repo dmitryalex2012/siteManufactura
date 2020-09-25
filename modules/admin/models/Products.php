@@ -58,4 +58,9 @@ class Products extends ActiveRecord
             'price' => 'Price',
         ];
     }
+
+    public static function findProductStringByID($stringID)
+    {
+        return static::find()->where(['id' => $stringID])->one();
+    }
 }
