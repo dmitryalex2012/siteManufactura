@@ -8,6 +8,10 @@ use yii\widgets\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
+<div class="pasteBtnClass">
+    <?= Html::button('Вставить', ['class'=>'adminPasteBtn btn btn-success']) ?>
+</div>
+
 <div class="products-form">
 
     <?php $form = ActiveForm::begin(); ?>
@@ -33,9 +37,33 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'price')->textInput() ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <div class="createBtnClass">
+            <?= Html::submitButton('Сохранить', ['class' => 'adminCreateBtn btn btn-success']) ?>
+        </div>
     </div>
 
     <?php ActiveForm::end(); ?>
+
+    <?php
+    // "Copy" button click handling
+    $purchaseTypeJS = <<<JS
+
+    $(".adminPasteBtn").on("click",function() {
+        $.ajax({
+        url: '/admin/products/past',
+        // data: {idCopedString: ""},
+        type: 'POST',
+        success: function (temp) {
+        console.log(temp);
+        // alert(purchaseType);
+        },
+        error: function () {
+        console.log ("Failed");
+        }
+        });
+        })
+JS;
+    $this->registerJs($purchaseTypeJS);
+    ?>
 
 </div>

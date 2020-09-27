@@ -14,3 +14,14 @@
     justify-content: center;
     margin-top: 5px;
 }
+
+.createBtnClass, .pasteBtnClass{
+text-align: center;
+}
+
+.adminCreateBtn, .adminPasteBtn{
+    margin: 0 10px 15px;
+    color: #f5f5f5;
+    background-color: #33b749;
+    border: none;
+}

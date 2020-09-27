@@ -71,12 +71,14 @@ $this->params['breadcrumbs'][] = $this->title;
                                 url: '/admin/products/copy',
                                 data: {idCopedString: "{$key}"},
                                 type: 'POST',
-                                success: function () {
-                                    // console.log(purchaseType);
+                                success: function (purchaseType) {
+                                    console.log(purchaseType);
+                                    // alert(purchaseType);
                                     // alert(purchaseType);
                                  },
                                 error: function () {
                                     console.log ("Failed");
+                                    // alert(temp);
                                 }
                             });
                         })

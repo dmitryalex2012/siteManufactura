@@ -2,7 +2,7 @@
 
 namespace app\modules\admin\controllers;
 
-use app\modules\services\ProductServices;
+use app\modules\admin\services\ProductServices;
 use Yii;
 use app\modules\admin\models\Products;
 use yii\data\ActiveDataProvider;
@@ -151,6 +151,11 @@ class ProductsController extends AdminController
         $this->productService->saveCopedString($idCopedString);
 
         return;
+    }
+
+    public function actionPast()
+    {
+        return $this->productService->outCopedString();
     }
 
 }

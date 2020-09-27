@@ -1,11 +1,23 @@
 <?php
-namespace app\modules\services;
+namespace app\modules\admin\services;
 
 use app\modules\admin\models\Products;
 use Yii;
 
 class ProductServices
 {
+    /**
+     *Get product string by ID
+     *
+     * @param $productID
+     *
+     * @return array|\yii\db\ActiveRecord|null
+     */
+    public function getProductStringByID($productID)
+    {
+        return Products::findProductStringByID($productID);
+    }
+
     /**
      * Write coped string to SESSION
      *
@@ -21,16 +33,16 @@ class ProductServices
         return;
     }
 
-    /**
-     *Get product string by ID
-     *
-     * @param $productID
-     *
-     * @return array|\yii\db\ActiveRecord|null
-     */
-    public function getProductStringByID($productID)
+    public function outCopedString()
     {
-        return Products::findProductStringByID($productID);
+        $session = Yii::$app->session;
+        $copedString = json_encode($session->get('copedString'));
+//        $copedString = $session->get('copedString');
+
+//        $copedString = $session->get('copedString');
+//        $copedString = json_decode(json_encode($copedString), true);;
+
+        return $copedString;
     }
 
 
