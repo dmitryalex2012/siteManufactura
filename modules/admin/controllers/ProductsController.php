@@ -82,8 +82,15 @@ class ProductsController extends AdminController
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
+
+        $temp = $this->productService->outCopedString();
+
+
         return $this->render('create', [
             'model' => $model,
+
+            'temp' => $temp,
+
         ]);
     }
 
@@ -153,7 +160,7 @@ class ProductsController extends AdminController
         return;
     }
 
-    public function actionPast()
+    public function actionPaste()
     {
         return $this->productService->outCopedString();
     }

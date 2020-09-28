@@ -7,11 +7,13 @@ use Yii;
 class ProductServices
 {
     /**
-     *Get product string by ID
+     * Get product string by ID
      *
      * @param $productID
      *
-     * @return array|\yii\db\ActiveRecord|null
+     * @return mixed
+     *
+     * @throws \yii\base\InvalidConfigException
      */
     public function getProductStringByID($productID)
     {
@@ -22,6 +24,8 @@ class ProductServices
      * Write coped string to SESSION
      *
      * @param $productID
+     *
+     * @throws \yii\base\InvalidConfigException
      */
     public function saveCopedString($productID)
     {
@@ -36,11 +40,14 @@ class ProductServices
     public function outCopedString()
     {
         $session = Yii::$app->session;
-        $copedString = json_encode($session->get('copedString'));
-//        $copedString = $session->get('copedString');
+        $copedString = $session->get('copedString');
 
-//        $copedString = $session->get('copedString');
-//        $copedString = json_decode(json_encode($copedString), true);;
+        // object $copedString to array $copedString
+        $copedString = (array)$copedString;
+        // take only $copedString[0]
+        $copedString = $copedString[array_keys($copedString)[1]];
+        // convert $copedString to JSON with Cyrillic UTF-8 (it works with russian font)
+        $copedString = json_encode($copedString, JSON_UNESCAPED_UNICODE);
 
         return $copedString;
     }

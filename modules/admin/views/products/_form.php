@@ -12,11 +12,12 @@ use yii\widgets\ActiveForm;
     <?= Html::button('Вставить', ['class'=>'adminPasteBtn btn btn-success']) ?>
 </div>
 
+
 <div class="products-form">
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'id')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'id')->textInput(['maxlength' => true, 'class'=>'adminCreateID']) ?>
 
     <?= $form->field($model, 'categories')->textInput(['maxlength' => true]) ?>
 
@@ -44,24 +45,34 @@ use yii\widgets\ActiveForm;
 
     <?php ActiveForm::end(); ?>
 
+
+
+        <p class="deliveryTypeInTable">Тип доставки:</p>
+
+
+
     <?php
     // "Copy" button click handling
     $purchaseTypeJS = <<<JS
 
     $(".adminPasteBtn").on("click",function() {
         $.ajax({
-        url: '/admin/products/past',
-        // data: {idCopedString: ""},
-        type: 'POST',
-        success: function (temp) {
-        console.log(temp);
-        // alert(purchaseType);
-        },
-        error: function () {
-        console.log ("Failed");
-        }
+            url: '/admin/products/paste',
+            // data: {idCopedString: ""},
+            type: 'POST',
+            success: function (temp) {
+            console.log(temp);
+            
+             // $('.adminCreateID').html(temp(id));
+             $('.deliveryTypeInTable').html(temp(id));
+            
+            // alert(purchaseType);
+            },
+            error: function () {
+            console.log ("Failed");
+            }
         });
-        })
+    })
 JS;
     $this->registerJs($purchaseTypeJS);
     ?>

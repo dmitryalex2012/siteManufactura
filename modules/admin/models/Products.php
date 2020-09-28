@@ -59,6 +59,13 @@ class Products extends ActiveRecord
         ];
     }
 
+    /**
+     * @param $stringID
+     *
+     * @return mixed
+     *
+     * @throws \yii\base\InvalidConfigException
+     */
     public static function findProductStringByID($stringID)
     {
         return static::find()->where(['id' => $stringID])->one();
