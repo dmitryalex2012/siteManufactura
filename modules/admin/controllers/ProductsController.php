@@ -82,15 +82,8 @@ class ProductsController extends AdminController
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
-
-        $temp = $this->productService->outCopedString();
-
-
         return $this->render('create', [
             'model' => $model,
-
-            'temp' => $temp,
-
         ]);
     }
 

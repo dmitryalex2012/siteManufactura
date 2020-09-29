@@ -25,7 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             'categories',
-//            'categoriesBredCrumbs',
+            'categoriesBredCrumbs',
             'title',
             [
                 'attribute' => 'address',
@@ -33,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
 //                'contentOptions' => ['style' => 'min-width:400px; max-width:480px;'],
             ],
             'content',
-//            'description',
+            'description',
             'size',
             'number',
             'price',

@@ -8,16 +8,18 @@ use yii\widgets\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="pasteBtnClass">
-    <?= Html::button('Вставить', ['class'=>'adminPasteBtn btn btn-success']) ?>
-</div>
-
-
 <div class="products-form">
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'id')->textInput(['maxlength' => true, 'class'=>'adminCreateID']) ?>
+    <div class="form-group">
+        <div class="createBtnClass">
+            <?= Html::button('Вставить', ['class'=>'adminPasteBtn btn btn-success']) ?>
+            <?= Html::submitButton('Сохранить', ['class' => 'adminCreateBtn btn btn-success']) ?>
+        </div>
+    </div>
+
+    <?= $form->field($model, 'id')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'categories')->textInput(['maxlength' => true]) ?>
 
@@ -37,39 +39,35 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'price')->textInput() ?>
 
-    <div class="form-group">
-        <div class="createBtnClass">
-            <?= Html::submitButton('Сохранить', ['class' => 'adminCreateBtn btn btn-success']) ?>
-        </div>
-    </div>
-
     <?php ActiveForm::end(); ?>
 
 
-
-        <p class="deliveryTypeInTable">Тип доставки:</p>
-
-
-
     <?php
-    // "Copy" button click handling
+    // "Paste" button click handling
     $purchaseTypeJS = <<<JS
 
     $(".adminPasteBtn").on("click",function() {
         $.ajax({
             url: '/admin/products/paste',
-            // data: {idCopedString: ""},
             type: 'POST',
-            success: function (temp) {
-            console.log(temp);
-            
-             // $('.adminCreateID').html(temp(id));
-             $('.deliveryTypeInTable').html(temp(id));
-            
-            // alert(purchaseType);
+            success: function (copedString) {
+                // JSON to object
+                const parsedString = JSON.parse(copedString);
+                
+                // insert coped string to Form
+                $('#products-id').val(parsedString['id']);
+                $('#products-categories').val(parsedString['categories']);
+                $('#products-categoriesbredcrumbs').val(parsedString['categoriesBredCrumbs']);
+                $('#products-title').val(parsedString['title']);
+                $('#products-address').val(parsedString['address']);
+                $('#products-content').val(parsedString['content']);
+                $('#products-description').val(parsedString['description']);
+                $('#products-size').val(parsedString['size']);
+                $('#products-number').val(parsedString['number']);
+                $('#products-price').val(parsedString['price']);
             },
             error: function () {
-            console.log ("Failed");
+                console.log ("Failed");
             }
         });
     })
