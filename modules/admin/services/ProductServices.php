@@ -37,6 +37,11 @@ class ProductServices
         return;
     }
 
+    /**
+     * Get selected product string from SESSION
+     *
+     * @return array|false|mixed|string
+     */
     public function outCopedString()
     {
         $session = Yii::$app->session;
@@ -51,6 +56,5 @@ class ProductServices
 
         return $copedString;
     }
-
 
 }
