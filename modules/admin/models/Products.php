@@ -60,6 +60,8 @@ class Products extends ActiveRecord
     }
 
     /**
+     * Get product from DB
+     *
      * @param $stringID
      *
      * @return mixed
