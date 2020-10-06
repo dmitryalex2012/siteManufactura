@@ -134,8 +134,15 @@ class CustomerForm extends Model
 
 
 
-//            Yii::$app->alphasms::
-//            Yii::$app->alphasms
+
+//            $reply = "Здравствуйте.";
+//            Yii::$app->mailer->compose()
+//                ->setTo('0979272564@mail.alphasms.com.ua')                 // send mail to customer
+//                ->setFrom('tpmfd27@gmail.com')
+//                ->setSubject('Дмиитрий')
+//                ->setTextBody('111')
+//                ->send();
+//            return true;
 
 
 

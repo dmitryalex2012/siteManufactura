@@ -20,20 +20,6 @@ $config = [
     ],
 
     'components' => [
-
-
-
-        'alphasms' => [
-            'class' => 'alphasms\gateway\AlphaSMS',
-            'config' => [
-//                'api_key' => '',
-//                'sms_sender' => 'Your alphaname',
-            ],
-        ],
-
-
-
-
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'zibaVLZ6zlMPdRGOMV2-SBwkbavdOAOH',
