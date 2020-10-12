@@ -10,9 +10,7 @@ class ProductServices
      * Get product string by ID
      *
      * @param $productID
-     *
      * @return mixed
-     *
      * @throws \yii\base\InvalidConfigException
      */
     public function getProductStringByID($productID)
@@ -24,7 +22,6 @@ class ProductServices
      * Write coped string to SESSION
      *
      * @param $productID
-     *
      * @throws \yii\base\InvalidConfigException
      */
     public function saveCopedString($productID)
