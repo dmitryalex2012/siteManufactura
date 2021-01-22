@@ -9,7 +9,7 @@
 <!--        [title] =>   "Гостиная"                                                 (photo address)         -->
 <!--        [content] => "Важнейшую роль в интерьере играют шторы, поэтому"         (our work description)  -->
 <!--        [notes] =>   "foto/ourworks/livingRoom1.jpg,foto/ourworks/living....."  (photos address)        -->
-<!--              }                                                                                         -->
+<!--    }                                                                                                   -->
 
 <h1 class="h1InWorks">Наши работы</h1>
 

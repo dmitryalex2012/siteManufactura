@@ -3,13 +3,16 @@
 namespace app\services;
 
 use app\models\Services;
+use yii\base\InvalidConfigException;
+use yii\db\ActiveRecord;
 
 class ServicesServices
 {
     /**
      * Find information about our services
      *
-     * @return array|\yii\db\ActiveRecord[]
+     * @return array|ActiveRecord[]
+     * @throws InvalidConfigException
      */
     public static function getOurServices()
     {
