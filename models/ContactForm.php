@@ -23,11 +23,11 @@ class ContactForm extends Model
     public function rules()
     {
         return [
-            // name, email, subject and body are required
+            /** name, email, subject and body are required */
             [['name', 'email', 'subject', 'body'], 'required', 'message'=>'Заполните все поля'],
-            // email has to be a valid email address
+            /** email has to be a valid email address */
             ['email', 'email', 'message'=>'Некорректный e-mail'],
-            // verifyCode needs to be entered correctly
+            /** verifyCode needs to be entered correctly */
 //            ['verifyCode', 'captcha'],
         ];
     }
@@ -44,6 +44,7 @@ class ContactForm extends Model
 
     /**
      * Sends an email to the specified email address using the information collected by this model.
+     *
      * @param string $email the target email address
      * @return bool whether the model passes validation
      */
@@ -51,12 +52,8 @@ class ContactForm extends Model
     {
         if ($this->validate()) {
             Yii::$app->mailer->compose()
-//                ->setTo([$this->email => $this->name])
                 ->setTo([$this->email])
-//                ->setFrom([Yii::$app->params['senderEmail'] => Yii::$app->params['senderName']])
-//                ->setFrom(['tpmfd27@gmail.com' => $this->name])
                 ->setFrom(['tpmfd27@gmail.com'])
-//                ->setReplyTo($email)
                 ->setSubject($this->subject)
                 ->setTextBody($this->body)
                 ->send();

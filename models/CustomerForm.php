@@ -69,10 +69,10 @@ class CustomerForm extends Model
         if (!$session->has('cart')) {
             $messageContent = $reply = "Корзина пуста";
         } else {
-    // Make message form, that will send to seller
+    /** Make message form, that will send to seller */
             $cart = $session->get('cart');
 
-          //  Information about buyer -------------------------------------------------------
+          /**  Start of the customer information */
             $messageContent = "Имя: " . $this->name . ";" . "\r\n";
             $messageContent = $messageContent . "Телефон: " . $this->phone . ";" . "\r\n"; //  "\r\n" - write in file with new string and left side
             $messageContent = $messageContent . "e-mail: " . $this->email . ";" . "\r\n";
@@ -81,14 +81,13 @@ class CustomerForm extends Model
             $messageContent = $messageContent . "Форма оплаты: " . $cart["purchase"]["purchaseType"] .  ";" . "\r\n";
             $messageContent = $messageContent . "Сообщение Заказчика: " . $this->body . "\n" . "\r\n";
             $messageContent = $messageContent . "СОСТАВ ЗАКАЗА: " . "\n" . "\r\n";
-          //  End information about customer ---------------------------------------------------
+          /**  End of the customer information  */
             $totalPrice = 0;
 
-          //  information about selected products -------------------------------------------
+          /** Start of the selected products information */
             $reply = "";
             foreach ($cart as $item){
                 if ($item['quantity'] != 0){
-//                    $messageContent = $messageContent . "Номер товара: " . $item['number'] . "\r\n";
                     $reply = $reply . "Номер товара: " . $item['number'] . "\r\n";
                     $reply = $reply . "Категория: " . $item['title'] . "\r\n";
                     $reply = $reply . "Название: " . $item['content'] . "\r\n";
@@ -105,19 +104,16 @@ class CustomerForm extends Model
             }
             $reply = $reply . "Общая стоимость заказа " . $discountMessage . $totalPrice . " грн.";
             $messageContent = $messageContent . $reply;
-          //  end information about selected products ---------------------------------------
+          /**  End selected products information */
         }
         $session->close();
 
         if ($this->validate()) {
-//                                      array "$customerMessage" is used in "cartList" view for determine validation
+            /** array "$customerMessage" is used in "cartList" view for determine validation */
             Yii::$app->session->addFlash('customerMessage', $orderNumber);  // $customerMessage[0] = $orderNumber;
             Yii::$app->mailer->compose()                                        //  sending mail to TM "Manufaktura"
                 ->setTo(['snn.manufactura@gmail.com', 'DmitryAlex2012@gmail.com'])      // send mails
-//                ->setFrom([Yii::$app->params['senderEmail'] => Yii::$app->params['senderName']])
-//                ->setFrom(['tpmfd27@gmail.com' => $this->name])
                 ->setFrom([$email])
-//                ->setReplyTo($email)
                 ->setSubject($this->name)
                 ->setTextBody($messageContent)
                 ->send();
@@ -131,20 +127,6 @@ class CustomerForm extends Model
                 ->setSubject("Администратор Дмитрий")
                 ->setTextBody($reply)
                 ->send();
-
-
-
-
-//            $reply = "Здравствуйте.";
-//            Yii::$app->mailer->compose()
-//                ->setTo('0979272564@mail.alphasms.com.ua')                 // send mail to customer
-//                ->setFrom('tpmfd27@gmail.com')
-//                ->setSubject('Дмиитрий')
-//                ->setTextBody('111')
-//                ->send();
-//            return true;
-
-
 
             return true;
         }
