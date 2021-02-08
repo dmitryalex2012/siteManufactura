@@ -25,6 +25,9 @@ class CartController extends Controller
 
 
     /**
+     * Loads data from Form if it fields are filled.
+     * Returns page for view.
+     *
      * @return string|Response
      */
     public function actionIndex()
@@ -47,7 +50,7 @@ class CartController extends Controller
 
 
     /**
-     * Add product to Cart
+     * Adds product to Cart
      *
      * @return int
      */
@@ -60,7 +63,7 @@ class CartController extends Controller
 
 
     /**
-     * Change quantity products from "Cart" Page
+     * Changes quantity products from "Cart" page
      *
      * @return array|false|string
      */
@@ -73,7 +76,7 @@ class CartController extends Controller
 
 
     /**
-     * Determination total products quantity in cart.
+     * Determinations total products quantity in cart.
      * The total products quantity outputs near inscription "Cart" in layout.
      *
      * @return int
@@ -85,7 +88,7 @@ class CartController extends Controller
 
 
     /**
-     * Save delivery type in session
+     * Saves delivery type in session
      *
      * @return mixed
      */
@@ -98,7 +101,7 @@ class CartController extends Controller
 
 
     /**
-     * Save purchase type in session
+     * Saves purchase type in session
      *
      * @return mixed
      */
@@ -111,7 +114,7 @@ class CartController extends Controller
 
 
     /**
-     * Testing promo code authenticity and change product price when promo code is entered correct.
+     * Tests promo code authenticity and changes product price when promo code is entered correct.
      *
      * @return float|int
      */

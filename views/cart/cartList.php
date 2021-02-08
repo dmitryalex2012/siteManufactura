@@ -26,7 +26,8 @@ $textFile = new TextFile();         // text, that describe delivery types in cla
     <div class="cartTable row">
         <div class="col-sm-1"></div>
         <div class="col-sm-10">
-            <?php if (!empty($cart)): ?>                    <!-- output table with selected products -->
+            <!-- Outputing table with selected products -->
+            <?php if (!empty($cart)): ?>
                 <?php $price = 0; ?>
                 <table class="table table-bordered">
                     <tr>
@@ -38,8 +39,9 @@ $textFile = new TextFile();         // text, that describe delivery types in cla
                     </tr>
 
                     <?php   $deliveryType = "Новая Почта"; $purchaseType = "Наложным платежом";
-                            if ($cart):                     // Determination DELIVERY TYPE and PURCHASE TYPE in case
-                                foreach ($cart as $item):   //    if it was chosen before
+                            /** Determination DELIVERY TYPE and PURCHASE TYPE in case if it was chosen before */
+                            if ($cart):
+                                foreach ($cart as $item):
                                     if ($item['deliveryType']) {
                                         $deliveryType = $item['deliveryType'];
                                     }
@@ -69,9 +71,10 @@ $textFile = new TextFile();         // text, that describe delivery types in cla
                                 <td><?= $item['price']; ?></td>
                                 <td class="<?php echo $item['number']; ?>"><?= $item['price'] * $item['quantity']; ?></td>  <!-- summary price for CURRENT product -->
                             </tr>
-                        <?php endif; ?>
-                        <?php $price += $item['price'] * $item['quantity']; ?>      <!-- "$price" is the total price -->
-                    <?php endforeach; ?>
+                        <?php endif;
+                            $price += $item['price'] * $item['quantity'];      /** "$price" is the total price */
+                            endforeach;
+                        ?>
 
                     <?php
                     if ($cart["promoCode"]["discount"] != 0){             // change total price when promo code is entered
@@ -103,7 +106,10 @@ $textFile = new TextFile();         // text, that describe delivery types in cla
         <div class="col-sm-1"></div>
     </div>
 
-<?php                                                       //  Changing product quantity using "select" tag
+<?php
+
+/** Changing product quantity using "select" tag */
+
 $script1 = <<<JS
     $('.quantityAjax').change(function() {
         // let totalPriceClass;
@@ -137,7 +143,8 @@ $this->registerJs($script1);
 ?>
 
 <div class="purchaseRegistration row">
-    <div class="deliveryMethod col-12 col-lg-4">      <!-- Delivery type description -->
+    <!-- Delivery type description -->
+    <div class="deliveryMethod col-12 col-lg-4">
         <h4>ВЫБЕРИТЕ СПОСОБ ДОСТАВКИ</h4>
         <?php for ($i=1; $i<=3; $i++):
           switch ($i){                                // select delivery type for description near radio button
@@ -185,10 +192,12 @@ JS;
 $this->registerJs($deliveryTypeJS);
 ?>
 
-    <div class="purchaseInformation col-12 col-lg-4">   <!-- Purchase type description -->
+    <!-- Purchase type description -->
+    <div class="purchaseInformation col-12 col-lg-4">
         <h4>ВЫБЕРИТЕ СПОСОБ ОПЛАТЫ</h4>
         <?php for ($i=1; $i<=3; $i++):
-            switch ($i){                                // Select purchase type for description near radio button
+            /** Select purchase type for description near radio button */
+            switch ($i){
                 case 1: $purchaseTypeTemp = "Наложным платежом";        break;
                 case 2: $purchaseTypeTemp = "На карту Приват-банка";    break;
                 case 3: $purchaseTypeTemp = "Наличными";                break;
@@ -213,7 +222,10 @@ $this->registerJs($deliveryTypeJS);
         <?php endfor; ?>
     </div>
 
-    <?php          // save new purchase type in DB
+    <?php
+
+    /** Save new purchase type in DB */
+
     $purchaseTypeJS = <<<JS
     $('.typePurchaseJS').change(function() {
         let purchaseTypeJS = ($(this).val());
@@ -234,7 +246,8 @@ JS;
     ?>
 
 
-    <div class="contactInformation col-12 col-lg-4">    <!-- Form for mail sending -->
+    <!-- Form for mail sending -->
+    <div class="contactInformation col-12 col-lg-4">
         <h4>КОНТАКТНАЯ ИНФОРМАЦИЯ</h4>
         <?php $messageData = Yii::$app->session->getFlash('customerMessage') ?> <!-- $customerMessage {   0 => $orderNumber,  1 => "contactFormSubmitted" -->
         <?php if ($messageData[1] === "contactFormSubmitted"): ?>
@@ -272,7 +285,10 @@ JS;
 
 
 
-        <?php       // processing the entered promo code
+        <?php
+
+        /** Processing the entered promo code */
+
         $promoCodeJS = <<<JS
 
         $('.promoCode').change(function() {
