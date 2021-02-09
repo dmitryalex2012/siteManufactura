@@ -30,11 +30,13 @@
         });
     }
 </script>
+
 <script src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap"
         async defer>
 </script>
 
 <div class="ourContacts col-12 col-md-3">
+
     <p class="contactsHeading">ЗВОНИТЕ:</p>
     <p class="contactsInformation">+38(097)927-25-84</p>
     <p class="contactsInformation">+38(066)034-39-57 (viber)</p>

@@ -3,15 +3,14 @@
 /* @var $this yii\web\View */
 /* @var $product object */
 
-
 $this->params['breadcrumbs'][] = $this->title = [
     'label'=> 'Магазин ' . $product->categoriesBredCrumbs,
-    'url'=> ['/products/list', 'value' => $product->categories],    // The 'value' is used in Controller for
-];                                                                  //   determination the type of product in PREVIOUS PAGE
+    /** The 'value' is used in Controller for determination the type of product in PREVIOUS PAGE. */
+    'url'=> ['/products/list', 'value' => $product->categories],
+];
 $this->params['breadcrumbs'][] = $product->content;
 
-
-// photo addresses is separated by the ","
+    /** The photo addresses is separated by the "," */
     if (strpos($product->address, ',') == true) {            //  Is presented ONE photo of product in DB or MORE?
         $photoArray = explode(",", $product->address);     // >1 photo. Make array with products photos addresses.
         $photoQuantity = count($photoArray);

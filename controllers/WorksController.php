@@ -10,7 +10,7 @@ use yii\web\Controller;
 class WorksController extends Controller
 {
     /**
-     * Render from DB the associative array "Works" with data about our works. This data (like the photo address,
+     * Renders from DB the associative array "Works" with data about our works. This data (like the photo address,
      * photo description) is used for display of the cards with our works and it description.
      *
      * @return string

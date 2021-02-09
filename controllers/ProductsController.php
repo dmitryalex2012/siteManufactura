@@ -23,7 +23,7 @@ class ProductsController extends Controller
 
 
     /**
-     * Render list of products by specified category
+     * Renders list of products by specified category
      *
      * @return string
      */
@@ -39,7 +39,7 @@ class ProductsController extends Controller
 
 
     /**
-     * Render detail information about selected product, that displayed on single page
+     * Renders detail information about selected product, that displayed on single page
      *
      * @return string
      */
