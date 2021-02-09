@@ -13,6 +13,7 @@ class ServicesController extends Controller
      * the photo address, service description) is used for display on card in view page.
      *
      * @return string
+     * @throws \yii\base\InvalidConfigException
      */
      public function actionList()
     {

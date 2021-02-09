@@ -50,8 +50,9 @@ foreach ($items as $item):
         </div>                                  <!-- 3 products is displayed in line  -->
     <?php endif; ?>
 <?php endforeach;
-if (($i % 3) != 0)    { echo  "</div>";    }    // it's necessary to close "row" by "/div" when "col" are odd or
-?>                                           <!--  products < 3 pieces
+/** It's necessary to close "row" by "/div" when "col" are odd or products < 3 pieces */
+if (($i % 3) != 0)    { echo  "</div>";    }
+?>
 
 
 <?php                   // adding product to cart and output products total quantity near inscription "Cart" in HEADER

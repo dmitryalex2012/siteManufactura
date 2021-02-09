@@ -7,7 +7,6 @@ use yii\helpers\Html;
 /* @var $ourOffers object */
 ?>
 
-<!--<br>-->
 <h1 class="h1MainPage">Дизайн-бюро штор "Мануфактура" - создаем уют в Вашем доме</h1>
 
 <?php $i = 0; ?>
@@ -19,8 +18,8 @@ use yii\helpers\Html;
     <?php endif; ?>
         <div class="card text-white col-12 col-lg-6">
             <img src="<?php echo $ourOffer->imageURL; ?>" class="card-img" alt="100%">
+
             <div class="card-img-overlay">
-<!--                <p class="pInIndex">    --><?php //  echo $ourOffer->inscription; ?><!-- </p>-->
                 <H2 class="pInIndex">    <?php   echo $ourOffer->inscription; ?> </H2>
 
                 <?php   if ($i == 1): ?>  <!-- "inscription2" will appear only for first card (this is inscription in bottom of the card) -->
@@ -29,6 +28,7 @@ use yii\helpers\Html;
 
                 <!-- the button in the bottom of the card will appear from second card-->
                 <?php   if ($i > 1) {   echo Html::a($ourOffer->buttonText, ['/products/list', 'value' => $ourOffer->redirect], ['class'=>'indexBtn btn btn-outline-info']);   } ?>
+
             </div>
         </div>
 <?php if ((($i % 2) == 0)): ?>

@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\services\WorksServices;
+use yii\base\InvalidConfigException;
 use yii\web\Controller;
 
 
@@ -13,6 +14,7 @@ class WorksController extends Controller
      * photo description) is used for display of the cards with our works and it description.
      *
      * @return string
+     * @throws InvalidConfigException
      */
     public function actionPortfolio()
     {

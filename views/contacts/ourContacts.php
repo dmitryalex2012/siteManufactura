@@ -30,7 +30,7 @@
         });
     }
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJhXz9qSSw8KjSOnjMW8b1qeD1AfRmU-4&callback=initMap"
+<script src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap"
         async defer>
 </script>
 
