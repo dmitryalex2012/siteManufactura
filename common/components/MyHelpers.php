@@ -4,6 +4,12 @@ namespace app\common\components;
 
 class MyHelpers
 {
+    /**
+     * Makes end of the "product" word. The end of word depends from products quantity.
+     *
+     * @param $quantity
+     * @return string
+     */
     public static function productsEnding($quantity)
     {
         $quantity = $quantity % 100;            //  cart contains less 100 items products (in this case)

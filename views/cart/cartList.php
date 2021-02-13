@@ -54,11 +54,11 @@ $textFile = new TextFile();         // text, that describe delivery types in cla
 
                     <?php foreach ($cart as $item): ?>
                         <?php if ($item['quantity'] != 0): ?>
-                            <tr>                                            <!--  output information about products -->
-                                <td><?= $item['content']; ?></td>
+                            <tr>
+                                <td><?= $item['content']; ?></td>           <!--  output information about products -->
                                 <td><?= $item['number']; ?></td>            <!-- $item['number'] == product ID -->
                                 <td>
-                                    <label for="idQuantityAjax"></label>    <!-- add empty "label" because "select" need id=for in "label" -->
+                                    <label for="idQuantityAjax"></label>    <!-- the empty "label" added because "select" needs "id=for" in "label" -->
                                     <select id="idQuantityAjax" class="quantityAjax">
                                         <?php for ($i=0; $i<=10; $i++): ?>  <!-- client can select product quantity from 0 to 10 pieces -->
                                         <option value="<?php echo ($item['number']) . "***" . $i; ?>"
@@ -77,7 +77,8 @@ $textFile = new TextFile();         // text, that describe delivery types in cla
                         ?>
 
                     <?php
-                    if ($cart["promoCode"]["discount"] != 0){             // change total price when promo code is entered
+                    if ($cart["promoCode"]["discount"] != 0){
+                        /** Change total price when promo code is entered */
                         $price = $price - $price * $cart["promoCode"]["discount"];
                         $totalPriceInscription = "Стоимость заказа с учетом " . $cart["promoCode"]["discount"]*100 . "% скидки:";
                     } else {
