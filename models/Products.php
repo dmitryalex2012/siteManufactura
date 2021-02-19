@@ -2,7 +2,6 @@
 
 namespace app\models;
 
-use yii\base\InvalidConfigException;
 use yii\db\ActiveRecord;
 
 class Products extends ActiveRecord
@@ -12,7 +11,6 @@ class Products extends ActiveRecord
      *
      * @param $category
      * @return array|ActiveRecord[]
-     * @throws InvalidConfigException
      */
     public static function findByCategory($category)
     {
@@ -24,7 +22,6 @@ class Products extends ActiveRecord
      *
      * @param $productID
      * @return array|ActiveRecord|null
-     * @throws InvalidConfigException
      */
     public static function findByNumber($productID)
     {

@@ -4,6 +4,7 @@ namespace app\models;
 use himiklab\yii2\recaptcha\ReCaptchaValidator2;
 use Yii;
 use yii\base\Model;
+
 /**
  * ContactForm is the model behind the contact form.
  */
