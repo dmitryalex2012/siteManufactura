@@ -60,7 +60,10 @@ $this->params['breadcrumbs'][] = $product->content;
 
             <div class="col-12 col-md-5">                             <!-- column with product description -->
                 <div class="detailDescription">
+                    <?php
+                    ?>
                     <h1 class="detailProductTitle"><?php echo $product->content; ?></h1>
+                    <img src="<?php echo $product->color; ?>" class="detailColor" alt="">
                     <p class="detailProductDescription"><?php echo $product->description; ?></p>
                     <?php
                     if (isset($product->size)){

@@ -8,6 +8,12 @@
     text-align: center;
 }
 
+.detailColor{
+    height: 50px;
+    width: 50px;
+    margin: 0 8px 15px 8px;
+}
+
 .detailProductSize{
     text-align: center;
     margin: 10px 0;
