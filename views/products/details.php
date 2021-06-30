@@ -40,7 +40,7 @@ $this->params['breadcrumbs'][] = $product->content;
                                     <?php if ($photoQuantity === 1): ?>
                                         <img src="<?php echo $photoArray; ?>" class="d-block w-100" alt="...">
                                     <?php else: ?>
-                                        <img src="<?php echo $photoArray[$i]; ?>" class="d-block w-100" alt="..."> <!-- > 1 product photo -->
+                                        <img src="<?php echo $photoArray[$i]; ?>" class="d-block w-100" alt="..."> <!-- 1 product photo -->
                                     <?php endif; ?>
                                 </div>
                        <?php  endfor; ?>
@@ -60,10 +60,8 @@ $this->params['breadcrumbs'][] = $product->content;
 
             <div class="col-12 col-md-5">                             <!-- column with product description -->
                 <div class="detailDescription">
-                    <?php
-                    ?>
                     <h1 class="detailProductTitle"><?php echo $product->content; ?></h1>
-                    <img src="<?php echo $product->color; ?>" class="detailColor" alt="">
+                    <img src="<?php echo $product->color; ?>" class="detailColor" alt="">   <!-- NEED TO ADD "FOREACH"!!! -->
                     <p class="detailProductDescription"><?php echo $product->description; ?></p>
                     <?php
                     if (isset($product->size)){
@@ -79,7 +77,10 @@ $this->params['breadcrumbs'][] = $product->content;
         </div>
 </div>
 
-<?php                                                               // Add product to cart
+<?php
+
+/** Add product to cart */
+
 $js = <<<JS
     $('.buyBtnDetail').on('click', function() {
         $.ajax({
@@ -96,6 +97,7 @@ $js = <<<JS
     });
 JS;
 $this->registerJs($js);
+
 ?>
 
 
