@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\services\ProductServices;
+use yii\base\InvalidConfigException;
 use yii\web\Controller;
 use Yii;
 
@@ -26,6 +27,7 @@ class ProductsController extends Controller
      * Renders list of products by specified category
      *
      * @return string
+     * @throws InvalidConfigException
      */
     public function actionList()
     {
@@ -39,14 +41,17 @@ class ProductsController extends Controller
 
 
     /**
-     * Renders detail information about selected product, that displayed on single page
+     * Renders detail information about selected product, which displayed on single page.
      *
      * @return string
+     * @throws InvalidConfigException
      */
     public function actionDetail()
     {
         $productID = Yii::$app->request->get('productID');
-        $selectedProduct = $this->productServices->getProductByNumber($productID);
+        $product = $this->productServices->getProductByNumber($productID);
+
+        $selectedProduct = $this->productServices->getProductPhotos($product);
 
         return $this->render('details', [
             'product' => $selectedProduct
