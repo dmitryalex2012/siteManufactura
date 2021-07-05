@@ -52,12 +52,17 @@ $this->params['breadcrumbs'][] = $product['content'];
             <div class="col-12 col-md-5">                             <!-- column with product description -->
                 <div class="detailDescription">
                     <h1 class="detailProductTitle"><?php echo $product['content']; ?></h1>
-                    <img src="<?php echo $product->color; ?>" class="detailColor" alt="">   <!-- NEED TO ADD "FOREACH"!!! -->
+
+                    <div class="d-flex justify-content-center">
+                        <?php foreach (explode(',', $product['color']) as $productColor): ?>
+                        <img src="<?php echo $productColor; ?>" class="detailColor" alt="">   <!-- NEED TO ADD "FOREACH"!!! -->
+                        <?php endforeach; ?>
+                    </div>
+
                     <p class="detailProductDescription"><?php echo $product['description']; ?></p>
-                    <?php
-                    if (isset($product['size'])){
-                        echo '<p class="detailProductSize">Размер изделия: ' . $product['size'] . '</p>';
-                    }
+                    <?php if (isset($product['size'])){
+                            echo '<p class="detailProductSize">Размер изделия: ' . $product['size'] . '</p>';
+                          }
                     ?>
                     <p class="detailProductPrice"><?php echo "Цена: " . $product['price'] . " грн"; ?></p>
                     <button class="buyBtnDetail" value="<?php echo $product['number']; ?>">Купить</button>  <!-- "value" is used for JS -->
