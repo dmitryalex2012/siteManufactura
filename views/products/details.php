@@ -1,6 +1,9 @@
 <?php
 
 /* @var $this yii\web\View */
+
+use yii\helpers\Html;
+
 /* @var $product object */
 
 $this->params['breadcrumbs'][] = $this->title = [
@@ -54,9 +57,16 @@ $this->params['breadcrumbs'][] = $product['content'];
                     <h1 class="detailProductTitle"><?php echo $product['content']; ?></h1>
 
                     <div class="d-flex justify-content-center">
-                        <?php foreach (explode(',', $product['color']) as $productColor): ?>
-                        <img src="<?php echo $productColor; ?>" class="detailColor" alt="">   <!-- NEED TO ADD "FOREACH"!!! -->
-                        <?php endforeach; ?>
+                        <?php
+                            if(!empty($product['color'])):
+                                foreach (explode(',', $product['color']) as $productColor): ?>
+                                <div class="detailColor">
+                                    <?= Html::a(Html::img($productColor, ['width'=>"100%", 'height'=>"100%"]), ['products/detail', 'productID' => 3002]); ?>
+                                </div>
+                        <?php
+                             endforeach;
+                             endif;
+                        ?>
                     </div>
 
                     <p class="detailProductDescription"><?php echo $product['description']; ?></p>
