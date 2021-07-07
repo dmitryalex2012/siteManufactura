@@ -61,7 +61,7 @@ $this->params['breadcrumbs'][] = $product['content'];
                             if(!empty($product['color'])):
                                 foreach (explode(',', $product['color']) as $productColor): ?>
                                 <div class="detailColor">
-                                    <?= Html::a(Html::img($productColor, ['width'=>"100%", 'height'=>"100%"]), ['products/detail', 'productID' => 3002]); ?>
+                                    <?= Html::a(Html::img($productColor, ['width'=>"100%", 'height'=>"100%"]), ['products/color', 'productID' => 3002]); ?>
                                 </div>
                         <?php
                              endforeach;

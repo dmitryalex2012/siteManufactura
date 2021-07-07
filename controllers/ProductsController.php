@@ -57,4 +57,16 @@ class ProductsController extends Controller
             'product' => $selectedProduct
         ]);
     }
+
+    public function actionColor()
+    {
+        $productID = Yii::$app->request->get('productID');
+        $product = $this->productServices->getProductByNumber($productID);
+
+        $selectedProduct = $this->productServices->getProductPhotos($product);
+
+        return $this->render('details', [
+            'product' => $selectedProduct
+        ]);
+    }
 }
