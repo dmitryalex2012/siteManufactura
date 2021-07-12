@@ -58,6 +58,12 @@ class ProductsController extends Controller
         ]);
     }
 
+    /**
+     * Renders product with selected color.
+     *
+     * @return string
+     * @throws InvalidConfigException
+     */
     public function actionColor()
     {
         $productID = Yii::$app->request->get('productID');
