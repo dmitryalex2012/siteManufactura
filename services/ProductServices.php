@@ -47,12 +47,12 @@ class ProductServices
         /** Is presented ONE photo of product in DB or MORE? */
         if (strpos($product['address'], ',') == true){
             /** >1 photo. Make array with products photos addresses. */
-            $product['photoAddress'] = explode(",", $product['address']);
+            $product['photoURL'] = explode(",", $product['address']);
             $product['photoQuantity'] = count($product['photoAddress']);
         } else{
             /** 1 photo */
             $product['photoQuantity'] = 1;
-            $product['photoAddress'] = $product['address'];
+            $product['photoURL'] = $product['address'];
         }
 
         return $product;

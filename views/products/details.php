@@ -32,9 +32,9 @@ $this->params['breadcrumbs'][] = $product['content'];
                        <?php  for ($i = 0; $i < $product['photoQuantity']; $i++) : ?>
                                 <div class="carousel-item <?php if ($i == 0) { echo "active"; }  ?> " data-interval="1000000">
                                     <?php if ($product['photoQuantity'] === 1): ?>
-                                        <img src="<?php echo $product['photoAddress']; ?>" class="d-block w-100" alt="...">
+                                        <img src="<?php echo $product['photoURL']; ?>" class="d-block w-100" alt="...">
                                     <?php else: ?>
-                                        <img src="<?php echo $product['photoAddress'][$i]; ?>" class="d-block w-100" alt="..."> <!-- 1 product photo -->
+                                        <img src="<?php echo $product['photoURL'][$i]; ?>" class="d-block w-100" alt="...">
                                     <?php endif; ?>
                                 </div>
                        <?php  endfor; ?>
