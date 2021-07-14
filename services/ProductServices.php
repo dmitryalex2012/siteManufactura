@@ -48,7 +48,7 @@ class ProductServices
         if (strpos($product['address'], ',') == true){
             /** >1 photo. Make array with products photos addresses. */
             $product['photoURL'] = explode(",", $product['address']);
-            $product['photoQuantity'] = count($product['photoAddress']);
+            $product['photoQuantity'] = count($product['photoURL']);
         } else{
             /** 1 photo */
             $product['photoQuantity'] = 1;
