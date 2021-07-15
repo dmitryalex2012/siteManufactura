@@ -1,7 +1,6 @@
 body.ourProducts{
     width:100%;
     height:100%;
-    /*background:url(../foto/livingRoom1.jpg) center fixed no-repeat;*/
     background-color: #e9ebeb;
     background-size: cover;
 }
@@ -45,7 +44,6 @@ body.ourProducts{
 
 .buyBtn:hover{
     color: #2ca02c;
-    /*border-color: #00aa88;*/
 }
 
 @media (max-width: 575px) {
