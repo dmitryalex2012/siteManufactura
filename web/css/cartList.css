@@ -2,10 +2,6 @@ h2 {
     text-align: center;
 }
 
-/*.navbar-nav > li > a:hover {*/
-/*    color: #5a1621 !important;*/
-/*}*/
-
 .cartStatus
 {
     text-align: center;
@@ -18,7 +14,6 @@ h2 {
 
 .purchaseRegistration{
     text-align: center;
-    /*margin: 30px 0px;*/
 }
 
 .continueBayBtn {
@@ -34,9 +29,6 @@ label{
     font-weight: 300!important;
 }
 
-/*.typeDelivery, .typeDelivery2, .typeDelivery3{*/
-/*    font-weight: bold!important;*/
-/*}*/
 .typeDelivery{
     font-weight: bold!important;
 }
@@ -49,16 +41,9 @@ label{
     text-align: justify;
     padding: 10px 10px 10px 10px;
 }
-/*.delivery{*/
-/*    text-align: justify;*/
-/*    padding: 10px 30px 10px 30px;*/
-/*}*/
 
 .onlyCSSinDelivery{
-    /*padding: 0px 5px!important;*/
-    /*padding-right: 0px;*/
     padding-left: 0;
-    /*padding-right: 0px;*/
 }
 
 .onlyCSSinPurchase{
@@ -89,10 +74,5 @@ label{
     display:flex;
     justify-content: center;
 }
-
-/*.myRecaptcha{*/
-/*    display:flex;*/
-/*    justify-content: center;*/
-/*}*/
 
 
